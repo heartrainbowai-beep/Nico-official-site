@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L-Singer 虹の歌い手 Nico🌈💞</title>
+    <style>
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Hiragino Maru Gothic ProN', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #ff8a8e 0%, #fdbfef 25%, #81b4fd 50%, #92d9fb 75%, #b4ec79 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white; text-align: center;
+            min-height: 100vh; overflow-x: hidden;
+        }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+        /* 装飾レイヤー */
+        .sparkle-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .star { position: absolute; background: white; border-radius: 50%; opacity: 0; animation: sparkleAnim 3s infinite; }
+        @keyframes sparkleAnim { 0% { transform: scale(0); opacity: 0; } 50% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(0); opacity: 0; } }
+
+        .floating-deco { position: fixed; z-index: 0; pointer-events: none; opacity: 0.8; animation: float 12s infinite ease-in-out; }
+        .deco-rainbow { width: 100px; height: 80px; background-position: -50px -50px; top: 15%; left: 8%; }
+        .deco-moon    { width: 90px; height: 90px; background-position: -270px -30px; top: 10%; right: 8%; animation-delay: -2s; }
+        .deco-heart   { width: 60px; height: 60px; background-position: -160px -150px; bottom: 15%; left: 10%; animation-delay: -4s; }
+        @keyframes float { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(10px, -20px) rotate(5deg); } }
+
+        .menu-toggle {
+            position: fixed; top: 14px; right: 14px; z-index: 950;
+            width: 48px; height: 48px; border-radius: 50%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+            background: rgba(255, 105, 180, 0.86); border: 2px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.55), 0 0 18px rgba(255, 105, 180, 0.65);
+            cursor: pointer; padding: 0;
+        }
+        .menu-toggle span { width: 22px; height: 3px; border-radius: 999px; background: #fff; box-shadow: 0 0 6px rgba(255,255,255,0.8); }
+        .site-menu-overlay {
+            position: fixed; inset: 0; z-index: 940; display: none;
+            background: rgba(20, 10, 20, 0.46); backdrop-filter: blur(4px);
+        }
+        .site-menu-overlay.is-open { display: block; }
+        .site-menu-sheet {
+            position: fixed; top: 0; right: 0; bottom: 0; z-index: 951;
+            width: min(68vw, 300px); min-width: 220px; padding: 24px 16px;
+            background: rgba(255, 245, 252, 0.96); color: #ff4fa3;
+            border-radius: 26px 0 0 26px; border: 2px solid rgba(255, 255, 255, 0.95);
+            box-shadow: -10px 0 28px rgba(255, 105, 180, 0.36);
+            transform: translateX(110%); transition: transform 0.28s ease; box-sizing: border-box;
+            display: flex; flex-direction: column;
+        }
+        .site-menu-sheet.is-open { transform: translateX(0); }
+        .site-menu-handle { width: 5px; height: 44px; margin: 0 auto 14px 0; border-radius: 999px; background: rgba(255, 105, 180, 0.45); }
+        .site-menu-title { margin: 0 0 18px; font-size: 18px; line-height: 1.4; font-weight: 900; color: #ff4fa3; text-shadow: 0 0 8px rgba(255,255,255,0.8); }
+        .site-menu-grid { display: flex; flex-direction: column; gap: 10px; }
+        .site-menu-item {
+            min-height: 48px; padding: 12px 12px; border-radius: 18px;
+            border: 2px solid rgba(255, 105, 180, 0.35); background: rgba(255, 255, 255, 0.82);
+            color: #e83f92; font-size: 14px; font-weight: 900; text-decoration: none;
+            display: flex; align-items: center; justify-content: flex-start; text-align: left;
+            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.12); cursor: pointer; font-family: inherit;
+        }
+        .site-menu-item.primary { color: #fff; background: linear-gradient(45deg, #ff7675, #ff69b4); border-color: #fff; }
+        .site-menu-close {
+            margin: auto auto 0; padding: 10px 30px; border-radius: 999px; border: 2px solid #ffb6c1;
+            background: rgba(255,255,255,0.72); color: #e83f92; font-weight: 900; cursor: pointer; font-family: inherit;
+        }
+        @media (min-width: 680px) {
+            .site-menu-sheet { width: 300px; border-radius: 26px 0 0 26px; }
+        }
+
+        .container { max-width: 550px; margin: 0 auto; padding: 20px; position: relative; z-index: 10; }
+        .fade-in { animation: fadeInSimple 1s ease-out forwards; }
+        @keyframes fadeInSimple { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .neon-white { color: #fff; text-shadow: 1px 1px 2px rgba(255, 105, 180, 0.8), 0 0 8px #fff; font-weight: 900; }
+        .pink-neon-border { border: 3px solid #ffb6c1; box-shadow: 0 0 10px #ffb6c1, 0 0 15px #ff69b4, inset 0 0 5px #ff69b4; }
+
+        header { margin-top: 30px; }
+        .title-top { font-size: 20px; display: block; margin-bottom: -10px; }
+        .title-main { font-size: 54px; display: block; margin-bottom: 25px; }
+
+        .nico-frame { display: inline-block; padding: 4px; border-radius: 12px; margin-bottom: 30px; background: rgba(255, 255, 255, 0.3); }
+        .nico-img { width: 100%; max-width: 280px; display: block; border-radius: 8px; }
+
+        .emotion-rainbow { display: block; margin: 20px 0; padding: 15px 5px; border-radius: 50px; background: rgba(255, 255, 255, 0.5); font-size: 13px; font-weight: bold; white-space: nowrap; }
+        .e-red { color: #ff4d4d; } .e-orange { color: #ff8c00; } .e-yellow { color: #ffcc00; } .e-green { color: #32cd32; } .e-blue { color: #00bfff; } .e-indigo { color: #6a5acd; } .e-purple { color: #da70d6; }
+
+        /* ColorSing 誘導ボタン */
+        .luxury-btn { 
+            background: linear-gradient(45deg, #ff7675, #ff69b4, #ff7675); background-size: 200% auto; animation: shine 3s linear infinite; 
+            border: 3px solid #fff; box-shadow: 0 0 15px #fff, 0 0 25px #ff69b4; color: #fff !important; text-decoration: none; 
+            padding: 22px 10px; border-radius: 60px; font-weight: bold; display: block; margin: 0 auto 10px auto; width: 90%; position: relative; z-index: 100; 
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        /* 特典確認ポスター風ボタン */
+        .benefit-poster-btn { 
+            width: 45%; max-width: 180px; margin: 0 auto 40px auto; border-radius: 15px; 
+            overflow: hidden; display: block; cursor: pointer; position: relative; 
+            background: none; padding: 0; transition: transform 0.2s; border: none;
+        }
+        .benefit-poster-btn:active { transform: scale(0.97); }
+        .benefit-poster-img { 
+            width: 100%; display: block; object-fit: cover; 
+            pointer-events: none; -webkit-touch-callout: none; 
+        }
+        .benefit-poster-text { 
+            position: absolute; bottom: 0; left: 0; width: 100%; 
+            background: rgba(255, 105, 180, 0.85); backdrop-filter: blur(4px); 
+            padding: 8px 0; margin: 0; border-top: 2px solid rgba(255, 255, 255, 0.5); 
+            letter-spacing: 0px;
+        }
+
+        /* モーダル共通 */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); display: none; flex-direction: column; align-items: center; justify-content: flex-start; z-index: 1000; padding: 40px 0; overflow-y: auto; }
+        .modal-content { width: 100%; max-width: 450px; display: flex; flex-direction: column; align-items: center; }
+        .benefit-section { width: 90%; margin-bottom: 50px; text-align: center; }
+        .modal-img { width: 100%; height: auto; border-radius: 15px; border: 2px solid #ffb6c1; box-shadow: 0 0 15px #ff69b4; }
+        .close-btn { margin: 20px 0 60px 0; padding: 12px 50px; background: #ff69b4; color: white; border: 2px solid #fff; border-radius: 30px; cursor: pointer; font-weight: bold; }
+
+        /* アイコンギャラリー（メニュー画面） */
+        .icons-modal-inner { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px); padding: 25px 0; border-radius: 20px; width: 90%; text-align: center; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.3); }
+        .icon-category-wrapper { width: 85%; margin: 0 auto 10px auto; cursor: pointer; }
+        .icon-category-wrapper:active .icon-category-img { transform: scale(0.98); }
+        .icon-category-img { 
+            width: 100%; height: auto; border-radius: 12px; border: 2px solid #fff; display: block; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: 0.2s; 
+            pointer-events: none; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; 
+        }
+        .modal-gallery-link {
+            width: 85%; margin: 18px auto 4px auto; padding: 12px 14px; display: block;
+            border-radius: 30px; background: rgba(255, 105, 180, 0.82);
+            border: 2px solid #fff; color: #fff; text-decoration: none;
+            font-size: 14px; font-weight: bold; box-sizing: border-box;
+            box-shadow: 0 0 12px rgba(255, 105, 180, 0.55);
+        }
+
+        /* カテゴリ専用ページ */
+        .category-page { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(20, 10, 15, 0.98); display: none; flex-direction: column; align-items: center; z-index: 1100; overflow-y: auto; }
+        .category-header { position: sticky; top: 0; width: 100%; background: rgba(255, 105, 180, 0.8); backdrop-filter: blur(5px); padding: 15px 0; display: flex; align-items: center; justify-content: center; z-index: 1101; border-bottom: 2px solid #fff; }
+        .back-btn { position: absolute; left: 15px; background: none; border: 2px solid #fff; color: #fff; padding: 5px 15px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 14px; }
+        .category-title { color: #fff; font-size: 18px; font-weight: bold; margin: 0; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+        
+        /* 真ん中に大きく表示する用 */
+        .large-icon-list { display: flex; flex-direction: column; align-items: center; padding: 20px 0 60px 0; width: 100%; }
+        .large-icon-item { width: 90%; max-width: 350px; margin-bottom: 35px; text-align: center; }
+        .large-icon-item img { 
+            width: 100%; height: auto; border-radius: 20px; border: 3px solid #ffb6c1; 
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.6); object-fit: cover; 
+            -webkit-touch-callout: default; pointer-events: auto; user-select: auto; -webkit-user-select: auto;
+        }
+
+        /* まだ画像がない枠のための「わくわく♡ボックス」 */
+        .coming-soon-box {
+            width: 100%; aspect-ratio: 1 / 1; border-radius: 20px; 
+            border: 3px dashed #ffb6c1; 
+            display: flex; align-items: center; justify-content: center; 
+            color: #ffb6c1; font-size: 24px; font-weight: bold; 
+            background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px);
+            text-shadow: 0 0 5px rgba(255, 105, 180, 0.3);
+            box-shadow: inset 0 0 15px rgba(255, 105, 180, 0.3);
+        }
+
+        .membership-gallery-grid {
+            width: 100%; margin: 0 auto 70px;
+            display: flex; flex-direction: column; align-items: center;
+            gap: 34px; padding: 20px 0 60px 0;
+        }
+        .membership-gallery-item {
+            width: 90%; max-width: 350px; min-width: 0; text-align: center;
+        }
+        .membership-gallery-item img {
+            width: 100%; aspect-ratio: 1 / 1; height: auto; object-fit: contain;
+            border-radius: 20px; border: 3px solid #fff;
+            background: rgba(255, 255, 255, 0.22);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+            display: block; box-sizing: border-box;
+        }
+        .membership-slot {
+            width: 100%; aspect-ratio: 1 / 1; border-radius: 18px;
+            border: 3px dashed rgba(255, 255, 255, 0.86);
+            background: rgba(255, 255, 255, 0.16);
+            color: #ffe4e1; display: flex; align-items: center; justify-content: center;
+            font-size: 13px; line-height: 1.5; font-weight: 900;
+            box-shadow: inset 0 0 14px rgba(255, 105, 180, 0.28);
+            box-sizing: border-box; padding: 10px;
+        }
+        .icon-caption { color: #ffe4e1; font-size: 13px; margin-top: 10px; font-weight: bold; }
+
+        /* SNS & ゲームカード */
+        .sns-card { width: 88%; margin: 0 auto 25px auto; border-radius: 20px; overflow: hidden; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px); text-decoration: none; color: #fff; display: block; cursor: pointer; border: none; padding: 0; text-align: center; }
+        .banner-img { 
+            width: 100%; height: auto; display: block; aspect-ratio: 3 / 1; object-fit: cover;
+            pointer-events: none; -webkit-touch-callout: none; 
+        }
+        .card-content { padding: 15px; }
+
+        /* ギャラリー専用の縦長枠 */
+        .gallery-card { width: 88%; margin: 0 auto 25px auto; border-radius: 20px; overflow: hidden; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px); cursor: pointer; text-align: center; display: block; border: none; }
+        .gallery-banner-img { 
+            width: 100%; height: auto; display: block; 
+            pointer-events: none; -webkit-touch-callout: none; 
+        } 
+        .gallery-pair {
+            width: 92%; margin: 0 auto 25px auto;
+            display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;
+        }
+        .gallery-pair .gallery-card {
+            width: 100%; margin: 0; border-radius: 16px;
+        }
+        .gallery-pair .card-content { padding: 10px 8px 12px; }
+        .gallery-pair .gallery-title { font-size: 13px; display: block; margin-bottom: 5px; line-height: 1.35; }
+        .gallery-pair .gallery-note { font-size: 10px; line-height: 1.45; color: #fff; display: block; }
+        @media (max-width: 340px) {
+            .gallery-pair { grid-template-columns: 1fr; width: 88%; }
+            .gallery-pair .gallery-title { font-size: 16px; }
+            .gallery-pair .gallery-note { font-size: 12px; }
+        }
+
+        .game-card { width: 90%; margin: 40px auto; padding: 6px; border-style: dashed !important; background: rgba(255, 255, 255, 0.5); display: flex; align-items: center; gap: 15px; border-radius: 25px; text-decoration: none; color: white; }
+        .game-icon-img { width: 115px; height: 115px; border-radius: 20px; object-fit: cover; pointer-events: none; }
+        .mini-colorsing-link {
+            width: 82%; margin: 0 auto 28px auto; padding: 12px 14px;
+            display: block; border-radius: 30px; text-decoration: none; color: #fff;
+            background: rgba(255, 105, 180, 0.82); border: 2px solid rgba(255,255,255,0.9);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.45), 0 0 16px rgba(255, 105, 180, 0.55);
+            font-size: 14px; font-weight: bold; box-sizing: border-box;
+        }
+
+        /* タップ専用透明ボタン */
+        .secret-tap-area { position: absolute; background: none; border: none; cursor: pointer; outline: none; }
+        .secret-project-list { width: 90%; max-width: 400px; display: grid; gap: 16px; margin: 0 auto; }
+        .secret-project-card {
+            border-radius: 20px; border: 3px solid #fff; overflow: hidden;
+            background: rgba(255,255,255,0.18); box-shadow: 0 0 15px rgba(255,255,255,0.6);
+        }
+        .secret-project-card img { width: 100%; height: auto; display: block; pointer-events: none; }
+        .secret-project-body { padding: 14px 12px 16px; }
+        .secret-project-title { margin: 0 0 8px; font-size: 18px; color: #fff; }
+        .secret-project-note { margin: 0 0 12px; font-size: 12px; line-height: 1.6; color: #ffe4e1; }
+        .secret-project-btn {
+            padding: 11px 30px; font-size: 15px; background: #ff69b4; color: white;
+            border: 2px solid #fff; border-radius: 30px; cursor: pointer; font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.22);
+        }
+        .secret-gallery-block {
+            width: 90%; max-width: 400px; margin: 0 auto 18px;
+            border-radius: 20px; border: 3px solid #fff;
+            box-shadow: 0 0 15px rgba(255,255,255,0.6); overflow: hidden;
+            background: rgba(255,255,255,0.12);
+        }
+        .secret-gallery-block img {
+            width: 100%; height: auto; display: block;
+            -webkit-touch-callout: default; pointer-events: auto;
+        }
+        .secret-gallery-label {
+            margin: 0; padding: 10px 8px;
+            background: rgba(255,105,180,0.82); color: #fff;
+            font-size: 14px; font-weight: 900;
+        }
+
+        .footer { margin-top: 50px; font-size: 11px; }
+    </style>
+</head>
+<body>
+
+<div class="sparkle-layer" id="sparkles"></div>
+<div class="floating-deco deco-rainbow"></div>
+<div class="floating-deco deco-moon"></div>
+<div class="floating-deco deco-heart"></div>
+
+<button class="menu-toggle" type="button" onclick="openSiteMenu()" aria-label="メニューを開く" aria-controls="siteMenuSheet" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+<div id="siteMenuOverlay" class="site-menu-overlay" onclick="closeSiteMenu()"></div>
+<nav id="siteMenuSheet" class="site-menu-sheet" aria-label="Nico公式サイトメニュー">
+    <div class="site-menu-handle"></div>
+    <p class="site-menu-title">Nico🌈💞 Menu</p>
+    <div class="site-menu-grid">
+        <button class="site-menu-item" type="button" onclick="goToSection('profile')">プロフィール</button>
+        <a class="site-menu-item primary" href="https://web.colorsing.com/share/user?user_id=411fa6d1-ba51-4f7c-a4f2-d635ab43ba5b" target="_blank" onclick="closeSiteMenu()">ColorSing</a>
+        <button class="site-menu-item" type="button" onclick="openBenefitFromMenu()">特典</button>
+        <button class="site-menu-item" type="button" onclick="openGalleryFromMenu()">ギャラリー</button>
+        <button class="site-menu-item" type="button" onclick="goToSection('schedule')">スケジュール</button>
+        <button class="site-menu-item" type="button" onclick="goToSection('game')">ゲーム</button>
+        <button class="site-menu-item" type="button" onclick="goToSection('sns')">SNS</button>
+    </div>
+    <button class="site-menu-close" type="button" onclick="closeSiteMenu()">とじる</button>
+</nav>
+
+<div id="benefitsModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="benefit-section">
+            <div class="neon-white" style="font-size: 20px; margin-bottom: 10px;">✨ メンシプ特典（L-Fan） ✨</div>
+            <p style="font-size: 13px; line-height: 1.6; margin-bottom: 20px; padding: 0 10px; color: #ffe4e1;">ColorSingの月額サポート機能です。入隊すると特別なバッジがつき、継続月数に応じた豪華な記念品をプレゼント！🎁</p>
+            <img src="image_36.png" alt="メンシプ特典" class="modal-img">
+        </div>
+        <div class="benefit-section">
+            <div class="neon-white" style="font-size: 20px; margin-bottom: 10px;">🌟 月間歌推し特典 🌟</div>
+            <p style="font-size: 13px; line-height: 1.6; margin-bottom: 20px; padding: 0 10px; color: #ffe4e1;">達成度に応じて、専用アイコンや個人宛ボイスメッセージなど、心を込めたプレゼントをお贈りします！🎶</p>
+            <img src="image_37.png" alt="月間歌推し特典" class="modal-img">
+        </div>
+        <button class="close-btn" onclick="closeModal()">とじる</button>
+    </div>
+</div>
+
+<div id="iconsModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="icons-modal-inner">
+            <div class="neon-white" style="font-size: 22px; margin-bottom: 10px;">🖼️ Nico's Icon Gallery 🖼️</div>
+            
+            <div class="neon-white" style="font-size: 18px; margin-bottom: 25px; line-height: 1.5;">
+                見出しをタップしてね♬.*ﾟ<br>
+                <span style="font-size: 13px; text-shadow: none; font-weight: normal; color: #ffe4e1;">専用ページで大きく見れるよ✨</span>
+            </div>
+
+            <div style="color: #ffb6c1; font-size: 14px; font-weight: bold; margin-bottom: 8px; text-shadow: 0 0 5px rgba(255, 105, 180, 0.5); line-height: 1.4;">
+                歌推しとってくれてありがとう♡<br>
+                <span style="font-size: 13px; color: #fff; text-shadow: none;">ここをタップしてね👇🏻</span>
+            </div>
+            <div class="icon-category-wrapper" onclick="openCategoryPage('category1Page')">
+                <img src="btn_cat1.png" class="icon-category-img" alt="歌推しiconへ">
+            </div>
+
+            <div style="color: #ffb6c1; font-size: 14px; font-weight: bold; margin: 25px 0 8px 0; text-shadow: 0 0 5px rgba(255, 105, 180, 0.5); line-height: 1.4;">
+                5Kとってくれてありがとう♡<br>心を込めてお名前書いたよ♡<br>
+                <span style="font-size: 13px; color: #fff; text-shadow: none;">ここをタップしてね👇🏻</span>
+            </div>
+            <div class="icon-category-wrapper" onclick="openCategoryPage('category2Page')">
+                <img src="btn_cat2.png" class="icon-category-img" alt="5K特典へ">
+            </div>
+
+            <div style="color: #ffb6c1; font-size: 14px; font-weight: bold; margin: 25px 0 8px 0; text-shadow: 0 0 5px rgba(255, 105, 180, 0.5); line-height: 1.4;">
+                6ヶ月継続メンバーシップ特別特典<br>
+                <span style="font-size: 13px; color: #fff; text-shadow: none;">8枚ギャラリーとして育てていくよ♡</span>
+            </div>
+            <div class="icon-category-wrapper" onclick="openCategoryPage('membership6Page')">
+                <img src="assets/membership_6months/member_ship_6months_gallery_01_20260602.jpg" class="icon-category-img" alt="6ヶ月継続メンバーシップ特別特典へ">
+            </div>
+
+            <a href="gallery.html" class="modal-gallery-link">歌推し月別ギャラリーを見る</a>
+
+        </div>
+        <button class="close-btn" onclick="closeIconsModal()">とじる</button>
+    </div>
+</div>
+
+<div id="category1Page" class="category-page">
+    <div class="category-header">
+        <button class="back-btn" onclick="closeCategoryPage('category1Page')">◀ 戻る</button>
+        <span class="category-title">歌推しiconはこちら♡</span>
+    </div>
+    <p style="color: white; font-size: 14px; font-weight: bold; margin: 25px 0 15px 0; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); line-height: 1.5;">
+        👇 画像を長押しして保存してね 👇<br>
+        <span style="color: #ffb6c1; font-size: 12px; text-shadow: none;">(Since2026.5)</span>
+    </p>
+    <div class="large-icon-list">
+        <div class="large-icon-item"><img src="icon_1k.png" alt="1Kありがとう画像"><div class="icon-caption">歌推しicon✨</div></div>
+    </div>
+</div>
+
+<div id="category2Page" class="category-page">
+    <div class="category-header">
+        <button class="back-btn" onclick="closeCategoryPage('category2Page')">◀ 戻る</button>
+        <span class="category-title">5Kの特典はこちら♡</span>
+    </div>
+    <p style="color: white; font-size: 14px; font-weight: bold; margin: 25px 0 15px 0; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); line-height: 1.5;">
+        👇 画像を長押しして保存してね 👇<br>
+        <span style="color: #ffb6c1; font-size: 12px; text-shadow: none;">(Since2026.5)</span>
+    </p>
+    <div class="large-icon-list">
+        <div class="large-icon-item"><img src="icon2_1.png" alt="5K1"><div class="icon-caption">心を込めたプレゼント🎁</div></div>
+        <div class="large-icon-item"><img src="icon2_2.png" alt="5K2"><div class="icon-caption">心を込めたプレゼント🎁</div></div>
+        <div class="large-icon-item"><img src="icon2_3.png" alt="5K3"><div class="icon-caption">心を込めたプレゼント🎁</div></div>
+        <div class="large-icon-item"><img src="icon2_4.png" alt="5K4"><div class="icon-caption">心を込めたプレゼント🎁</div></div>
+        <div class="large-icon-item"><img src="icon2_5.png" alt="5K5"><div class="icon-caption">心を込めたプレゼント🎁</div></div>
+        <div class="large-icon-item"><img src="icon2_6.png" alt="5K6"><div class="icon-caption">心を込めたプレゼント🎁</div></div>
+        <div class="large-icon-item"><img src="icon2_7.png" alt="5K7"><div class="icon-caption">心を込めたプレゼント🎁</div></div>
+        <div class="large-icon-item"><img src="icon2_8.png" alt="5K8"><div class="icon-caption">心を込めたプレゼント🎁</div></div>
+        <div class="large-icon-item"><img src="icon2_9.png" alt="5K9"><div class="icon-caption">心を込めたプレゼント🎁</div></div>
+        <div class="large-icon-item"><img src="icon2_10.png" alt="5K10"><div class="icon-caption">心を込めたプレゼント🎁</div></div>
+        <div class="large-icon-item"><img src="icon2_11.png" alt="5K11"><div class="icon-caption">心を込めたプレゼント🎁</div></div>
+        <div class="large-icon-item"><img src="icon2_12.png" alt="5K12"><div class="icon-caption">心を込めたプレゼント🎁</div></div>
+        <div class="large-icon-item"><img src="assets/5k_badges/5k_thank_you_hide_20260601.jpeg" alt="ひでさん 5K thank you"><div class="icon-caption">ひでさん 5K thank you♡</div></div>
+        <div class="large-icon-item"><img src="assets/5k_badges/5k_thank_you_ran_20260601.jpeg" alt="らんくん 5K thank you"><div class="icon-caption">らんくん 5K thank you♡</div></div>
+        <div class="large-icon-item"><img src="assets/5k_badges/5k_thank_you_hashi_20260601.jpeg" alt="はしくん 5K thank you"><div class="icon-caption">はしくん 5K thank you♡</div></div>
+        <div class="large-icon-item"><img src="assets/5k_badges/5k_thank_you_ren_20260601.jpeg" alt="れんさん 5K thank you"><div class="icon-caption">れんさん 5K thank you♡</div></div>
+        <div class="large-icon-item"><div class="coming-soon-box">わくわく♡</div><div class="icon-caption">次は誰かな？✨</div></div>
+    </div>
+</div>
+
+<div id="membership6Page" class="category-page">
+    <div class="category-header">
+        <button class="back-btn" onclick="closeCategoryPage('membership6Page')">◀ 戻る</button>
+        <span class="category-title">6ヶ月継続メンバーシップ特別特典</span>
+    </div>
+    <p style="color: white; font-size: 14px; font-weight: bold; margin: 25px 0 15px 0; padding: 0 18px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); line-height: 1.6;">
+        6ヶ月継続してくれたメンバーさんへ、特別なカード風アイコンを届けるギャラリーです♡<br>
+        <span style="color: #ffb6c1; font-size: 12px; text-shadow: none;">Special thanks / ありがとうを1枚ずつ</span>
+    </p>
+    <div class="membership-gallery-grid">
+        <div class="membership-gallery-item"><img src="assets/membership_6months/member_ship_6months_special_thanks_01_20260602.jpg" alt="6ヶ月継続メンバーシップ特別特典 special thanks 1"><div class="icon-caption">Special thanks 01 / 6ヶ月ありがとう♡</div></div>
+        <div class="membership-gallery-item"><img src="assets/membership_6months/member_ship_6months_special_thanks_02_20260602.jpg" alt="6ヶ月継続メンバーシップ特別特典 special thanks 2"><div class="icon-caption">Special thanks 02 / 6ヶ月ありがとう♡</div></div>
+        <div class="membership-gallery-item"><img src="assets/membership_6months/member_ship_6months_special_thanks_03_20260602.jpg" alt="6ヶ月継続メンバーシップ特別特典 special thanks 3"><div class="icon-caption">Special thanks 03 / 6ヶ月ありがとう♡</div></div>
+        <div class="membership-gallery-item"><img src="assets/membership_6months/member_ship_6months_special_thanks_04_20260602.jpg" alt="6ヶ月継続メンバーシップ特別特典 special thanks 4"><div class="icon-caption">Special thanks 04 / 6ヶ月ありがとう♡</div></div>
+        <div class="membership-gallery-item"><img src="assets/membership_6months/member_ship_6months_special_thanks_05_20260602.jpg" alt="6ヶ月継続メンバーシップ特別特典 special thanks 5"><div class="icon-caption">Special thanks 05 / 6ヶ月ありがとう♡</div></div>
+        <div class="membership-gallery-item"><img src="assets/membership_6months/member_ship_6months_special_thanks_06_20260602.jpg" alt="6ヶ月継続メンバーシップ特別特典 special thanks 6"><div class="icon-caption">Special thanks 06 / 6ヶ月ありがとう♡</div></div>
+        <div class="membership-gallery-item"><img src="assets/membership_6months/member_ship_6months_special_thanks_07_20260602.jpg" alt="6ヶ月継続メンバーシップ特別特典 special thanks 7"><div class="icon-caption">Special thanks 07 / 6ヶ月ありがとう♡</div></div>
+        <div class="membership-gallery-item"><img src="assets/membership_6months/member_ship_6months_special_thanks_08_20260602.jpg" alt="6ヶ月継続メンバーシップ特別特典 special thanks 8"><div class="icon-caption">Special thanks 08 / 6ヶ月ありがとう♡</div></div>
+        <div class="membership-gallery-item"><img src="assets/membership_6months/member_ship_6months_special_thanks_09_20260602.jpg" alt="6ヶ月継続メンバーシップ特別特典 special thanks 9"><div class="icon-caption">Special thanks 09 / 6ヶ月ありがとう♡</div></div>
+    </div>
+</div>
+
+
+<div id="secretStep1" class="modal-overlay">
+    <div class="modal-content" style="padding-top: 20px; text-align: center;">
+        <p class="neon-white" style="font-size: 15px; margin-bottom: 15px; color: #ffe4e1;">秘密プロジェクトを選んでね✨</p>
+        <div class="secret-project-list">
+            <div class="secret-project-card">
+                <img src="image_2.png" alt="マクロス祭り 秘密プロジェクト入口">
+                <div class="secret-project-body">
+                    <div class="neon-white secret-project-title">マクロス祭り</div>
+                    <p class="secret-project-note">マクロス祭り専用の合言葉で開く秘密ギャラリーです。</p>
+                    <button class="secret-project-btn" onclick="openPasswordInputModal()">マクロス祭りを開く</button>
+                </div>
+            </div>
+            <div class="secret-project-card">
+                <img src="assets/gallery/2026-05/gundam_festival_20260530_cover.jpeg" alt="ガンダム祭り 秘密プロジェクト入口">
+                <div class="secret-project-body">
+                    <div class="neon-white secret-project-title">ガンダム祭り</div>
+                    <p class="secret-project-note">ガンダム祭り専用の合言葉で開く秘密ギャラリーです。</p>
+                    <button class="secret-project-btn" onclick="openGundamPasswordModal()">ガンダム祭りを開く</button>
+                </div>
+            </div>
+        </div>
+        <button class="close-btn" onclick="closeAllSecret()" style="margin-top: 20px; margin-bottom: 20px;">とじる</button>
+    </div>
+</div>
+
+<div id="secretPasswordModal" class="modal-overlay" style="z-index: 1200; background: rgba(0,0,0,0.85);">
+    <div class="modal-content" style="padding: 30px 20px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border-radius: 25px; border: 3px solid #ffb6c1; box-shadow: 0 0 20px rgba(255, 105, 180, 0.4); box-sizing: border-box; text-align: center; max-width: 400px; margin-top: 60px;">
+        <h1 class="neon-white" style="font-size: 24px; margin-top:0; margin-bottom: 10px;">マクロス祭りの合言葉</h1>
+        <p style="font-size: 14px; line-height: 1.6; margin-bottom: 25px; color: #ffe4e1;">マクロス祭り秘密ギャラリーを開く合言葉を入力してね！</p>
+        <input type="text" id="secretPasswordInput" style="width: 80%; padding: 12px 20px; font-size: 16px; border: 2px solid #fff; border-radius: 30px; text-align: center; outline: none; margin-bottom: 15px; color: #333;" placeholder="合言葉を入力してね">
+        <br>
+        <button style="padding: 12px 40px; font-size: 16px; background: #ff69b4; color: white; border: 2px solid #fff; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.2);" onclick="checkSecretPassword()">ひらく鍵✨</button>
+        <div id="secretErrorMessage" style="color: #ff4d4d; font-weight: bold; margin-top: 15px; display: none; font-size: 14px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">❌ 合言葉がちがうみたい…！もう一度確かめてみてね。</div>
+        <br>
+        <button class="close-btn" onclick="closePasswordInputModal()" style="margin-top: 15px; margin-bottom: 0;">戻る</button>
+    </div>
+</div>
+
+<div id="secretStep2" class="modal-overlay">
+    <div class="modal-content" style="padding-top: 20px; text-align: center;">
+        <p class="neon-white" style="font-size: 14px; margin-bottom: 15px; color: #ffe4e1;">マクロス祭り 秘密ギャラリー</p>
+        <div class="secret-gallery-block">
+            <p class="secret-gallery-label">マクロス祭り</p>
+            <img src="image_3.png" alt="マクロス祭り 秘密のギャラリー画像">
+        </div>
+        <p class="neon-white" style="font-size: 12px; margin-top: 15px; color: #fff;">☝🏻 マクロス祭り画像は長押しして保存してね ☝🏻</p>
+        <button class="close-btn" onclick="closeAllSecret()" style="margin-top: 10px; margin-bottom: 20px;">トップへ戻る</button>
+    </div>
+</div>
+
+<div id="gundamPasswordModal" class="modal-overlay" style="z-index: 1200; background: rgba(0,0,0,0.85);">
+    <div class="modal-content" style="padding: 30px 20px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border-radius: 25px; border: 3px solid #ffb6c1; box-shadow: 0 0 20px rgba(255, 105, 180, 0.4); box-sizing: border-box; text-align: center; max-width: 400px; margin-top: 60px;">
+        <h1 class="neon-white" style="font-size: 24px; margin-top:0; margin-bottom: 10px;">ガンダム祭りの合言葉</h1>
+        <p style="font-size: 14px; line-height: 1.6; margin-bottom: 25px; color: #ffe4e1;">ガンダム祭り秘密ギャラリーを開く合言葉を入力してね！</p>
+        <input type="text" id="gundamPasswordInput" style="width: 80%; padding: 12px 20px; font-size: 16px; border: 2px solid #fff; border-radius: 30px; text-align: center; outline: none; margin-bottom: 15px; color: #333;" placeholder="合言葉を入力してね">
+        <br>
+        <button style="padding: 12px 40px; font-size: 16px; background: #ff69b4; color: white; border: 2px solid #fff; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.2);" onclick="checkGundamPassword()">ひらく鍵✨</button>
+        <div id="gundamErrorMessage" style="color: #ff4d4d; font-weight: bold; margin-top: 15px; display: none; font-size: 14px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">合言葉がちがうみたい…！</div>
+        <br>
+        <button class="close-btn" onclick="closeGundamPasswordModal()" style="margin-top: 15px; margin-bottom: 0;">戻る</button>
+    </div>
+</div>
+
+<div id="gundamStep2" class="modal-overlay">
+    <div class="modal-content" style="padding-top: 20px; text-align: center;">
+        <p class="neon-white" style="font-size: 14px; margin-bottom: 15px; color: #ffe4e1;">ガンダム祭り 秘密ギャラリー</p>
+        <div class="secret-gallery-block">
+            <p class="secret-gallery-label">来場者特典動画</p>
+            <video controls playsinline preload="metadata" style="width: 100%; border-radius: 16px; display: block; background: #000;">
+                <source src="assets/gallery/2026-05/gundam_festival_20260530_video.mov" type="video/quicktime">
+                <source src="assets/gallery/2026-05/gundam_festival_20260530_video.mov" type="video/mp4">
+                このブラウザでは動画を再生できません。
+            </video>
+        </div>
+        <a href="https://gunicodum1.netlify.app/" class="luxury-btn" style="width: 86%; max-width: 340px; margin-top: 16px; margin-bottom: 10px; padding: 14px 18px; text-decoration: none;" target="_blank">
+            <span class="neon-white" style="font-size: 16px;">ガンダム祭り特典を開く</span>
+        </a>
+        <p class="neon-white" style="font-size: 12px; margin-top: 0; color: #fff;">ガンダム祭りの来場者特典動画だよ✨</p>
+        <button class="close-btn" onclick="closeAllSecret()" style="margin-top: 10px; margin-bottom: 20px;">トップへ戻る</button>
+    </div>
+</div>
+
+
+<div class="container">
+    <header class="fade-in">
+        <span class="neon-white title-top">L-Singer 虹の歌い手</span>
+        <h1 class="neon-white title-main">Nico🌈💞</h1>
+    </header>
+
+    <div class="nico-frame pink-neon-border fade-in">
+        <img src="nico_main.png" alt="Nico" class="nico-img">
+    </div>
+
+    <div id="profile" class="intro-section fade-in">
+        <p class="neon-white" style="font-size: 18px; line-height: 1.8;">
+            マクロス・ガンダムなどのアニソンが大好き<br>ColorSingで活動中🎹🎀
+        </p>
+        <div class="emotion-rainbow pink-neon-border">
+            <span class="e-red">喜び</span>・<span class="e-orange">悲しみ</span>・<span class="e-yellow">楽しみ</span>・<span class="e-green">怒り</span>・<span class="e-blue">驚き</span>・<span class="e-indigo">恐れ</span>・<span class="e-purple">慈しみ</span>
+        </div>
+        <p class="neon-white" style="font-size: 16px; margin-bottom: 50px;">歌や音楽を通して七色の感情を共有したい🎶</p>
+    </div>
+
+    <p class="neon-white fade-in" style="font-size: 14px; margin-bottom: 0px; position: relative; z-index: 101;">＼ 1曲でも聞きに来てね！下のボタンをクリック！ ／</p>
+    <a id="colorsing" href="https://web.colorsing.com/share/user?user_id=411fa6d1-ba51-4f7c-a4f2-d635ab43ba5b" class="luxury-btn fade-in" target="_blank">
+        <span class="neon-white" style="font-size: 22px;">🎤 配信場所：<br>ColorSingライブ会場</span><br>
+        <span style="font-size: 13px; font-weight: normal; margin-top: 8px; display: block;">アニソンからPOPSまで幅広く歌唱中🌈💞</span>
+    </a>
+
+    <button id="benefits" class="benefit-poster-btn pink-neon-border fade-in" onclick="openModal()">
+        <img src="benefit_nico.png" alt="特典画像" class="benefit-poster-img">
+        <div class="benefit-poster-text neon-white" style="font-size: 11px; line-height: 1.4;">💖 ColorSingの<br>特典確認はこちら 💖</div>
+    </button>
+
+    <div class="gallery-pair fade-in">
+        <div id="gallery" class="gallery-card pink-neon-border" onclick="openIconsModal()">
+            <img src="icon_banner.png" class="gallery-banner-img" alt="特典アイコン配布">
+            <div class="card-content">
+                <span class="neon-white gallery-title">🖼️ アイコン<br>ギャラリー</span>
+                <span class="gallery-note">特典を受け取ってね♬.*ﾟ</span>
+            </div>
+        </div>
+
+        <div class="gallery-card pink-neon-border" onclick="openSecretStep1()">
+            <img src="image_1.png" class="gallery-banner-img" alt="シークレットギャラリー入口">
+            <div class="card-content">
+                <span class="neon-white gallery-title" style="color: #ffcc00; text-shadow: 0 0 10px rgba(255, 204, 0, 0.7), 0 0 15px rgba(255, 105, 180, 0.8);">🎁 秘密の<br>ギャラリー</span>
+                <span class="gallery-note">合言葉で開放するよ✨</span>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://web.colorsing.com/share/user?user_id=411fa6d1-ba51-4f7c-a4f2-d635ab43ba5b" class="mini-colorsing-link fade-in" target="_blank">
+        特典を見たら、ColorSingで会いに来てね
+    </a>
+
+    <a id="schedule" href="https://x.com/nico_nana_iro?s=21" class="sns-card pink-neon-border fade-in" target="_blank">
+        <img src="x_banner.png" class="banner-img">
+        <div class="card-content">
+            <span class="neon-white" style="font-size: 17px; display: block; margin-bottom: 5px;">📱 公式X (旧Twitter)</span>
+            <span style="font-size: 12px; line-height: 1.4;">配信スケジュールや日々感じたことをpostしてるよ♬.*ﾟ</span>
+        </div>
+    </a>
+
+    <a id="sns" href="https://youtube.com/@nico25hz?si=uymdnHnjxy2L93mx" class="sns-card pink-neon-border fade-in" target="_blank">
+        <img src="yt_banner.png" class="banner-img">
+        <div class="card-content">
+            <span class="neon-white" style="font-size: 17px; display: block; margin-bottom: 5px;">📹 YouTubeチャンネル</span>
+            <span style="font-size: 12px; line-height: 1.4;">眠れない時に聞けるようなBGMや歌ってみた動画をUPしてるよ♬.*ﾟ</span>
+        </div>
+    </a>
+
+    <a href="https://app-link.oshi-ai.com/share/01JRD5D7QMYZWCGJWDDZ0SNTE2/01KT0W1MAN18E9QFTS3H7ETQ2Q?openExternalBrowser=true" class="sns-card pink-neon-border fade-in" target="_blank">
+        <img src="oshi_ai_nico_banner.png" class="banner-img" alt="AIのNICOちゃんと話せるOshiiiリンク">
+        <div class="card-content">
+            <span class="neon-white" style="font-size: 17px; display: block; margin-bottom: 5px;">💬 AIのNICOちゃんとお話</span>
+            <span style="font-size: 12px; line-height: 1.4;">Nicoの世界から生まれたAIのNICOちゃんと、いつでもおしゃべりできるよ♬.*ﾟ</span>
+        </div>
+    </a>
+
+    <a id="game" href="https://nico-25hz-music.netlify.app/" class="game-card pink-neon-border fade-in" target="_blank">
+        <img src="game_icon.png" class="game-icon-img">
+        <div style="text-align: left;">
+            <div class="neon-white" style="font-size: 16px; font-weight: bold;">オリジナルゲーム<br>めざせ！L-Singer</div>
+            <div style="font-size: 11px; margin-top: 5px; font-weight: bold;">(スコアに応じてスペシャルカードがもらえるよ🎶)</div>
+        </div>
+    </a>
+
+    <footer class="footer">&copy; 2026 Rainbow Singer Nico / 25Hz Platoon</footer>
+</div>
+
+<script>
+    // 星の生成
+    const sparklesContainer = document.getElementById('sparkles');
+    for (let i = 0; i < 40; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const size = Math.random() * 3 + 1 + 'px';
+        star.style.width = size; star.style.height = size;
+        star.style.left = Math.random() * 100 + '%'; star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 3 + 's';
+        sparklesContainer.appendChild(star);
+    }
+    
+    // 通常のモーダル開閉
+    function openModal() { document.getElementById('benefitsModal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+    function closeModal() { document.getElementById('benefitsModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+    function openIconsModal() { document.getElementById('iconsModal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+    function closeIconsModal() { document.getElementById('iconsModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+    function openCategoryPage(pageId) { document.getElementById(pageId).style.display = 'flex'; }
+    function closeCategoryPage(pageId) { document.getElementById(pageId).style.display = 'none'; }
+
+    function openSiteMenu() {
+        document.getElementById('siteMenuOverlay').classList.add('is-open');
+        document.getElementById('siteMenuSheet').classList.add('is-open');
+        document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeSiteMenu() {
+        document.getElementById('siteMenuOverlay').classList.remove('is-open');
+        document.getElementById('siteMenuSheet').classList.remove('is-open');
+        document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = 'auto';
+    }
+
+    function goToSection(sectionId) {
+        const target = document.getElementById(sectionId);
+        closeSiteMenu();
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+
+    function openBenefitFromMenu() {
+        closeSiteMenu();
+        openModal();
+    }
+
+    function openGalleryFromMenu() {
+        closeSiteMenu();
+        openIconsModal();
+    }
+
+    if (window.location.hash === '#menu') {
+        openSiteMenu();
+    }
+
+    // シークレットギャラリー制御プログラム
+    function openSecretStep1() { document.getElementById('secretStep1').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+    function openPasswordInputModal() { document.getElementById('secretPasswordModal').style.display = 'flex'; }
+    function closePasswordInputModal() { document.getElementById('secretPasswordModal').style.display = 'none'; }
+    function openGundamPasswordModal() {
+        document.getElementById('gundamErrorMessage').style.display = 'none';
+        document.getElementById('gundamPasswordInput').value = '';
+        document.getElementById('gundamPasswordModal').style.display = 'flex';
+        setTimeout(() => document.getElementById('gundamPasswordInput').focus(), 50);
+    }
+    function closeGundamPasswordModal() { document.getElementById('gundamPasswordModal').style.display = 'none'; }
+    
+    function closeAllSecret() {
+        document.getElementById('secretStep1').style.display = 'none';
+        document.getElementById('secretStep2').style.display = 'none';
+        document.getElementById('secretPasswordModal').style.display = 'none';
+        document.getElementById('gundamPasswordModal').style.display = 'none';
+        document.getElementById('gundamStep2').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    function checkSecretPassword() {
+        const input = document.getElementById('secretPasswordInput').value.trim();
+        const error = document.getElementById('secretErrorMessage');
+        if (input === "") { alert("合言葉を入力してね！"); return; }
+        
+        // 正解のパスワード判定
+        if (input === "Nico") {
+            error.style.display = "none";
+            document.getElementById('secretPasswordModal').style.display = 'none';
+            document.getElementById('secretStep1').style.display = 'none';
+            document.getElementById('secretStep2').style.display = 'flex';
+        } else {
+            error.style.display = "block";
+        }
+    }
+
+    function normalizeSecretText(text) {
+        return text
+            .trim()
+            .replace(/\s/g, "")
+            .replace(/[のノ]/g, "")
+            .replace(/[ーｰ－―−]/g, "ア")
+            .replace(/[ぁァ]/g, "ア")
+            .replace(/[ゃャ]/g, "ャ");
+    }
+
+    function checkGundamPassword() {
+        const input = normalizeSecretText(document.getElementById('gundamPasswordInput').value);
+        const error = document.getElementById('gundamErrorMessage');
+        const validPasswords = ["シャア", "ガンダムシャア", "ガンダムシャー", "ガンダラシャア", "ガンダラシャー"].map(normalizeSecretText);
+        if (input === "") { alert("合言葉を入力してね！"); return; }
+
+        if (validPasswords.includes(input)) {
+            error.style.display = "none";
+            document.getElementById('gundamPasswordModal').style.display = 'none';
+            document.getElementById('secretStep1').style.display = 'none';
+            document.getElementById('gundamStep2').style.display = 'flex';
+        } else {
+            error.style.display = "block";
+        }
+    }
+
+    document.getElementById('gundamPasswordInput').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            checkGundamPassword();
+        }
+    });
+</script>
+
+</body>
+</html>
