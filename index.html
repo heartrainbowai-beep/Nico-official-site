@@ -87,6 +87,35 @@
         .emotion-rainbow { display: block; margin: 20px 0; padding: 15px 5px; border-radius: 50px; background: rgba(255, 255, 255, 0.5); font-size: 13px; font-weight: bold; white-space: nowrap; }
         .e-red { color: #ff4d4d; } .e-orange { color: #ff8c00; } .e-yellow { color: #ffcc00; } .e-green { color: #32cd32; } .e-blue { color: #00bfff; } .e-indigo { color: #6a5acd; } .e-purple { color: #da70d6; }
 
+        .next-event-card {
+            width: 92%; margin: 0 auto 34px; overflow: hidden; border-radius: 20px;
+            background: linear-gradient(160deg, rgba(255,255,255,0.92), rgba(255,214,232,0.88) 45%, rgba(209,238,255,0.88));
+            color: #4a243c; border: 3px solid rgba(255,255,255,0.96);
+            box-shadow: 0 0 18px rgba(255,255,255,0.7), 0 0 24px rgba(255,105,180,0.55);
+            box-sizing: border-box;
+        }
+        .next-event-media { width: 100%; display: block; aspect-ratio: 1 / 1; object-fit: cover; object-position: center; }
+        .next-event-body { padding: 16px 16px 18px; }
+        .next-event-kicker {
+            display: inline-block; padding: 5px 12px; border-radius: 999px; margin-bottom: 8px;
+            background: #ff69b4; color: #fff; font-size: 12px; font-weight: 900;
+            box-shadow: 0 0 10px rgba(255,105,180,0.55);
+        }
+        .next-event-title { margin: 0 0 8px; font-size: 20px; line-height: 1.35; color: #e83f92; font-weight: 900; }
+        .next-event-date { margin: 0 0 10px; font-size: 14px; line-height: 1.5; font-weight: 900; color: #6f3b83; }
+        .next-event-copy { margin: 0 0 14px; font-size: 13px; line-height: 1.7; font-weight: 800; color: #54324c; }
+        .next-event-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .next-event-link {
+            display: flex; align-items: center; justify-content: center; min-height: 46px; padding: 11px 10px; box-sizing: border-box;
+            border-radius: 999px; background: linear-gradient(45deg, #ff7675, #ff69b4);
+            border: 2px solid #fff; color: #fff; text-decoration: none; font-size: 13px; font-weight: 900;
+            box-shadow: 0 0 12px rgba(255,105,180,0.55);
+        }
+        .next-event-link.secondary { background: rgba(255,255,255,0.72); color: #e83f92; border-color: rgba(255,105,180,0.55); }
+        @media (max-width: 360px) {
+            .next-event-actions { grid-template-columns: 1fr; }
+        }
+
         /* ColorSing 誘導ボタン */
         .luxury-btn { 
             background: linear-gradient(45deg, #ff7675, #ff69b4, #ff7675); background-size: 200% auto; animation: shine 3s linear infinite; 
@@ -512,6 +541,20 @@
         </div>
         <p class="neon-white" style="font-size: 16px; margin-bottom: 50px;">歌や音楽を通して七色の感情を共有したい🎶</p>
     </div>
+
+    <section class="next-event-card fade-in" aria-labelledby="next-event-title">
+        <img src="assets/events/anison_festival_20260606.jpg" class="next-event-media" alt="2026年6月6日 ColorSing アニソン祭り">
+        <div class="next-event-body">
+            <span class="next-event-kicker">NEXT Event</span>
+            <h2 id="next-event-title" class="next-event-title">6/6(土) ColorSing アニソン祭り</h2>
+            <p class="next-event-date">1部 15:00から / 2部 21:30から</p>
+            <p class="next-event-copy">来てくれた人の推し曲を見て、Nicoがアニソンを歌う祭り。初見歓迎、出入り自由です♡ 6/13のガンダム曲投票イベントもイベントページで受付中。</p>
+            <div class="next-event-actions">
+                <a class="next-event-link" href="events.html">イベントページを見る</a>
+                <a class="next-event-link secondary" href="https://gundamsenkyo1.netlify.app" target="_blank" rel="noopener">6/13投票はこちら</a>
+            </div>
+        </div>
+    </section>
 
     <p class="neon-white fade-in" style="font-size: 14px; margin-bottom: 0px; position: relative; z-index: 101;">＼ 1曲でも聞きに来てね！下のボタンをクリック！ ／</p>
     <a id="colorsing" href="https://web.colorsing.com/share/user?user_id=411fa6d1-ba51-4f7c-a4f2-d635ab43ba5b" class="luxury-btn fade-in" target="_blank">

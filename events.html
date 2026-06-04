@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nico Event - ColorSing</title>
+    <style>
+        body {
+            margin: 0; padding: 0; min-height: 100vh; color: #fff; text-align: center;
+            font-family: 'Hiragino Maru Gothic ProN', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #ff8a8e 0%, #fdbfef 28%, #81b4fd 58%, #b4ec79 100%);
+            background-size: 400% 400%; animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .page { max-width: 560px; margin: 0 auto; padding: 24px 18px 48px; box-sizing: border-box; }
+        .back-link {
+            display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 8px 18px;
+            border-radius: 999px; border: 2px solid #fff; color: #fff; text-decoration: none; font-weight: 900;
+            background: rgba(255,105,180,0.78); box-shadow: 0 0 12px rgba(255,255,255,0.5);
+        }
+        h1 { margin: 22px 0 8px; font-size: 32px; line-height: 1.25; text-shadow: 0 0 10px rgba(255,105,180,0.9), 0 0 10px #fff; }
+        .lead { margin: 0 auto 24px; font-size: 14px; line-height: 1.8; font-weight: 900; text-shadow: 1px 1px 3px rgba(0,0,0,0.35); }
+        .event-card {
+            overflow: hidden; margin: 0 auto 24px; border-radius: 22px; border: 3px solid rgba(255,255,255,0.96);
+            background: rgba(255,255,255,0.9); color: #4a243c;
+            box-shadow: 0 0 18px rgba(255,255,255,0.7), 0 0 24px rgba(255,105,180,0.5);
+        }
+        .event-card.next { border-color: #fff; box-shadow: 0 0 22px rgba(255,255,255,0.9), 0 0 30px rgba(255,105,180,0.72); }
+        .event-img { width: 100%; display: block; aspect-ratio: 1 / 1; object-fit: cover; }
+        .event-body { padding: 16px 16px 20px; }
+        .badge {
+            display: inline-block; margin-bottom: 8px; padding: 5px 12px; border-radius: 999px;
+            color: #fff; background: #ff69b4; font-size: 12px; font-weight: 900;
+        }
+        .event-title { margin: 0 0 8px; font-size: 22px; line-height: 1.35; color: #e83f92; font-weight: 900; }
+        .event-meta { margin: 0 0 12px; font-size: 14px; line-height: 1.6; color: #6f3b83; font-weight: 900; }
+        .event-text { margin: 0 0 16px; font-size: 13px; line-height: 1.8; color: #54324c; font-weight: 800; }
+        .flow {
+            margin: 14px 0 16px; padding: 0; list-style: none; display: grid; gap: 8px;
+            color: #54324c; font-size: 13px; line-height: 1.6; font-weight: 800; text-align: left;
+        }
+        .flow li { padding: 10px 12px; border-radius: 14px; background: rgba(255,214,232,0.62); }
+        .actions { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        .btn {
+            display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 14px; box-sizing: border-box;
+            border-radius: 999px; border: 2px solid #fff; text-decoration: none; color: #fff; font-size: 14px; font-weight: 900;
+            background: linear-gradient(45deg, #ff7675, #ff69b4); box-shadow: 0 0 12px rgba(255,105,180,0.55);
+        }
+        .btn.secondary { color: #e83f92; background: rgba(255,255,255,0.78); border-color: rgba(255,105,180,0.55); }
+        .note { margin: 8px 0 0; color: #fff; font-size: 12px; line-height: 1.7; font-weight: 900; text-shadow: 1px 1px 3px rgba(0,0,0,0.35); }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <a class="back-link" href="index.html">公式ホームページへ戻る</a>
+        <h1>Nico Event</h1>
+        <p class="lead">ColorSingで一緒に楽しむ、Nicoのイベント情報です。直近の予定と投票受付をここにまとめています。</p>
+
+        <section class="event-card next">
+            <img class="event-img" src="assets/events/anison_festival_20260606.jpg" alt="2026年6月6日 ColorSing アニソン祭り">
+            <div class="event-body">
+                <span class="badge">NEXT Event</span>
+                <h2 class="event-title">6/6(土) ColorSing アニソン祭り</h2>
+                <p class="event-meta">1部 15:00から / 2部 21:30から</p>
+                <p class="event-text">来てくれた人の推し曲を見て、Nicoがアニソンを歌う祭りです。初見歓迎、出入り自由。少しだけでも、ゆっくりでも、好きなタイミングで遊びに来てね。</p>
+                <ul class="flow">
+                    <li>1. ColorSingのNicoライブ会場へ来る</li>
+                    <li>2. 推し曲や聴きたいアニソンをコメントで教える</li>
+                    <li>3. Nicoがその場の空気を見ながら歌っていくよ</li>
+                </ul>
+                <div class="actions">
+                    <a class="btn" href="https://web.colorsing.com/share/user?user_id=411fa6d1-ba51-4f7c-a4f2-d635ab43ba5b" target="_blank" rel="noopener">ColorSingライブ会場へ</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="event-card">
+            <img class="event-img" src="assets/gallery/2026-05/gundam_festival_20260530_reward.jpg" alt="2026年6月13日 ガンダム曲投票イベント">
+            <div class="event-body">
+                <span class="badge">Vote Event</span>
+                <h2 class="event-title">6/13(土) ガンダム曲投票イベント</h2>
+                <p class="event-meta">みんなの投票で歌う曲が決まるColorSingイベント</p>
+                <p class="event-text">投票で集まったガンダム曲を、NicoがColorSingで歌う予定です。歌ってほしい曲に投票して、当日のセットリストづくりに参加してね。</p>
+                <ul class="flow">
+                    <li>1. 投票ページを開く</li>
+                    <li>2. 歌ってほしいガンダム曲に投票する</li>
+                    <li>3. 6/13(土)のColorSing配信を楽しみに待つ</li>
+                </ul>
+                <div class="actions">
+                    <a class="btn" href="https://gundamsenkyo1.netlify.app" target="_blank" rel="noopener">ガンダム曲の投票ページへ</a>
+                    <a class="btn secondary" href="https://web.colorsing.com/share/user?user_id=411fa6d1-ba51-4f7c-a4f2-d635ab43ba5b" target="_blank" rel="noopener">ColorSingでNicoを見る</a>
+                </div>
+            </div>
+        </section>
+
+        <p class="note">イベント内容や時間は、Nicoの案内に合わせて更新します。</p>
+    </main>
+</body>
+</html>
