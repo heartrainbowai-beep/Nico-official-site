@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>第1回アニソン祭 Secret Page | Nico</title>
+  <title>Nico Anison Festival Secret Page</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -66,7 +66,7 @@
       color: #4a2440;
       background: rgba(255,255,255,.94);
     }
-    button, .save-link {
+    button {
       display: inline-block;
       margin-top: 14px;
       padding: 13px 34px;
@@ -76,7 +76,6 @@
       color: #fff;
       font-size: 16px;
       font-weight: 900;
-      text-decoration: none;
       box-shadow: 0 6px 14px rgba(160,40,120,.28);
       cursor: pointer;
     }
@@ -86,33 +85,23 @@
       color: #fff;
       font-weight: 900;
     }
-    #reward { display: none; margin-top: 20px; }
-    .hint { font-size: 12px; margin-top: 12px; }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <h1>Nico 第1回アニソン祭<br>Secret Page</h1>
-    <p>来てくれてありがとう。<br>秘密のキーワードを入れると、今日の特典画像が開くよ。</p>
+    <h1>Nico &#31532;1&#22238;&#12450;&#12491;&#12477;&#12531;&#31085;<br>Secret Page</h1>
+    <p>&#26469;&#12390;&#12367;&#12428;&#12390;&#12354;&#12426;&#12364;&#12392;&#12358;&#12290;<br>&#31192;&#23494;&#12398;&#12461;&#12540;&#12527;&#12540;&#12489;&#12434;&#20837;&#12428;&#12427;&#12392;&#12289;&#20170;&#26085;&#12398;&#29305;&#20856;&#12506;&#12540;&#12472;&#12364;&#38283;&#12367;&#12424;&#12290;</p>
 
-    <section id="cover" class="card">
-      <img src="cover.jpg" alt="第1回アニソン祭 シークレットページ表紙">
+    <section class="card">
+      <img src="cover.jpg" alt="Nico anison festival secret page cover">
     </section>
 
-    <section class="panel" id="unlock">
-      <p>秘密のキーワードを入力してね</p>
-      <input id="keyword" type="text" autocomplete="off" placeholder="キーワード">
+    <section class="panel">
+      <p>&#31192;&#23494;&#12398;&#12461;&#12540;&#12527;&#12540;&#12489;&#12434;&#20837;&#21147;&#12375;&#12390;&#12397;</p>
+      <input id="keyword" type="text" autocomplete="off" placeholder="&#12461;&#12540;&#12527;&#12540;&#12489;">
       <br>
-      <button type="button" onclick="checkKeyword()">特典をひらく</button>
-      <div id="error" class="error">キーワードが違うみたい…！</div>
-    </section>
-
-    <section id="reward">
-      <div class="card">
-        <img src="reward.jpg" alt="2026.6.6 第1回アニソン祭 来場ありがとう特典">
-      </div>
-      <a class="save-link" href="reward.jpg" download>画像を保存する</a>
-      <p class="hint">スマホでは画像を長押しして保存してね。</p>
+      <button type="button" onclick="checkKeyword()">&#29305;&#20856;&#12506;&#12540;&#12472;&#12434;&#38283;&#12367;</button>
+      <div id="error" class="error">&#12461;&#12540;&#12527;&#12540;&#12489;&#12364;&#36949;&#12358;&#12415;&#12383;&#12356;&#8230;</div>
     </section>
   </main>
 
@@ -124,11 +113,9 @@
     }
     function checkKeyword() {
       var input = normalize(document.getElementById("keyword").value);
-      var ok = ["アニソン", "あにそん"].includes(input);
+      var ok = ["\u30a2\u30cb\u30bd\u30f3", "\u3042\u306b\u305d\u3093"].includes(input);
       document.getElementById("error").style.display = ok ? "none" : "block";
-      if (!ok) return;
-      document.getElementById("reward").style.display = "block";
-      document.getElementById("reward").scrollIntoView({ behavior: "smooth", block: "start" });
+      if (ok) window.location.href = "gift.html";
     }
     document.getElementById("keyword").addEventListener("keydown", function(event) {
       if (event.key === "Enter") checkKeyword();
