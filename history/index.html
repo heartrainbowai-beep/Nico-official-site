@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ニコズヒストリー | Nico</title>
+    <style>
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+            color: #743154;
+            background:
+                radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.92), transparent 25%),
+                radial-gradient(circle at 82% 10%, rgba(255, 221, 244, 0.9), transparent 28%),
+                linear-gradient(160deg, #ffe5f5 0%, #ffd1ec 42%, #cbe9ff 100%);
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                radial-gradient(circle, rgba(255,255,255,.9) 0 2px, transparent 3px),
+                radial-gradient(circle, rgba(255,106,190,.5) 0 2px, transparent 3px);
+            background-size: 80px 80px, 120px 120px;
+            background-position: 10px 20px, 50px 60px;
+            opacity: .55;
+        }
+        main {
+            position: relative;
+            width: min(94vw, 840px);
+            margin: 0 auto;
+            padding: 26px 0 48px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #9b3971;
+            font-weight: 800;
+            text-decoration: none;
+            margin-bottom: 16px;
+        }
+        .hero {
+            overflow: hidden;
+            border-radius: 28px;
+            border: 3px solid rgba(255, 111, 181, 0.85);
+            background: rgba(255,255,255,.68);
+            box-shadow: 0 18px 40px rgba(224, 91, 158, 0.24);
+        }
+        .hero img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+        .intro {
+            padding: 22px 20px 24px;
+            text-align: center;
+        }
+        .eyebrow {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: #fff4fb;
+            color: #dd4d9c;
+            border: 1px solid rgba(255, 121, 191, .55);
+            font-size: 13px;
+            font-weight: 900;
+        }
+        h1 {
+            margin: 14px 0 8px;
+            font-size: clamp(34px, 10vw, 58px);
+            line-height: 1.1;
+            letter-spacing: 0;
+            color: #ff4aa5;
+            text-shadow: 0 3px 0 #fff, 0 0 16px rgba(255, 78, 166, .42);
+        }
+        .lead {
+            max-width: 620px;
+            margin: 0 auto;
+            font-size: 15px;
+            line-height: 1.9;
+            font-weight: 700;
+        }
+        .history-card,
+        .setlist-panel {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 24px;
+            border: 2px solid rgba(255, 111, 181, .78);
+            background: rgba(255,255,255,.74);
+            box-shadow: 0 14px 30px rgba(224, 91, 158, .18);
+        }
+        .event-date {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #fff;
+            background: linear-gradient(135deg, #ff62b2, #ff90cc);
+            border-radius: 999px;
+            padding: 7px 14px;
+            font-weight: 900;
+            box-shadow: 0 6px 16px rgba(224, 73, 149, .2);
+        }
+        h2 {
+            margin: 0 0 10px;
+            font-size: clamp(24px, 7vw, 36px);
+            color: #d83f91;
+            letter-spacing: 0;
+        }
+        .event-copy {
+            margin: 0 0 18px;
+            font-size: 15px;
+            line-height: 1.85;
+            font-weight: 700;
+        }
+        .button {
+            appearance: none;
+            display: inline-flex;
+            min-height: 52px;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            border: 2px solid rgba(255, 255, 255, .9);
+            border-radius: 18px;
+            background: linear-gradient(135deg, #ff5cad, #ff8fca);
+            color: #fff;
+            font: inherit;
+            font-weight: 900;
+            text-decoration: none;
+            box-shadow: 0 10px 22px rgba(224, 73, 149, .25);
+            cursor: pointer;
+        }
+        .setlist-panel[hidden] { display: none; }
+        .setlist-image {
+            display: block;
+            width: 100%;
+            max-width: 520px;
+            margin: 16px auto 20px;
+            border-radius: 24px;
+            border: 3px solid rgba(255, 111, 181, .82);
+            box-shadow: 0 14px 28px rgba(224, 91, 158, .2);
+        }
+        .song-list {
+            display: grid;
+            gap: 10px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .song-list li {
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            gap: 10px;
+            align-items: start;
+            padding: 12px;
+            border-radius: 16px;
+            background: rgba(255, 246, 252, .86);
+            border: 1px solid rgba(255, 126, 190, .38);
+        }
+        .num {
+            display: grid;
+            place-items: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 999px;
+            color: #fff;
+            background: #f04ca2;
+            font-weight: 900;
+        }
+        .song-title {
+            display: block;
+            font-weight: 900;
+            color: #743154;
+            line-height: 1.45;
+        }
+        .artist {
+            display: block;
+            margin-top: 3px;
+            color: #b04f85;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        .next-note {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 18px;
+            background: rgba(255,255,255,.62);
+            border: 1px dashed rgba(255, 111, 181, .85);
+            font-size: 13px;
+            line-height: 1.8;
+            font-weight: 700;
+            text-align: center;
+        }
+        @media (min-width: 760px) {
+            .song-list { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <a class="back-link" href="../">← Nico公式ホームページへ</a>
+
+        <section class="hero" aria-labelledby="history-title">
+            <img src="../assets/history/2026-06-06_anison_part1/anison_part1_history_cover_20260606.jpg" alt="ニコズヒストリー 2026.6.6 アニソン祭り 第1部">
+            <div class="intro">
+                <span class="eyebrow">Nico Activity History</span>
+                <h1 id="history-title">ニコズヒストリー</h1>
+                <p class="lead">Nicoの活動の思い出を、年月ごとにかわいく残していくページです。最初のヒストリーは、2026年6月6日のアニソン祭り第1部です。</p>
+            </div>
+        </section>
+
+        <article class="history-card">
+            <span class="event-date">2026年6月6日</span>
+            <h2>アニソン祭り 第1部</h2>
+            <p class="event-copy">ColorSingで歌ったアニソン祭りの記録です。歌った曲だけを、Nicoの思い出として大切に残します。</p>
+            <button class="button" type="button" onclick="showSetlist()">歌った曲はこちら</button>
+        </article>
+
+        <section id="setlist" class="setlist-panel" hidden aria-labelledby="setlist-title">
+            <h2 id="setlist-title">歌った曲目</h2>
+            <p class="event-copy">2026年6月6日 アニソン祭り第1部のセットリストです。</p>
+            <img class="setlist-image" src="../assets/history/2026-06-06_anison_part1/anison_part1_setlist_20260606.jpg" alt="2026.6.6 アニソン祭り 第1部 セットリスト画像">
+            <ol class="song-list">
+                <li><span class="num">1</span><span><span class="song-title">The Everlasting Guilty Crown</span><span class="artist">EGOIST</span></span></li>
+                <li><span class="num">2</span><span><span class="song-title">マイ フレンド</span><span class="artist">ZARD</span></span></li>
+                <li><span class="num">3</span><span><span class="song-title">蒼穹のファンファーレ feat. 藍井エイル &amp; ASCA &amp; ReoNa</span><span class="artist">FictionJunction</span></span></li>
+                <li><span class="num">4</span><span><span class="song-title">虹いろ・クマクマ</span><span class="artist">ランカ・リー=中島愛</span></span></li>
+                <li><span class="num">5</span><span><span class="song-title">君の知らない物語</span><span class="artist">supercell</span></span></li>
+                <li><span class="num">6</span><span><span class="song-title">あんなに一緒だったのに</span><span class="artist">See-Saw</span></span></li>
+                <li><span class="num">7</span><span><span class="song-title">AXIA〜ダイスキでダイキライ〜</span><span class="artist">ワルキューレ</span></span></li>
+                <li><span class="num">8</span><span><span class="song-title">約束はいらない</span><span class="artist">坂本真綾</span></span></li>
+                <li><span class="num">9</span><span><span class="song-title">アニメじゃない〜夢を忘れた古い地球人よ〜</span><span class="artist">新井正人</span></span></li>
+                <li><span class="num">10</span><span><span class="song-title">Winners</span><span class="artist">G-GRIP</span></span></li>
+                <li><span class="num">11</span><span><span class="song-title">水の星へ愛をこめて</span><span class="artist">森口博子</span></span></li>
+                <li><span class="num">12</span><span><span class="song-title">JUST COMMUNICATION</span><span class="artist">TWO-MIX</span></span></li>
+                <li><span class="num">13</span><span><span class="song-title">ブルーバード</span><span class="artist">いきものがかり</span></span></li>
+                <li><span class="num">14</span><span><span class="song-title">嵐の中で輝いて</span><span class="artist">米倉千尋</span></span></li>
+                <li><span class="num">15</span><span><span class="song-title">星空のSpica</span><span class="artist">田村ゆかり</span></span></li>
+                <li><span class="num">16</span><span><span class="song-title">いのちの名前</span><span class="artist">幾田りら</span></span></li>
+                <li><span class="num">17</span><span><span class="song-title">いけないボーダーライン</span><span class="artist">ワルキューレ</span></span></li>
+                <li><span class="num">18</span><span><span class="song-title">ライオン</span><span class="artist">May'n/中島愛</span></span></li>
+                <li><span class="num">19</span><span><span class="song-title">残酷な天使のテーゼ</span><span class="artist">高橋洋子</span></span></li>
+            </ol>
+        </section>
+
+        <p class="next-note">今後は「何年何月に何があったか」をこのページへ少しずつ追加していけます。第2部や別イベントも、同じ形でカードを増やしていきます。</p>
+    </main>
+
+    <script>
+        function showSetlist() {
+            const setlist = document.getElementById('setlist');
+            setlist.hidden = false;
+            setlist.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+</body>
+</html>
