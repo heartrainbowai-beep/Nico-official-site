@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nico's History | Nico</title>
+    <title>Nicoのヒストリー | Nico</title>
     <style>
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -31,7 +31,7 @@
         }
         main {
             position: relative;
-            width: min(94vw, 840px);
+            width: min(94vw, 900px);
             margin: 0 auto;
             padding: 26px 0 48px;
         }
@@ -44,21 +44,17 @@
             text-decoration: none;
             margin-bottom: 16px;
         }
+        .hero,
+        .history-card,
+        .setlist-panel,
+        .next-note {
+            border: 2px solid rgba(255, 111, 181, .78);
+            background: rgba(255,255,255,.74);
+            box-shadow: 0 14px 30px rgba(224, 91, 158, .18);
+        }
         .hero {
-            overflow: hidden;
+            padding: 24px 20px;
             border-radius: 28px;
-            border: 3px solid rgba(255, 111, 181, 0.85);
-            background: rgba(255,255,255,.68);
-            box-shadow: 0 18px 40px rgba(224, 91, 158, 0.24);
-        }
-        .hero img {
-            display: block;
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-        }
-        .intro {
-            padding: 22px 20px 24px;
             text-align: center;
         }
         .eyebrow {
@@ -79,21 +75,33 @@
             color: #ff4aa5;
             text-shadow: 0 3px 0 #fff, 0 0 16px rgba(255, 78, 166, .42);
         }
-        .lead {
-            max-width: 620px;
-            margin: 0 auto;
+        .lead,
+        .event-copy {
             font-size: 15px;
             line-height: 1.9;
             font-weight: 700;
         }
-        .history-card,
-        .setlist-panel {
+        .lead {
+            max-width: 660px;
+            margin: 0 auto;
+        }
+        .history-grid {
+            display: grid;
+            gap: 18px;
             margin-top: 20px;
-            padding: 20px;
+        }
+        .history-card {
+            overflow: hidden;
             border-radius: 24px;
-            border: 2px solid rgba(255, 111, 181, .78);
-            background: rgba(255,255,255,.74);
-            box-shadow: 0 14px 30px rgba(224, 91, 158, .18);
+        }
+        .history-card img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+        .history-card-body {
+            padding: 18px;
         }
         .event-date {
             display: inline-block;
@@ -107,16 +115,11 @@
         }
         h2 {
             margin: 0 0 10px;
-            font-size: clamp(24px, 7vw, 36px);
+            font-size: clamp(24px, 7vw, 34px);
             color: #d83f91;
             letter-spacing: 0;
         }
-        .event-copy {
-            margin: 0 0 18px;
-            font-size: 15px;
-            line-height: 1.85;
-            font-weight: 700;
-        }
+        .event-copy { margin: 0 0 18px; }
         .button {
             appearance: none;
             display: inline-flex;
@@ -133,6 +136,11 @@
             text-decoration: none;
             box-shadow: 0 10px 22px rgba(224, 73, 149, .25);
             cursor: pointer;
+        }
+        .setlist-panel {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 24px;
         }
         .setlist-panel[hidden] { display: none; }
         .setlist-image {
@@ -183,19 +191,20 @@
             color: #b04f85;
             font-size: 13px;
             font-weight: 700;
+            line-height: 1.45;
         }
         .next-note {
             margin-top: 20px;
             padding: 16px;
             border-radius: 18px;
-            background: rgba(255,255,255,.62);
-            border: 1px dashed rgba(255, 111, 181, .85);
+            border-style: dashed;
             font-size: 13px;
             line-height: 1.8;
             font-weight: 700;
             text-align: center;
         }
         @media (min-width: 760px) {
+            .history-grid { grid-template-columns: 1fr 1fr; }
             .song-list { grid-template-columns: 1fr 1fr; }
         }
     </style>
@@ -205,23 +214,35 @@
         <a class="back-link" href="../">← Nico公式ホームページへ</a>
 
         <section class="hero" aria-labelledby="history-title">
-            <img src="../assets/history/2026-06-06_anison_part1/anison_part1_history_cover_20260606.jpg" alt="Nico's History 2026.6.6 アニソン祭り 第1部">
-            <div class="intro">
-                <span class="eyebrow">Nico Activity History</span>
-                <h1 id="history-title">Nico's History</h1>
-                <p class="lead">Nicoの活動の思い出を、年月ごとにかわいく残していくページです。最初のヒストリーは、2026年6月6日のアニソン祭り第1部です。</p>
-            </div>
+            <span class="eyebrow">Nico Activity History</span>
+            <h1 id="history-title">Nicoのヒストリー</h1>
+            <p class="lead">Nicoの活動の思い出を、年月ごとにかわいく残していくページです。まずは2026年6月6日のアニソン祭り第1部・第2部を掲載しています。</p>
         </section>
 
-        <article class="history-card">
-            <span class="event-date">2026年6月6日</span>
-            <h2>アニソン祭り 第1部</h2>
-            <p class="event-copy">ColorSingで歌ったアニソン祭りの記録です。歌った曲だけを、Nicoの思い出として大切に残します。</p>
-            <button class="button" type="button" onclick="showSetlist()">歌った曲はこちら</button>
-        </article>
+        <section class="history-grid" aria-label="Nicoの活動履歴">
+            <article class="history-card">
+                <img src="../assets/history/2026-06-06_anison_part1/anison_part1_history_cover_20260606.jpg" alt="Nicoのヒストリー 2026.6.6 アニソン祭り 第1部">
+                <div class="history-card-body">
+                    <span class="event-date">2026年6月6日</span>
+                    <h2>アニソン祭り 第1部</h2>
+                    <p class="event-copy">ColorSingで歌ったアニソン祭りの記録です。歌った曲だけを、Nicoの思い出として大切に残します。</p>
+                    <button class="button" type="button" onclick="showSetlist('setlist-part1')">歌った曲はこちら</button>
+                </div>
+            </article>
 
-        <section id="setlist" class="setlist-panel" hidden aria-labelledby="setlist-title">
-            <h2 id="setlist-title">歌った曲目</h2>
+            <article class="history-card">
+                <img src="../assets/history/2026-06-06_anison_part2/anison_part2_history_cover_20260606.jpg" alt="Nicoのヒストリー 2026.6.6 アニソン祭り 第2部">
+                <div class="history-card-body">
+                    <span class="event-date">2026年6月6日</span>
+                    <h2>アニソン祭り 第2部</h2>
+                    <p class="event-copy">第2部のセットリストも、Nicoの活動履歴として追加しました。これからもイベントごとに増やしていけます。</p>
+                    <button class="button" type="button" onclick="showSetlist('setlist-part2')">歌った曲はこちら</button>
+                </div>
+            </article>
+        </section>
+
+        <section id="setlist-part1" class="setlist-panel" hidden aria-labelledby="setlist-part1-title">
+            <h2 id="setlist-part1-title">第1部 歌った曲目</h2>
             <p class="event-copy">2026年6月6日 アニソン祭り第1部のセットリストです。</p>
             <img class="setlist-image" src="../assets/history/2026-06-06_anison_part1/anison_part1_setlist_20260606.jpg" alt="2026.6.6 アニソン祭り 第1部 セットリスト画像">
             <ol class="song-list">
@@ -247,14 +268,45 @@
             </ol>
         </section>
 
-        <p class="next-note">今後は「何年何月に何があったか」をこのページへ少しずつ追加していけます。第2部や別イベントも、同じ形でカードを増やしていきます。</p>
+        <section id="setlist-part2" class="setlist-panel" hidden aria-labelledby="setlist-part2-title">
+            <h2 id="setlist-part2-title">第2部 歌った曲目</h2>
+            <p class="event-copy">2026年6月6日 アニソン祭り第2部のセットリストです。</p>
+            <img class="setlist-image" src="../assets/history/2026-06-06_anison_part2/anison_part2_setlist_20260606.jpg" alt="2026.6.6 アニソン祭り 第2部 セットリスト画像">
+            <ol class="song-list">
+                <li><span class="num">1</span><span><span class="song-title">memories</span><span class="artist">大槻真希</span></span></li>
+                <li><span class="num">2</span><span><span class="song-title">はじめてのチュウ</span><span class="artist">あんしんパパ</span></span></li>
+                <li><span class="num">3</span><span><span class="song-title">夢をかなえてドラえもん</span><span class="artist">mao</span></span></li>
+                <li><span class="num">4</span><span><span class="song-title">IGNITE</span><span class="artist">藍井エイル</span></span></li>
+                <li><span class="num">5</span><span><span class="song-title">synchronicity</span><span class="artist">FictionJunction KEIKO</span></span></li>
+                <li><span class="num">6</span><span><span class="song-title">IRIS OUT</span><span class="artist">米津玄師</span></span></li>
+                <li><span class="num">7</span><span><span class="song-title">風になる</span><span class="artist">つじあやの</span></span></li>
+                <li><span class="num">8</span><span><span class="song-title">残酷な夜に輝け</span><span class="artist">LiSA</span></span></li>
+                <li><span class="num">9</span><span><span class="song-title">ノーザンクロス</span><span class="artist">シェリル・ノーム starring May'n</span></span></li>
+                <li><span class="num">10</span><span><span class="song-title">悪魔の子</span><span class="artist">ヒグチアイ</span></span></li>
+                <li><span class="num">11</span><span><span class="song-title">紅蓮華</span><span class="artist">LiSA</span></span></li>
+                <li><span class="num">12</span><span><span class="song-title">DAN DAN 心魅かれてく</span><span class="artist">ZARD</span></span></li>
+                <li><span class="num">13</span><span><span class="song-title">マイ フレンド</span><span class="artist">ZARD</span></span></li>
+                <li><span class="num">14</span><span><span class="song-title">secret base〜君がくれたもの〜(10 years after Ver.)</span><span class="artist">本間芽衣子(CV.茅野愛衣) 安城鳴子(CV.戸松遥) 鶴見知利子(CV.早見沙織)</span></span></li>
+                <li><span class="num">15</span><span><span class="song-title">奇跡の海</span><span class="artist">坂本真綾</span></span></li>
+                <li><span class="num">16</span><span><span class="song-title">ETERNAL WIND -ほほえみは光る風の中-</span><span class="artist">森口博子</span></span></li>
+                <li><span class="num">17</span><span><span class="song-title">あんなに一緒だったのに</span><span class="artist">See-Saw</span></span></li>
+                <li><span class="num">18</span><span><span class="song-title">ray 超かぐや姫! Version</span><span class="artist">かぐや(cv.夏吉ゆうこ), 月見ヤチヨ(cv.早見沙織)</span></span></li>
+                <li><span class="num">19</span><span><span class="song-title">夏祭り</span><span class="artist">Whiteberry</span></span></li>
+            </ol>
+        </section>
+
+        <p class="next-note">今後は「何年何月に何があったか」をこのページへ少しずつ追加していけます。別イベントも、同じ形でカードを増やしていきます。</p>
     </main>
 
     <script>
-        function showSetlist() {
-            const setlist = document.getElementById('setlist');
-            setlist.hidden = false;
-            setlist.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        function showSetlist(id) {
+            document.querySelectorAll('.setlist-panel').forEach((panel) => {
+                panel.hidden = panel.id !== id;
+            });
+            const target = document.getElementById(id);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
     </script>
 </body>
