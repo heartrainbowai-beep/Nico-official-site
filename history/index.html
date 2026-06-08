@@ -46,7 +46,7 @@
         }
         .hero,
         .history-card,
-        .setlist-panel,
+        .setlist-screen-content,
         .next-note {
             border: 2px solid rgba(255, 111, 181, .78);
             background: rgba(255,255,255,.74);
@@ -97,7 +97,7 @@
         .history-card img {
             display: block;
             width: 100%;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 9 / 16;
             object-fit: cover;
         }
         .history-card-body {
@@ -137,17 +137,55 @@
             box-shadow: 0 10px 22px rgba(224, 73, 149, .25);
             cursor: pointer;
         }
-        .setlist-panel {
-            margin-top: 20px;
-            padding: 20px;
-            border-radius: 24px;
+        body.setlist-open {
+            overflow: hidden;
         }
-        .setlist-panel[hidden] { display: none; }
+        body.setlist-open main {
+            display: none;
+        }
+        .setlist-screen[hidden] {
+            display: none;
+        }
+        .setlist-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 20;
+            overflow-y: auto;
+            padding: 22px min(4vw, 28px) 34px;
+            background:
+                radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.94), transparent 25%),
+                radial-gradient(circle at 82% 10%, rgba(255, 221, 244, 0.94), transparent 28%),
+                linear-gradient(160deg, #ffe5f5 0%, #ffd1ec 42%, #cbe9ff 100%);
+        }
+        .setlist-screen-content {
+            width: min(94vw, 760px);
+            margin: 0 auto;
+            padding: 18px;
+            border-radius: 28px;
+            text-align: center;
+        }
+        .setlist-screen-top {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 14px;
+        }
+        .setlist-back {
+            min-height: 44px;
+            padding: 9px 14px;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, .92);
+            background: rgba(255, 255, 255, .86);
+            color: #b33f81;
+            font: inherit;
+            font-weight: 900;
+            box-shadow: 0 8px 18px rgba(224, 73, 149, .18);
+            cursor: pointer;
+        }
         .setlist-image {
             display: block;
             width: 100%;
-            max-width: 520px;
-            margin: 16px auto 20px;
+            max-width: 560px;
+            margin: 16px auto 0;
             border-radius: 24px;
             border: 3px solid rgba(255, 111, 181, .82);
             box-shadow: 0 14px 28px rgba(224, 91, 158, .2);
@@ -179,12 +217,12 @@
 
         <section class="history-grid" aria-label="Nicoの活動履歴">
             <article class="history-card">
-                <img src="../assets/history/2026-06-06_anison_part1/anison_part1_history_cover_20260606.jpg" alt="Nicoの歩んだ道 2026.6.6 アニソン祭り 第1部">
+                <img src="../assets/history/2026-06-06_anison_part1/anison_part1_festival_night_cover_20260606.png" alt="Nicoの歩んだ道 2026.6.6 アニソン祭り 第1部">
                 <div class="history-card-body">
                     <span class="event-date">2026年6月6日</span>
                     <h2>アニソン祭り 第1部</h2>
                     <p class="event-copy">ColorSingで歌ったアニソン祭りの記録です。歌った曲だけを、Nicoの思い出として大切に残します。</p>
-                    <button class="button" type="button" onclick="showSetlist('setlist-part1')">歌った曲はこちら</button>
+                    <button class="button" type="button" onclick="openSetlist('part1')">歌った曲はこちら</button>
                 </div>
             </article>
 
@@ -194,36 +232,67 @@
                     <span class="event-date">2026年6月7日</span>
                     <h2>アニソン祭り 第2部</h2>
                     <p class="event-copy">第2部のセットリストも、Nicoの活動履歴として追加しました。これからもイベントごとに増やしていけます。</p>
-                    <button class="button" type="button" onclick="showSetlist('setlist-part2')">歌った曲はこちら</button>
+                    <button class="button" type="button" onclick="openSetlist('part2')">歌った曲はこちら</button>
                 </div>
             </article>
-        </section>
-
-        <section id="setlist-part1" class="setlist-panel" hidden aria-labelledby="setlist-part1-title">
-            <h2 id="setlist-part1-title">第1部 歌った曲目</h2>
-            <p class="event-copy">2026年6月6日 アニソン祭り第1部のセットリストです。</p>
-            <img class="setlist-image" src="../assets/history/2026-06-06_anison_part1/anison_part1_setlist_20260606.jpg" alt="2026.6.6 アニソン祭り 第1部 セットリスト画像">
-        </section>
-
-        <section id="setlist-part2" class="setlist-panel" hidden aria-labelledby="setlist-part2-title">
-            <h2 id="setlist-part2-title">第2部 歌った曲目</h2>
-            <p class="event-copy">2026年6月7日 アニソン祭り第2部のセットリストです。</p>
-            <img class="setlist-image" src="../assets/history/2026-06-07_anison_part2/anison_part2_setlist_20260607.jpg" alt="2026.6.7 アニソン祭り 第2部 セットリスト画像">
         </section>
 
         <p class="next-note">今後は「何年何月に何があったか」をこのページへ少しずつ追加していけます。別イベントも、同じ形でカードを増やしていきます。</p>
     </main>
 
+    <section id="setlist-screen" class="setlist-screen" hidden role="dialog" aria-modal="true" aria-labelledby="setlist-screen-title">
+        <div class="setlist-screen-content">
+            <div class="setlist-screen-top">
+                <button class="setlist-back" type="button" onclick="closeSetlist()">← Nicoの歩んだ道へ戻る</button>
+            </div>
+            <h2 id="setlist-screen-title">歌った曲目</h2>
+            <p id="setlist-screen-copy" class="event-copy"></p>
+            <img id="setlist-screen-image" class="setlist-image" src="" alt="">
+        </div>
+    </section>
+
     <script>
-        function showSetlist(id) {
-            document.querySelectorAll('.setlist-panel').forEach((panel) => {
-                panel.hidden = panel.id !== id;
-            });
-            const target = document.getElementById(id);
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+        const setlists = {
+            part1: {
+                title: '第1部 歌った曲目',
+                copy: '2026年6月6日 アニソン祭り第1部のセットリストです。',
+                image: '../assets/history/2026-06-06_anison_part1/anison_part1_setlist_20260606.jpg',
+                alt: '2026.6.6 アニソン祭り 第1部 セットリスト画像',
+            },
+            part2: {
+                title: '第2部 歌った曲目',
+                copy: '2026年6月7日 アニソン祭り第2部のセットリストです。',
+                image: '../assets/history/2026-06-07_anison_part2/anison_part2_setlist_20260607.jpg',
+                alt: '2026.6.7 アニソン祭り 第2部 セットリスト画像',
+            },
+        };
+
+        function openSetlist(key) {
+            const data = setlists[key];
+            if (!data) return;
+
+            document.getElementById('setlist-screen-title').textContent = data.title;
+            document.getElementById('setlist-screen-copy').textContent = data.copy;
+
+            const image = document.getElementById('setlist-screen-image');
+            image.src = data.image;
+            image.alt = data.alt;
+
+            document.body.classList.add('setlist-open');
+            document.getElementById('setlist-screen').hidden = false;
+            window.scrollTo({ top: 0, behavior: 'auto' });
         }
+
+        function closeSetlist() {
+            document.body.classList.remove('setlist-open');
+            document.getElementById('setlist-screen').hidden = true;
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeSetlist();
+            }
+        });
     </script>
 </body>
 </html>
