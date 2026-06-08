@@ -237,6 +237,24 @@
             pointer-events: none; -webkit-touch-callout: none; 
         } 
         .gallery-banner-img.square-cover-img { aspect-ratio: 1 / 1; object-fit: cover; object-position: center; }
+        .history-wide-card {
+            width: 88%;
+            margin: 0 auto 25px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(5px);
+            text-decoration: none;
+            color: #fff;
+            display: block;
+            text-align: center;
+        }
+        .history-wide-img {
+            width: 100%;
+            aspect-ratio: 20 / 7;
+            object-fit: cover;
+            display: block;
+        }
         .gallery-pair {
             width: 92%; margin: 0 auto 25px auto;
             display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;
@@ -321,7 +339,7 @@
         <button class="site-menu-item" type="button" onclick="openBenefitFromMenu()">特典</button>
         <button class="site-menu-item" type="button" onclick="openGalleryFromMenu()">ギャラリー</button>
         <a class="site-menu-item" href="galleries/treasure/" onclick="closeSiteMenu()">宝物ギャラリー</a>
-        <a class="site-menu-item" href="history/" onclick="closeSiteMenu()">Nicoのヒストリー</a>
+        <a class="site-menu-item" href="history/" onclick="closeSiteMenu()">Nicoの歩んだ道</a>
         <button class="site-menu-item" type="button" onclick="openSecretGalleryFromMenu()">秘密のGallery</button>
         <button class="site-menu-item" type="button" onclick="goToSection('note')">Nicoの想い</button>
         <button class="site-menu-item" type="button" onclick="goToSection('game')">ゲーム</button>
@@ -646,6 +664,14 @@
             </div>
         </a>
     </div>
+
+    <a class="history-wide-card pink-neon-border fade-in" href="history/">
+        <img src="assets/history/nico_history_banner_20260608.png" class="history-wide-img" alt="Nicoの歩んだ道">
+        <div class="card-content">
+            <span class="neon-white gallery-title">Nicoの歩んだ道</span>
+            <span class="gallery-note">歌ってきた思い出を少しずつ残していく場所🌈</span>
+        </div>
+    </a>
 
     <a href="https://web.colorsing.com/share/user?user_id=411fa6d1-ba51-4f7c-a4f2-d635ab43ba5b" class="mini-colorsing-link fade-in" target="_blank">
         特典を見たら、ColorSingで会いに来てね
