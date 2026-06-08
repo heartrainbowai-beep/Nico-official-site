@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicoのヒストリー | Nico</title>
+    <title>Nicoの歩んだ道 | Nico</title>
     <style>
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -152,47 +152,6 @@
             border: 3px solid rgba(255, 111, 181, .82);
             box-shadow: 0 14px 28px rgba(224, 91, 158, .2);
         }
-        .song-list {
-            display: grid;
-            gap: 10px;
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
-        .song-list li {
-            display: grid;
-            grid-template-columns: 40px 1fr;
-            gap: 10px;
-            align-items: start;
-            padding: 12px;
-            border-radius: 16px;
-            background: rgba(255, 246, 252, .86);
-            border: 1px solid rgba(255, 126, 190, .38);
-        }
-        .num {
-            display: grid;
-            place-items: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 999px;
-            color: #fff;
-            background: #f04ca2;
-            font-weight: 900;
-        }
-        .song-title {
-            display: block;
-            font-weight: 900;
-            color: #743154;
-            line-height: 1.45;
-        }
-        .artist {
-            display: block;
-            margin-top: 3px;
-            color: #b04f85;
-            font-size: 13px;
-            font-weight: 700;
-            line-height: 1.45;
-        }
         .next-note {
             margin-top: 20px;
             padding: 16px;
@@ -205,7 +164,6 @@
         }
         @media (min-width: 760px) {
             .history-grid { grid-template-columns: 1fr 1fr; }
-            .song-list { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
@@ -215,13 +173,13 @@
 
         <section class="hero" aria-labelledby="history-title">
             <span class="eyebrow">Nico Activity History</span>
-            <h1 id="history-title">Nicoのヒストリー</h1>
-            <p class="lead">Nicoの活動の思い出を、年月ごとにかわいく残していくページです。まずは2026年6月6日・7日のアニソン祭り第1部・第2部を掲載しています。</p>
+            <h1 id="history-title">Nicoの歩んだ道</h1>
+            <p class="lead">Nicoの活動の思い出を、年月ごとにかわいく残していくページです。</p>
         </section>
 
         <section class="history-grid" aria-label="Nicoの活動履歴">
             <article class="history-card">
-                <img src="../assets/history/2026-06-06_anison_part1/anison_part1_history_cover_20260606.jpg" alt="Nicoのヒストリー 2026.6.6 アニソン祭り 第1部">
+                <img src="../assets/history/2026-06-06_anison_part1/anison_part1_history_cover_20260606.jpg" alt="Nicoの歩んだ道 2026.6.6 アニソン祭り 第1部">
                 <div class="history-card-body">
                     <span class="event-date">2026年6月6日</span>
                     <h2>アニソン祭り 第1部</h2>
@@ -231,7 +189,7 @@
             </article>
 
             <article class="history-card">
-                <img src="../assets/history/2026-06-07_anison_part2/anison_part2_history_cover_20260607.jpg" alt="Nicoのヒストリー 2026.6.7 アニソン祭り 第2部">
+                <img src="../assets/history/2026-06-07_anison_part2/anison_part2_history_cover_20260607.jpg" alt="Nicoの歩んだ道 2026.6.7 アニソン祭り 第2部">
                 <div class="history-card-body">
                     <span class="event-date">2026年6月7日</span>
                     <h2>アニソン祭り 第2部</h2>
@@ -245,53 +203,12 @@
             <h2 id="setlist-part1-title">第1部 歌った曲目</h2>
             <p class="event-copy">2026年6月6日 アニソン祭り第1部のセットリストです。</p>
             <img class="setlist-image" src="../assets/history/2026-06-06_anison_part1/anison_part1_setlist_20260606.jpg" alt="2026.6.6 アニソン祭り 第1部 セットリスト画像">
-            <ol class="song-list">
-                <li><span class="num">1</span><span><span class="song-title">The Everlasting Guilty Crown</span><span class="artist">EGOIST</span></span></li>
-                <li><span class="num">2</span><span><span class="song-title">マイ フレンド</span><span class="artist">ZARD</span></span></li>
-                <li><span class="num">3</span><span><span class="song-title">蒼穹のファンファーレ feat. 藍井エイル &amp; ASCA &amp; ReoNa</span><span class="artist">FictionJunction</span></span></li>
-                <li><span class="num">4</span><span><span class="song-title">虹いろ・クマクマ</span><span class="artist">ランカ・リー=中島愛</span></span></li>
-                <li><span class="num">5</span><span><span class="song-title">君の知らない物語</span><span class="artist">supercell</span></span></li>
-                <li><span class="num">6</span><span><span class="song-title">あんなに一緒だったのに</span><span class="artist">See-Saw</span></span></li>
-                <li><span class="num">7</span><span><span class="song-title">AXIA〜ダイスキでダイキライ〜</span><span class="artist">ワルキューレ</span></span></li>
-                <li><span class="num">8</span><span><span class="song-title">約束はいらない</span><span class="artist">坂本真綾</span></span></li>
-                <li><span class="num">9</span><span><span class="song-title">アニメじゃない〜夢を忘れた古い地球人よ〜</span><span class="artist">新井正人</span></span></li>
-                <li><span class="num">10</span><span><span class="song-title">Winners</span><span class="artist">G-GRIP</span></span></li>
-                <li><span class="num">11</span><span><span class="song-title">水の星へ愛をこめて</span><span class="artist">森口博子</span></span></li>
-                <li><span class="num">12</span><span><span class="song-title">JUST COMMUNICATION</span><span class="artist">TWO-MIX</span></span></li>
-                <li><span class="num">13</span><span><span class="song-title">ブルーバード</span><span class="artist">いきものがかり</span></span></li>
-                <li><span class="num">14</span><span><span class="song-title">嵐の中で輝いて</span><span class="artist">米倉千尋</span></span></li>
-                <li><span class="num">15</span><span><span class="song-title">星空のSpica</span><span class="artist">田村ゆかり</span></span></li>
-                <li><span class="num">16</span><span><span class="song-title">いのちの名前</span><span class="artist">幾田りら</span></span></li>
-                <li><span class="num">17</span><span><span class="song-title">いけないボーダーライン</span><span class="artist">ワルキューレ</span></span></li>
-                <li><span class="num">18</span><span><span class="song-title">ライオン</span><span class="artist">May'n/中島愛</span></span></li>
-                <li><span class="num">19</span><span><span class="song-title">残酷な天使のテーゼ</span><span class="artist">高橋洋子</span></span></li>
-            </ol>
         </section>
 
         <section id="setlist-part2" class="setlist-panel" hidden aria-labelledby="setlist-part2-title">
             <h2 id="setlist-part2-title">第2部 歌った曲目</h2>
             <p class="event-copy">2026年6月7日 アニソン祭り第2部のセットリストです。</p>
             <img class="setlist-image" src="../assets/history/2026-06-07_anison_part2/anison_part2_setlist_20260607.jpg" alt="2026.6.7 アニソン祭り 第2部 セットリスト画像">
-            <ol class="song-list">
-                <li><span class="num">1</span><span><span class="song-title">memories</span><span class="artist">大槻真希</span></span></li>
-                <li><span class="num">2</span><span><span class="song-title">はじめてのチュウ</span><span class="artist">あんしんパパ</span></span></li>
-                <li><span class="num">3</span><span><span class="song-title">夢をかなえてドラえもん</span><span class="artist">mao</span></span></li>
-                <li><span class="num">4</span><span><span class="song-title">IGNITE</span><span class="artist">藍井エイル</span></span></li>
-                <li><span class="num">5</span><span><span class="song-title">synchronicity</span><span class="artist">FictionJunction KEIKO</span></span></li>
-                <li><span class="num">6</span><span><span class="song-title">IRIS OUT</span><span class="artist">米津玄師</span></span></li>
-                <li><span class="num">7</span><span><span class="song-title">風になる</span><span class="artist">つじあやの</span></span></li>
-                <li><span class="num">8</span><span><span class="song-title">ノーザンクロス</span><span class="artist">シェリル・ノーム starring May'n</span></span></li>
-                <li><span class="num">9</span><span><span class="song-title">悪魔の子</span><span class="artist">ヒグチアイ</span></span></li>
-                <li><span class="num">10</span><span><span class="song-title">紅蓮華</span><span class="artist">LiSA</span></span></li>
-                <li><span class="num">11</span><span><span class="song-title">DAN DAN 心魅かれてく</span><span class="artist">ZARD</span></span></li>
-                <li><span class="num">12</span><span><span class="song-title">マイ フレンド</span><span class="artist">ZARD</span></span></li>
-                <li><span class="num">13</span><span><span class="song-title">secret base〜君がくれたもの〜(10 years after Ver.)</span><span class="artist">本間芽衣子(CV.茅野愛衣) 安城鳴子(CV.戸松遥) 鶴見知利子(CV.早見沙織)</span></span></li>
-                <li><span class="num">14</span><span><span class="song-title">奇跡の海</span><span class="artist">坂本真綾</span></span></li>
-                <li><span class="num">15</span><span><span class="song-title">ETERNAL WIND -ほほえみは光る風の中-</span><span class="artist">森口博子</span></span></li>
-                <li><span class="num">16</span><span><span class="song-title">あんなに一緒だったのに</span><span class="artist">See-Saw</span></span></li>
-                <li><span class="num">17</span><span><span class="song-title">ray 超かぐや姫! Version</span><span class="artist">かぐや(cv.夏吉ゆうこ), 月見ヤチヨ(cv.早見沙織)</span></span></li>
-                <li><span class="num">18</span><span><span class="song-title">夏祭り</span><span class="artist">Whiteberry</span></span></li>
-            </ol>
         </section>
 
         <p class="next-note">今後は「何年何月に何があったか」をこのページへ少しずつ追加していけます。別イベントも、同じ形でカードを増やしていきます。</p>
