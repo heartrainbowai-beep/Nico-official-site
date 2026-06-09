@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第1回ガンダム投票祭 参加特典サンプル</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      color: #fff;
+      text-align: center;
+      background:
+        radial-gradient(circle at 20% 12%, rgba(255, 255, 255, .22), transparent 24%),
+        radial-gradient(circle at 80% 18%, rgba(104, 198, 255, .32), transparent 28%),
+        linear-gradient(145deg, #07101f 0%, #16152f 42%, #ff72b8 100%);
+    }
+    .wrap {
+      width: min(100%, 560px);
+      margin: 0 auto;
+      padding: 20px 16px 46px;
+    }
+    .cover {
+      overflow: hidden;
+      border-radius: 24px;
+      border: 3px solid rgba(255, 255, 255, .92);
+      background: rgba(255,255,255,.12);
+      box-shadow: 0 0 26px rgba(80, 190, 255, .44), 0 0 24px rgba(255, 105, 180, .34);
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    h1 {
+      margin: 18px 0 8px;
+      font-size: clamp(24px, 7vw, 34px);
+      line-height: 1.35;
+      letter-spacing: 0;
+      text-shadow: 0 0 12px rgba(255,255,255,.88), 2px 3px 0 rgba(255,105,180,.55);
+    }
+    p {
+      margin: 0 auto 16px;
+      font-size: 14px;
+      line-height: 1.8;
+      font-weight: 800;
+      color: #fff7fc;
+      text-shadow: 1px 1px 3px rgba(0,0,0,.46);
+    }
+    .panel {
+      margin-top: 18px;
+      padding: 18px 14px 20px;
+      border-radius: 22px;
+      border: 2px solid rgba(255,255,255,.78);
+      background: rgba(255,255,255,.16);
+      backdrop-filter: blur(6px);
+    }
+    input {
+      width: min(92%, 380px);
+      min-height: 52px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 2px solid #fff;
+      background: rgba(255,255,255,.95);
+      color: #35223a;
+      font: inherit;
+      font-size: 16px;
+      font-weight: 800;
+      text-align: center;
+      outline: none;
+    }
+    button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      margin-top: 14px;
+      padding: 12px 28px;
+      border: 2px solid #fff;
+      border-radius: 999px;
+      background: linear-gradient(45deg, #ff66b7, #71d5ff);
+      color: #fff;
+      font: inherit;
+      font-size: 16px;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(0,0,0,.28);
+      cursor: pointer;
+    }
+    .error {
+      display: none;
+      margin-top: 12px;
+      color: #fff;
+      font-weight: 900;
+      text-shadow: 1px 1px 3px rgba(0,0,0,.5);
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="cover">
+      <img src="cover.png" alt="第1回ガンダム投票祭 参加特典 表紙サンプル">
+    </section>
+
+    <h1>第1回ガンダム投票祭<br>参加特典</h1>
+    <p>秘密のキーワードを入れると、中央が透過されたアイコンリング特典が開きます。</p>
+
+    <section class="panel" aria-label="秘密のキーワード入力">
+      <p>秘密のキーワードを入力してね</p>
+      <input id="keyword" type="text" autocomplete="off" placeholder="キーワード">
+      <br>
+      <button type="button" onclick="checkKeyword()">特典ページを開く</button>
+      <div id="error" class="error">キーワードが違うみたい...</div>
+    </section>
+  </main>
+
+  <script>
+    function normalize(value) {
+      return value.trim().replace(/\s/g, "").replace(/[Ａ-Ｚａ-ｚ０-９]/g, function(s) {
+        return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+      });
+    }
+    function checkKeyword() {
+      var input = normalize(document.getElementById("keyword").value);
+      var ok = input === "撃ちたくない撃たせないで";
+      document.getElementById("error").style.display = ok ? "none" : "block";
+      if (ok) window.location.href = "gift.html";
+    }
+    document.getElementById("keyword").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") checkKeyword();
+    });
+  </script>
+</body>
+</html>

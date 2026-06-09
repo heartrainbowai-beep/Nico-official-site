@@ -111,7 +111,7 @@
         .next-event-title { margin: 0 0 8px; font-size: 20px; line-height: 1.35; color: #e83f92; font-weight: 900; }
         .next-event-date { margin: 0 0 10px; font-size: 14px; line-height: 1.5; font-weight: 900; color: #6f3b83; }
         .next-event-copy { margin: 0 0 14px; font-size: 13px; line-height: 1.7; font-weight: 800; color: #54324c; }
-        .next-event-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .next-event-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 10px; }
         .next-event-link {
             display: flex; align-items: center; justify-content: center; min-height: 46px; padding: 11px 10px; box-sizing: border-box;
             border-radius: 999px; background: linear-gradient(45deg, #ff7675, #ff69b4);
@@ -505,6 +505,14 @@
                     <a class="secret-project-btn" href="rewards/anison-20260607/">秘密ページを開く</a>
                 </div>
             </div>
+            <div class="secret-project-card">
+                <img src="rewards/gundam-vote-20260613/cover.png" alt="第1回ガンダム投票祭 参加特典 秘密ページ入口">
+                <div class="secret-project-body">
+                    <div class="neon-white secret-project-title">第1回ガンダム投票祭</div>
+                    <p class="secret-project-note">6月13日の参加特典アイコンリングページです。</p>
+                    <a class="secret-project-btn" href="rewards/gundam-vote-20260613/">秘密ページを開く</a>
+                </div>
+            </div>
         </div>
         <button class="close-btn" onclick="closeAllSecret()" style="margin-top: 20px; margin-bottom: 20px;">とじる</button>
     </div>
@@ -591,6 +599,7 @@
             <p class="next-event-copy">歌ってほしい曲に投票してね🎶<br>当日のセットリスト作りに参加できるよ♡</p>
             <div class="next-event-actions">
                 <a class="next-event-link" href="https://gundamsenkyo1.netlify.app" target="_blank" rel="noopener">投票はこちら</a>
+                <a class="next-event-link" href="events/gundam-vote-20260613/">当日特典内容</a>
                 <a class="next-event-link secondary" href="https://web.colorsing.com/share/user?user_id=411fa6d1-ba51-4f7c-a4f2-d635ab43ba5b" target="_blank" rel="noopener">ColorSingへ</a>
             </div>
         </div>
