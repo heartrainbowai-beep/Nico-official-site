@@ -119,6 +119,7 @@
             box-shadow: 0 0 12px rgba(255,105,180,0.55);
         }
         .next-event-link.secondary { background: rgba(255,255,255,0.72); color: #e83f92; border-color: rgba(255,105,180,0.55); }
+        .next-event-link.closed { background: rgba(90, 82, 118, 0.72); color: rgba(255,255,255,0.92); cursor: default; }
         @media (max-width: 360px) {
             .next-event-actions { grid-template-columns: 1fr; }
         }
@@ -598,7 +599,7 @@
             <p class="next-event-date">みんなの投票ランキング曲をColorSingで歌うよ</p>
             <p class="next-event-copy">歌ってほしい曲に投票してね🎶<br>当日のセットリスト作りに参加できるよ♡</p>
             <div class="next-event-actions">
-                <a class="next-event-link" href="https://gundamsenkyo1.netlify.app" target="_blank" rel="noopener">投票はこちら</a>
+                <span class="next-event-link closed" aria-disabled="true">投票は締め切りました</span>
                 <a class="next-event-link" href="events/gundam-vote-20260613/">当日特典内容</a>
                 <a class="next-event-link secondary" href="https://web.colorsing.com/share/user?user_id=411fa6d1-ba51-4f7c-a4f2-d635ab43ba5b" target="_blank" rel="noopener">ColorSingへ</a>
             </div>
