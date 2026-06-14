@@ -212,6 +212,53 @@
             box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
             display: block; box-sizing: border-box;
         }
+        .membership-gallery-item img.icon-frame-img {
+            background: transparent;
+            border: 0;
+            box-shadow: none;
+            -webkit-touch-callout: default;
+            user-select: auto;
+        }
+        .icon-frame-download {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+        }
+        .icon-frame-preview {
+            overflow: hidden;
+            border-radius: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.92);
+            background-color: #fff;
+            background-image:
+                linear-gradient(45deg, rgba(255, 105, 180, 0.18) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255, 105, 180, 0.18) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(113, 213, 255, 0.22) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(113, 213, 255, 0.22) 75%);
+            background-size: 28px 28px;
+            background-position: 0 0, 0 14px, 14px -14px, -14px 0;
+            box-shadow: 0 0 26px rgba(80, 190, 255, 0.44), 0 0 24px rgba(255, 105, 180, 0.34);
+        }
+        .icon-frame-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 12px;
+        }
+        .icon-save-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            padding: 10px 24px;
+            border: 2px solid #fff;
+            border-radius: 999px;
+            background: linear-gradient(45deg, #ff66b7, #71d5ff);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 900;
+            text-decoration: none;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.28);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28), 0 0 18px rgba(255, 105, 180, 0.45);
+        }
         .membership-slot {
             width: 100%; aspect-ratio: 1 / 1; border-radius: 18px;
             border: 3px dashed rgba(255, 255, 255, 0.86);
@@ -338,10 +385,11 @@
         <a class="site-menu-item primary" href="https://web.colorsing.com/share/user?user_id=411fa6d1-ba51-4f7c-a4f2-d635ab43ba5b" target="_blank" onclick="closeSiteMenu()">ColorSing</a>
         <a class="site-menu-item" href="events" onclick="closeSiteMenu()">過去のEvent</a>
         <button class="site-menu-item" type="button" onclick="openBenefitFromMenu()">特典</button>
-        <button class="site-menu-item" type="button" onclick="openGalleryFromMenu()">ギャラリー</button>
-        <a class="site-menu-item" href="galleries/treasure/" onclick="closeSiteMenu()">宝物ギャラリー</a>
+        <button class="site-menu-item" type="button" onclick="openGalleryFromMenu()">アイコンギャラリー</button>
+        <a class="site-menu-item" href="galleries/treasure/" onclick="closeSiteMenu()">宝ものギャラリー</a>
+        <a class="site-menu-item" href="galleries/events/" onclick="closeSiteMenu()">イベントギャラリー</a>
+        <button class="site-menu-item" type="button" onclick="openSecretGalleryFromMenu()">秘密のギャラリー</button>
         <a class="site-menu-item" href="history/" onclick="closeSiteMenu()">Nicoの歩んだ道</a>
-        <button class="site-menu-item" type="button" onclick="openSecretGalleryFromMenu()">秘密のGallery</button>
         <button class="site-menu-item" type="button" onclick="goToSection('note')">Nicoの想い</button>
         <button class="site-menu-item" type="button" onclick="goToSection('game')">ゲーム</button>
         <button class="site-menu-item" type="button" onclick="goToSection('sns')">SNS</button>
@@ -397,6 +445,14 @@
             </div>
             <div class="icon-category-wrapper" onclick="openCategoryPage('membership6Page')">
                 <img src="assets/membership_6months/member_ship_6months_gallery_01_20260602.jpg" class="icon-category-img" alt="6ヶ月継続メンバーシップ特別特典へ">
+            </div>
+
+            <div style="color: #ffb6c1; font-size: 14px; font-weight: bold; margin: 25px 0 8px 0; text-shadow: 0 0 5px rgba(255, 105, 180, 0.5); line-height: 1.4;">
+                2026年6月13日 ガンダム集計祭り<br>スペシャルアイコンフレーム特典<br>
+                <span style="font-size: 13px; color: #fff; text-shadow: none;">ここをタップしてね👇🏻</span>
+            </div>
+            <div class="icon-category-wrapper" onclick="openCategoryPage('gundamSpecialFramePage')">
+                <img src="assets/icon_gallery/gundam-special-frame-20260613/cover.png" class="icon-category-img" alt="2026年6月13日 ガンダム集計祭り スペシャルアイコンフレーム特典へ">
             </div>
 </div>
         <button class="close-btn" onclick="closeIconsModal()">とじる</button>
@@ -466,6 +522,27 @@
         <div class="membership-gallery-item"><img src="assets/membership_6months/member_ship_6months_special_thanks_03_20260602.jpg" alt="6ヶ月継続メンバーシップ特別特典 special thanks 3"><div class="icon-caption">Special thanks / 6ヶ月ありがとう♡</div></div>
         <div class="membership-gallery-item"><img src="assets/membership_6months/member_ship_6months_special_thanks_02_20260602.jpg" alt="6ヶ月継続メンバーシップ特別特典 special thanks 2"><div class="icon-caption">Special thanks / 6ヶ月ありがとう♡</div></div>
         <div class="membership-gallery-item"><img src="assets/membership_6months/member_ship_6months_special_thanks_01_20260602.jpg" alt="6ヶ月継続メンバーシップ特別特典 special thanks 1"><div class="icon-caption">Special thanks / 6ヶ月ありがとう♡</div></div>
+    </div>
+</div>
+
+<div id="gundamSpecialFramePage" class="category-page">
+    <div class="category-header">
+        <button class="back-btn" onclick="closeCategoryPage('gundamSpecialFramePage')">◀ 戻る</button>
+        <span class="category-title">2026.6.13 ガンダム集計祭り</span>
+    </div>
+    <p style="color: white; font-size: 14px; font-weight: bold; margin: 25px 0 15px 0; padding: 0 18px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); line-height: 1.6;">
+        スペシャルアイコンフレーム特典<br>
+        Nicoのデジタル手書き入り<br>
+        <span style="color: #ffb6c1; font-size: 12px; text-shadow: none;">Special icon frame</span>
+    </p>
+    <div class="membership-gallery-grid">
+        <div class="membership-gallery-item"><a class="icon-frame-download icon-frame-preview" href="assets/icon_gallery/gundam-special-frame-20260613/01_takoyakin.png" download="nico_gundam_icon_takoyakin.png"><img class="icon-frame-img" src="assets/icon_gallery/gundam-special-frame-20260613/01_takoyakin.png" alt="たこやきん アイコン特典"></a><div class="icon-caption">たこやきん / スペシャルアイテムありがとう</div><div class="icon-frame-actions"><a class="icon-save-btn" href="assets/icon_gallery/gundam-special-frame-20260613/01_takoyakin.png" download="nico_gundam_icon_takoyakin.png">画像を保存する</a></div></div>
+        <div class="membership-gallery-item"><a class="icon-frame-download icon-frame-preview" href="assets/icon_gallery/gundam-special-frame-20260613/02_gomora.png" download="nico_gundam_icon_gomora.png"><img class="icon-frame-img" src="assets/icon_gallery/gundam-special-frame-20260613/02_gomora.png" alt="ゴモラ アイコン特典"></a><div class="icon-caption">ゴモラ / スペシャルアイテムありがとう</div><div class="icon-frame-actions"><a class="icon-save-btn" href="assets/icon_gallery/gundam-special-frame-20260613/02_gomora.png" download="nico_gundam_icon_gomora.png">画像を保存する</a></div></div>
+        <div class="membership-gallery-item"><a class="icon-frame-download icon-frame-preview" href="assets/icon_gallery/gundam-special-frame-20260613/03_yukichi.png" download="nico_gundam_icon_yukichi.png"><img class="icon-frame-img" src="assets/icon_gallery/gundam-special-frame-20260613/03_yukichi.png" alt="ゆきち アイコン特典"></a><div class="icon-caption">ゆきち / スペシャルアイテムありがとう</div><div class="icon-frame-actions"><a class="icon-save-btn" href="assets/icon_gallery/gundam-special-frame-20260613/03_yukichi.png" download="nico_gundam_icon_yukichi.png">画像を保存する</a></div></div>
+        <div class="membership-gallery-item"><a class="icon-frame-download icon-frame-preview" href="assets/icon_gallery/gundam-special-frame-20260613/04_takkun.png" download="nico_gundam_icon_takkun.png"><img class="icon-frame-img" src="assets/icon_gallery/gundam-special-frame-20260613/04_takkun.png" alt="たっくん アイコン特典"></a><div class="icon-caption">たっくん / スペシャルアイテムありがとう</div><div class="icon-frame-actions"><a class="icon-save-btn" href="assets/icon_gallery/gundam-special-frame-20260613/04_takkun.png" download="nico_gundam_icon_takkun.png">画像を保存する</a></div></div>
+        <div class="membership-gallery-item"><a class="icon-frame-download icon-frame-preview" href="assets/icon_gallery/gundam-special-frame-20260613/05_amemiya.png" download="nico_gundam_icon_amemiya.png"><img class="icon-frame-img" src="assets/icon_gallery/gundam-special-frame-20260613/05_amemiya.png" alt="雨宮 アイコン特典"></a><div class="icon-caption">雨宮 / スペシャルアイテムありがとう</div><div class="icon-frame-actions"><a class="icon-save-btn" href="assets/icon_gallery/gundam-special-frame-20260613/05_amemiya.png" download="nico_gundam_icon_amemiya.png">画像を保存する</a></div></div>
+        <div class="membership-gallery-item"><a class="icon-frame-download icon-frame-preview" href="assets/icon_gallery/gundam-special-frame-20260613/06_mayurin.png" download="nico_gundam_icon_mayuchan.png"><img class="icon-frame-img" src="assets/icon_gallery/gundam-special-frame-20260613/06_mayurin.png" alt="まゆちゃん アイコン特典"></a><div class="icon-caption">まゆちゃん / スペシャルアイテムありがとう</div><div class="icon-frame-actions"><a class="icon-save-btn" href="assets/icon_gallery/gundam-special-frame-20260613/06_mayurin.png" download="nico_gundam_icon_mayuchan.png">画像を保存する</a></div></div>
+        <div class="membership-gallery-item"><a class="icon-frame-download icon-frame-preview" href="assets/icon_gallery/gundam-special-frame-20260613/07_nagisa.png" download="nico_gundam_icon_nagichan.png"><img class="icon-frame-img" src="assets/icon_gallery/gundam-special-frame-20260613/07_nagisa.png" alt="なぎちゃん アイコン特典"></a><div class="icon-caption">なぎちゃん / スペシャルアイテムありがとう</div><div class="icon-frame-actions"><a class="icon-save-btn" href="assets/icon_gallery/gundam-special-frame-20260613/07_nagisa.png" download="nico_gundam_icon_nagichan.png">画像を保存する</a></div></div>
     </div>
 </div>
 
@@ -587,25 +664,6 @@
         <img src="nico_main.png" alt="Nico" class="nico-img">
     </div>
 
-    <div class="upcoming-events-heading fade-in">
-        <span>これから開催するEvent</span>
-    </div>
-
-    <section class="next-event-card fade-in" aria-labelledby="vote-event-title">
-        <img src="assets/events/vote_ranking_song_festival_20260613.png" class="next-event-media wide" alt="13日21:30 投票ランキング曲歌います祭">
-        <div class="next-event-body">
-            <span class="next-event-kicker">NEXT Vote Event</span>
-            <h2 id="vote-event-title" class="next-event-title">13日21:30〜<br>「投票ランキング曲歌います祭」</h2>
-            <p class="next-event-date">みんなの投票ランキング曲をColorSingで歌うよ</p>
-            <p class="next-event-copy">歌ってほしい曲に投票してね🎶<br>当日のセットリスト作りに参加できるよ♡</p>
-            <div class="next-event-actions">
-                <span class="next-event-link closed" aria-disabled="true">投票は締め切りました</span>
-                <a class="next-event-link" href="events/gundam-vote-20260613/">当日特典内容</a>
-                <a class="next-event-link secondary" href="https://web.colorsing.com/share/user?user_id=411fa6d1-ba51-4f7c-a4f2-d635ab43ba5b" target="_blank" rel="noopener">ColorSingへ</a>
-            </div>
-        </div>
-    </section>
-
     <div id="profile" class="intro-section fade-in">
         <p class="neon-white" style="font-size: 18px; line-height: 1.8;">
             マクロス・ガンダムなどのアニソンが大好き<br>ColorSingで活動中🎹🎀
@@ -644,28 +702,36 @@
             </div>
         </div>
 
-        <a class="gallery-card pink-neon-border" href="galleries/treasure/" style="text-decoration: none;">
-            <img src="assets/treasure_gallery/treasure_gallery_cover_20260606.jpg" class="gallery-banner-img square-cover-img" alt="宝物ギャラリー表紙">
+        <a class="gallery-card pink-neon-border" href="galleries/events/" style="text-decoration: none;">
+            <img src="assets/event_gallery/gundam-2026-06-13/event_gallery_cover_20260614.png" class="gallery-banner-img square-cover-img" alt="イベントギャラリー表紙">
             <div class="card-content">
-                <span class="neon-white gallery-title" style="color: #fff3b0; text-shadow: 0 0 10px rgba(255, 204, 0, 0.7), 0 0 15px rgba(255, 105, 180, 0.8);">💎 宝物<br>ギャラリー</span>
-                <span class="gallery-note">届いた宝物を飾る場所🌈</span>
-            </div>
-        </a>
-
-        <a id="note" class="gallery-card pink-neon-border" href="https://note.com/open_nicochan" style="text-decoration: none;" target="_blank" rel="noopener">
-            <img src="note_nico_square_card.png" class="gallery-banner-img square-cover-img" alt="Nicoの想い note">
-            <div class="card-content">
-                <span class="neon-white gallery-title">💌 Nicoの<br>想い</span>
-                <span class="gallery-note">歌と日々の気持ちを綴る場所♬.*ﾟ</span>
+                <span class="neon-white gallery-title" style="color: #fff7fb; text-shadow: 0 0 10px rgba(255, 105, 180, 0.8), 0 0 15px rgba(145, 200, 255, 0.75);">🎤 イベント<br>ギャラリー</span>
+                <span class="gallery-note">イベントの思い出をまとめる場所🎶</span>
             </div>
         </a>
     </div>
+
+    <a id="note" class="history-wide-card pink-neon-border fade-in" href="https://note.com/open_nicochan" target="_blank" rel="noopener">
+        <img src="note_nico_banner.png" class="history-wide-img" alt="Nicoの想い note">
+        <div class="card-content">
+            <span class="neon-white gallery-title">💌 Nicoの想い</span>
+            <span class="gallery-note">歌と日々の気持ちを綴る場所♬.*ﾟ</span>
+        </div>
+    </a>
 
     <a class="history-wide-card pink-neon-border fade-in" href="history/">
         <img src="assets/history/nico_history_banner_clean_20260608.png" class="history-wide-img" alt="Nicoの歩んだ道">
         <div class="card-content">
             <span class="neon-white gallery-title">Nicoの歩んだ道</span>
             <span class="gallery-note">歌ってきた思い出を少しずつ残していく場所🌈</span>
+        </div>
+    </a>
+
+    <a class="history-wide-card pink-neon-border fade-in" href="galleries/treasure/">
+        <img src="assets/treasure_gallery/treasure_gallery_cover_20260606.jpg" class="history-wide-img" alt="宝物ギャラリー表紙">
+        <div class="card-content">
+            <span class="neon-white gallery-title" style="color: #fff3b0; text-shadow: 0 0 10px rgba(255, 204, 0, 0.7), 0 0 15px rgba(255, 105, 180, 0.8);">💎 宝ものギャラリー</span>
+            <span class="gallery-note">届いた宝物を飾る場所🌈</span>
         </div>
     </a>
 
@@ -729,6 +795,20 @@
     function openCategoryPage(pageId) { document.getElementById(pageId).style.display = 'flex'; }
     function closeCategoryPage(pageId) { document.getElementById(pageId).style.display = 'none'; }
 
+    const directCategoryHashes = {
+        '#gundam-special-frame-20260613': 'gundamSpecialFramePage'
+    };
+
+    function openDirectCategoryFromHash() {
+        const pageId = directCategoryHashes[window.location.hash];
+        if (!pageId) return;
+        openIconsModal();
+        document.querySelectorAll('#iconsModal .category-page').forEach(page => {
+            page.style.display = 'none';
+        });
+        openCategoryPage(pageId);
+    }
+
     function openSiteMenu() {
         document.getElementById('siteMenuOverlay').classList.add('is-open');
         document.getElementById('siteMenuSheet').classList.add('is-open');
@@ -769,6 +849,9 @@
     if (window.location.hash === '#menu') {
         openSiteMenu();
     }
+
+    window.addEventListener('hashchange', openDirectCategoryFromHash);
+    openDirectCategoryFromHash();
 
     // シークレットギャラリー制御プログラム
     function openSecretStep1() { document.getElementById('secretStep1').style.display = 'flex'; document.body.style.overflow = 'hidden'; }

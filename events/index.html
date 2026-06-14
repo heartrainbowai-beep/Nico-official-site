@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>過去のEvent | Nico</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      color: #fff;
+      background: linear-gradient(135deg, #ff8a8e 0%, #fdbfef 28%, #91c8ff 62%, #b4ec79 100%);
+      background-size: 360% 360%;
+      animation: gradientBG 16s ease infinite;
+      overflow-x: hidden;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .page {
+      width: min(100%, 820px);
+      margin: 0 auto;
+      padding: 22px 16px 46px;
+      text-align: center;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 8px 18px;
+      margin: 0 0 16px;
+      border-radius: 999px;
+      border: 2px solid rgba(255,255,255,.92);
+      background: rgba(255,255,255,.35);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      text-decoration: none;
+      box-shadow: 0 0 12px rgba(255,255,255,.42);
+    }
+    .hero {
+      padding: 22px 16px 18px;
+      border-radius: 26px;
+      border: 3px solid rgba(255,255,255,.9);
+      background: rgba(255,255,255,.22);
+      box-shadow: 0 0 18px rgba(255,255,255,.62), 0 0 26px rgba(255,105,180,.45);
+      backdrop-filter: blur(6px);
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(27px, 7vw, 44px);
+      line-height: 1.2;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(255,255,255,.92), 0 0 18px rgba(255,105,180,.85);
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+    .lead {
+      width: min(100%, 560px);
+      margin: 0 auto;
+      color: #fff7fb;
+      font-size: 14px;
+      line-height: 1.8;
+      font-weight: 800;
+      text-shadow: 1px 1px 3px rgba(150,40,110,.36);
+      overflow-wrap: anywhere;
+    }
+    .event-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+      margin: 24px auto 0;
+    }
+    .event-card {
+      overflow: hidden;
+      border-radius: 24px;
+      border: 3px solid rgba(255,255,255,.94);
+      background: rgba(255,255,255,.24);
+      box-shadow: 0 0 18px rgba(255,255,255,.58), 0 0 22px rgba(255,105,180,.42);
+      color: #fff;
+      text-decoration: none;
+      backdrop-filter: blur(6px);
+    }
+    .event-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      object-position: center;
+      background: rgba(255,255,255,.18);
+    }
+    .event-body {
+      padding: 16px 15px 18px;
+      text-align: left;
+    }
+    .event-date {
+      display: inline-block;
+      margin: 0 0 8px;
+      font-size: 12px;
+      font-weight: 900;
+      color: #fff3b0;
+      text-shadow: 0 0 8px rgba(255,105,180,.72);
+    }
+    .event-title {
+      margin: 0 0 9px;
+      font-size: 18px;
+      line-height: 1.42;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(255,105,180,.82), 0 0 14px rgba(255,255,255,.62);
+    }
+    .event-copy {
+      margin: 0 0 14px;
+      color: #fff8fb;
+      font-size: 13px;
+      line-height: 1.7;
+      font-weight: 800;
+      overflow-wrap: anywhere;
+    }
+    .event-actions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+      gap: 10px;
+    }
+    .event-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px;
+      border-radius: 999px;
+      border: 2px solid rgba(255,255,255,.95);
+      background: linear-gradient(45deg, #ff7675, #ff69b4);
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 900;
+      text-align: center;
+      box-shadow: 0 0 12px rgba(255,105,180,.55);
+    }
+    .event-link.secondary {
+      background: rgba(255,255,255,.72);
+      color: #e83f92;
+      border-color: rgba(255,105,180,.55);
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="back-link" href="../">Nico公式ホームへ</a>
+
+    <section class="hero">
+      <h1>過去のEvent</h1>
+      <p class="lead">
+        これまで開催したイベントを、あとから見返せる場所です。<br>
+        イベント詳細や思い出ギャラリーへ進めます。
+      </p>
+    </section>
+
+    <section class="event-list" aria-label="過去のイベント一覧">
+      <article class="event-card">
+        <img src="../assets/event_gallery/gundam-2026-06-13/gundam_event_gallery_cover_20260614.jpg" alt="第1回ガンダム投票祭">
+        <div class="event-body">
+          <span class="event-date">2026.6.13</span>
+          <h2 class="event-title">第1回ガンダム投票祭</h2>
+          <p class="event-copy">
+            みんなの投票で歌う曲を決めた、ガンダム楽曲イベントの記録です。
+          </p>
+          <div class="event-actions">
+            <a class="event-link" href="gundam-vote-20260613/">イベント詳細</a>
+            <a class="event-link secondary" href="../galleries/events/gundam-2026-06-13/">思い出ギャラリー</a>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

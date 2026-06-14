@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026年6月13日 第1回ガンダム集計祭り | Nico</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      color: #fff;
+      background: linear-gradient(135deg, #ff8a8e 0%, #fdbfef 28%, #91c8ff 62%, #b4ec79 100%);
+      background-size: 360% 360%;
+      animation: gradientBG 16s ease infinite;
+      overflow-x: hidden;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .page {
+      width: min(100%, 860px);
+      margin: 0 auto;
+      padding: 22px 0 46px;
+      text-align: center;
+    }
+    .page-inner { padding: 0 16px; }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 8px 18px;
+      margin: 0 0 16px;
+      border-radius: 999px;
+      border: 2px solid rgba(255,255,255,.92);
+      background: rgba(255,255,255,.35);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      text-decoration: none;
+      box-shadow: 0 0 12px rgba(255,255,255,.42);
+    }
+    .hero {
+      padding: 22px 16px 18px;
+      border-radius: 26px;
+      border: 3px solid rgba(255,255,255,.9);
+      background: rgba(255,255,255,.22);
+      box-shadow: 0 0 18px rgba(255,255,255,.62), 0 0 26px rgba(255,105,180,.45);
+      backdrop-filter: blur(6px);
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(24px, 6.2vw, 40px);
+      line-height: 1.25;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(255,255,255,.92), 0 0 18px rgba(255,105,180,.85);
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+    .lead {
+      width: min(100%, 560px);
+      margin: 0 auto;
+      color: #fff7fb;
+      font-size: 14px;
+      line-height: 1.8;
+      font-weight: 800;
+      text-shadow: 1px 1px 3px rgba(150,40,110,.36);
+      overflow-wrap: anywhere;
+    }
+    .slider-wrap {
+      margin: 24px 0 18px;
+      position: relative;
+    }
+    .event-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: min(88vw, 430px);
+      gap: 18px;
+      overflow-x: auto;
+      padding: 4px max(14px, calc((100% - min(88vw, 430px)) / 2)) 20px;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: max(14px, calc((100% - min(88vw, 430px)) / 2));
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,105,180,.65) rgba(255,255,255,.26);
+    }
+    .event-card {
+      scroll-snap-align: center;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 3px solid rgba(255,255,255,.94);
+      background: rgba(255,255,255,.24);
+      box-shadow: 0 0 18px rgba(255,255,255,.58), 0 0 22px rgba(255,105,180,.42);
+      backdrop-filter: blur(6px);
+    }
+    .event-media {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,.16);
+    }
+    .event-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .event-body {
+      min-height: 62px;
+      padding: 16px 14px 18px;
+      text-align: center;
+    }
+    .event-heading {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.55;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(255,105,180,.82);
+    }
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 8px 0 22px;
+    }
+    .nav-buttons button {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.95);
+      background: rgba(255,105,180,.84);
+      color: #fff;
+      font-size: 24px;
+      font-weight: 900;
+      box-shadow: 0 0 14px rgba(255,255,255,.54), 0 0 18px rgba(255,105,180,.56);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="page-inner">
+      <a class="back-link" href="../">イベントギャラリーへ</a>
+
+      <section class="hero">
+        <h1>2026年6月13日<br>第1回ガンダム集計祭り</h1>
+        <p class="lead">
+          ランキングと歌の思い出を、横にスライドして見られるギャラリーです。
+        </p>
+      </section>
+    </div>
+
+    <section class="slider-wrap" aria-label="2026年6月13日 第1回ガンダム集計祭り 横スライドギャラリー">
+      <div id="eventTrack" class="event-track">
+        <article class="event-card">
+          <div class="event-media">
+            <img src="../../../assets/event_gallery/gundam-2026-06-13/web/05_full_ranking.webp" alt="第1回ガンダム集計祭り フルランキング" loading="eager">
+          </div>
+          <div class="event-body">
+            <h2 class="event-heading">フルランキング</h2>
+          </div>
+        </article>
+        <article class="event-card">
+          <div class="event-media">
+            <img src="../../../assets/event_gallery/gundam-2026-06-13/web/01_first_place_mizuno_hoshi_safe.webp" alt="1位 水の星へ愛をこめて" loading="lazy">
+          </div>
+          <div class="event-body">
+            <h2 class="event-heading">1位 水の星へ愛をこめて</h2>
+          </div>
+        </article>
+        <article class="event-card">
+          <div class="event-media">
+            <img src="../../../assets/event_gallery/gundam-2026-06-13/web/02_second_place_sarigiwa_safe.webp" alt="2位 去り際のロマンティクス" loading="lazy">
+          </div>
+          <div class="event-body">
+            <h2 class="event-heading">2位 去り際のロマンティクス</h2>
+          </div>
+        </article>
+        <article class="event-card">
+          <div class="event-media">
+            <img src="../../../assets/event_gallery/gundam-2026-06-13/web/03_third_place_set_safe.webp" alt="3位セット" loading="lazy">
+          </div>
+          <div class="event-body">
+            <h2 class="event-heading">3位セット</h2>
+          </div>
+        </article>
+        <article class="event-card">
+          <div class="event-media">
+            <img src="../../../assets/event_gallery/gundam-2026-06-13/web/04_eighth_place_set_safe.webp" alt="8位セット" loading="lazy">
+          </div>
+          <div class="event-body">
+            <h2 class="event-heading">8位セット</h2>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="nav-buttons" aria-label="ギャラリー操作">
+      <button type="button" onclick="slideEvent(-1)" aria-label="前の画像へ">‹</button>
+      <button type="button" onclick="slideEvent(1)" aria-label="次の画像へ">›</button>
+    </div>
+  </main>
+
+  <script>
+    function slideEvent(direction) {
+      const track = document.getElementById('eventTrack');
+      const amount = Math.min(window.innerWidth * 0.88, 430) + 18;
+      track.scrollBy({ left: amount * direction, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
