@@ -5,202 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="../../">
     <title>アイコン特典ギャラリー | Nico</title>
-    <style>
-        * { box-sizing: border-box; }
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
-            color: #fff;
-            background:
-                radial-gradient(circle at 20% 12%, rgba(255, 255, 255, 0.9), transparent 22%),
-                radial-gradient(circle at 82% 18%, rgba(255, 205, 235, 0.84), transparent 24%),
-                linear-gradient(180deg, #ffd4ee 0%, #ff86c6 46%, #78baf4 100%);
-        }
-        main {
-            width: min(94vw, 760px);
-            margin: 0 auto;
-            padding: 22px 0 46px;
-        }
-        a { color: inherit; }
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin: 0 0 16px;
-            padding: 8px 12px;
-            border-radius: 999px;
-            text-decoration: none;
-            color: #fff;
-            font-size: 13px;
-            font-weight: 800;
-            background: rgba(255, 105, 180, 0.34);
-            border: 1px solid rgba(255, 255, 255, 0.72);
-            text-shadow: 0 0 8px rgba(255, 105, 180, 0.9);
-        }
-        .hero {
-            overflow: hidden;
-            border-radius: 24px;
-            border: 3px solid rgba(255, 255, 255, 0.9);
-            background: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 22px rgba(255, 105, 180, 0.62), 0 18px 34px rgba(151, 68, 148, 0.2);
-        }
-        .hero img {
-            display: block;
-            width: 100%;
-            aspect-ratio: 4 / 5;
-            object-fit: cover;
-            object-position: center;
-        }
-        .hero-body {
-            padding: 16px 16px 18px;
-            text-align: center;
-            background: rgba(255, 153, 205, 0.58);
-        }
-        h1 {
-            margin: 0 0 8px;
-            font-size: clamp(28px, 8vw, 44px);
-            line-height: 1.18;
-            letter-spacing: 0;
-            text-shadow: 0 0 9px rgba(255, 105, 180, 1), 0 3px 0 rgba(217, 68, 150, 0.5);
-        }
-        .lead {
-            margin: 0 auto;
-            max-width: 620px;
-            font-size: 14px;
-            line-height: 1.75;
-            font-weight: 800;
-            color: #fff7fd;
-            text-shadow: 0 0 8px rgba(173, 58, 135, 0.75);
-        }
-        .category-list {
-            display: grid;
-            gap: 14px;
-            margin: 18px 0 0;
-        }
-        .category-button {
-            width: 100%;
-            padding: 0;
-            overflow: hidden;
-            border: 3px solid rgba(255, 255, 255, 0.9);
-            border-radius: 22px;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.32);
-            box-shadow: 0 0 18px rgba(255, 105, 180, 0.5);
-            cursor: pointer;
-            font: inherit;
-            text-align: left;
-        }
-        .category-button img {
-            display: block;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            object-fit: cover;
-            object-position: center;
-        }
-        .category-copy {
-            display: grid;
-            gap: 4px;
-            padding: 12px 14px 14px;
-            background: rgba(255, 142, 200, 0.62);
-        }
-        .category-copy strong {
-            font-size: 20px;
-            line-height: 1.25;
-            letter-spacing: 0;
-            text-shadow: 0 0 10px rgba(255, 105, 180, 0.95);
-        }
-        .category-copy span {
-            font-size: 12px;
-            line-height: 1.5;
-            font-weight: 800;
-            color: #fff7fd;
-        }
-        .icon-panel {
-            margin: 22px 0 0;
-            padding: 18px 14px 22px;
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.24);
-            border: 2px solid rgba(255, 255, 255, 0.72);
-            box-shadow: 0 0 18px rgba(255, 105, 180, 0.45);
-        }
-        .icon-panel[hidden] { display: none; }
-        .panel-title {
-            margin: 0 0 12px;
-            text-align: center;
-            font-size: 24px;
-            line-height: 1.3;
-            text-shadow: 0 0 10px rgba(255, 105, 180, 1);
-        }
-        .panel-note {
-            margin: 0 auto 18px;
-            max-width: 560px;
-            text-align: center;
-            font-size: 13px;
-            line-height: 1.75;
-            font-weight: 800;
-            color: #fff7fd;
-        }
-        .icon-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 18px;
-        }
-        @media (min-width: 640px) {
-            .category-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .icon-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        }
-        .icon-item {
-            overflow: hidden;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.42);
-            border: 2px solid rgba(255, 255, 255, 0.76);
-            text-align: center;
-            box-shadow: 0 10px 22px rgba(129, 62, 132, 0.18);
-        }
-        .icon-item img {
-            display: block;
-            width: 100%;
-            height: auto;
-            background: rgba(255, 246, 252, 0.64);
-        }
-        .icon-frame-img {
-            aspect-ratio: 1 / 1;
-            object-fit: contain;
-            padding: 8px;
-            background-image:
-                linear-gradient(45deg, rgba(255, 190, 224, 0.72) 25%, transparent 25%),
-                linear-gradient(-45deg, rgba(255, 190, 224, 0.72) 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, rgba(255, 190, 224, 0.72) 75%),
-                linear-gradient(-45deg, transparent 75%, rgba(255, 190, 224, 0.72) 75%);
-            background-position: 0 0, 0 14px, 14px -14px, -14px 0;
-            background-size: 28px 28px;
-        }
-        .icon-caption {
-            padding: 10px 10px 12px;
-            color: #fff;
-            font-size: 13px;
-            line-height: 1.45;
-            font-weight: 900;
-            text-shadow: 0 0 8px rgba(255, 105, 180, 0.9);
-        }
-        .save-link {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 42px;
-            margin: 0 10px 12px;
-            padding: 10px 14px;
-            border-radius: 999px;
-            border: 2px solid rgba(255, 255, 255, 0.86);
-            background: linear-gradient(135deg, #ff65b4, #87c7ff);
-            color: #fff;
-            font-size: 13px;
-            font-weight: 900;
-            text-decoration: none;
-            box-shadow: 0 8px 18px rgba(224, 73, 149, 0.24);
-        }
-    </style>
+    <link rel="stylesheet" href="galleries/icons/icon-gallery.css">
 </head>
 <body>
     <main>
@@ -210,130 +15,53 @@
             <img src="assets/icon_gallery/icon_gallery_cover_20260616.png" alt="アイコン特典ギャラリー">
             <div class="hero-body">
                 <h1 id="page-title">アイコン特典ギャラリー</h1>
-                <p class="lead">ColorSingで受け取れるアイコン特典をまとめた場所です。まずは「歌推しアイコンはこちら」をタップしてね。</p>
+                <p class="lead">ColorSingで受け取れるアイコン特典をまとめた場所です。見たい特典をタップすると、それぞれの保存ページへ移動します。</p>
             </div>
         </section>
 
-        <div class="category-list" aria-label="アイコン特典メニュー">
-            <button class="category-button" type="button" onclick="showPanel('utaoshi')" aria-controls="panel-utaoshi">
-                <img src="btn_cat1.png" alt="歌推しアイコンはこちら">
+        <nav class="category-list" aria-label="アイコン特典メニュー">
+            <a class="category-card" href="galleries/icons/utaoshi/">
+                <img src="btn_cat1.png" alt="アイコンギャラリー 歌推しはこちら">
                 <span class="category-copy">
-                    <strong>歌推しアイコンはこちら</strong>
+                    <strong>アイコンギャラリー<br>歌推しはこちら</strong>
                     <span>歌推し特典を受け取ってね</span>
                 </span>
-            </button>
-            <button class="category-button" type="button" onclick="showPanel('fivek')" aria-controls="panel-fivek">
+            </a>
+            <a class="category-card" href="galleries/icons/5k/">
                 <img src="btn_cat2.png" alt="5K特典はこちら">
                 <span class="category-copy">
                     <strong>5K特典はこちら</strong>
-                    <span>心を込めたプレゼント</span>
+                    <span>応援ありがとうのプレゼント</span>
                 </span>
-            </button>
-            <button class="category-button" type="button" onclick="showPanel('membership')" aria-controls="panel-membership">
+            </a>
+            <a class="category-card" href="galleries/icons/membership/">
                 <img src="assets/membership_6months/member_ship_6months_gallery_01_20260602.jpg" alt="6ヶ月Membership特典はこちら">
                 <span class="category-copy">
                     <strong>6ヶ月Membership特典</strong>
                     <span>継続ありがとうの特別カード</span>
                 </span>
-            </button>
-            <button class="category-button" type="button" onclick="showPanel('gundam')" aria-controls="panel-gundam">
+            </a>
+            <a class="category-card" href="galleries/icons/gundam-2026-06-13/">
                 <img src="assets/icon_gallery/gundam-special-frame-20260613/cover.png" alt="ガンダム集計祭りスペシャルアイコンフレーム特典はこちら">
                 <span class="category-copy">
                     <strong>ガンダム集計祭り特典</strong>
                     <span>スペシャルアイコンフレーム</span>
                 </span>
-            </button>
-        </div>
-
-        <section id="panel-utaoshi" class="icon-panel" hidden>
-            <h2 class="panel-title">歌推しアイコンはこちら</h2>
-            <p class="panel-note">画像をタップ、または長押しで保存できます。</p>
-            <div class="icon-grid">
-                <div class="icon-item">
-                    <a href="icon_1k.png" download="nico_utaoshi_icon.png">
-                        <img src="icon_1k.png" alt="歌推しアイコン特典">
-                    </a>
-                    <div class="icon-caption">歌推しアイコン</div>
-                    <a class="save-link" href="icon_1k.png" download="nico_utaoshi_icon.png">画像を保存する</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="panel-fivek" class="icon-panel" hidden>
-            <h2 class="panel-title">5K特典はこちら</h2>
-            <p class="panel-note">心を込めたプレゼントを並べています。</p>
-            <div class="icon-grid">
-                <div class="icon-item"><a href="icon2_1.png" download><img src="icon2_1.png" alt="5K特典 1"></a><div class="icon-caption">5K特典</div><a class="save-link" href="icon2_1.png" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="icon2_2.png" download><img src="icon2_2.png" alt="5K特典 2"></a><div class="icon-caption">5K特典</div><a class="save-link" href="icon2_2.png" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="icon2_3.png" download><img src="icon2_3.png" alt="5K特典 3"></a><div class="icon-caption">5K特典</div><a class="save-link" href="icon2_3.png" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="icon2_4.png" download><img src="icon2_4.png" alt="5K特典 4"></a><div class="icon-caption">5K特典</div><a class="save-link" href="icon2_4.png" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="icon2_5.png" download><img src="icon2_5.png" alt="5K特典 5"></a><div class="icon-caption">5K特典</div><a class="save-link" href="icon2_5.png" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="icon2_6.png" download><img src="icon2_6.png" alt="5K特典 6"></a><div class="icon-caption">5K特典</div><a class="save-link" href="icon2_6.png" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="icon2_7.png" download><img src="icon2_7.png" alt="5K特典 7"></a><div class="icon-caption">5K特典</div><a class="save-link" href="icon2_7.png" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="icon2_8.png" download><img src="icon2_8.png" alt="5K特典 8"></a><div class="icon-caption">5K特典</div><a class="save-link" href="icon2_8.png" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="icon2_9.png" download><img src="icon2_9.png" alt="5K特典 9"></a><div class="icon-caption">5K特典</div><a class="save-link" href="icon2_9.png" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="icon2_10.png" download><img src="icon2_10.png" alt="5K特典 10"></a><div class="icon-caption">5K特典</div><a class="save-link" href="icon2_10.png" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="icon2_11.png" download><img src="icon2_11.png" alt="5K特典 11"></a><div class="icon-caption">5K特典</div><a class="save-link" href="icon2_11.png" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="icon2_12.png" download><img src="icon2_12.png" alt="5K特典 12"></a><div class="icon-caption">5K特典</div><a class="save-link" href="icon2_12.png" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/5k_badges/5k_thank_you_hide_20260601.jpeg" download><img src="assets/5k_badges/5k_thank_you_hide_20260601.jpeg" alt="ひでさん 5K thank you"></a><div class="icon-caption">ひでさん 5K thank you</div><a class="save-link" href="assets/5k_badges/5k_thank_you_hide_20260601.jpeg" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/5k_badges/5k_thank_you_ran_20260601.jpeg" download><img src="assets/5k_badges/5k_thank_you_ran_20260601.jpeg" alt="らんくん 5K thank you"></a><div class="icon-caption">らんくん 5K thank you</div><a class="save-link" href="assets/5k_badges/5k_thank_you_ran_20260601.jpeg" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/5k_badges/5k_thank_you_hashi_20260601.jpeg" download><img src="assets/5k_badges/5k_thank_you_hashi_20260601.jpeg" alt="はしくん 5K thank you"></a><div class="icon-caption">はしくん 5K thank you</div><a class="save-link" href="assets/5k_badges/5k_thank_you_hashi_20260601.jpeg" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/5k_badges/5k_thank_you_ren_20260601.jpeg" download><img src="assets/5k_badges/5k_thank_you_ren_20260601.jpeg" alt="れんさん 5K thank you"></a><div class="icon-caption">れんさん 5K thank you</div><a class="save-link" href="assets/5k_badges/5k_thank_you_ren_20260601.jpeg" download>画像を保存する</a></div>
-            </div>
-        </section>
-
-        <section id="panel-membership" class="icon-panel" hidden>
-            <h2 class="panel-title">6ヶ月Membership特典</h2>
-            <p class="panel-note">6ヶ月継続してくれた隊員への特別カードです。</p>
-            <div class="icon-grid">
-                <div class="icon-item"><a href="assets/membership_6months/member_ship_6months_special_thanks_09_20260602.jpg" download><img src="assets/membership_6months/member_ship_6months_special_thanks_09_20260602.jpg" alt="6ヶ月Membership特典 9"></a><div class="icon-caption">Special thanks / 6ヶ月ありがとう</div><a class="save-link" href="assets/membership_6months/member_ship_6months_special_thanks_09_20260602.jpg" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/membership_6months/member_ship_6months_special_thanks_08_20260602.jpg" download><img src="assets/membership_6months/member_ship_6months_special_thanks_08_20260602.jpg" alt="6ヶ月Membership特典 8"></a><div class="icon-caption">Special thanks / 6ヶ月ありがとう</div><a class="save-link" href="assets/membership_6months/member_ship_6months_special_thanks_08_20260602.jpg" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/membership_6months/member_ship_6months_special_thanks_07_20260602.jpg" download><img src="assets/membership_6months/member_ship_6months_special_thanks_07_20260602.jpg" alt="6ヶ月Membership特典 7"></a><div class="icon-caption">Special thanks / 6ヶ月ありがとう</div><a class="save-link" href="assets/membership_6months/member_ship_6months_special_thanks_07_20260602.jpg" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/membership_6months/member_ship_6months_special_thanks_06_20260602.jpg" download><img src="assets/membership_6months/member_ship_6months_special_thanks_06_20260602.jpg" alt="6ヶ月Membership特典 6"></a><div class="icon-caption">Special thanks / 6ヶ月ありがとう</div><a class="save-link" href="assets/membership_6months/member_ship_6months_special_thanks_06_20260602.jpg" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/membership_6months/member_ship_6months_special_thanks_05_20260602.jpg" download><img src="assets/membership_6months/member_ship_6months_special_thanks_05_20260602.jpg" alt="6ヶ月Membership特典 5"></a><div class="icon-caption">Special thanks / 6ヶ月ありがとう</div><a class="save-link" href="assets/membership_6months/member_ship_6months_special_thanks_05_20260602.jpg" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/membership_6months/member_ship_6months_special_thanks_04_20260602.jpg" download><img src="assets/membership_6months/member_ship_6months_special_thanks_04_20260602.jpg" alt="6ヶ月Membership特典 4"></a><div class="icon-caption">Special thanks / 6ヶ月ありがとう</div><a class="save-link" href="assets/membership_6months/member_ship_6months_special_thanks_04_20260602.jpg" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/membership_6months/member_ship_6months_special_thanks_03_20260602.jpg" download><img src="assets/membership_6months/member_ship_6months_special_thanks_03_20260602.jpg" alt="6ヶ月Membership特典 3"></a><div class="icon-caption">Special thanks / 6ヶ月ありがとう</div><a class="save-link" href="assets/membership_6months/member_ship_6months_special_thanks_03_20260602.jpg" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/membership_6months/member_ship_6months_special_thanks_02_20260602.jpg" download><img src="assets/membership_6months/member_ship_6months_special_thanks_02_20260602.jpg" alt="6ヶ月Membership特典 2"></a><div class="icon-caption">Special thanks / 6ヶ月ありがとう</div><a class="save-link" href="assets/membership_6months/member_ship_6months_special_thanks_02_20260602.jpg" download>画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/membership_6months/member_ship_6months_special_thanks_01_20260602.jpg" download><img src="assets/membership_6months/member_ship_6months_special_thanks_01_20260602.jpg" alt="6ヶ月Membership特典 1"></a><div class="icon-caption">Special thanks / 6ヶ月ありがとう</div><a class="save-link" href="assets/membership_6months/member_ship_6months_special_thanks_01_20260602.jpg" download>画像を保存する</a></div>
-            </div>
-        </section>
-
-        <section id="panel-gundam" class="icon-panel" hidden>
-            <h2 class="panel-title">ガンダム集計祭り特典</h2>
-            <p class="panel-note">2026年6月13日 第1回ガンダム集計祭りのスペシャルアイコンフレームです。</p>
-            <div class="icon-grid">
-                <div class="icon-item"><a href="assets/icon_gallery/gundam-special-frame-20260613/01_takoyakin.png" download="nico_gundam_icon_takoyakin.png"><img class="icon-frame-img" src="assets/icon_gallery/gundam-special-frame-20260613/01_takoyakin.png" alt="たこやきん アイコン特典"></a><div class="icon-caption">たこやきん / スペシャルアイテムありがとう</div><a class="save-link" href="assets/icon_gallery/gundam-special-frame-20260613/01_takoyakin.png" download="nico_gundam_icon_takoyakin.png">画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/icon_gallery/gundam-special-frame-20260613/02_gomora.png" download="nico_gundam_icon_gomora.png"><img class="icon-frame-img" src="assets/icon_gallery/gundam-special-frame-20260613/02_gomora.png" alt="ゴモラ アイコン特典"></a><div class="icon-caption">ゴモラ / スペシャルアイテムありがとう</div><a class="save-link" href="assets/icon_gallery/gundam-special-frame-20260613/02_gomora.png" download="nico_gundam_icon_gomora.png">画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/icon_gallery/gundam-special-frame-20260613/03_yukichi.png" download="nico_gundam_icon_yukichi.png"><img class="icon-frame-img" src="assets/icon_gallery/gundam-special-frame-20260613/03_yukichi.png" alt="ゆきち アイコン特典"></a><div class="icon-caption">ゆきち / スペシャルアイテムありがとう</div><a class="save-link" href="assets/icon_gallery/gundam-special-frame-20260613/03_yukichi.png" download="nico_gundam_icon_yukichi.png">画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/icon_gallery/gundam-special-frame-20260613/04_takkun.png" download="nico_gundam_icon_takkun.png"><img class="icon-frame-img" src="assets/icon_gallery/gundam-special-frame-20260613/04_takkun.png" alt="たっくん アイコン特典"></a><div class="icon-caption">たっくん / スペシャルアイテムありがとう</div><a class="save-link" href="assets/icon_gallery/gundam-special-frame-20260613/04_takkun.png" download="nico_gundam_icon_takkun.png">画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/icon_gallery/gundam-special-frame-20260613/05_amemiya.png" download="nico_gundam_icon_amemiya.png"><img class="icon-frame-img" src="assets/icon_gallery/gundam-special-frame-20260613/05_amemiya.png" alt="雨宮 アイコン特典"></a><div class="icon-caption">雨宮 / スペシャルアイテムありがとう</div><a class="save-link" href="assets/icon_gallery/gundam-special-frame-20260613/05_amemiya.png" download="nico_gundam_icon_amemiya.png">画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/icon_gallery/gundam-special-frame-20260613/06_mayurin.png" download="nico_gundam_icon_mayuchan.png"><img class="icon-frame-img" src="assets/icon_gallery/gundam-special-frame-20260613/06_mayurin.png" alt="まゆちゃん アイコン特典"></a><div class="icon-caption">まゆちゃん / スペシャルアイテムありがとう</div><a class="save-link" href="assets/icon_gallery/gundam-special-frame-20260613/06_mayurin.png" download="nico_gundam_icon_mayuchan.png">画像を保存する</a></div>
-                <div class="icon-item"><a href="assets/icon_gallery/gundam-special-frame-20260613/07_nagisa.png" download="nico_gundam_icon_nagichan.png"><img class="icon-frame-img" src="assets/icon_gallery/gundam-special-frame-20260613/07_nagisa.png" alt="なぎちゃん アイコン特典"></a><div class="icon-caption">なぎちゃん / スペシャルアイテムありがとう</div><a class="save-link" href="assets/icon_gallery/gundam-special-frame-20260613/07_nagisa.png" download="nico_gundam_icon_nagichan.png">画像を保存する</a></div>
-            </div>
-        </section>
+            </a>
+        </nav>
     </main>
 
     <script>
-        const panelIds = ["utaoshi", "fivek", "membership", "gundam"];
-
-        function showPanel(id, updateHash = true) {
-            panelIds.forEach((panelId) => {
-                const panel = document.getElementById(`panel-${panelId}`);
-                const button = document.querySelector(`[aria-controls="panel-${panelId}"]`);
-                const isActive = panelId === id;
-                panel.hidden = !isActive;
-                button.setAttribute("aria-expanded", isActive ? "true" : "false");
-            });
-
-            const activePanel = document.getElementById(`panel-${id}`);
-            if (updateHash) history.replaceState(null, "", `#${id}`);
-            activePanel.scrollIntoView({ behavior: "smooth", block: "start" });
+        const oldHashRoutes = {
+            utaoshi: "galleries/icons/utaoshi/",
+            fivek: "galleries/icons/5k/",
+            membership: "galleries/icons/membership/",
+            gundam: "galleries/icons/gundam-2026-06-13/"
+        };
+        const oldKey = location.hash.replace("#", "");
+        if (oldHashRoutes[oldKey]) {
+            location.replace(oldHashRoutes[oldKey]);
         }
-
-        window.addEventListener("DOMContentLoaded", () => {
-            const hash = location.hash.replace("#", "");
-            showPanel(panelIds.includes(hash) ? hash : "utaoshi", false);
-        });
     </script>
 </body>
 </html>
