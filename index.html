@@ -131,6 +131,198 @@
             .next-event-actions { grid-template-columns: 1fr; }
         }
 
+        .event-preview-card {
+            width: 92%;
+            margin: 0 auto 30px;
+            overflow: hidden;
+            border-radius: 22px;
+            background:
+                radial-gradient(circle at top right, rgba(255,255,255,0.84), transparent 26%),
+                radial-gradient(circle at top left, rgba(255,233,245,0.78), transparent 22%),
+                linear-gradient(160deg, rgba(255,255,255,0.97), rgba(255,236,245,0.95) 48%, rgba(237,246,255,0.93));
+            color: #4a243c;
+            border: 3px solid rgba(255,255,255,0.96);
+            box-shadow: 0 0 18px rgba(255,255,255,0.76), 0 0 24px rgba(255,105,180,0.32);
+            text-align: left;
+        }
+        .event-preview-media { padding: 14px 14px 0; }
+        .event-preview-image {
+            width: 100%;
+            display: block;
+            border-radius: 18px;
+            border: 3px solid rgba(255, 255, 255, 0.94);
+            background: rgba(255, 244, 248, 0.92);
+            box-shadow: 0 0 18px rgba(255, 105, 180, 0.18), inset 0 0 18px rgba(255,255,255,.25);
+        }
+        .event-preview-body { padding: 16px 16px 18px; }
+        .event-preview-kicker {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 999px;
+            margin-bottom: 8px;
+            background: linear-gradient(45deg, #ff9ed1, #ff7fbe);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 0.03em;
+            box-shadow: 0 0 10px rgba(255,105,180,0.34), 0 0 16px rgba(255,255,255,0.24);
+        }
+        .event-preview-title {
+            margin: 0 0 8px;
+            font-size: 24px;
+            line-height: 1.4;
+            color: #ef2b90;
+            font-weight: 900;
+            letter-spacing: 0.01em;
+            -webkit-text-stroke: 0.35px rgba(255,255,255,.72);
+            text-shadow:
+                0 1px 0 rgba(255,255,255,.99),
+                0 0 6px rgba(255,255,255,.98),
+                0 0 14px rgba(255,255,255,.84),
+                0 0 24px rgba(255,118,190,.5),
+                0 0 34px rgba(255,84,170,.28);
+        }
+        .event-preview-sub {
+            margin: 0 0 10px;
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 900;
+            color: #e176b7;
+            text-shadow: 0 0 10px rgba(255,255,255,0.28);
+        }
+        .event-date-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 30px;
+            padding: 5px 14px;
+            margin: 0 0 13px;
+            border-radius: 999px;
+            border: 2px solid rgba(255, 255, 255, .95);
+            background: linear-gradient(90deg, rgba(255, 245, 250, .98), rgba(255, 212, 234, .96));
+            color: #d9368b;
+            font-size: 13px;
+            font-weight: 900;
+            line-height: 1.35;
+            box-shadow: 0 0 12px rgba(255, 112, 184, .22), inset 0 0 12px rgba(255,255,255,.52);
+            text-shadow: 0 1px 0 rgba(255,255,255,.92);
+        }
+        .event-points {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 9px;
+            margin: 0 0 15px;
+        }
+        .event-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            border-radius: 18px;
+            border: 2px solid rgba(255,255,255,.96);
+            background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,246,250,.84));
+            padding: 11px 12px 10px;
+            box-shadow: 0 0 10px rgba(255, 150, 205, 0.1), inset 0 0 12px rgba(255,255,255,.34);
+        }
+        .event-point-number {
+            position: relative;
+            flex: 0 0 34px;
+            width: 34px;
+            height: 34px;
+            min-width: 34px;
+            display: block;
+        }
+        .event-point-number::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 999px;
+            background: linear-gradient(45deg, #ff9ed1, #ff78bc);
+            box-shadow:
+                0 0 10px rgba(255,105,180,0.34),
+                0 0 18px rgba(255,255,255,0.3),
+                inset 0 0 8px rgba(255,255,255,0.24);
+        }
+        .event-point-digit {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 15px;
+            line-height: 1;
+            font-weight: 900;
+            font-variant-numeric: tabular-nums;
+            font-family: "Arial Rounded MT Bold", "Trebuchet MS", "Helvetica Neue", Arial, sans-serif;
+            text-shadow:
+                0 0 4px rgba(255,255,255,0.98),
+                0 0 10px rgba(255,255,255,0.82),
+                0 0 16px rgba(255,142,204,0.92);
+            transform: translateY(-0.5px);
+        }
+        .event-point-body {
+            flex: 1;
+            min-width: 0;
+        }
+        .event-point strong {
+            display: block;
+            margin-bottom: 3px;
+            font-size: 13px;
+            line-height: 1.35;
+            color: #ff83bc;
+            text-shadow:
+                0 0 6px rgba(255,255,255,.88),
+                0 0 14px rgba(255,174,216,.38);
+        }
+        .event-point-body > span {
+            display: block;
+            font-size: 12px;
+            line-height: 1.55;
+            font-weight: 700;
+            color: #9b7084;
+        }
+        .event-note-box {
+            border-radius: 18px;
+            padding: 12px 12px 11px;
+            background: linear-gradient(160deg, rgba(255,249,252,0.96), rgba(255,233,244,0.92));
+            border: 2px solid rgba(255,255,255,0.96);
+            color: #a06c84;
+            font-size: 12px;
+            line-height: 1.7;
+            font-weight: 900;
+            margin-bottom: 12px;
+            box-shadow: 0 0 14px rgba(255, 148, 203, 0.12), inset 0 0 12px rgba(255,255,255,0.32);
+        }
+        .event-note-title {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 14px;
+            color: #ff7fb8;
+            text-shadow:
+                0 0 6px rgba(255,255,255,.84),
+                0 0 12px rgba(255,181,221,.24);
+        }
+        .event-note-copy { display: block; }
+        .event-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 999px;
+            border: 2px solid rgba(255,255,255,0.96);
+            background: linear-gradient(45deg, #ffa6d7, #ff8fb5);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 0.01em;
+            text-shadow: 0 0 8px rgba(255,255,255,0.34);
+            text-decoration: none;
+            box-shadow: 0 0 12px rgba(255,105,180,0.22);
+            cursor: pointer;
+        }
+
         /* ColorSing 誘導ボタン */
         .luxury-btn { 
             background: linear-gradient(45deg, #ff7675, #ff69b4, #ff7675); background-size: 200% auto; animation: shine 3s linear infinite; 
@@ -149,6 +341,79 @@
         .benefit-poster-img { 
             width: 100%; display: block; object-fit: cover; 
             pointer-events: none; -webkit-touch-callout: none; 
+        }
+        .shortcut-card {
+            width: 92%;
+            margin: 0 auto 24px;
+            padding: 16px 15px 15px;
+            border-radius: 20px;
+            background:
+                radial-gradient(circle at top right, rgba(255,255,255,0.68), transparent 28%),
+                linear-gradient(160deg, rgba(255,250,253,0.92), rgba(255,232,244,0.9) 52%, rgba(242,249,255,0.88));
+            border: 3px solid rgba(255,255,255,0.95);
+            box-shadow: 0 0 16px rgba(255,255,255,0.5), 0 0 22px rgba(255,105,180,0.2);
+            text-align: left;
+            box-sizing: border-box;
+        }
+        .shortcut-kicker {
+            display: inline-block;
+            margin-bottom: 8px;
+            padding: 4px 11px;
+            border-radius: 999px;
+            background: linear-gradient(45deg, #ffa3d4, #ff84bf);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.04em;
+            box-shadow: 0 0 10px rgba(255,105,180,0.28);
+        }
+        .shortcut-title {
+            display: block;
+            margin-bottom: 6px;
+            color: #f05da8;
+            font-size: 18px;
+            line-height: 1.4;
+            font-weight: 900;
+            text-shadow: 0 0 8px rgba(255,255,255,0.78);
+        }
+        .shortcut-copy {
+            margin: 0 0 12px;
+            color: #9a6f84;
+            font-size: 12px;
+            line-height: 1.65;
+            font-weight: 700;
+        }
+        .shortcut-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        }
+        .shortcut-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 10px 9px;
+            border-radius: 16px;
+            border: 2px solid rgba(255,255,255,0.96);
+            background: linear-gradient(160deg, rgba(255,171,218,0.96), rgba(255,138,185,0.96));
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.45;
+            font-weight: 900;
+            text-shadow: 0 0 8px rgba(255,255,255,0.34);
+            box-shadow: 0 0 12px rgba(255,105,180,0.16);
+        }
+        .shortcut-link strong {
+            display: block;
+            font-size: 13px;
+        }
+        .shortcut-link span {
+            display: block;
+            font-size: 10px;
+            opacity: 0.95;
         }
         .benefit-poster-text { 
             position: absolute; bottom: 0; left: 0; width: 100%; 
@@ -332,6 +597,16 @@
             .gallery-pair .gallery-title { font-size: 16px; }
             .gallery-pair .gallery-note { font-size: 12px; }
         }
+        @media (max-width: 520px) {
+            .event-preview-card { width: 94%; }
+            .event-preview-media { padding: 11px 11px 0; }
+            .event-preview-body { padding: 14px 13px 16px; }
+            .event-preview-title { font-size: 22px; }
+            .event-preview-sub { font-size: 13px; }
+            .event-date-pill { width: 100%; font-size: 12px; }
+            .shortcut-card { width: 94%; }
+            .shortcut-grid { grid-template-columns: 1fr; }
+        }
 
         .game-card { width: 90%; margin: 40px auto; padding: 6px; border-style: dashed !important; background: rgba(255, 255, 255, 0.5); display: flex; align-items: center; gap: 15px; border-radius: 25px; text-decoration: none; color: white; }
         .game-icon-img { width: 115px; height: 115px; border-radius: 20px; object-fit: cover; pointer-events: none; }
@@ -399,7 +674,7 @@
         <a class="site-menu-item primary" href="https://web.colorsing.com/share/user?user_id=411fa6d1-ba51-4f7c-a4f2-d635ab43ba5b" target="_blank" onclick="closeSiteMenu()">ColorSing</a>
         <button class="site-menu-item" type="button" onclick="openBenefitFromMenu()">ColorSingの特典内容</button>
         <a class="site-menu-item" href="galleries/icons/" onclick="closeSiteMenu()">アイコン特典ギャラリー</a>
-        <button class="site-menu-item" type="button" onclick="openSecretGalleryFromMenu()">秘密のパスワードのページ</button>
+        <a class="site-menu-item" href="rewards/karashin-pearl-cup-special-event/" onclick="closeSiteMenu()">秘密のページ</a>
         <button class="site-menu-item" type="button" onclick="goToSection('note')">Nicoの想い<span class="site-menu-sub">note</span></button>
         <a class="site-menu-item" href="history/" onclick="closeSiteMenu()">Nicoの歩んだ道</a>
         <a class="site-menu-item" href="galleries/treasure/" onclick="closeSiteMenu()">宝物ギャラリー<span class="site-menu-sub">リスナーさんからいただいたページ</span></a>
@@ -510,6 +785,8 @@
         <div class="large-icon-item"><img src="assets/5k_badges/5k_thank_you_ran_20260601.jpeg" alt="らんくん 5K thank you"><div class="icon-caption">らんくん 5K thank you♡</div></div>
         <div class="large-icon-item"><img src="assets/5k_badges/5k_thank_you_hashi_20260601.jpeg" alt="はしくん 5K thank you"><div class="icon-caption">はしくん 5K thank you♡</div></div>
         <div class="large-icon-item"><img src="assets/5k_badges/5k_thank_you_ren_20260601.jpeg" alt="れんさん 5K thank you"><div class="icon-caption">れんさん 5K thank you♡</div></div>
+        <div class="large-icon-item"><img src="assets/5k_badges/5k_thank_you_mizuki_senpai_20260620.jpg" alt="ミズキせんぱい 5K thank you"><div class="icon-caption">ミズキせんぱい 5K thank you♡</div></div>
+        <div class="large-icon-item"><img src="assets/5k_badges/5k_thank_you_mayuchan_20260620.jpg" alt="まゆちゃん 5K thank you"><div class="icon-caption">まゆちゃん 5K thank you♡</div></div>
         <div class="large-icon-item"><div class="coming-soon-box">わくわく♡</div><div class="icon-caption">次は誰かな？✨</div></div>
     </div>
 </div>
@@ -691,26 +968,109 @@
         <span style="font-size: 13px; font-weight: normal; margin-top: 8px; display: block;">アニソンからPOPSまで幅広く歌唱中🌈💞</span>
     </a>
 
+    <section class="event-preview-card fade-in" aria-label="パール杯イベント概要">
+        <div class="event-preview-media">
+            <img
+                src="assets/home/pearl_cup_event_cover_20260620_v2.png"
+                alt="25Hz小隊ミッション ～秘密の扉を開放せよ～"
+                class="event-preview-image"
+            >
+        </div>
+        <div class="event-preview-body">
+            <span class="event-preview-kicker">期間限定 Event</span>
+            <h2 class="event-preview-title">25Hz小隊ミッション<br>～秘密の扉を開放せよ～</h2>
+            <p class="event-preview-sub">カラシン パール杯 特別イベント</p>
+            <p class="event-date-pill">2026年6月24日(水)〜6月27日(土)</p>
+
+            <div class="event-points">
+                <div class="event-point">
+                    <span class="event-point-number"><span class="event-point-digit">1</span></span>
+                    <div class="event-point-body">
+                        <strong>合言葉は初日から表示</strong>
+                        <span>パール杯期間中、配信背景に合言葉が出ています。</span>
+                    </div>
+                </div>
+                <div class="event-point">
+                    <span class="event-point-number"><span class="event-point-digit">2</span></span>
+                    <div class="event-point-body">
+                        <strong>配信でいつでも確認OK</strong>
+                        <span>配信に来てくれた方は、期間中いつでも合言葉を確認できます。</span>
+                    </div>
+                </div>
+                <div class="event-point">
+                    <span class="event-point-number"><span class="event-point-digit">3</span></span>
+                    <div class="event-point-body">
+                        <strong>200Kで秘密の扉が開放</strong>
+                        <span>200K到達後、秘密の扉ページが開きます。</span>
+                    </div>
+                </div>
+                <div class="event-point">
+                    <span class="event-point-number"><span class="event-point-digit">4</span></span>
+                    <div class="event-point-body">
+                        <strong>合言葉で特典を受け取り</strong>
+                        <span>配信で見た合言葉を入力すると、特典を受け取れます。200K達成後は本命特典へ切り替わります。</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-note-box">
+                <strong class="event-note-title">Lギフト（990コイン以上のアイテム）で確定</strong>
+                <span class="event-note-copy">
+                    お名前入りの特別バージョンのNicoちゃんカードを受け取れます。<br>
+                    名前入りカードは全体目標達成に関係なく確定です。
+                </span>
+            </div>
+
+            <a class="event-cta" id="pearlSecretDoorLink" href="rewards/karashin-pearl-cup-special-event/">秘密のページはこちら</a>
+        </div>
+    </section>
+
     <button id="benefits" class="benefit-poster-btn pink-neon-border fade-in" onclick="openModal()">
         <img src="assets/home/colorsing_benefit_cover_20260616.png" alt="ColorSingの特典内容はこちら" class="benefit-poster-img">
     </button>
 
+    <section class="shortcut-card fade-in" aria-label="特典ショートカット">
+        <span class="shortcut-kicker">Shortcut</span>
+        <strong class="shortcut-title">すぐ受け取るリンク</strong>
+        <p class="shortcut-copy">歌推し、5K特典、パール杯の秘密ページへ、そのまま進めるショートカットです。</p>
+        <div class="shortcut-grid">
+            <a class="shortcut-link" href="galleries/icons/utaoshi/">
+                <span>
+                    <strong>歌推し</strong>
+                    <span>/galleries/icons/utaoshi/</span>
+                </span>
+            </a>
+            <a class="shortcut-link" href="galleries/icons/5k/">
+                <span>
+                    <strong>5K特典</strong>
+                    <span>/galleries/icons/5k/</span>
+                </span>
+            </a>
+            <a class="shortcut-link" href="rewards/karashin-pearl-cup-special-event/">
+                <span>
+                    <strong>秘密のページ</strong>
+                    <span>パール杯特典はこちら</span>
+                </span>
+            </a>
+        </div>
+    </section>
+
     <div class="gallery-pair fade-in">
-        <div id="gallery" class="gallery-card pink-neon-border" onclick="location.href='galleries/icons/'">
+        <a id="gallery" class="gallery-card pink-neon-border" href="galleries/icons/">
             <img src="assets/icon_gallery/icon_gallery_cover_20260616.png" class="gallery-banner-img" alt="アイコンギャラリーはこちら">
             <div class="card-content">
                 <span class="neon-white gallery-title">🖼️ アイコン<br>ギャラリー</span>
                 <span class="gallery-note">特典を受け取ってね♬.*ﾟ</span>
             </div>
-        </div>
+        </a>
 
-        <div class="gallery-card pink-neon-border" onclick="openSecretStep1()">
+        <a class="gallery-card pink-neon-border" href="rewards/karashin-pearl-cup-special-event/">
             <img src="assets/home/secret_gallery_cover_20260616.png" class="gallery-banner-img" alt="秘密のギャラリー入口">
             <div class="card-content">
-                <span class="neon-white gallery-title" style="color: #ffcc00; text-shadow: 0 0 10px rgba(255, 204, 0, 0.7), 0 0 15px rgba(255, 105, 180, 0.8);">🎁 秘密の<br>ギャラリー</span>
-                <span class="gallery-note">配信イベントなどでもらえる特別特典。<br>配信中に出るキーワードを合言葉にして開放するよ✨</span>
+                <span class="neon-white gallery-title">🎁 秘密の<br>ギャラリー</span>
+                <span class="gallery-note">200K到達後、配信背景に表示される合言葉で開く特別特典</span>
             </div>
-        </div>
+        </a>
     </div>
 
     <a id="note" class="history-wide-card pink-neon-border fade-in" href="https://note.com/open_nicochan" target="_blank" rel="noopener">
@@ -845,7 +1205,7 @@
 
     function openSecretGalleryFromMenu() {
         closeSiteMenu();
-        openSecretStep1();
+        location.href = 'rewards/karashin-pearl-cup-special-event/';
     }
 
     if (window.location.hash === '#menu') {
