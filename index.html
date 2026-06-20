@@ -310,16 +310,18 @@
             min-height: 48px;
             width: 100%;
             padding: 12px 14px;
+            box-sizing: border-box;
+            overflow: hidden;
             border-radius: 999px;
             border: 2px solid rgba(255,255,255,0.96);
-            background: linear-gradient(45deg, #ffa6d7, #ff8fb5);
+            background: linear-gradient(45deg, #ff9fd3, #ff82b7);
             color: #fff;
             font-size: 14px;
             font-weight: 900;
             letter-spacing: 0.01em;
-            text-shadow: 0 0 8px rgba(255,255,255,0.34);
+            text-shadow: 0 0 8px rgba(255,255,255,0.44);
             text-decoration: none;
-            box-shadow: 0 0 12px rgba(255,105,180,0.22);
+            box-shadow: 0 0 14px rgba(255,105,180,0.22), inset 0 0 12px rgba(255,255,255,0.12);
             cursor: pointer;
         }
 
@@ -341,79 +343,6 @@
         .benefit-poster-img { 
             width: 100%; display: block; object-fit: cover; 
             pointer-events: none; -webkit-touch-callout: none; 
-        }
-        .shortcut-card {
-            width: 92%;
-            margin: 0 auto 24px;
-            padding: 16px 15px 15px;
-            border-radius: 20px;
-            background:
-                radial-gradient(circle at top right, rgba(255,255,255,0.68), transparent 28%),
-                linear-gradient(160deg, rgba(255,250,253,0.92), rgba(255,232,244,0.9) 52%, rgba(242,249,255,0.88));
-            border: 3px solid rgba(255,255,255,0.95);
-            box-shadow: 0 0 16px rgba(255,255,255,0.5), 0 0 22px rgba(255,105,180,0.2);
-            text-align: left;
-            box-sizing: border-box;
-        }
-        .shortcut-kicker {
-            display: inline-block;
-            margin-bottom: 8px;
-            padding: 4px 11px;
-            border-radius: 999px;
-            background: linear-gradient(45deg, #ffa3d4, #ff84bf);
-            color: #fff;
-            font-size: 11px;
-            font-weight: 900;
-            letter-spacing: 0.04em;
-            box-shadow: 0 0 10px rgba(255,105,180,0.28);
-        }
-        .shortcut-title {
-            display: block;
-            margin-bottom: 6px;
-            color: #f05da8;
-            font-size: 18px;
-            line-height: 1.4;
-            font-weight: 900;
-            text-shadow: 0 0 8px rgba(255,255,255,0.78);
-        }
-        .shortcut-copy {
-            margin: 0 0 12px;
-            color: #9a6f84;
-            font-size: 12px;
-            line-height: 1.65;
-            font-weight: 700;
-        }
-        .shortcut-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 10px;
-        }
-        .shortcut-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 52px;
-            padding: 10px 9px;
-            border-radius: 16px;
-            border: 2px solid rgba(255,255,255,0.96);
-            background: linear-gradient(160deg, rgba(255,171,218,0.96), rgba(255,138,185,0.96));
-            color: #fff;
-            text-decoration: none;
-            text-align: center;
-            font-size: 12px;
-            line-height: 1.45;
-            font-weight: 900;
-            text-shadow: 0 0 8px rgba(255,255,255,0.34);
-            box-shadow: 0 0 12px rgba(255,105,180,0.16);
-        }
-        .shortcut-link strong {
-            display: block;
-            font-size: 13px;
-        }
-        .shortcut-link span {
-            display: block;
-            font-size: 10px;
-            opacity: 0.95;
         }
         .benefit-poster-text { 
             position: absolute; bottom: 0; left: 0; width: 100%; 
@@ -604,8 +533,6 @@
             .event-preview-title { font-size: 22px; }
             .event-preview-sub { font-size: 13px; }
             .event-date-pill { width: 100%; font-size: 12px; }
-            .shortcut-card { width: 94%; }
-            .shortcut-grid { grid-template-columns: 1fr; }
         }
 
         .game-card { width: 90%; margin: 40px auto; padding: 6px; border-style: dashed !important; background: rgba(255, 255, 255, 0.5); display: flex; align-items: center; gap: 15px; border-radius: 25px; text-decoration: none; color: white; }
@@ -1028,32 +955,6 @@
     <button id="benefits" class="benefit-poster-btn pink-neon-border fade-in" onclick="openModal()">
         <img src="assets/home/colorsing_benefit_cover_20260616.png" alt="ColorSingの特典内容はこちら" class="benefit-poster-img">
     </button>
-
-    <section class="shortcut-card fade-in" aria-label="特典ショートカット">
-        <span class="shortcut-kicker">Shortcut</span>
-        <strong class="shortcut-title">すぐ受け取るリンク</strong>
-        <p class="shortcut-copy">歌推し、5K特典、パール杯の秘密ページへ、そのまま進めるショートカットです。</p>
-        <div class="shortcut-grid">
-            <a class="shortcut-link" href="galleries/icons/utaoshi/">
-                <span>
-                    <strong>歌推し</strong>
-                    <span>/galleries/icons/utaoshi/</span>
-                </span>
-            </a>
-            <a class="shortcut-link" href="galleries/icons/5k/">
-                <span>
-                    <strong>5K特典</strong>
-                    <span>/galleries/icons/5k/</span>
-                </span>
-            </a>
-            <a class="shortcut-link" href="rewards/karashin-pearl-cup-special-event/">
-                <span>
-                    <strong>秘密のページ</strong>
-                    <span>パール杯特典はこちら</span>
-                </span>
-            </a>
-        </div>
-    </section>
 
     <div class="gallery-pair fade-in">
         <a id="gallery" class="gallery-card pink-neon-border" href="galleries/icons/">
