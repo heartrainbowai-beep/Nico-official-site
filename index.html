@@ -480,7 +480,7 @@
         .card-content { padding: 15px; }
 
         /* ギャラリー専用の縦長枠 */
-        .gallery-card { width: 88%; margin: 0 auto 25px auto; border-radius: 20px; overflow: hidden; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px); cursor: pointer; text-align: center; display: block; border: none; }
+        .gallery-card { width: 88%; margin: 0 auto 25px auto; border-radius: 20px; overflow: hidden; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px); cursor: pointer; text-align: center; display: block; border: none; padding: 0; color: #fff; }
         .gallery-banner-img { 
             width: 100%; height: auto; display: block; 
             pointer-events: none; -webkit-touch-callout: none; 
@@ -601,13 +601,13 @@
         <a class="site-menu-item primary" href="https://web.colorsing.com/share/user?user_id=411fa6d1-ba51-4f7c-a4f2-d635ab43ba5b" target="_blank" onclick="closeSiteMenu()">ColorSing</a>
         <button class="site-menu-item" type="button" onclick="openBenefitFromMenu()">ColorSingの特典内容</button>
         <a class="site-menu-item" href="galleries/icons/" onclick="closeSiteMenu()">アイコン特典ギャラリー</a>
-        <a class="site-menu-item" href="rewards/karashin-pearl-cup-special-event/" onclick="closeSiteMenu()">秘密のページ</a>
+        <button class="site-menu-item" type="button" onclick="openSecretGalleryFromMenu()">歴代の秘密のページ</button>
+        <a class="site-menu-item" href="rewards/karashin-pearl-cup-special-event/" onclick="closeSiteMenu()">パール杯の秘密のページ</a>
         <button class="site-menu-item" type="button" onclick="goToSection('note')">Nicoの想い<span class="site-menu-sub">note</span></button>
         <a class="site-menu-item" href="history/" onclick="closeSiteMenu()">Nicoの歩んだ道</a>
-        <a class="site-menu-item" href="galleries/treasure/" onclick="closeSiteMenu()">宝物ギャラリー<span class="site-menu-sub">リスナーさんからいただいたページ</span></a>
+        <a class="site-menu-item" href="galleries/treasure/" onclick="closeSiteMenu()">宝ものギャラリー<span class="site-menu-sub">リスナーさんからいただいたページ</span></a>
         <a class="site-menu-item" href="events" onclick="closeSiteMenu()">過去のイベント</a>
-    </div>
-    <button class="site-menu-close" type="button" onclick="closeSiteMenu()">とじる</button>
+    </div>    <button class="site-menu-close" type="button" onclick="closeSiteMenu()">とじる</button>
 </nav>
 
 <div id="benefitsModal" class="modal-overlay">
@@ -960,20 +960,19 @@
         <a id="gallery" class="gallery-card pink-neon-border" href="galleries/icons/">
             <img src="assets/icon_gallery/icon_gallery_cover_20260616.png" class="gallery-banner-img" alt="アイコンギャラリーはこちら">
             <div class="card-content">
-                <span class="neon-white gallery-title">🖼️ アイコン<br>ギャラリー</span>
+                <span class="neon-white gallery-title">アイコン<br>ギャラリー</span>
                 <span class="gallery-note">特典を受け取ってね♬.*ﾟ</span>
             </div>
         </a>
 
-        <a class="gallery-card pink-neon-border" href="rewards/karashin-pearl-cup-special-event/">
+        <button class="gallery-card pink-neon-border" id="secretGalleryLink" type="button" onclick="openSecretStep1()">
             <img src="assets/home/secret_gallery_cover_20260616.png" class="gallery-banner-img" alt="秘密のギャラリー入口">
             <div class="card-content">
                 <span class="neon-white gallery-title">🎁 秘密の<br>ギャラリー</span>
-                <span class="gallery-note">200K到達後、配信背景に表示される合言葉で開く特別特典</span>
+                <span class="gallery-note">マクロスやガンダムなど、歴代イベントの合言葉で開く秘密ページはこちら</span>
             </div>
-        </a>
+        </button>
     </div>
-
     <a id="note" class="history-wide-card pink-neon-border fade-in" href="https://note.com/open_nicochan" target="_blank" rel="noopener">
         <img src="assets/home/nico_note_cover_20260616.png?v=20260616-note" class="history-wide-img" alt="Nicoの想い note">
         <div class="card-content">
@@ -1112,9 +1111,9 @@
         openIconsModal();
     }
 
-    function openSecretGalleryFromMenu() {
+        function openSecretGalleryFromMenu() {
         closeSiteMenu();
-        location.href = 'rewards/karashin-pearl-cup-special-event/';
+        openSecretStep1();
     }
 
     if (window.location.hash === '#menu') {
