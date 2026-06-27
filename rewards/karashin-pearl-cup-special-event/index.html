@@ -984,7 +984,7 @@
         }
       };
       // 200K到達後の本番切替は、この1行を "after200k" に変更する。
-      const rewardReleaseMode = "before200k";
+      const rewardReleaseMode = "after200k";
       const rewardPreviewMode = new URLSearchParams(window.location.search).get("reward");
       const activeRewardMode = ["before200k", "after200k"].includes(rewardPreviewMode)
         ? rewardPreviewMode
