@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Qooo!! 夏祭りリレー | 秘密ページ</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --pink: #ff67b8;
+      --hot-pink: #ff2f93;
+      --aqua: #70e4ff;
+      --sky: #d9f7ff;
+      --gold: #ffe66f;
+      --violet: #8b64ff;
+      --ink: #6b285e;
+      --white: #fff;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, .36), rgba(5, 8, 24, .44) 42%, rgba(9, 10, 26, .56) 100%),
+        radial-gradient(circle at 18% 16%, rgba(255, 94, 174, .10), transparent 16%),
+        radial-gradient(circle at 82% 14%, rgba(112, 228, 255, .10), transparent 16%),
+        url("team_qooo_summer_relay_background_20260701.png") center center / cover no-repeat fixed,
+        linear-gradient(180deg, #000000 0%, #02040c 35%, #050715 68%, #080816 100%);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle, rgba(255,255,255,.95) 0 1.3px, transparent 1.9px),
+        radial-gradient(circle, rgba(255,214,239,.76) 0 1.2px, transparent 1.8px),
+        radial-gradient(circle, rgba(201,239,255,.72) 0 1.4px, transparent 2px);
+      background-size: 120px 120px, 180px 180px, 240px 240px;
+      background-position: 14px 10px, 68px 42px, 122px 78px;
+      opacity: .15;
+      z-index: 0;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(255, 247, 183, .98) 0 2px, transparent 3px),
+        repeating-radial-gradient(circle at 14% 18%, rgba(255, 233, 122, .92) 0 2px, transparent 3px 16px, rgba(255, 233, 122, .36) 16px 18px, transparent 19px 30px),
+        radial-gradient(circle at 80% 16%, rgba(142, 236, 255, .98) 0 2px, transparent 3px),
+        repeating-radial-gradient(circle at 80% 16%, rgba(112, 228, 255, .9) 0 2px, transparent 3px 16px, rgba(112, 228, 255, .34) 16px 18px, transparent 19px 30px),
+        radial-gradient(circle at 78% 72%, rgba(255, 170, 216, .98) 0 2px, transparent 3px),
+        repeating-radial-gradient(circle at 78% 72%, rgba(255, 103, 184, .88) 0 2px, transparent 3px 16px, rgba(255, 103, 184, .32) 16px 18px, transparent 19px 30px),
+        radial-gradient(circle at 28% 76%, rgba(212, 191, 255, .98) 0 2px, transparent 3px),
+        repeating-radial-gradient(circle at 28% 76%, rgba(139, 100, 255, .84) 0 2px, transparent 3px 16px, rgba(139, 100, 255, .3) 16px 18px, transparent 19px 30px),
+        radial-gradient(circle at 50% 10%, rgba(255, 214, 144, .94) 0 2px, transparent 3px),
+        repeating-radial-gradient(circle at 50% 10%, rgba(255, 168, 76, .84) 0 2px, transparent 3px 15px, rgba(255, 168, 76, .26) 15px 17px, transparent 18px 28px);
+      opacity: .22;
+      z-index: 0;
+      filter: blur(.15px);
+    }
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 860px);
+      margin: 0 auto;
+      padding: 18px 14px 48px;
+    }
+    .cover-card,
+    .card,
+    .keyword-panel,
+    .reward-panel {
+      border: 3px solid rgba(255,255,255,.94);
+      border-radius: 24px;
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 0 18px rgba(255,255,255,.7), 0 0 24px rgba(255, 79, 169, .24);
+      backdrop-filter: blur(8px);
+    }
+    .cover-card {
+      padding: 14px 14px 10px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,.92), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,240,248,.88) 58%, rgba(238,248,255,.84));
+      box-shadow:
+        0 0 18px rgba(255,255,255,.72),
+        0 0 24px rgba(255, 79, 169, .22),
+        inset 0 0 18px rgba(255,255,255,.34);
+    }
+    .cover-image {
+      display: block;
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      height: auto;
+      object-fit: contain;
+      border: 3px solid rgba(255,255,255,.96);
+      border-radius: 24px;
+      background: rgba(255,255,255,.94);
+      box-shadow:
+        0 0 16px rgba(255,255,255,.78),
+        0 0 22px rgba(255,124,190,.16);
+    }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--hot-pink), var(--aqua), var(--gold));
+      color: #fff;
+      font-weight: 900;
+      font-size: 13px;
+      text-shadow: 0 1px 3px rgba(113, 32, 89, .38);
+    }
+    h1 {
+      margin: 14px auto 10px;
+      color: #fff;
+      font-size: clamp(34px, 8vw, 62px);
+      line-height: 1.08;
+      letter-spacing: 0;
+      text-shadow:
+        0 0 8px rgba(255,255,255,.98),
+        0 0 16px rgba(255,47,147,.82),
+        0 3px 0 rgba(96, 64, 210, .45);
+    }
+    .event-time {
+      margin: 0 auto;
+      color: #123bc2;
+      font-size: clamp(20px, 5vw, 34px);
+      line-height: 1.25;
+      font-weight: 900;
+      text-shadow: 0 0 8px rgba(255,255,255,.9);
+    }
+    .hero-copy {
+      margin: 14px auto 0;
+      max-width: 620px;
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.85;
+      font-weight: 900;
+    }
+    .reward-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      border: 2px solid rgba(255,255,255,.98);
+      background: transparent;
+      box-shadow: 0 0 12px rgba(255, 47, 147, .18);
+    }
+    .transparency-checker {
+      padding: 12px;
+      border-radius: 22px;
+      border: 3px solid rgba(255,255,255,.96);
+      background-color: #fff;
+      background-image:
+        linear-gradient(45deg, rgba(255, 126, 196, .42) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255, 126, 196, .42) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255, 126, 196, .42) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255, 126, 196, .42) 75%);
+      background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+      background-size: 24px 24px;
+      box-shadow: inset 0 0 18px rgba(255,255,255,.72), 0 0 18px rgba(255, 47, 147, .18);
+    }
+    .section-title {
+      position: relative;
+      display: table;
+      margin: 28px auto 12px;
+      padding: 10px 18px 11px;
+      border-radius: 999px;
+      border: 2px solid rgba(255,255,255,.94);
+      background:
+        radial-gradient(circle at 18% 35%, rgba(255, 232, 94, .5), transparent 18%),
+        radial-gradient(circle at 82% 28%, rgba(112, 228, 255, .42), transparent 18%),
+        radial-gradient(circle at 74% 76%, rgba(255, 105, 180, .34), transparent 20%),
+        linear-gradient(90deg, rgba(255,255,255,.95), rgba(255,239,248,.92) 55%, rgba(240,248,255,.92));
+      color: #d9268a;
+      font-size: clamp(22px, 5vw, 32px);
+      line-height: 1.3;
+      text-align: center;
+      text-shadow:
+        0 0 8px rgba(255,255,255,.98),
+        0 0 14px rgba(255,175,219,.72),
+        0 0 22px rgba(255,47,147,.32);
+      box-shadow:
+        0 0 14px rgba(255,255,255,.62),
+        0 0 22px rgba(255, 79, 169, .2);
+    }
+    .section-title::before,
+    .section-title::after {
+      content: "✦";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff6a9;
+      font-size: 16px;
+      text-shadow:
+        0 0 8px rgba(255,255,255,.98),
+        0 0 14px rgba(255,193,77,.8),
+        0 0 22px rgba(255,105,180,.34);
+    }
+    .section-title::before { left: 12px; }
+    .section-title::after { right: 12px; }
+    .section-title > span {
+      display: inline-block;
+      padding: 0 12px;
+    }
+    .relay-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .card {
+      padding: 14px 14px 13px;
+    }
+    .member-card {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+    }
+    .order {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--hot-pink), var(--violet), var(--aqua));
+      box-shadow: 0 0 14px rgba(255,47,147,.34);
+    }
+    .member-name {
+      margin: 0;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.35;
+      font-weight: 900;
+    }
+    .member-time {
+      margin: 4px 0 0;
+      color: #1c51bd;
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 900;
+    }
+    .howto {
+      display: grid;
+      gap: 10px;
+      counter-reset: step;
+    }
+    .howto .card {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      align-items: center;
+      gap: 10px;
+    }
+    .howto .card::before {
+      counter-increment: step;
+      content: counter(step);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      color: #fff;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--pink), var(--aqua));
+    }
+    .howto p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.7;
+      font-weight: 900;
+    }
+    .keyword-panel {
+      margin-top: 22px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+    .keyword-panel h2 {
+      margin: 0 0 10px;
+      color: var(--hot-pink);
+      font-size: clamp(22px, 5vw, 34px);
+      line-height: 1.3;
+    }
+    .keyword-note {
+      margin: 0 auto 14px;
+      max-width: 560px;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.75;
+      font-weight: 900;
+    }
+    .keyword-row {
+      display: grid;
+      gap: 10px;
+    }
+    input {
+      width: 100%;
+      min-height: 52px;
+      padding: 12px 14px;
+      border: 3px solid rgba(255,103,184,.55);
+      border-radius: 18px;
+      background: rgba(255,255,255,.95);
+      color: var(--ink);
+      font: inherit;
+      font-size: 16px;
+      font-weight: 900;
+      outline: none;
+    }
+    input:focus {
+      border-color: var(--hot-pink);
+      box-shadow: 0 0 0 4px rgba(255,103,184,.16);
+    }
+    button,
+    .download-btn {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 18px;
+      background: linear-gradient(90deg, var(--hot-pink), var(--violet), var(--aqua));
+      color: #fff;
+      font: inherit;
+      font-size: 15px;
+      font-weight: 900;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(255,47,147,.28);
+    }
+    .download-btn.secondary {
+      background: rgba(255,255,255,.92);
+      color: var(--hot-pink);
+      border: 2px solid rgba(255,47,147,.45);
+      box-shadow: 0 0 14px rgba(255,255,255,.45);
+    }
+    .keyword-error {
+      display: none;
+      margin-top: 10px;
+      color: #d72e7f;
+      font-size: 13px;
+      line-height: 1.7;
+      font-weight: 900;
+    }
+    .reward-panel {
+      display: none;
+      margin-top: 18px;
+      padding: 16px 14px 18px;
+      text-align: center;
+    }
+    .reward-panel.is-visible {
+      display: block;
+    }
+    .reward-panel h2 {
+      margin: 0 0 10px;
+      color: var(--hot-pink);
+      font-size: clamp(22px, 5vw, 34px);
+    }
+    .reward-copy {
+      margin: 0 auto 14px;
+      max-width: 560px;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.75;
+      font-weight: 900;
+    }
+    .download-grid {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .save-note {
+      margin: 12px 0 0;
+      color: #7e4e74;
+      font-size: 12px;
+      line-height: 1.7;
+      font-weight: 900;
+    }
+    @media (min-width: 680px) {
+      .relay-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .keyword-row {
+        grid-template-columns: minmax(0, 1fr) auto;
+      }
+      .download-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .transparency-checker {
+        max-width: 560px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="cover-card" aria-label="Team Qooo!! 夏祭りリレー 表紙">
+      <img class="cover-image" src="team_qooo_summer_relay_cover_20260711.png" alt="Team Qooo!! 夏祭りリレー 2026.07.11(土) 20:00〜21:40 メンバー表紙">
+    </section>
+
+    <h2 class="section-title"><span>リレー順</span></h2>
+    <section class="relay-grid" aria-label="リレー順">
+      <article class="card member-card">
+        <span class="order">1</span>
+        <div>
+          <p class="member-name">KOMMY∞</p>
+          <p class="member-time">20:10〜20:35</p>
+        </div>
+      </article>
+      <article class="card member-card">
+        <span class="order">2</span>
+        <div>
+          <p class="member-name">時渡ノア⏳💖</p>
+          <p class="member-time">20:35〜21:00</p>
+        </div>
+      </article>
+      <article class="card member-card">
+        <span class="order">3</span>
+        <div>
+          <p class="member-name">楓🍁</p>
+          <p class="member-time">21:00〜21:25</p>
+        </div>
+      </article>
+      <article class="card member-card">
+        <span class="order">4</span>
+        <div>
+          <p class="member-name">Nico🌈💞</p>
+          <p class="member-time">20:00〜20:10 / 21:25〜21:40</p>
+        </div>
+      </article>
+    </section>
+
+    <h2 class="section-title"><span>参加方法</span></h2>
+    <section class="howto" aria-label="参加方法">
+      <article class="card"><p>出演者4名それぞれの配信背景で、キーワードの一部を見つける。</p></article>
+      <article class="card"><p>KOMMY → 時渡ノア → 楓 → Nico の順番でメモする。</p></article>
+      <article class="card"><p>出演者のプロフィールページにあるリンクから、この秘密ページへ進む。</p></article>
+      <article class="card"><p>4つをつなげた合言葉を入力して、リレー全通特典を受け取る。</p></article>
+    </section>
+
+    <section class="keyword-panel" aria-label="合言葉入力">
+      <h2>合言葉を入力</h2>
+      <p class="keyword-note">4人の配信背景で見つけたキーワードを、指定の順番でつなげて入力してね。</p>
+      <div class="keyword-row">
+        <input id="relayKeyword" type="text" autocomplete="off" placeholder="4つをつなげた合言葉">
+        <button id="unlockButton" type="button">特典をひらく</button>
+      </div>
+      <p class="keyword-error" id="keywordError">合言葉がちがうみたいです。順番をもう一度たしかめてね。</p>
+    </section>
+
+    <section class="reward-panel" id="rewardPanel" aria-label="特典画像">
+      <h2>Team Qooo!! 特別特典</h2>
+      <p class="reward-copy">夏祭りリレーを一緒に楽しんでくれてありがとう。</p>
+      <div class="transparency-checker">
+        <img class="reward-image" id="rewardImage" src="team_qooo_summer_relay_reward_transparent_20260711.png" alt="Team Qooo!! 夏祭りリレー 特典画像">
+      </div>
+      <div class="download-grid">
+        <a class="download-btn" id="downloadReward" href="team_qooo_summer_relay_reward_transparent_20260711.png" download="team_qooo_summer_relay_reward_transparent_20260711.png">画像を保存する</a>
+        <a class="download-btn secondary" id="openReward" href="team_qooo_summer_relay_reward_transparent_20260711.png" target="_blank" rel="noopener">画像を大きく開く</a>
+      </div>
+      <p class="save-note">スマホでは、画像を長押しして保存できます。</p>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const input = document.getElementById("relayKeyword");
+      const unlockButton = document.getElementById("unlockButton");
+      const error = document.getElementById("keywordError");
+      const rewardPanel = document.getElementById("rewardPanel");
+      const validKeywords = ["\u590f\u796d\u308a\u30ea\u30ec\u30fc\u308f\u3063\u3057\u3087\u3044"];
+
+      function normalize(value) {
+        return value
+          .normalize("NFKC")
+          .trim()
+          .replace(/\s/g, "")
+          .toLowerCase();
+      }
+
+      function unlockReward() {
+        const entered = normalize(input.value);
+        const matched = validKeywords.some((keyword) => normalize(keyword) === entered);
+        error.style.display = matched ? "none" : "block";
+        rewardPanel.classList.toggle("is-visible", matched);
+        if (matched) {
+          rewardPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+
+      unlockButton.addEventListener("click", unlockReward);
+      input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          unlockReward();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
