@@ -360,7 +360,7 @@
 
         /* アイコンギャラリー（メニュー画面） */
         .icons-modal-inner { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px); padding: 25px 0; border-radius: 20px; width: 90%; text-align: center; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.3); }
-        .icon-category-wrapper { width: 85%; margin: 0 auto 10px auto; cursor: pointer; }
+        .icon-category-wrapper { display: block; width: 85%; margin: 0 auto 10px auto; cursor: pointer; }
         .icon-category-wrapper:active .icon-category-img { transform: scale(0.98); }
         .icon-category-img { 
             width: 100%; height: auto; border-radius: 12px; border: 2px solid #fff; display: block; 
@@ -620,7 +620,7 @@
         <div class="benefit-section">
             <div class="neon-white" style="font-size: 20px; margin-bottom: 10px;">🌟 月間歌推し特典 🌟</div>
             <p style="font-size: 13px; line-height: 1.6; margin-bottom: 20px; padding: 0 10px; color: #ffe4e1;">達成度に応じて、専用アイコンや個人宛ボイスメッセージなど、心を込めたプレゼントをお贈りします！🎶</p>
-            <img src="image_37.png?v=20260616-benefit" alt="月間歌推し特典" class="modal-img">
+            <img src="assets/icon_gallery/utaoshi-1k-current/utaoshi_1k_current_20260701.jpg" alt="今月の1K歌推し特典" class="modal-img">
         </div>
         <button class="close-btn" onclick="closeModal()">とじる</button>
     </div>
@@ -640,9 +640,9 @@
                 歌推しとってくれてありがとう♡<br>
                 <span style="font-size: 13px; color: #fff; text-shadow: none;">ここをタップしてね👇🏻</span>
             </div>
-            <div class="icon-category-wrapper" onclick="openCategoryPage('category1Page')">
-                <img src="btn_cat1.png" class="icon-category-img" alt="歌推しiconへ">
-            </div>
+            <a class="icon-category-wrapper" href="galleries/icons/utaoshi/" onclick="closeIconsModal()">
+                <img src="assets/icon_gallery/utaoshi-1k-current/utaoshi_1k_current_20260701.jpg" class="icon-category-img" alt="今月の1K歌推しありがとう画像へ">
+            </a>
 
             <div style="color: #ffb6c1; font-size: 14px; font-weight: bold; margin: 25px 0 8px 0; text-shadow: 0 0 5px rgba(255, 105, 180, 0.5); line-height: 1.4;">
                 5Kとってくれてありがとう♡<br>心を込めてお名前書いたよ♡<br>

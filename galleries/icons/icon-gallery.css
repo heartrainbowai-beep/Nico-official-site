@@ -154,6 +154,14 @@ h1 {
     gap: 18px;
 }
 
+.icon-grid.icon-grid-single {
+    justify-items: center;
+}
+
+.icon-grid.icon-grid-single .icon-item {
+    width: min(100%, 320px);
+}
+
 .icon-item {
     overflow: hidden;
     border-radius: 20px;
@@ -197,7 +205,7 @@ h1 {
     justify-content: center;
     align-items: center;
     min-height: 42px;
-    margin: 0 10px 12px;
+    margin: 0 auto 12px;
     padding: 10px 14px;
     border-radius: 999px;
     border: 2px solid rgba(255, 255, 255, 0.86);
@@ -213,5 +221,9 @@ h1 {
     .category-list,
     .icon-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .icon-grid.icon-grid-single {
+        grid-template-columns: 1fr;
     }
 }
