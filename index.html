@@ -356,6 +356,27 @@
             font-weight: 900;
             text-shadow: 0 0 8px rgba(255, 105, 180, 0.78), 0 1px 3px rgba(120, 38, 94, 0.42);
         }
+        .utaoshi-thanks-board {
+            width: min(90%, 560px);
+            margin: 18px auto 28px;
+            padding: 0;
+            border-radius: 24px;
+            box-sizing: border-box;
+            background: rgba(255,255,255,0.18);
+            border: 3px solid rgba(255,255,255,0.9);
+            overflow: hidden;
+            box-shadow:
+                0 0 14px rgba(255,255,255,0.62),
+                0 0 22px rgba(255,105,180,0.42),
+                inset 0 0 18px rgba(255,255,255,0.2);
+        }
+        .utaoshi-thanks-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 21px;
+            object-fit: contain;
+        }
         .benefit-poster-text { 
             position: absolute; bottom: 0; left: 0; width: 100%; 
             background: rgba(255, 105, 180, 0.85); backdrop-filter: blur(4px); 
@@ -995,6 +1016,10 @@
         <span class="neon-white" style="font-size: 22px;">🎤 配信場所：<br>ColorSingライブ会場</span><br>
         <span style="font-size: 13px; font-weight: normal; margin-top: 8px; display: block;">アニソンからPOPSまで幅広く歌唱中🌈💞</span>
     </a>
+
+    <section class="utaoshi-thanks-board pink-neon-border fade-in" aria-label="2026年6月 月間歌推し28名ありがとう">
+        <img src="assets/home/june_utaoshi_thanks_202606.jpg" alt="2026年6月 月間歌推し28名 たくさんの応援ありがとう" class="utaoshi-thanks-image">
+    </section>
 
     <button id="benefits" class="benefit-poster-btn pink-neon-border fade-in" onclick="openModal()">
         <img src="assets/home/colorsing_benefit_cover_20260616.png" alt="ColorSingの特典内容はこちら" class="benefit-poster-img">
