@@ -335,14 +335,26 @@
 
         /* 特典確認ポスター風ボタン */
         .benefit-poster-btn { 
-            width: 45%; max-width: 180px; margin: 0 auto 40px auto; border-radius: 15px; 
+            width: 88%; max-width: 520px; margin: 0 auto 28px auto; border-radius: 20px; 
             overflow: hidden; display: block; cursor: pointer; position: relative; 
-            background: none; padding: 0; transition: transform 0.2s; border: none;
+            background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px);
+            padding: 14px 14px 16px; transition: transform 0.2s; border: none;
+            color: #fff; text-align: center;
         }
         .benefit-poster-btn:active { transform: scale(0.97); }
         .benefit-poster-img { 
-            width: 100%; display: block; object-fit: cover; 
+            width: min(70%, 260px); display: block; object-fit: contain; margin: 0 auto 12px;
+            border-radius: 14px; border: 2px solid rgba(255, 255, 255, 0.86);
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.55);
             pointer-events: none; -webkit-touch-callout: none; 
+        }
+        .benefit-card-copy {
+            display: block;
+            color: #fff8fd;
+            font-size: 13px;
+            line-height: 1.65;
+            font-weight: 900;
+            text-shadow: 0 0 8px rgba(255, 105, 180, 0.78), 0 1px 3px rgba(120, 38, 94, 0.42);
         }
         .benefit-poster-text { 
             position: absolute; bottom: 0; left: 0; width: 100%; 
@@ -350,7 +362,6 @@
             padding: 8px 0; margin: 0; border-top: 2px solid rgba(255, 255, 255, 0.5); 
             letter-spacing: 0px;
         }
-
         /* モーダル共通 */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); display: none; flex-direction: column; align-items: center; justify-content: flex-start; z-index: 1000; padding: 40px 0; overflow-y: auto; }
         .modal-content { width: 100%; max-width: 450px; display: flex; flex-direction: column; align-items: center; }
@@ -481,7 +492,7 @@
         .card-content { padding: 15px; }
 
         /* ギャラリー専用の縦長枠 */
-        .gallery-card { width: 88%; margin: 0 auto 25px auto; border-radius: 20px; overflow: hidden; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px); cursor: pointer; text-align: center; display: block; border: none; padding: 0; color: #fff; }
+        .gallery-card { width: 88%; margin: 0 auto 25px auto; border-radius: 20px; overflow: hidden; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px); cursor: pointer; text-align: center; display: block; border: none; padding: 0; color: #fff; text-decoration: none; }
         .gallery-banner-img { 
             width: 100%; height: auto; display: block; 
             pointer-events: none; -webkit-touch-callout: none; 
@@ -501,6 +512,7 @@
         }
         .history-wide-img {
             width: 100%;
+            margin: 0;
             aspect-ratio: 20 / 7;
             object-fit: cover;
             display: block;
@@ -508,9 +520,36 @@
         .history-wide-img.treasure-preview-img {
             object-position: center 34%;
         }
+        .history-wide-img.note-preview-img {
+            object-fit: cover;
+            object-position: center 48%;
+        }
+        .history-wide-card .card-content {
+            padding: 10px 14px 12px;
+            text-align: center;
+        }
+        .history-wide-card .gallery-title {
+            display: block;
+            margin-bottom: 4px;
+            text-align: center;
+            line-height: 1.35;
+            font-size: 17px;
+        }
+        .history-wide-card .gallery-note {
+            display: block;
+            text-align: center;
+            color: #fff;
+            font-size: 12px;
+            line-height: 1.35;
+            white-space: nowrap;
+        }
         .treasure-preview-note {
             color: #fff;
             text-shadow: 0 0 8px rgba(255, 105, 180, 0.78), 0 0 14px rgba(255, 255, 255, 0.62);
+        }
+        .treasure-preview-title {
+            color: #fff3b0;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.7), 0 0 15px rgba(255, 105, 180, 0.8);
         }
         .gallery-pair {
             width: 92%; margin: 0 auto 25px auto;
@@ -519,12 +558,16 @@
         .gallery-pair .gallery-card {
             width: 100%; margin: 0; border-radius: 16px;
         }
-        .gallery-pair .card-content { padding: 10px 8px 12px; }
-        .gallery-pair .gallery-title { font-size: 13px; display: block; margin-bottom: 5px; line-height: 1.35; }
-        .gallery-pair .gallery-note { font-size: 10px; line-height: 1.45; color: #fff; display: block; }
+        .gallery-pair .gallery-banner-img {
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            object-position: center;
+        }
+        .gallery-pair .card-content { padding: 8px 8px 10px; }
+        .gallery-pair .gallery-title { display: none; }
+        .gallery-pair .gallery-note { font-size: 10px; line-height: 1.35; color: #fff; display: block; white-space: nowrap; }
         @media (max-width: 340px) {
             .gallery-pair { grid-template-columns: 1fr; width: 88%; }
-            .gallery-pair .gallery-title { font-size: 16px; }
             .gallery-pair .gallery-note { font-size: 12px; }
         }
         @media (max-width: 520px) {
@@ -888,6 +931,16 @@
         <img src="assets/home/nico_top_20260616.png" alt="Nico" class="nico-img">
     </div>
 
+    <div id="profile" class="intro-section fade-in">
+        <p class="neon-white" style="font-size: 18px; line-height: 1.8;">
+            マクロス・ガンダムなどのアニソンが大好き<br>ColorSingで活動中🎹🎀
+        </p>
+        <div class="emotion-rainbow pink-neon-border">
+            <span class="e-red">喜び</span>・<span class="e-orange">悲しみ</span>・<span class="e-yellow">楽しみ</span>・<span class="e-green">怒り</span>・<span class="e-blue">驚き</span>・<span class="e-indigo">恐れ</span>・<span class="e-purple">慈しみ</span>
+        </div>
+        <p class="neon-white" style="font-size: 16px; margin-bottom: 50px;">歌や音楽を通して七色の感情を共有したい🎶</p>
+    </div>
+
     <section class="event-preview-card fade-in" aria-label="夏祭りリレーイベント概要">
         <div class="event-preview-media">
             <img
@@ -945,22 +998,15 @@
 
     <button id="benefits" class="benefit-poster-btn pink-neon-border fade-in" onclick="openModal()">
         <img src="assets/home/colorsing_benefit_cover_20260616.png" alt="ColorSingの特典内容はこちら" class="benefit-poster-img">
+        <span class="benefit-card-copy">月間のK数によって設けている特典の内容を、<br>こちらから確認できます。</span>
     </button>
-
-    <a href="https://back-stage.onelink.me/7z4p/vw8i9zzn" class="history-wide-card pink-neon-border fade-in" target="_blank" rel="noreferrer">
-        <img src="assets/home/backstage_nico_talk_20260621.png" class="history-wide-img" alt="BackstageでNicoとおはなし">
-        <div class="card-content">
-            <span class="neon-white gallery-title">Backstage<br></span>
-            <span class="gallery-note">1対1で通話ができるアプリ　Nicoと楽しくお話しよっ</span>
-        </div>
-    </a>
 
     <div class="gallery-pair fade-in">
         <a id="gallery" class="gallery-card pink-neon-border" href="galleries/icons/">
             <img src="assets/icon_gallery/icon_gallery_cover_20260616.png" class="gallery-banner-img" alt="アイコンギャラリーはこちら">
             <div class="card-content">
                 <span class="neon-white gallery-title">アイコン<br>ギャラリー</span>
-                <span class="gallery-note">特典を受け取ってね♬.*ﾟ</span>
+                <span class="gallery-note">アイコン特典はこちら</span>
             </div>
         </a>
 
@@ -968,12 +1014,12 @@
             <img src="assets/home/secret_gallery_cover_20260616.png" class="gallery-banner-img" alt="秘密のギャラリー入口">
             <div class="card-content">
                 <span class="neon-white gallery-title">🎁 秘密の<br>ギャラリー</span>
-                <span class="gallery-note">マクロス、ガンダム、ジューンブライド特典など、合言葉で開く秘密ページはこちら</span>
+                <span class="gallery-note">合言葉つき特典はこちら</span>
             </div>
         </button>
     </div>
     <a id="note" class="history-wide-card pink-neon-border fade-in" href="https://note.com/open_nicochan" target="_blank" rel="noopener">
-        <img src="assets/home/nico_note_cover_20260616.png?v=20260616-note" class="history-wide-img" alt="Nicoの想い note">
+        <img src="assets/home/nico_note_cover_20260616.png?v=20260616-note" class="history-wide-img note-preview-img" alt="Nicoの想い note">
         <div class="card-content">
             <span class="neon-white gallery-title">💌 Nicoの想い</span>
             <span class="gallery-note">歌と日々の気持ちを綴る場所♬.*ﾟ</span>
@@ -984,7 +1030,23 @@
         <img src="assets/home/nico_history_cover_20260616.png" class="history-wide-img" alt="Nicoの歩んだ道">
         <div class="card-content">
             <span class="neon-white gallery-title">Nicoの歩んだ道</span>
-            <span class="gallery-note">歌ってきた思い出を少しずつ残していく場所🌈</span>
+            <span class="gallery-note">Nicoの活動と思い出の記録</span>
+        </div>
+    </a>
+
+    <a class="history-wide-card pink-neon-border fade-in" href="galleries/treasure/">
+        <img src="assets/treasure_gallery/treasure_gallery_cover_20260606.jpg" class="history-wide-img treasure-preview-img" alt="リスナーさんからいただいた宝物ギャラリー表紙">
+        <div class="card-content">
+            <span class="neon-white gallery-title treasure-preview-title">💎 宝物ギャラリー</span>
+            <span class="gallery-note treasure-preview-note">リスナーさんからの宝もの</span>
+        </div>
+    </a>
+
+    <a href="https://back-stage.onelink.me/7z4p/vw8i9zzn" class="history-wide-card pink-neon-border fade-in" target="_blank" rel="noreferrer">
+        <img src="assets/home/backstage_nico_talk_20260621.png" class="history-wide-img" alt="BackstageでNicoとおはなし">
+        <div class="card-content">
+            <span class="neon-white gallery-title">Backstage<br></span>
+            <span class="gallery-note">1対1で通話ができるアプリ　Nicoと楽しくお話しよっ</span>
         </div>
     </a>
 
@@ -993,24 +1055,6 @@
         <div class="card-content">
             <span class="neon-white" style="font-size: 17px; display: block; margin-bottom: 5px;">💬 AIのNICOちゃんとお話</span>
             <span style="font-size: 12px; line-height: 1.4;">Nicoの世界から生まれたAIのNICOちゃんと、いつでもおしゃべりできるよ♬.*ﾟ</span>
-        </div>
-    </a>
-
-    <div id="profile" class="intro-section fade-in">
-        <p class="neon-white" style="font-size: 18px; line-height: 1.8;">
-            マクロス・ガンダムなどのアニソンが大好き<br>ColorSingで活動中🎹🎀
-        </p>
-        <div class="emotion-rainbow pink-neon-border">
-            <span class="e-red">喜び</span>・<span class="e-orange">悲しみ</span>・<span class="e-yellow">楽しみ</span>・<span class="e-green">怒り</span>・<span class="e-blue">驚き</span>・<span class="e-indigo">恐れ</span>・<span class="e-purple">慈しみ</span>
-        </div>
-        <p class="neon-white" style="font-size: 16px; margin-bottom: 50px;">歌や音楽を通して七色の感情を共有したい🎶</p>
-    </div>
-
-    <a class="history-wide-card pink-neon-border fade-in" href="galleries/treasure/">
-        <img src="assets/treasure_gallery/treasure_gallery_cover_20260606.jpg" class="history-wide-img treasure-preview-img" alt="リスナーさんからいただいた宝物ギャラリー表紙">
-        <div class="card-content">
-            <span class="neon-white gallery-title" style="color: #fff3b0; text-shadow: 0 0 10px rgba(255, 204, 0, 0.7), 0 0 15px rgba(255, 105, 180, 0.8);">💎 宝物ギャラリー</span>
-            <span class="gallery-note treasure-preview-note">リスナーさんからいただいた大切なプレゼント</span>
         </div>
     </a>
 
