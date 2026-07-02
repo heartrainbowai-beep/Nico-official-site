@@ -348,7 +348,9 @@
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.55);
             pointer-events: none; -webkit-touch-callout: none; 
         }
-        .benefit-card-copy {
+        .benefit-card-copy,
+        .gallery-note,
+        .card-copy-text {
             display: block;
             color: #fff8fd;
             font-size: 13px;
@@ -559,10 +561,12 @@
         .history-wide-card .gallery-note {
             display: block;
             text-align: center;
-            color: #fff;
-            font-size: 12px;
-            line-height: 1.35;
+            color: #fff8fd;
+            font-size: 13px;
+            line-height: 1.55;
+            font-weight: 900;
             white-space: nowrap;
+            text-shadow: 0 0 8px rgba(255, 105, 180, 0.78), 0 1px 3px rgba(120, 38, 94, 0.42);
         }
         .treasure-preview-note {
             color: #fff;
@@ -586,7 +590,15 @@
         }
         .gallery-pair .card-content { padding: 8px 8px 10px; }
         .gallery-pair .gallery-title { display: none; }
-        .gallery-pair .gallery-note { font-size: 10px; line-height: 1.35; color: #fff; display: block; white-space: nowrap; }
+        .gallery-pair .gallery-note {
+            font-size: 12px;
+            line-height: 1.45;
+            color: #fff8fd;
+            display: block;
+            white-space: nowrap;
+            font-weight: 900;
+            text-shadow: 0 0 8px rgba(255, 105, 180, 0.78), 0 1px 3px rgba(120, 38, 94, 0.42);
+        }
         @media (max-width: 340px) {
             .gallery-pair { grid-template-columns: 1fr; width: 88%; }
             .gallery-pair .gallery-note { font-size: 12px; }
@@ -981,28 +993,28 @@
                     <span class="event-point-number"><span class="event-point-digit">1</span></span>
                     <div class="event-point-body">
                         <strong>4人の配信を順番に回る</strong>
-                        <span>KOMMY∞ / 時渡ノア⏳💖 / 楓🍁 / Nico🌈💞 の順でリレー配信を楽しんでね。</span>
+                        <span>KOMMY∞ / 時渡ノア⏳💖 / 楓🍁 / Nico🌈💞 の順でリレー配信を楽しんでね</span>
                     </div>
                 </div>
                 <div class="event-point">
                     <span class="event-point-number"><span class="event-point-digit">2</span></span>
                     <div class="event-point-body">
                         <strong>配信背景のキーワードを集める</strong>
-                        <span>それぞれの枠で見つけたキーワードを、順番につなげて受け取る準備をしよう。</span>
+                        <span>それぞれの枠で見つけたキーワードを順番につなげて受け取る準備をしよう</span>
                     </div>
                 </div>
                 <div class="event-point">
                     <span class="event-point-number"><span class="event-point-digit">3</span></span>
                     <div class="event-point-body">
                         <strong>秘密ページで入力して特典を開く</strong>
-                        <span>集めたキーワードを秘密ページに入れると、夏祭りリレー特典が開きます。</span>
+                        <span>集めたキーワードを秘密ページに入れると夏祭りリレー特典が開きます</span>
                     </div>
                 </div>
                 <div class="event-point">
                     <span class="event-point-number"><span class="event-point-digit">4</span></span>
                     <div class="event-point-body">
                         <strong>秘密ページだけ開きたい方はこちら</strong>
-                        <span>下のボタンから、夏祭りリレーの秘密ページへそのまま進めます。</span>
+                        <span>下のボタンから夏祭りリレーの秘密ページへそのまま進めます</span>
                     </div>
                 </div>
             </div>
@@ -1023,7 +1035,7 @@
 
     <button id="benefits" class="benefit-poster-btn pink-neon-border fade-in" onclick="openModal()">
         <img src="assets/home/colorsing_benefit_cover_20260616.png" alt="ColorSingの特典内容はこちら" class="benefit-poster-img">
-        <span class="benefit-card-copy">月間のK数によって設けている特典の内容を、<br>こちらから確認できます。</span>
+        <span class="benefit-card-copy">月間のK数によって設けている特典の内容を<br>こちらから確認できます</span>
     </button>
 
     <div class="gallery-pair fade-in">
@@ -1079,19 +1091,19 @@
         <img src="oshi_ai_nico_banner.png" class="banner-img" alt="AIのNICOちゃんと話せるOshiiiリンク">
         <div class="card-content">
             <span class="neon-white" style="font-size: 17px; display: block; margin-bottom: 5px;">💬 AIのNICOちゃんとお話</span>
-            <span style="font-size: 12px; line-height: 1.4;">Nicoの世界から生まれたAIのNICOちゃんと、いつでもおしゃべりできるよ♬.*ﾟ</span>
+            <span class="card-copy-text">Nicoの世界から生まれたAIのNICOちゃんといつでもおしゃべりできるよ♬.*ﾟ</span>
         </div>
     </a>
 
     <a href="https://web.colorsing.com/share/user?user_id=411fa6d1-ba51-4f7c-a4f2-d635ab43ba5b" class="mini-colorsing-link fade-in" target="_blank">
-        特典を見たら、ColorSingで会いに来てね
+        特典を見たらColorSingで会いに来てね
     </a>
 
     <a id="schedule" href="https://x.com/nico_nana_iro?s=21" class="sns-card pink-neon-border fade-in" target="_blank">
         <img src="x_banner.png" class="banner-img">
         <div class="card-content">
             <span class="neon-white" style="font-size: 17px; display: block; margin-bottom: 5px;">📱 公式X (旧Twitter)</span>
-            <span style="font-size: 12px; line-height: 1.4;">配信スケジュールや日々感じたことをpostしてるよ♬.*ﾟ</span>
+            <span class="card-copy-text">配信スケジュールや日々感じたことをpostしてるよ♬.*ﾟ</span>
         </div>
     </a>
 
@@ -1099,7 +1111,7 @@
         <img src="yt_banner.png" class="banner-img">
         <div class="card-content">
             <span class="neon-white" style="font-size: 17px; display: block; margin-bottom: 5px;">📹 YouTubeチャンネル</span>
-            <span style="font-size: 12px; line-height: 1.4;">眠れない時に聞けるようなBGMや歌ってみた動画をUPしてるよ♬.*ﾟ</span>
+            <span class="card-copy-text">眠れない時に聞けるようなBGMや歌ってみた動画をUPしてるよ♬.*ﾟ</span>
         </div>
     </a>
 
