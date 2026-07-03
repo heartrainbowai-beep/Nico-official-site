@@ -169,6 +169,20 @@ h1 {
     gap: 18px;
 }
 
+.current-5k-grid {
+    grid-template-columns: 1fr !important;
+}
+
+.archive-5k-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.archive-5k-grid .icon-caption {
+    font-size: 12px;
+    line-height: 1.35;
+}
+
 .icon-grid.icon-grid-single {
     justify-items: center;
 }
