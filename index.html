@@ -379,6 +379,29 @@
             border-radius: 21px;
             object-fit: contain;
         }
+        .monthly-utaoshi-archive-link {
+            display: grid;
+            gap: 4px;
+            margin: 0;
+            padding: 13px 14px 15px;
+            text-align: center;
+            text-decoration: none;
+            background: linear-gradient(135deg, rgba(255, 111, 183, 0.74), rgba(135, 199, 255, 0.62));
+            border-top: 2px solid rgba(255, 255, 255, 0.76);
+        }
+        .monthly-utaoshi-archive-link strong {
+            color: #fff;
+            font-size: 17px;
+            line-height: 1.35;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.95), 0 0 18px rgba(255, 255, 255, 0.54);
+        }
+        .monthly-utaoshi-archive-link span {
+            color: #fff8fd;
+            font-size: 12px;
+            line-height: 1.45;
+            font-weight: 900;
+            text-shadow: 0 0 8px rgba(173, 58, 135, 0.68);
+        }
         .benefit-poster-text { 
             position: absolute; bottom: 0; left: 0; width: 100%; 
             background: rgba(255, 105, 180, 0.85); backdrop-filter: blur(4px); 
@@ -1031,6 +1054,10 @@
 
     <section class="utaoshi-thanks-board pink-neon-border fade-in" aria-label="2026年6月 月間歌推し28名ありがとう">
         <img src="assets/home/june_utaoshi_thanks_202606_v2.jpg" alt="2026年6月 月間歌推し28名 たくさんの応援ありがとう" class="utaoshi-thanks-image">
+        <a class="monthly-utaoshi-archive-link" href="galleries/icons/monthly-utaoshi-history/">
+            <strong>歴代の月間歌推しはこちら</strong>
+            <span>過去のありがとう画像を横スクロールで見られます</span>
+        </a>
     </section>
 
     <button id="benefits" class="benefit-poster-btn pink-neon-border fade-in" onclick="openModal()">
