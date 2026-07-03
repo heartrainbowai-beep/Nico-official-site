@@ -163,6 +163,23 @@ h1 {
     text-align: center;
 }
 
+.monthly-archive-note {
+    margin-bottom: 10px;
+}
+
+.monthly-archive-guide {
+    margin: -2px auto 18px;
+    color: #fff;
+    font-size: clamp(18px, 5vw, 26px);
+    font-weight: 900;
+    line-height: 1.35;
+    text-align: center;
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.86),
+        0 0 14px rgba(255, 91, 178, 0.92),
+        0 0 24px rgba(255, 122, 212, 0.78);
+}
+
 .icon-grid {
     display: grid;
     grid-template-columns: 1fr;
