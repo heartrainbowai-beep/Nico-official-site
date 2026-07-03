@@ -183,6 +183,49 @@ h1 {
     line-height: 1.35;
 }
 
+.monthly-archive-scroll {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 4px 2px 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.monthly-archive-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.monthly-archive-scroll::-webkit-scrollbar-track {
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.34);
+}
+
+.monthly-archive-scroll::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ff73bf, #91caff);
+}
+
+.monthly-archive-card {
+    flex: 0 0 min(82vw, 360px);
+    scroll-snap-align: center;
+}
+
+.monthly-archive-card img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.scroll-hint {
+    margin: -4px 0 0;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.6;
+    font-weight: 900;
+    color: #fff7fd;
+    text-shadow: 0 0 8px rgba(255, 105, 180, 0.86);
+}
+
 .icon-grid.icon-grid-single {
     justify-items: center;
 }
