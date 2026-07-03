@@ -21,12 +21,7 @@
       min-height: 100vh;
       color: var(--ink);
       font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
-      background:
-        linear-gradient(180deg, rgba(0, 0, 0, .36), rgba(5, 8, 24, .44) 42%, rgba(9, 10, 26, .56) 100%),
-        radial-gradient(circle at 18% 16%, rgba(255, 94, 174, .10), transparent 16%),
-        radial-gradient(circle at 82% 14%, rgba(112, 228, 255, .10), transparent 16%),
-        url("team_qooo_summer_relay_background_20260701.png") center center / cover no-repeat fixed,
-        linear-gradient(180deg, #000000 0%, #02040c 35%, #050715 68%, #080816 100%);
+      background: #000 url("team_qooo_summer_relay_fireworks_background_20260703.jpg") center top / cover no-repeat fixed;
       overflow-x: hidden;
     }
     body::before {
@@ -34,13 +29,8 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      background:
-        radial-gradient(circle, rgba(255,255,255,.95) 0 1.3px, transparent 1.9px),
-        radial-gradient(circle, rgba(255,214,239,.76) 0 1.2px, transparent 1.8px),
-        radial-gradient(circle, rgba(201,239,255,.72) 0 1.4px, transparent 2px);
-      background-size: 120px 120px, 180px 180px, 240px 240px;
-      background-position: 14px 10px, 68px 42px, 122px 78px;
-      opacity: .15;
+      background: transparent;
+      opacity: 0;
       z-index: 0;
     }
     body::after {
@@ -48,20 +38,10 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      background:
-        radial-gradient(circle at 14% 18%, rgba(255, 247, 183, .98) 0 2px, transparent 3px),
-        repeating-radial-gradient(circle at 14% 18%, rgba(255, 233, 122, .92) 0 2px, transparent 3px 16px, rgba(255, 233, 122, .36) 16px 18px, transparent 19px 30px),
-        radial-gradient(circle at 80% 16%, rgba(142, 236, 255, .98) 0 2px, transparent 3px),
-        repeating-radial-gradient(circle at 80% 16%, rgba(112, 228, 255, .9) 0 2px, transparent 3px 16px, rgba(112, 228, 255, .34) 16px 18px, transparent 19px 30px),
-        radial-gradient(circle at 78% 72%, rgba(255, 170, 216, .98) 0 2px, transparent 3px),
-        repeating-radial-gradient(circle at 78% 72%, rgba(255, 103, 184, .88) 0 2px, transparent 3px 16px, rgba(255, 103, 184, .32) 16px 18px, transparent 19px 30px),
-        radial-gradient(circle at 28% 76%, rgba(212, 191, 255, .98) 0 2px, transparent 3px),
-        repeating-radial-gradient(circle at 28% 76%, rgba(139, 100, 255, .84) 0 2px, transparent 3px 16px, rgba(139, 100, 255, .3) 16px 18px, transparent 19px 30px),
-        radial-gradient(circle at 50% 10%, rgba(255, 214, 144, .94) 0 2px, transparent 3px),
-        repeating-radial-gradient(circle at 50% 10%, rgba(255, 168, 76, .84) 0 2px, transparent 3px 15px, rgba(255, 168, 76, .26) 15px 17px, transparent 18px 28px);
-      opacity: .22;
+      background: transparent;
+      opacity: 0;
       z-index: 0;
-      filter: blur(.15px);
+      filter: none;
     }
     .page {
       position: relative;
