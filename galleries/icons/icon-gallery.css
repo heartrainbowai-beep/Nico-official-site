@@ -186,6 +186,131 @@ h1 {
     gap: 18px;
 }
 
+[hidden] {
+    display: none !important;
+}
+
+.red-pearl-panel {
+    background:
+        radial-gradient(circle at 16% 10%, rgba(255, 255, 255, 0.22), transparent 26%),
+        linear-gradient(180deg, rgba(255, 171, 218, 0.34), rgba(255, 255, 255, 0.18));
+}
+
+.red-pearl-title {
+    white-space: normal;
+}
+
+.red-pearl-cover-button {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    text-align: inherit;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.red-pearl-cover-button:focus-visible .red-pearl-cover-card {
+    outline: 3px solid rgba(255, 255, 255, 0.92);
+    outline-offset: 4px;
+}
+
+.red-pearl-cover-card {
+    display: block;
+    width: min(100%, 620px);
+    margin: 18px auto 0;
+}
+
+.red-pearl-cover-card img {
+    aspect-ratio: auto;
+    object-fit: contain;
+    image-rendering: auto;
+    background: #13000d;
+}
+
+.red-pearl-cover-card .icon-caption {
+    display: block;
+    padding-bottom: 4px;
+}
+
+.red-pearl-cover-hint {
+    display: block;
+    padding: 0 12px 14px;
+    color: #fff9fd;
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 1.55;
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.82),
+        0 0 14px rgba(255, 91, 178, 0.88);
+}
+
+.red-pearl-section {
+    margin-top: 24px;
+}
+
+.red-pearl-reward-grid {
+    grid-template-columns: 1fr !important;
+    justify-items: center;
+    gap: 24px;
+}
+
+.red-pearl-reward-grid .icon-item {
+    width: min(100%, 680px);
+}
+
+.red-pearl-reward-grid .icon-item img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    image-rendering: auto;
+    background: #13000d;
+}
+
+.red-pearl-reward-grid .icon-caption {
+    font-size: clamp(15px, 4vw, 20px);
+    line-height: 1.45;
+}
+
+.red-pearl-reward-grid .icon-caption::after {
+    content: " ありがとう🌈💞";
+}
+
+.red-pearl-slot-grid {
+    gap: 10px;
+}
+
+.red-pearl-slot {
+    display: grid;
+    gap: 4px;
+    min-height: 76px;
+    place-items: center;
+    padding: 12px;
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.86), transparent 22%),
+        linear-gradient(135deg, rgba(255, 118, 188, 0.62), rgba(143, 201, 255, 0.5));
+}
+
+.red-pearl-slot span {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 900;
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.9),
+        0 0 14px rgba(255, 96, 184, 0.9);
+}
+
+.red-pearl-slot small {
+    color: #fff7fd;
+    font-size: 11px;
+    font-weight: 800;
+    text-shadow: 0 0 8px rgba(255, 105, 180, 0.78);
+}
+
 .current-5k-grid {
     grid-template-columns: 1fr !important;
 }
