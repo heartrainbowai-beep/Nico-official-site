@@ -5,34 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nicoと一緒に最高の8月にしよう | 2026 Summer Event</title>
   <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    @import url("https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Yomogi&family=Zen+Kurenaido&display=swap");
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     :root {
-      --pink: #ff5fb4;
-      --hot-pink: #ff2f9c;
-      --rose: #ff8fcb;
-      --blue: #65d7ff;
-      --violet: #8e6dff;
+      --pink: #ff63bc;
+      --hot-pink: #ff249c;
+      --rose: #ff8bc8;
+      --blue: #66ddff;
+      --violet: #8e68ff;
       --yellow: #fff1a6;
-      --ink: #743253;
+      --ink: #713052;
+      --deep: #22061e;
       --white: #fff8ff;
-      --glass: rgba(255, 255, 255, .76);
-      --line: rgba(255, 255, 255, .95);
+      --glass: rgba(255, 255, 255, .78);
+      --line: rgba(255, 255, 255, .96);
       --shadow: 0 22px 48px rgba(255, 82, 172, .24);
     }
+
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: "Hachi Maru Pop", "Yomogi", "Zen Kurenaido", "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", cursive, sans-serif;
+      font-family: "Yomogi", "Hachi Maru Pop", "Zen Kurenaido", "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", cursive, sans-serif;
       color: var(--ink);
       background:
         radial-gradient(circle at 8% 8%, rgba(255, 255, 255, .95) 0 1px, transparent 2px),
         radial-gradient(circle at 88% 18%, rgba(255, 255, 255, .9) 0 1px, transparent 2px),
         radial-gradient(circle at 18% 82%, rgba(255, 255, 255, .9) 0 1px, transparent 2px),
-        linear-gradient(135deg, #ffd6ed 0%, #ffe9f7 22%, #dff5ff 50%, #ffe4a8 74%, #ffc5e6 100%);
+        linear-gradient(135deg, #ffd8ef 0%, #fff0fa 22%, #dff7ff 50%, #ffe6ad 74%, #ffc5e8 100%);
       background-size: 160px 160px, 220px 220px, 190px 190px, 100% 100%;
       overflow-x: hidden;
     }
+
     body::before,
     body::after {
       content: "";
@@ -41,24 +52,23 @@
       pointer-events: none;
       z-index: 0;
     }
+
     body::before {
       background:
-        radial-gradient(circle at 20% 18%, rgba(255, 95, 180, .18), transparent 18%),
-        radial-gradient(circle at 84% 9%, rgba(101, 215, 255, .2), transparent 20%),
-        radial-gradient(circle at 75% 72%, rgba(255, 241, 166, .24), transparent 22%);
+        radial-gradient(circle at 20% 18%, rgba(255, 95, 180, .2), transparent 18%),
+        radial-gradient(circle at 84% 9%, rgba(101, 215, 255, .22), transparent 20%),
+        radial-gradient(circle at 75% 72%, rgba(255, 241, 166, .26), transparent 22%);
       filter: blur(1px);
     }
+
     body::after {
       background:
-        linear-gradient(115deg, transparent 0 42%, rgba(255, 255, 255, .38) 43%, transparent 46%),
-        linear-gradient(36deg, transparent 0 62%, rgba(255, 120, 205, .2) 63%, transparent 66%);
-      opacity: .45;
+        linear-gradient(115deg, transparent 0 42%, rgba(255, 255, 255, .4) 43%, transparent 46%),
+        linear-gradient(36deg, transparent 0 62%, rgba(255, 120, 205, .22) 63%, transparent 66%);
+      opacity: .46;
       animation: shimmer 10s ease-in-out infinite alternate;
     }
-    @keyframes shimmer {
-      from { transform: translate3d(-18px, -14px, 0); opacity: .32; }
-      to { transform: translate3d(18px, 16px, 0); opacity: .58; }
-    }
+
     .page {
       position: relative;
       z-index: 1;
@@ -66,6 +76,7 @@
       margin: 0 auto;
       padding: 18px 14px 54px;
     }
+
     .top-link {
       display: inline-flex;
       align-items: center;
@@ -75,7 +86,7 @@
       margin: 2px 0 14px;
       border-radius: 999px;
       border: 2px solid rgba(255, 255, 255, .95);
-      background: linear-gradient(135deg, rgba(255, 120, 201, .8), rgba(134, 210, 255, .72));
+      background: linear-gradient(135deg, rgba(255, 120, 201, .84), rgba(134, 210, 255, .76));
       color: #fff;
       text-decoration: none;
       font-size: 13px;
@@ -83,46 +94,74 @@
       text-shadow: 0 0 7px #fff, 0 0 13px var(--hot-pink);
       box-shadow: 0 0 18px rgba(255, 120, 201, .5);
     }
-    .hero {
+
+    .hero,
+    .event-card,
+    .final-card {
       position: relative;
       overflow: hidden;
-      padding: 18px 14px 20px;
       border-radius: 30px;
       border: 3px solid var(--line);
-      background: linear-gradient(145deg, rgba(255, 255, 255, .82), rgba(255, 214, 238, .76));
+      background: linear-gradient(145deg, rgba(255, 255, 255, .84), rgba(255, 214, 238, .76));
       box-shadow: var(--shadow), 0 0 28px rgba(255, 255, 255, .8);
+    }
+
+    .hero {
+      padding: 18px 14px 20px;
       text-align: center;
     }
-    .hero::before {
-      content: "♡ ✦ ♡ ✧ ♡";
+
+    .hero::before,
+    .hero::after {
       position: absolute;
-      top: 14px;
-      right: -24px;
-      color: rgba(255, 95, 180, .35);
-      font-size: 34px;
-      transform: rotate(16deg);
+      pointer-events: none;
+      color: rgba(255, 95, 180, .38);
+      font-size: 30px;
       letter-spacing: 8px;
+      text-shadow: 0 0 12px #fff;
       animation: floaty 5.4s ease-in-out infinite;
     }
-    .hero-kicker {
+
+    .hero::before {
+      content: "♡ ✦ ♡ ♪";
+      top: 14px;
+      right: -24px;
+      transform: rotate(16deg);
+    }
+
+    .hero::after {
+      content: "🌈 ♡ ✦";
+      left: -18px;
+      bottom: 18px;
+      transform: rotate(-12deg);
+      animation-delay: 1.2s;
+    }
+
+    .hero-kicker,
+    .section-label {
       display: inline-flex;
       justify-content: center;
       align-items: center;
       min-height: 32px;
       padding: 5px 14px;
-      margin: 0 auto 10px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, .75);
+      background: rgba(255, 255, 255, .76);
       color: var(--hot-pink);
       font-size: 13px;
       text-shadow: 0 0 7px #fff, 0 0 13px var(--pink);
       box-shadow: 0 0 18px rgba(255, 105, 180, .28);
     }
+
+    .hero-kicker {
+      margin: 0 auto 10px;
+    }
+
     h1 {
       margin: 0 0 14px;
       color: #fff;
-      font-size: clamp(32px, 10.5vw, 58px);
-      line-height: 1.12;
+      font-family: "Hachi Maru Pop", "Yomogi", cursive;
+      font-size: clamp(31px, 9.4vw, 58px);
+      line-height: 1.18;
       letter-spacing: .02em;
       text-shadow:
         0 0 4px #fff,
@@ -131,26 +170,38 @@
         0 0 30px var(--hot-pink);
       animation: neonPulse 2.8s ease-in-out infinite;
     }
+
+    h1 span {
+      display: inline-block;
+      margin-top: 4px;
+      color: #ffe9fb;
+      font-size: .72em;
+    }
+
     .hero-subtitle {
       margin: 0 auto 16px;
       color: #ff3f9f;
-      font-size: clamp(17px, 5.3vw, 28px);
-      line-height: 1.35;
+      font-size: clamp(17px, 5.1vw, 28px);
+      line-height: 1.45;
       text-shadow: 0 0 7px #fff, 0 0 13px rgba(255, 47, 156, .75);
     }
-    .poster-frame {
+
+    .poster-frame,
+    .image-card {
       overflow: hidden;
       border-radius: 24px;
       border: 3px solid rgba(255, 255, 255, .96);
       background: #1d0624;
       box-shadow: 0 0 20px rgba(255, 95, 180, .42);
     }
+
     .poster-frame img,
     .image-card img {
       display: block;
       width: 100%;
       height: auto;
     }
+
     .lead {
       margin: 16px auto 0;
       color: var(--ink);
@@ -158,25 +209,22 @@
       line-height: 1.9;
       font-weight: 400;
     }
+
     .event-card,
     .final-card {
-      position: relative;
-      overflow: hidden;
       margin: 18px 0 0;
       padding: 18px 14px;
-      border-radius: 28px;
-      border: 3px solid rgba(255, 255, 255, .96);
-      background: linear-gradient(155deg, rgba(255, 255, 255, .82), rgba(255, 214, 239, .72));
-      box-shadow: var(--shadow), 0 0 24px rgba(255, 255, 255, .72);
       transform: translateY(20px);
       opacity: 0;
       transition: opacity .7s ease, transform .7s ease;
     }
+
     .event-card.is-visible,
     .final-card.is-visible {
       opacity: 1;
       transform: translateY(0);
     }
+
     .event-card::before {
       content: "";
       position: absolute;
@@ -188,25 +236,19 @@
       opacity: .68;
       animation: floaty 6.5s ease-in-out infinite;
     }
+
     .section-label {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 34px;
-      padding: 6px 14px;
+      position: relative;
       margin: 0 0 12px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, .88), rgba(255, 214, 239, .7));
-      color: var(--hot-pink);
-      font-size: 13px;
-      text-shadow: 0 0 6px #fff, 0 0 11px rgba(255, 95, 180, .74);
-      box-shadow: 0 0 16px rgba(255, 95, 180, .3);
     }
+
     h2 {
+      position: relative;
       margin: 0 0 12px;
       color: #fff;
-      font-size: clamp(25px, 8vw, 42px);
-      line-height: 1.18;
+      font-family: "Hachi Maru Pop", "Yomogi", cursive;
+      font-size: clamp(25px, 7.2vw, 42px);
+      line-height: 1.26;
       text-align: center;
       text-shadow:
         0 0 4px #fff,
@@ -214,6 +256,7 @@
         0 0 18px var(--pink),
         0 0 28px var(--hot-pink);
     }
+
     .event-copy {
       position: relative;
       margin: 0 auto;
@@ -223,17 +266,21 @@
       text-align: center;
       font-weight: 400;
     }
+
     .neon-word {
       color: #ff2298;
       text-shadow: 0 0 6px #fff, 0 0 13px rgba(255, 47, 156, .82);
     }
+
     .mini-list {
+      position: relative;
       display: grid;
       gap: 10px;
       margin: 15px 0 0;
       padding: 0;
       list-style: none;
     }
+
     .mini-list li,
     .prize {
       min-height: 48px;
@@ -244,65 +291,56 @@
       line-height: 1.55;
       box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .65), 0 0 14px rgba(255, 95, 180, .16);
     }
-    .gacha-stage {
+
+    .square-image-card {
       position: relative;
-      margin: 18px auto 14px;
-      width: min(250px, 78vw);
-      aspect-ratio: 1;
-      border-radius: 999px;
-      border: 4px solid rgba(255, 255, 255, .94);
-      background:
-        radial-gradient(circle at 50% 42%, rgba(255, 255, 255, .95) 0 9%, rgba(255, 95, 180, .68) 10% 24%, rgba(142, 109, 255, .62) 25% 46%, rgba(101, 215, 255, .58) 47% 64%, rgba(255, 241, 166, .5) 65% 100%);
-      box-shadow: 0 0 24px rgba(255, 47, 156, .42), inset 0 0 28px rgba(255, 255, 255, .66);
-      animation: gachaFloat 4s ease-in-out infinite;
-    }
-    .gacha-stage::before,
-    .gacha-stage::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .82);
-      box-shadow: 0 0 14px #fff, 0 0 24px var(--pink);
-    }
-    .gacha-stage::before {
-      width: 34%;
-      height: 34%;
-      left: 13%;
-      top: 18%;
-      animation: orbit 5s linear infinite;
-    }
-    .gacha-stage::after {
-      width: 25%;
-      height: 25%;
-      right: 14%;
-      bottom: 17%;
-      animation: orbit 5.8s linear infinite reverse;
-    }
-    .gacha-label {
-      position: absolute;
-      inset: 0;
       display: grid;
       place-items: center;
-      color: #fff;
-      font-size: 28px;
-      text-align: center;
-      line-height: 1.25;
-      text-shadow: 0 0 6px #fff, 0 0 18px var(--hot-pink);
-      z-index: 2;
+      width: min(100%, 520px);
+      aspect-ratio: 1 / 1;
+      margin: 16px auto 0;
+      background:
+        radial-gradient(circle at 50% 12%, rgba(255, 95, 180, .32), transparent 32%),
+        linear-gradient(160deg, #130920 0%, #21145c 46%, #130920 100%);
     }
+
+    .square-image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .gacha-image-card {
+      width: min(100%, 367px);
+      margin: 16px auto 0;
+      aspect-ratio: auto;
+      padding: 10px;
+      background: #12031d;
+    }
+
+    .gacha-image-card img {
+      width: 100%;
+      max-width: 347px;
+      height: auto;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
+    .image-caption {
+      margin: 9px 0 0;
+      color: #ff2298;
+      font-size: 13px;
+      text-align: center;
+      text-shadow: 0 0 6px #fff, 0 0 12px rgba(255, 47, 156, .75);
+    }
+
     .prize-grid {
       display: grid;
       gap: 10px;
       margin-top: 14px;
     }
-    .image-card {
-      overflow: hidden;
-      margin: 15px auto 0;
-      border-radius: 24px;
-      border: 3px solid rgba(255, 255, 255, .96);
-      background: rgba(255, 255, 255, .7);
-      box-shadow: 0 0 18px rgba(255, 95, 180, .3);
-    }
+
     .song-progress {
       margin: 16px auto 0;
       padding: 14px;
@@ -310,12 +348,14 @@
       background: rgba(255, 255, 255, .72);
       box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .7), 0 0 18px rgba(255, 95, 180, .2);
     }
+
     .song-boxes {
       display: grid;
       grid-template-columns: repeat(10, 1fr);
       gap: 5px;
       margin: 0 0 9px;
     }
+
     .song-boxes span {
       display: block;
       aspect-ratio: 1;
@@ -324,21 +364,25 @@
       background: rgba(255, 255, 255, .82);
       box-shadow: inset 0 0 8px rgba(255, 255, 255, .9);
     }
+
     .song-boxes span.is-filled {
       background: linear-gradient(135deg, var(--hot-pink), var(--blue));
       box-shadow: 0 0 12px rgba(255, 47, 156, .56), inset 0 0 8px rgba(255, 255, 255, .7);
     }
+
     .song-count {
       color: var(--hot-pink);
       font-size: 24px;
       text-align: center;
       text-shadow: 0 0 7px #fff, 0 0 14px rgba(255, 47, 156, .66);
     }
+
     .reward-steps {
       display: grid;
       gap: 10px;
       margin-top: 14px;
     }
+
     .reward-step {
       padding: 12px;
       border-radius: 20px;
@@ -347,6 +391,7 @@
       text-align: center;
       box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .68), 0 0 14px rgba(255, 95, 180, .16);
     }
+
     .reward-step strong {
       display: block;
       margin-bottom: 5px;
@@ -354,16 +399,19 @@
       font-weight: 400;
       text-shadow: 0 0 6px #fff, 0 0 12px rgba(255, 47, 156, .72);
     }
+
     .final-card {
       text-align: center;
       background: linear-gradient(145deg, rgba(255, 255, 255, .86), rgba(225, 246, 255, .75), rgba(255, 221, 239, .75));
     }
+
     .final-card p {
       margin: 0 0 16px;
       color: var(--ink);
       font-size: 17px;
       line-height: 1.9;
     }
+
     .colorsing-button {
       display: inline-flex;
       align-items: center;
@@ -379,6 +427,39 @@
       text-shadow: 0 0 7px #fff, 0 0 14px rgba(255, 47, 156, .78);
       box-shadow: 0 0 20px rgba(255, 95, 180, .48);
     }
+
+    .secret-passport-link {
+      display: block;
+      width: min(100%, 430px);
+      margin: 18px auto 0;
+      text-decoration: none;
+      border-radius: 26px;
+      box-shadow:
+        0 0 24px rgba(255, 98, 190, .34),
+        0 0 42px rgba(151, 218, 255, .2);
+      transition: transform .24s ease, box-shadow .24s ease;
+    }
+
+    .secret-passport-link:hover,
+    .secret-passport-link:focus-visible {
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 30px rgba(255, 98, 190, .5),
+        0 0 54px rgba(151, 218, 255, .28);
+      outline: none;
+    }
+
+    .secret-passport-cover {
+      margin: 0;
+      background: rgba(255, 246, 252, .82);
+    }
+
+    .secret-passport-cover img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
     .floating-hearts {
       position: fixed;
       inset: auto 0 16px;
@@ -391,49 +472,67 @@
       font-size: 24px;
       text-shadow: 0 0 12px #fff;
     }
+
     .floating-hearts span {
       animation: heartRise 4.8s ease-in-out infinite;
     }
+
     .floating-hearts span:nth-child(2) { animation-delay: .8s; }
     .floating-hearts span:nth-child(3) { animation-delay: 1.6s; }
     .floating-hearts span:nth-child(4) { animation-delay: 2.4s; }
+
+    @keyframes shimmer {
+      from { transform: translate3d(-18px, -14px, 0); opacity: .32; }
+      to { transform: translate3d(18px, 16px, 0); opacity: .58; }
+    }
+
     @keyframes neonPulse {
       0%, 100% { filter: brightness(1); }
       48% { filter: brightness(1.12); }
       52% { filter: brightness(.98); }
       56% { filter: brightness(1.16); }
     }
+
     @keyframes floaty {
       0%, 100% { transform: translateY(0) rotate(10deg); }
       50% { transform: translateY(-10px) rotate(14deg); }
     }
-    @keyframes gachaFloat {
-      0%, 100% { transform: translateY(0) rotate(-2deg); }
-      50% { transform: translateY(-10px) rotate(3deg); }
-    }
-    @keyframes orbit {
-      from { transform: rotate(0deg) translateX(12px) rotate(0deg); }
-      to { transform: rotate(360deg) translateX(12px) rotate(-360deg); }
-    }
+
     @keyframes heartRise {
       0%, 100% { transform: translateY(0) scale(1); opacity: .35; }
       50% { transform: translateY(-18px) scale(1.08); opacity: .75; }
     }
+
     @media (min-width: 680px) {
-      .page { padding-top: 24px; }
+      .page {
+        padding-top: 24px;
+      }
+
       .event-card,
       .final-card,
-      .hero { padding: 24px; }
-      .prize-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .reward-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .hero {
+        padding: 24px;
+      }
+
+      .prize-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .reward-steps {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
     }
+
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+      *,
+      *::before,
+      *::after {
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
         scroll-behavior: auto !important;
         transition-duration: .01ms !important;
       }
+
       .event-card,
       .final-card {
         opacity: 1;
@@ -444,87 +543,92 @@
 </head>
 <body>
   <main class="page">
-    <a class="top-link" href="../../">Nico公式ホームへ</a>
+    <a class="top-link" href="../../">Nico公式ホームページへ</a>
 
     <section class="hero">
       <span class="hero-kicker">2026 Summer Event</span>
-      <h1>🌈<br>Nicoと一緒に<br>最高の8月にしよう</h1>
-      <p class="hero-subtitle">8月をまるごと楽しむ<br>シークレットイベント</p>
+      <h1>🌈<br>Nicoと一緒に<br>最高の8月にしよう！<br><span>2026 Summer Event</span></h1>
+      <p class="hero-subtitle">
+        上旬 中旬 下旬で楽しみ方が変わる<br>
+        8月だけのわくわくイベント
+      </p>
       <figure class="poster-frame">
         <img src="../../assets/events/2026-summer-event/summer_event_overview_202608.jpg" alt="Nicoと一緒に最高の8月にしよう 2026 Summer Event">
       </figure>
       <p class="lead">
-        8月は上旬 中旬 下旬で楽しみ方が変わるよ<br>
-        応援してくれた気持ちがNicoの力になります
+        8月はイベント盛りだくさん！<br>
+        みんなで暑い夏より熱く過ごそう！！
       </p>
     </section>
 
     <section class="event-card reveal">
-      <span class="section-label">上旬イベント 8/1〜8/10</span>
-      <h2>🎫<br>シークレットパスポート<br>プレゼント</h2>
+      <span class="section-label">上旬 8/1〜8/10</span>
+      <h2>🎫<br>1K歌推しで<br>スペシャルパスポート<br>プレゼント🎁</h2>
       <p class="event-copy">
-        期間中 <span class="neon-word">1K歌推し</span> で<br>
-        <span class="neon-word">シークレットパスポート</span>をプレゼントします
+        期間中<br>
+        <span class="neon-word">1K歌推し</span>で<br>
+        スペシャルパスポートをプレゼント🎁
       </p>
-      <ul class="mini-list" aria-label="パスポートの中身">
-        <li>秘密のページの合言葉</li>
-        <li>下旬イベント参加資格</li>
-        <li>シークレット特典受け取り資格</li>
+      <ul class="mini-list" aria-label="スペシャルパスポートの中身">
+        <li>秘密のキーワードが入っているよ！</li>
+        <li>下旬で回収できるから大切に保管してね♡</li>
+        <li>あなたの応援がNicoのやる気につながります！</li>
       </ul>
       <p class="event-copy" style="margin-top:14px;">
-        あなたの応援が<br>Nicoのやる気につながります<br>
-        みんなあたたたたたか〜く<br>見守ってね♡
+        みんなあたたたたたか〜く<br>
+        見守ってね♡
       </p>
-    </section>
+    <a class="secret-passport-link" href="../../rewards/2026-summer-secret-passport/" aria-label="スペシャルパスポートの秘密ページを開く">
+      <figure class="image-card secret-passport-cover">
+        <img src="../../rewards/2026-summer-secret-passport/nico_secret_page_cover_20260801.jpg" alt="スペシャルパスポート 秘密のページ表紙">
+      </figure>
+    </a>
+  </section>
 
     <section class="event-card reveal">
       <span class="section-label">青パール期間中</span>
       <h2>💎<br>夏うた祭<br>スペシャルガチャ大会開催</h2>
       <p class="event-copy">
-        指定アイテム1個で<br>
-        <span class="neon-word">ガチャ1回</span>
+        青パール期間中限定！<br>
+        ガチャを回すとスペシャルなプレゼントが🌈💞<br>
+        <span class="neon-word">指定ギフトでガチャ1回！</span><br>
+        1日 or 2日限定イベント♡
       </p>
-      <div class="gacha-stage" aria-hidden="true">
-        <div class="gacha-label">Special<br>Gacha</div>
-      </div>
-      <div class="prize-grid" aria-label="ガチャ景品一覧">
-        <div class="prize">🎁 シークレット 1枚<br>水着Nico</div>
-        <div class="prize">🌈 SSRカード 1枚<br>浴衣花火Nico</div>
-        <div class="prize">⭐ SRカード 1枚<br>ミニキャラ浴衣Nico</div>
-        <div class="prize">🎤 R ボイス<br>全3種類</div>
-        <div class="prize">🖼 N 壁紙</div>
-      </div>
+      <figure class="image-card gacha-image-card">
+          <img src="../../assets/events/2026-summer-event/summer_gacha_202608_compact_hq.png" alt="夏うた祭り ガチャ大会 特典内容">
+      </figure>
+      <p class="image-caption">特典内容は画像を見てね</p>
     </section>
 
     <section class="event-card reveal">
-      <span class="section-label">下旬イベント 8/21〜8/31</span>
-      <h2>🎤<br>マクロスセトリ配信</h2>
+      <span class="section-label">下旬 8/21〜8/31</span>
+      <h2>🎤<br>赤パール期間中！<br>マクロスセトリ🌈💞</h2>
       <figure class="image-card">
         <img src="../../assets/events/2026-summer-event/macross_10_songs_202608.jpg" alt="8月 マクロス10曲覚えたいコーナー">
       </figure>
       <p class="event-copy" style="margin-top:14px;">
-        配信に遊びに来てくれたみんなへ<br>
-        <span class="neon-word">カード1枚プレゼント</span>
+        来ていただいた方全員に<br>
+        <span class="neon-word">オリジナルカードプレゼント！</span><br>
+        さ ら に！
       </p>
       <p class="event-copy" style="margin-top:12px;">
-        シークレットパスポートを持っている方限定<br>
-        Nicoが覚えた曲数によって特典が変化します
+        上旬にパスポートを受け取って頂いている方には<br>
+        Nicoが覚えた曲数によって特典プレゼント💕
       </p>
       <div class="reward-steps">
         <div class="reward-step">
           <strong>5曲以下</strong>
-          名前入り<br>マクロス風レアカード
+          スペシャルカード<br>お名前入り
         </div>
         <div class="reward-step">
           <strong>8曲以下</strong>
-          特別ペアアイコン
+          ペアアイコン<br>お名前入り
         </div>
         <div class="reward-step">
-          <strong>10曲コンプリート</strong>
-          スペシャルボイス付き動画
+          <strong>10曲コンプ！</strong>
+          特別ボイス付き動画！
         </div>
       </div>
-      <!-- 達成曲数は下の data-current-songs の数字だけ変更します 0〜10 -->
       <div class="song-progress" data-current-songs="0" aria-label="現在の達成曲数">
         <div class="song-boxes" aria-hidden="true"></div>
         <div class="song-count">0 / 10曲</div>
@@ -534,9 +638,8 @@
     <section class="final-card reveal">
       <p>
         🌈<br>
-        あなたの応援が<br>
-        Nicoのやる気につながります<br>
-        8月も一緒に最高の思い出を作ろう♡<br>
+        8月はイベント盛りだくさん！<br>
+        みんなで暑い夏より熱く過ごそう！！<br>
         ColorSingへ遊びに来てね♪
       </p>
       <a class="colorsing-button" href="https://web.colorsing.com/share/user?user_id=411fa6d1-ba51-4f7c-a4f2-d635ab43ba5b" target="_blank" rel="noopener">ColorSingへ遊びに行く</a>
@@ -546,13 +649,14 @@
   <div class="floating-hearts" aria-hidden="true">
     <span>♡</span>
     <span>✦</span>
-    <span>♡</span>
-    <span>✧</span>
+    <span>🌈</span>
+    <span>💞</span>
   </div>
 
   <script>
+    const learnedSongs = 0;
     const progress = document.querySelector(".song-progress");
-    const currentSongs = Math.max(0, Math.min(10, Number(progress.dataset.currentSongs || 0)));
+    const currentSongs = Math.max(0, Math.min(10, Number(learnedSongs || 0)));
     const boxes = progress.querySelector(".song-boxes");
     const count = progress.querySelector(".song-count");
 
@@ -561,6 +665,7 @@
       if (index < currentSongs) box.classList.add("is-filled");
       boxes.appendChild(box);
     }
+
     count.textContent = `${currentSongs} / 10曲`;
 
     const observer = new IntersectionObserver((entries) => {

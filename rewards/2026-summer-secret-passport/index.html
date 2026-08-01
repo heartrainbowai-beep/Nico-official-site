@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nico 秘密のページ</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --pink: #ff68bb;
+      --hot-pink: #ff2f9a;
+      --aqua: #8beaff;
+      --gold: #ffe981;
+      --ink: #6f2d62;
+      --white: #fff;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 16% 10%, rgba(255,255,255,.72), transparent 17%),
+        radial-gradient(circle at 82% 20%, rgba(255,255,255,.5), transparent 18%),
+        linear-gradient(150deg, #ff9fd2 0%, #ffd9ef 32%, #cbf5ff 68%, #fff5cf 100%);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.95) 0 1.5px, transparent 1.5px),
+        radial-gradient(circle, rgba(255,221,244,.9) 0 2px, transparent 2px);
+      background-size: 118px 118px, 168px 168px;
+      background-position: 0 0, 42px 68px;
+      opacity: .68;
+      z-index: 0;
+    }
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 760px);
+      margin: 0 auto;
+      padding: 18px 14px 48px;
+    }
+    .cover-card,
+    .keyword-panel,
+    .reward-panel {
+      border: 3px solid rgba(255,255,255,.95);
+      border-radius: 24px;
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 0 18px rgba(255,255,255,.72), 0 0 26px rgba(255,47,154,.25);
+      backdrop-filter: blur(8px);
+    }
+    .cover-card {
+      padding: 0;
+      overflow: hidden;
+      background: rgba(255,255,255,.9);
+    }
+    .cover-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #fff;
+    }
+    .is-hidden {
+      display: none;
+    }
+    .keyword-panel {
+      margin-top: 18px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0 0 10px;
+      color: #fff;
+      font-size: clamp(24px, 6vw, 40px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      text-shadow: 0 0 8px rgba(255,255,255,.96), 0 0 18px rgba(255,47,154,.78);
+    }
+    .keyword-note {
+      margin: 0 auto 14px;
+      max-width: 520px;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.75;
+      font-weight: 900;
+    }
+    .keyword-row {
+      display: grid;
+      gap: 10px;
+    }
+    input {
+      width: 100%;
+      min-height: 52px;
+      padding: 12px 14px;
+      border: 3px solid rgba(255,104,187,.58);
+      border-radius: 18px;
+      background: rgba(255,255,255,.96);
+      color: var(--ink);
+      font: inherit;
+      font-size: 16px;
+      font-weight: 900;
+      outline: none;
+    }
+    input:focus {
+      border-color: var(--hot-pink);
+      box-shadow: 0 0 0 4px rgba(255,104,187,.18);
+    }
+    button {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 18px;
+      background: linear-gradient(90deg, var(--hot-pink), #9b6dff, var(--aqua));
+      color: #fff;
+      font: inherit;
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(255,47,154,.28);
+    }
+    .keyword-error {
+      display: none;
+      margin: 10px 0 0;
+      color: #d72e7f;
+      font-size: 13px;
+      line-height: 1.7;
+      font-weight: 900;
+    }
+    .reward-panel {
+      display: none;
+      margin-top: 0;
+      padding: 16px 14px 18px;
+      text-align: center;
+    }
+    .reward-panel.is-visible {
+      display: block;
+    }
+    .coming-soon-box {
+      display: grid;
+      place-items: center;
+      min-height: 190px;
+      padding: 26px 16px;
+      border-radius: 22px;
+      border: 3px solid rgba(255,255,255,.96);
+      background:
+        radial-gradient(circle at 22% 18%, rgba(255,255,255,.82), transparent 25%),
+        radial-gradient(circle at 84% 26%, rgba(255,255,255,.62), transparent 22%),
+        linear-gradient(135deg, rgba(255,104,187,.24), rgba(139,234,255,.24), rgba(255,233,129,.22));
+      box-shadow: inset 0 0 18px rgba(255,255,255,.74), 0 0 18px rgba(255,47,154,.2);
+    }
+    .coming-soon-text {
+      margin: 0;
+      color: #fff;
+      line-height: 1.35;
+      font-weight: 900;
+      text-shadow: 0 0 8px rgba(255,255,255,.96), 0 0 18px rgba(255,47,154,.78), 0 3px 0 rgba(122,45,132,.3);
+    }
+    .soon-line,
+    .support-line {
+      display: block;
+    }
+    .soon-line {
+      font-size: 30px;
+    }
+    .support-line {
+      white-space: nowrap;
+      font-size: 13px;
+    }
+    @media (min-width: 420px) {
+      .soon-line { font-size: 36px; }
+      .support-line { font-size: 17px; }
+    }
+    @media (min-width: 680px) {
+      .keyword-row {
+        grid-template-columns: minmax(0, 1fr) auto;
+      }
+      .coming-soon-box {
+        max-width: 620px;
+        margin: 0 auto;
+      }
+      .soon-line { font-size: 42px; }
+      .support-line { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="cover-card" id="coverCard" aria-label="Nico 秘密のページ 表紙">
+      <img class="cover-image" src="nico_secret_page_cover_20260801.jpg" alt="Nico 秘密のページ 表紙">
+    </section>
+
+    <section class="keyword-panel" id="keywordPanel" aria-label="合言葉入力">
+      <h1>合言葉を入力</h1>
+      <p class="keyword-note">秘密のキーワードを入力してね。</p>
+      <div class="keyword-row">
+        <input id="secretKeyword" type="text" autocomplete="off" placeholder="合言葉を入力">
+        <button id="unlockButton" type="button">ひらく</button>
+      </div>
+      <p class="keyword-error" id="keywordError">合言葉がちがうみたいです。もう一度たしかめてね。</p>
+    </section>
+
+    <section class="reward-panel" id="rewardPanel" aria-label="秘密の特典">
+      <div class="coming-soon-box">
+        <p class="coming-soon-text"><span class="soon-line">𝙲𝚘𝚖𝚒𝚗𝚐 𝚜𝚘𝚘𝚗..</span><span class="support-line">Nicoちゃんを応援して待っててね♡</span></p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const input = document.getElementById("secretKeyword");
+      const unlockButton = document.getElementById("unlockButton");
+      const error = document.getElementById("keywordError");
+      const coverCard = document.getElementById("coverCard");
+      const keywordPanel = document.getElementById("keywordPanel");
+      const rewardPanel = document.getElementById("rewardPanel");
+      const validKeywords = ["\u6691\u3044\u590f\u3088\u308a\u71b1\u304f"];
+
+      function normalize(value) {
+        return value
+          .normalize("NFKC")
+          .trim()
+          .replace(/\s/g, "")
+          .toLowerCase();
+      }
+
+      function unlockReward() {
+        const entered = normalize(input.value);
+        const matched = validKeywords.some((keyword) => normalize(keyword) === entered);
+        error.style.display = matched ? "none" : "block";
+        if (matched) {
+          coverCard.classList.add("is-hidden");
+          keywordPanel.classList.add("is-hidden");
+          rewardPanel.classList.add("is-visible");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+
+      unlockButton.addEventListener("click", unlockReward);
+      input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          unlockReward();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
