@@ -622,6 +622,40 @@
             font-weight: 900;
             text-shadow: 0 0 8px rgba(255, 105, 180, 0.78), 0 1px 3px rgba(120, 38, 94, 0.42);
         }
+        .latest-icon-reward-card {
+            width: 88%;
+            margin: 0 auto 25px auto;
+            border-radius: 22px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(5px);
+            text-decoration: none;
+            color: #fff;
+            display: block;
+            text-align: center;
+        }
+        .latest-icon-reward-img {
+            width: min(72%, 300px);
+            display: block;
+            margin: 14px auto 10px;
+            border-radius: 18px;
+            border: 2px solid rgba(255,255,255,0.92);
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.55);
+        }
+        .latest-icon-reward-card .gallery-title {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 18px;
+            line-height: 1.35;
+        }
+        .latest-icon-reward-card .gallery-note {
+            display: block;
+            color: #fff8fd;
+            font-size: 13px;
+            line-height: 1.55;
+            font-weight: 900;
+            text-shadow: 0 0 8px rgba(255, 105, 180, 0.78), 0 1px 3px rgba(120, 38, 94, 0.42);
+        }
         @media (max-width: 340px) {
             .gallery-pair { grid-template-columns: 1fr; width: 88%; }
             .gallery-pair .gallery-note { font-size: 12px; }
@@ -701,6 +735,7 @@
         <a class="site-menu-item primary" href="https://web.colorsing.com/share/user?user_id=411fa6d1-ba51-4f7c-a4f2-d635ab43ba5b" target="_blank" onclick="closeSiteMenu()">ColorSing</a>
         <button class="site-menu-item" type="button" onclick="openBenefitFromMenu()">ColorSingの特典内容</button>
         <a class="site-menu-item" href="galleries/icons/" onclick="closeSiteMenu()">アイコン特典ギャラリー</a>
+        <a class="site-menu-item" href="galleries/icons/40k-50k-2026-07/" onclick="closeSiteMenu()">2026年7月 40K・50K特典</a>
         <button class="site-menu-item" type="button" onclick="openSecretGalleryFromMenu()">秘密のギャラリー</button>
         <button class="site-menu-item" type="button" onclick="goToSection('note')">Nicoの想い<span class="site-menu-sub">note</span></button>
         <a class="site-menu-item" href="history/" onclick="closeSiteMenu()">Nicoの歩んだ道</a>
@@ -1057,6 +1092,14 @@
         <img src="assets/home/colorsing_benefit_cover_20260616.png" alt="ColorSingの特典内容はこちら" class="benefit-poster-img">
         <span class="benefit-card-copy">月間のK数によって設けている特典の内容を<br>こちらから確認できます</span>
     </button>
+
+    <a class="latest-icon-reward-card pink-neon-border fade-in" href="galleries/icons/40k-50k-2026-07/">
+        <img src="assets/icon_gallery/40k-50k-202607/july_40k_50k_cover_202607.jpg" alt="2026年7月 40K・50K特典はこちら" class="latest-icon-reward-img">
+        <div class="card-content">
+            <span class="neon-white gallery-title">2026年7月<br>40K・50K特典</span>
+            <span class="gallery-note">40Kアイコンリングと50Kありがとう画像はこちら</span>
+        </div>
+    </a>
 
     <div class="gallery-pair fade-in">
         <a id="gallery" class="gallery-card pink-neon-border" href="galleries/icons/">
