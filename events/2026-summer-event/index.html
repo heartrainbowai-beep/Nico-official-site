@@ -552,6 +552,460 @@
         transform: none;
       }
     }
+
+    /* Approved readability layout for the August event page */
+    :root {
+      --ink: #5b2346;
+      --hot-pink: #f0188e;
+      --pink: #ff55b8;
+      --shadow: 0 18px 42px rgba(255, 82, 172, .22);
+    }
+
+    .event-card,
+    .event-overview-card,
+    .final-card {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+
+    .preview-hero-title {
+      display: inline-grid;
+      justify-items: center;
+      gap: 5px;
+      width: min(100%, 560px);
+      padding: 13px 10px 15px;
+      border-radius: 28px;
+      border: 2px solid rgba(255,255,255,.94);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(255,255,255,.96), transparent 28%),
+        linear-gradient(145deg, rgba(255,255,255,.84), rgba(255,229,244,.72));
+      box-shadow:
+        0 0 18px rgba(255,255,255,.9),
+        0 0 26px rgba(255,86,180,.22),
+        inset 0 0 20px rgba(255,255,255,.38);
+      animation: none;
+    }
+
+    .hero-rainbow,
+    .hero-title-line,
+    .hero-title-main,
+    .hero-title-sub {
+      display: block;
+    }
+
+    .hero-rainbow {
+      font-size: clamp(25px, 6.5vw, 38px);
+      line-height: 1;
+      filter: drop-shadow(0 0 8px rgba(255,255,255,.95));
+    }
+
+    .hero-title-line,
+    .hero-title-main {
+      color: #f0188e;
+      line-height: 1.24;
+      letter-spacing: .025em;
+      -webkit-text-stroke: .28px rgba(255,255,255,.9);
+      text-shadow:
+        0 1px 0 rgba(255,255,255,.98),
+        0 0 4px #fff,
+        0 0 10px rgba(255,255,255,.9),
+        0 0 16px rgba(255,70,174,.5);
+    }
+
+    .hero-title-line {
+      font-size: clamp(22px, 6vw, 34px);
+      font-weight: 700;
+    }
+
+    .hero-title-main {
+      white-space: nowrap;
+      font-size: clamp(24px, 6.35vw, 40px);
+      font-weight: 700;
+    }
+
+    .hero-title-sub {
+      margin-top: 5px;
+      color: #c9488a;
+      font-size: clamp(15px, 4vw, 24px);
+      line-height: 1.2;
+      letter-spacing: .03em;
+      text-shadow: 0 1px 0 rgba(255,255,255,.98), 0 0 10px rgba(255,255,255,.9);
+    }
+
+    .event-overview-card {
+      position: relative;
+      overflow: hidden;
+      margin: 18px 0 0;
+      padding: 17px 14px 18px;
+      border-radius: 28px;
+      border: 3px solid rgba(255,255,255,.96);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(255,255,255,.96), transparent 30%),
+        linear-gradient(145deg, rgba(255,255,255,.91), rgba(255,222,242,.82));
+      box-shadow: var(--shadow), 0 0 28px rgba(255,255,255,.8);
+      text-align: center;
+    }
+
+    .overview-kicker {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 32px;
+      margin: 0 0 10px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.82);
+      color: #f0188e;
+      font-size: 13px;
+      font-weight: 700;
+      text-shadow: 0 1px 0 rgba(255,255,255,.98), 0 0 10px rgba(255,77,180,.34);
+      box-shadow: 0 0 16px rgba(255,105,180,.22);
+    }
+
+    .overview-title {
+      margin: 0 0 10px;
+      color: #f0188e;
+      font-size: clamp(24px, 6.6vw, 38px);
+      line-height: 1.34;
+      letter-spacing: .03em;
+      text-shadow:
+        0 1px 0 rgba(255,255,255,.98),
+        0 0 5px rgba(255,255,255,.95),
+        0 0 14px rgba(255,74,170,.4);
+    }
+
+    .overview-lead,
+    .overview-flow-body span,
+    .overview-side-note,
+    .passport-explain p {
+      color: #5b2346;
+      text-shadow: 0 1px 0 rgba(255,255,255,.82);
+    }
+
+    .overview-lead {
+      width: min(100%, 34em);
+      margin: 0 auto 14px;
+      font-size: clamp(15px, 4vw, 17px);
+      line-height: 1.85;
+      font-weight: 500;
+    }
+
+    .overview-main-visual {
+      width: min(100%, 430px);
+      margin: 14px auto 12px;
+      background: #160722;
+    }
+
+    .overview-flow {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      text-align: left;
+    }
+
+    .overview-flow li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 8px 10px;
+      align-items: start;
+      padding: 12px;
+      border-radius: 20px;
+      border: 2px solid rgba(255,255,255,.9);
+      background: rgba(255,255,255,.84);
+      box-shadow: inset 0 0 0 1px rgba(255,180,222,.18), 0 0 14px rgba(255,95,180,.12);
+    }
+
+    .overview-flow-number {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ff77c4, #8bdcff);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      text-shadow: 0 0 6px rgba(255,255,255,.82);
+      box-shadow: 0 0 14px rgba(255,105,180,.28);
+    }
+
+    .overview-flow-body {
+      display: grid;
+      gap: 3px;
+    }
+
+    .overview-flow-body strong,
+    .passport-explain strong,
+    .overview-reward-summary > strong {
+      color: #f0188e;
+      text-shadow: 0 1px 0 rgba(255,255,255,.95);
+    }
+
+    .overview-flow-body strong {
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .overview-flow-body span {
+      font-size: 14px;
+      line-height: 1.65;
+      font-weight: 500;
+    }
+
+    .overview-side-note,
+    .overview-reward-summary,
+    .passport-explain {
+      border: 2px solid rgba(255,255,255,.9);
+      box-shadow: inset 0 0 0 1px rgba(255,180,222,.18), 0 0 14px rgba(255,95,180,.12);
+    }
+
+    .overview-side-note {
+      margin: 12px 0 0;
+      padding: 11px 12px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(229,248,255,.9), rgba(255,236,247,.9));
+      color: #61304d;
+      font-size: 14px;
+      line-height: 1.7;
+      font-weight: 600;
+    }
+
+    .overview-reward-summary,
+    .passport-explain {
+      background: rgba(255,255,255,.86);
+    }
+
+    .overview-reward-summary {
+      margin: 12px 0 0;
+      padding: 12px;
+      border-radius: 20px;
+    }
+
+    .overview-reward-summary > strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .overview-reward-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .overview-reward-chip {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 8px;
+      align-items: center;
+      padding: 9px 10px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255,245,251,.96), rgba(230,247,255,.9));
+      color: #5b2346;
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 600;
+    }
+
+    .overview-reward-chip strong {
+      color: #f0188e;
+      white-space: nowrap;
+    }
+
+    .readable-event-title {
+      display: inline-grid;
+      justify-items: center;
+      gap: 5px;
+      width: min(100%, 540px);
+      margin: 0 0 14px;
+      padding: 13px 12px 15px;
+      border-radius: 28px;
+      border: 2px solid rgba(255,255,255,.96);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(255,255,255,.98), transparent 30%),
+        linear-gradient(145deg, rgba(255,255,255,.88), rgba(255,232,246,.78));
+      box-shadow:
+        0 0 18px rgba(255,255,255,.86),
+        0 0 26px rgba(255,86,180,.22),
+        inset 0 0 18px rgba(255,255,255,.36);
+    }
+
+    .event-title-icon,
+    .event-title-key,
+    .event-title-main {
+      display: block;
+    }
+
+    .event-title-icon {
+      font-size: clamp(20px, 5vw, 28px);
+      line-height: 1.1;
+      filter: drop-shadow(0 0 7px rgba(255,255,255,.86));
+    }
+
+    .event-title-key,
+    .event-title-main {
+      color: #f0188e;
+      -webkit-text-stroke: .3px rgba(255,255,255,.92);
+      text-shadow:
+        0 1px 0 rgba(255,255,255,.98),
+        0 0 5px rgba(255,255,255,.95),
+        0 0 12px rgba(255,74,170,.45);
+    }
+
+    .event-title-key {
+      font-size: clamp(25px, 6.4vw, 36px);
+      line-height: 1.24;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .event-title-key.blue {
+      color: #0098c8;
+      text-shadow:
+        0 1px 0 rgba(255,255,255,.98),
+        0 0 5px rgba(255,255,255,.95),
+        0 0 13px rgba(75,210,255,.42);
+    }
+
+    .event-title-key.red {
+      color: #e32174;
+    }
+
+    .event-title-main {
+      font-size: clamp(23px, 6.2vw, 34px);
+      line-height: 1.35;
+      font-weight: 700;
+      letter-spacing: .03em;
+    }
+
+    main > section.event-card:nth-of-type(2) .event-copy:first-of-type .neon-word {
+      display: inline-block;
+      margin: 2px 4px;
+      color: #f0188e;
+      font-size: clamp(21px, 5.6vw, 28px);
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-shadow:
+        0 1px 0 rgba(255,255,255,.98),
+        0 0 6px rgba(255,255,255,.96),
+        0 0 13px rgba(255,77,180,.5);
+    }
+
+    main > section.event-card:nth-of-type(3) .event-copy:first-of-type .neon-word {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      margin: 7px auto;
+      padding: 6px 18px 8px;
+      border-radius: 999px;
+      border: 3px solid rgba(255,255,255,.96);
+      background: linear-gradient(135deg, #00aee7, #7bdfff 48%, #ff75c6);
+      color: #fff;
+      font-size: clamp(20px, 5.9vw, 32px);
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-shadow:
+        0 1px 0 rgba(0,115,160,.5),
+        0 0 5px rgba(255,255,255,.9),
+        0 0 15px rgba(255,255,255,.36);
+      box-shadow:
+        0 0 16px rgba(255,255,255,.8),
+        0 0 25px rgba(71,198,255,.28);
+    }
+
+    .passport-explain {
+      width: min(100%, 460px);
+      margin: 14px auto 0;
+      padding: 13px 13px 14px;
+      border-radius: 20px;
+      color: #5b2346;
+      text-align: left;
+    }
+
+    .passport-explain strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    .passport-explain p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    .secret-passport-click-note {
+      display: grid;
+      justify-items: center;
+      gap: 6px;
+      width: min(100%, 440px);
+      margin-inline: auto;
+      padding: 12px 14px 14px;
+      border-radius: 24px;
+      border: 3px solid rgba(255,255,255,.96);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(255,255,255,.9), transparent 28%),
+        linear-gradient(135deg, #ff3da7, #ff7ac8 54%, #8bdcff);
+      color: #fff;
+      font-size: clamp(18px, 5vw, 23px);
+      font-weight: 700;
+      line-height: 1.55;
+      text-align: center;
+      text-shadow: none;
+      box-shadow:
+        0 0 16px rgba(255,255,255,.82),
+        0 0 28px rgba(255,60,164,.28);
+    }
+
+    .secret-passport-click-note::after {
+      content: "↓";
+      color: #fff;
+      font-size: clamp(20px, 5.5vw, 28px);
+      line-height: 1;
+      text-shadow: 0 0 8px rgba(255,255,255,.88);
+    }
+
+    .secret-passport-click-note span,
+    .secret-passport-click-note strong {
+      display: block;
+      color: #fff;
+    }
+
+    .secret-passport-click-note span {
+      color: #fff8fd;
+      font-size: clamp(16px, 4.5vw, 21px);
+      text-shadow: 0 1px 0 rgba(174,38,116,.56), 0 0 8px rgba(255,255,255,.62);
+    }
+
+    .secret-passport-click-note strong {
+      font-size: clamp(18px, 4.8vw, 24px);
+      line-height: 1.35;
+      letter-spacing: .03em;
+      white-space: nowrap;
+      text-shadow:
+        0 1px 0 rgba(174,38,116,.62),
+        0 0 7px rgba(255,255,255,.82),
+        0 0 18px rgba(255,255,255,.34);
+    }
+
+    .song-count {
+      font-size: clamp(18px, 5vw, 25px);
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    @media (max-width: 420px) {
+      .event-overview-card {
+        padding: 17px 13px;
+        border-radius: 24px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -560,13 +1014,13 @@
 
     <section class="hero">
       <span class="hero-kicker">2026 Summer Event</span>
-      <h1>🌈<br>Nicoと一緒に<br>最高の8月にしよう！<br><span>2026 Summer Event</span></h1>
+      <h1 class="preview-hero-title"><span class="hero-rainbow">🌈</span><span class="hero-title-line">Nicoと一緒に</span><span class="hero-title-main">最高の8月にしよう！</span><span class="hero-title-sub">2026 Summer Event</span></h1>
       <p class="hero-subtitle">
         上旬 中旬 下旬で楽しみ方が変わる<br>
         8月だけのわくわくイベント
       </p>
       <figure class="poster-frame">
-        <img src="../../assets/events/2026-summer-event/summer_event_overview_202608.jpg" alt="Nicoと一緒に最高の8月にしよう 2026 Summer Event">
+        <img src="../../assets/events/2026-summer-event/summer_event_overview_restructured_preview_202608.png" alt="Nicoと一緒に最高の8月にしよう 2026 Summer Event 全体像">
       </figure>
       <p class="lead">
         8月はイベント盛りだくさん！<br>
@@ -574,14 +1028,70 @@
       </p>
     </section>
 
+    <div class="event-overview-card" aria-label="8月イベントの全体像">
+      <p class="overview-kicker">8月イベントの全体像</p>
+      <h2 class="overview-title">メインは<br>マクロス10曲チャレンジ</h2>
+      <p class="overview-lead">
+        8月のメインは、Nicoが今月マクロス10曲を<br>
+        頑張って覚えるチャレンジです！
+      </p>
+      <figure class="image-card overview-main-visual">
+        <img src="../../assets/events/2026-summer-event/macross_10_songs_202608.jpg" alt="8月 マクロス10曲覚えたいコーナー">
+      </figure>
+      <p class="image-caption">この10曲にチャレンジします</p>
+      <ol class="overview-flow">
+        <li>
+          <span class="overview-flow-number">1</span>
+          <span class="overview-flow-body">
+            <strong>上旬</strong>
+            <span>1K歌推しでスペシャルパスポートを受け取る</span>
+          </span>
+        </li>
+        <li>
+          <span class="overview-flow-number">2</span>
+          <span class="overview-flow-body">
+            <strong>下旬〜月末ごろ</strong>
+            <span>Nicoが覚えた曲数に応じて、パスポート所持者へ特典を配布</span>
+          </span>
+        </li>
+        <li>
+          <span class="overview-flow-number">3</span>
+          <span class="overview-flow-body">
+            <strong>中旬は別企画</strong>
+            <span>青パール期間の夏うた祭ガチャも楽しんでね</span>
+          </span>
+        </li>
+      </ol>
+      <p class="overview-side-note">
+        パスポートは、下旬の曲数別特典を受け取るための<br>
+        参加チケットだよ♬
+      </p>
+      <div class="overview-reward-summary">
+        <strong>パスポート所持者への曲数別特典</strong>
+        <div class="overview-reward-list">
+          <span class="overview-reward-chip"><strong>5曲以下</strong><span>スペシャルカード お名前入り</span></span>
+          <span class="overview-reward-chip"><strong>8曲以下</strong><span>ペアアイコン お名前入り</span></span>
+          <span class="overview-reward-chip"><strong>10曲コンプ</strong><span>特別ボイス付き動画</span></span>
+        </div>
+      </div>
+      <div class="song-progress" data-current-songs="0" aria-label="現時点で覚えた曲数">
+        <div class="song-boxes" aria-hidden="true"></div>
+        <div class="song-count">現時点で覚えた曲数：0 / 10曲</div>
+      </div>
+    </div>
+
     <section class="event-card reveal">
       <span class="section-label">上旬 8/1〜8/10</span>
-      <h2>🎫<br>1K歌推しで<br>スペシャルパスポート<br>プレゼント🎁</h2>
+      <h2 class="readable-event-title"><span class="event-title-icon">🎫</span><span class="event-title-key">1K歌推しで</span><span class="event-title-main">スペシャルパスポート<br>プレゼント</span><span class="event-title-icon">🎁</span></h2>
       <p class="event-copy">
-        期間中<br>
+        上旬（8月1日〜10日）<br>
         <span class="neon-word">1K歌推し</span>で<br>
         スペシャルパスポートをプレゼント🎁
       </p>
+      <div class="passport-explain">
+        <strong>スペシャルパスポートってなに？</strong>
+        <p>下旬〜月末までに、Nicoが覚えたマクロス曲数に応じた特典を受け取るための参加チケットだよ。</p>
+      </div>
       <ul class="mini-list" aria-label="スペシャルパスポートの中身">
         <li>秘密のキーワードが入っているよ！</li>
         <li>下旬で回収できるから大切に保管してね♡</li>
@@ -591,7 +1101,7 @@
         みんなあたたたたたか〜く<br>
         見守ってね♡
       </p>
-      <p class="secret-passport-click-note">秘密のページはこちらをクリック</p>
+      <p class="secret-passport-click-note"><span>秘密のページはこちら</span><strong>下の画像をクリックしてね</strong></p>
     <a class="secret-passport-link" href="../../rewards/2026-summer-secret-passport/" aria-label="スペシャルパスポートの秘密ページを開く">
       <figure class="image-card secret-passport-cover">
         <img src="../../rewards/2026-summer-secret-passport/nico_secret_page_cover_20260801.jpg" alt="スペシャルパスポート 秘密のページ表紙">
@@ -601,12 +1111,12 @@
 
     <section class="event-card reveal">
       <span class="section-label">青パール期間中</span>
-      <h2>💎<br>夏うた祭<br>スペシャルガチャ大会開催</h2>
+      <h2 class="readable-event-title"><span class="event-title-icon">💎</span><span class="event-title-key blue">夏うた祭</span><span class="event-title-main">スペシャルガチャ<br>大会開催</span></h2>
       <p class="event-copy">
         青パール期間中限定！<br>
         ガチャを回すとスペシャルなプレゼントが🌈💞<br>
         <span class="neon-word">指定ギフトでガチャ1回！</span><br>
-        1日 or 2日限定イベント♡
+        8月12日、13日限定イベント♡
       </p>
       <figure class="image-card gacha-image-card">
           <img src="../../assets/events/2026-summer-event/summer_gacha_202608.jpg" alt="夏うた祭り ガチャ大会 特典内容">
@@ -616,37 +1126,16 @@
 
     <section class="event-card reveal">
       <span class="section-label">下旬 8/21〜8/31</span>
-      <h2>🎤<br>赤パール期間中！<br>マクロスセトリ🌈💞</h2>
-      <figure class="image-card">
-        <img src="../../assets/events/2026-summer-event/macross_10_songs_202608.jpg" alt="8月 マクロス10曲覚えたいコーナー">
-      </figure>
+      <h2 class="readable-event-title"><span class="event-title-icon">🎤</span><span class="event-title-key red">赤パール期間中！</span><span class="event-title-main">マクロスセトリ</span><span class="event-title-icon">🌈💞</span></h2>
       <p class="event-copy" style="margin-top:14px;">
-        来ていただいた方全員に<br>
-        <span class="neon-word">オリジナルカードプレゼント！</span><br>
-        さ ら に！
+        赤パール期間中は<br>
+        <span class="neon-word">マクロスセトリ配信</span>をやるよ！
       </p>
       <p class="event-copy" style="margin-top:12px;">
-        上旬にパスポートを受け取って頂いている方には<br>
-        Nicoが覚えた曲数によって特典プレゼント💕
+        Nicoが覚えた曲を<br>
+        一緒に見守ってね♡
       </p>
-      <div class="reward-steps">
-        <div class="reward-step">
-          <strong>5曲以下</strong>
-          スペシャルカード<br>お名前入り
-        </div>
-        <div class="reward-step">
-          <strong>8曲以下</strong>
-          ペアアイコン<br>お名前入り
-        </div>
-        <div class="reward-step">
-          <strong>10曲コンプ！</strong>
-          特別ボイス付き動画！
-        </div>
-      </div>
-      <div class="song-progress" data-current-songs="0" aria-label="現在の達成曲数">
-        <div class="song-boxes" aria-hidden="true"></div>
-        <div class="song-count">0 / 10曲</div>
-      </div>
+      <p class="image-caption">パスポート特典の流れは、上の「8月イベントの全体像」を見てね</p>
     </section>
 
     <section class="final-card reveal">
@@ -680,7 +1169,7 @@
       boxes.appendChild(box);
     }
 
-    count.textContent = `${currentSongs} / 10曲`;
+    count.textContent = `現時点で覚えた曲数：${currentSongs} / 10曲`;
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
