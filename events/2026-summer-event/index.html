@@ -410,11 +410,54 @@
       pointer-events: none;
     }
 
+    .bonus-song-boxes {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 12px 0 10px;
+    }
+
+    .bonus-song-boxes span {
+      display: grid;
+      place-items: center;
+      width: clamp(38px, 11vw, 54px);
+      aspect-ratio: 1;
+      border-radius: 16px;
+      border: 2px solid rgba(255,255,255,.94);
+      color: #fff;
+      background:
+        radial-gradient(circle at 24% 18%, rgba(255,255,255,.96) 0 10%, transparent 11%),
+        radial-gradient(circle at 78% 70%, rgba(139,234,255,.82) 0 10%, transparent 11%),
+        conic-gradient(from 20deg, #ff4db8, #fff070, #8edcff, #a780ff, #ff4db8);
+      box-shadow:
+        0 0 14px rgba(255, 47, 156, .62),
+        0 0 24px rgba(139, 234, 255, .42),
+        inset 0 0 10px rgba(255,255,255,.8);
+      font-size: clamp(18px, 5vw, 26px);
+      font-weight: 900;
+      text-shadow:
+        0 0 5px rgba(255,255,255,.98),
+        0 0 14px rgba(255,47,154,.92);
+    }
+
     .song-count {
       color: var(--hot-pink);
       font-size: 24px;
       text-align: center;
       text-shadow: 0 0 7px #fff, 0 0 14px rgba(255, 47, 156, .66);
+    }
+
+    .song-thanks {
+      margin: 8px auto 0;
+      color: #f0188e;
+      font-size: clamp(15px, 4.2vw, 18px);
+      line-height: 1.65;
+      text-align: center;
+      font-weight: 900;
+      text-shadow:
+        0 1px 0 rgba(255,255,255,.98),
+        0 0 8px rgba(255,255,255,.96),
+        0 0 14px rgba(255,77,180,.48);
     }
 
     .reward-steps {
@@ -1110,9 +1153,11 @@
           <span class="overview-reward-chip"><strong>10曲コンプ</strong><span>特別ボイス付き動画</span></span>
         </div>
       </div>
-      <div class="song-progress" data-current-songs="4" aria-label="現時点で覚えた曲数 4 / 10曲">
+      <div class="song-progress" data-current-songs="13" aria-label="現時点で覚えた曲数 10 / 10曲 +3曲">
         <div class="song-boxes" aria-hidden="true"></div>
-        <div class="song-count">現時点で覚えた曲数：4 / 10曲</div>
+        <div class="bonus-song-boxes" aria-hidden="true"></div>
+        <div class="song-count">現時点で覚えた曲数：10 / 10曲 +3曲</div>
+        <p class="song-thanks">みんなのおかげでいっぱい覚えることができたよ♡ありがとう</p>
       </div>
     </div>
 
@@ -1193,19 +1238,28 @@
   </div>
 
   <script>
-    const learnedSongs = 4;
+    const learnedSongs = 13;
+    const targetSongs = 10;
     const progress = document.querySelector(".song-progress");
-    const currentSongs = Math.max(0, Math.min(10, Number(learnedSongs || 0)));
+    const currentSongs = Math.max(0, Math.min(targetSongs, Number(learnedSongs || 0)));
+    const bonusSongs = Math.max(0, Number(learnedSongs || 0) - targetSongs);
     const boxes = progress.querySelector(".song-boxes");
+    const bonusBoxes = progress.querySelector(".bonus-song-boxes");
     const count = progress.querySelector(".song-count");
 
-    for (let index = 0; index < 10; index += 1) {
+    for (let index = 0; index < targetSongs; index += 1) {
       const box = document.createElement("span");
       if (index < currentSongs) box.classList.add("is-filled");
       boxes.appendChild(box);
     }
 
-    count.textContent = `現時点で覚えた曲数：${currentSongs} / 10曲`;
+    for (let index = 0; index < bonusSongs; index += 1) {
+      const box = document.createElement("span");
+      box.textContent = "✦";
+      bonusBoxes.appendChild(box);
+    }
+
+    count.textContent = `現時点で覚えた曲数：${currentSongs} / ${targetSongs}曲 +${bonusSongs}曲`;
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
