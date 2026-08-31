@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nico 秘密のページ</title>
+  <title>Nico 秘密のページ | マクロス10曲チャレンジ特典デモ</title>
   <style>
     * { box-sizing: border-box; }
     :root {
@@ -144,36 +144,198 @@
     .reward-panel.is-visible {
       display: block;
     }
-    .coming-soon-box {
+    .reward-hero {
       display: grid;
-      place-items: center;
-      min-height: 190px;
-      padding: 26px 16px;
+      gap: 8px;
+      margin: 0 0 16px;
+      padding: 18px 12px;
       border-radius: 22px;
       border: 3px solid rgba(255,255,255,.96);
       background:
-        radial-gradient(circle at 22% 18%, rgba(255,255,255,.82), transparent 25%),
-        radial-gradient(circle at 84% 26%, rgba(255,255,255,.62), transparent 22%),
-        linear-gradient(135deg, rgba(255,104,187,.24), rgba(139,234,255,.24), rgba(255,233,129,.22));
-      box-shadow: inset 0 0 18px rgba(255,255,255,.74), 0 0 18px rgba(255,47,154,.2);
+        radial-gradient(circle at 16% 10%, rgba(255,255,255,.9), transparent 24%),
+        radial-gradient(circle at 86% 22%, rgba(139,234,255,.45), transparent 26%),
+        linear-gradient(135deg, rgba(255,104,187,.34), rgba(255,255,255,.72), rgba(139,234,255,.28));
+      box-shadow: inset 0 0 18px rgba(255,255,255,.82), 0 0 22px rgba(255,47,154,.22);
     }
-    .coming-soon-text {
+    .reward-kicker {
+      margin: 0;
+      color: var(--hot-pink);
+      font-size: 13px;
+      line-height: 1.45;
+      font-weight: 900;
+      letter-spacing: .04em;
+    }
+    .reward-title {
       margin: 0;
       color: #fff;
-      line-height: 1.35;
+      font-size: clamp(26px, 7vw, 44px);
+      line-height: 1.18;
       font-weight: 900;
-      text-shadow: 0 0 8px rgba(255,255,255,.96), 0 0 18px rgba(255,47,154,.78), 0 3px 0 rgba(122,45,132,.3);
+      text-shadow:
+        0 0 7px rgba(255,255,255,.98),
+        0 0 18px rgba(255,47,154,.9),
+        0 3px 0 rgba(122,45,132,.24);
     }
-    .soon-line,
-    .support-line {
+    .reward-lead {
+      margin: 0;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.75;
+      font-weight: 900;
+    }
+    .reward-list {
+      display: grid;
+      gap: 18px;
+    }
+    .reward-item {
+      overflow: hidden;
+      border-radius: 24px;
+      border: 3px solid rgba(255,255,255,.95);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.9), rgba(255,231,247,.74)),
+        rgba(255,255,255,.86);
+      box-shadow: 0 0 18px rgba(255,255,255,.72), 0 12px 26px rgba(255,47,154,.18);
+    }
+    .reward-item-header {
+      display: grid;
+      gap: 4px;
+      padding: 14px 12px 12px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.92), transparent 26%),
+        linear-gradient(90deg, rgba(255,47,154,.9), rgba(153,109,255,.82), rgba(139,234,255,.82));
+      color: #fff;
+      text-shadow: 0 0 8px rgba(255,255,255,.86), 0 0 14px rgba(255,47,154,.72);
+    }
+    .reward-badge {
+      justify-self: center;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.24);
+      border: 1px solid rgba(255,255,255,.72);
+      font-size: 12px;
+      line-height: 1.3;
+      font-weight: 900;
+    }
+    .reward-item-title {
+      margin: 0;
+      font-size: clamp(20px, 5.6vw, 30px);
+      line-height: 1.25;
+      font-weight: 900;
+    }
+    .reward-media {
       display: block;
+      width: 100%;
+      height: auto;
+      background: #fff;
     }
-    .soon-line {
-      font-size: 30px;
+    .reward-movie {
+      background: #130015;
     }
-    .support-line {
-      white-space: nowrap;
+    .reward-caption {
+      margin: 0;
+      padding: 12px 12px 14px;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.65;
+      font-weight: 900;
+    }
+    .reward-save {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      margin: 0 auto 14px;
+      padding: 9px 16px;
+      border: 2px solid rgba(255,255,255,.92);
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(90deg, var(--hot-pink), #9b6dff, var(--aqua));
+      box-shadow: 0 8px 18px rgba(255,47,154,.24);
       font-size: 13px;
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nico-letter {
+      margin: 20px 0 0;
+      padding: 20px 16px 22px;
+      border-radius: 28px;
+      border: 3px solid rgba(255,255,255,.96);
+      background:
+        radial-gradient(circle at 14% 12%, rgba(255,255,255,.92), transparent 22%),
+        radial-gradient(circle at 88% 18%, rgba(139,234,255,.36), transparent 24%),
+        linear-gradient(145deg, rgba(255,255,255,.94), rgba(255,218,240,.82), rgba(255,246,210,.76));
+      box-shadow:
+        inset 0 0 18px rgba(255,255,255,.78),
+        0 0 22px rgba(255,47,154,.22),
+        0 12px 28px rgba(155,109,255,.12);
+      position: relative;
+      overflow: hidden;
+    }
+    .nico-letter::before,
+    .nico-letter::after {
+      position: absolute;
+      color: rgba(255,47,154,.2);
+      font-size: 42px;
+      line-height: 1;
+      pointer-events: none;
+      text-shadow: 0 0 12px rgba(255,255,255,.9);
+    }
+    .nico-letter::before {
+      content: "♡";
+      top: 12px;
+      right: 18px;
+    }
+    .nico-letter::after {
+      content: "✦";
+      bottom: 12px;
+      left: 18px;
+      color: rgba(139,234,255,.38);
+    }
+    .letter-kicker {
+      margin: 0 0 8px;
+      color: var(--hot-pink);
+      font-size: 13px;
+      line-height: 1.5;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-shadow: 0 0 8px rgba(255,255,255,.92);
+    }
+    .letter-title {
+      margin: 0 0 14px;
+      color: #fff;
+      font-size: clamp(25px, 7vw, 40px);
+      line-height: 1.2;
+      font-weight: 900;
+      text-shadow:
+        0 0 7px rgba(255,255,255,.98),
+        0 0 18px rgba(255,47,154,.86),
+        0 2px 0 rgba(122,45,132,.18);
+    }
+    .letter-body {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(15px, 4.2vw, 18px);
+      line-height: 1.9;
+      font-weight: 900;
+      text-align: left;
+      text-shadow: 0 1px 0 rgba(255,255,255,.86);
+    }
+    .letter-body p {
+      margin: 0;
+    }
+    .letter-sign {
+      margin: 16px 0 0;
+      color: #fff;
+      font-size: clamp(26px, 7vw, 42px);
+      line-height: 1;
+      font-weight: 900;
+      text-align: right;
+      text-shadow:
+        0 0 7px rgba(255,255,255,.98),
+        0 0 18px rgba(255,47,154,.9),
+        0 0 24px rgba(139,234,255,.44);
     }
     @media (min-width: 420px) {
       .soon-line { font-size: 36px; }
@@ -183,12 +345,9 @@
       .keyword-row {
         grid-template-columns: minmax(0, 1fr) auto;
       }
-      .coming-soon-box {
-        max-width: 620px;
-        margin: 0 auto;
+      .reward-list {
+        gap: 22px;
       }
-      .soon-line { font-size: 42px; }
-      .support-line { font-size: 26px; }
     }
   </style>
 </head>
@@ -208,9 +367,49 @@
       <p class="keyword-error" id="keywordError">合言葉がちがうみたいです。もう一度たしかめてね。</p>
     </section>
 
-    <section class="reward-panel" id="rewardPanel" aria-label="秘密の特典">
-      <div class="coming-soon-box">
-        <p class="coming-soon-text"><span class="soon-line">𝙲𝚘𝚖𝚒𝚗𝚐 𝚜𝚘𝚘𝚗..</span><span class="support-line">Nicoちゃんを応援して待っててね♡</span></p>
+    <section class="reward-panel" id="rewardPanel" aria-label="マクロス10曲チャレンジ 秘密の特典">
+      <div class="reward-hero">
+        <p class="reward-kicker">暑い夏より暑く、応援してくれてありがとう♡</p>
+        <h1 class="reward-title">マクロス10曲チャレンジ<br>秘密の特典</h1>
+        <p class="reward-lead">パスポートを持っている方へ、達成曲数に合わせたありがとう特典です。</p>
+      </div>
+
+      <div class="reward-list">
+        <article class="reward-item" aria-labelledby="five-song-title">
+          <div class="reward-item-header">
+            <span class="reward-badge">5曲達成</span>
+            <h2 class="reward-item-title" id="five-song-title">スペシャルカードありがとう</h2>
+          </div>
+          <img class="reward-media" src="macross_5songs_special_card_20260831.png" alt="マクロス10曲チャレンジ 5曲達成 スペシャルカードありがとう">
+          <p class="reward-caption">5曲達成のありがとうカードです。画像を長押し、または保存ボタンから受け取ってね。</p>
+          <a class="reward-save" href="macross_5songs_special_card_20260831.png" download="nico_macross_5songs_special_card_20260831.png">カード画像を保存する</a>
+        </article>
+
+        <article class="reward-item" aria-labelledby="ten-song-title">
+          <div class="reward-item-header">
+            <span class="reward-badge">10曲達成</span>
+            <h2 class="reward-item-title" id="ten-song-title">スペシャルムービー</h2>
+          </div>
+          <video class="reward-media reward-movie" controls playsinline preload="metadata">
+            <source src="macross_10songs_special_movie_20260831.mp4" type="video/mp4">
+            このブラウザでは動画を再生できません。
+          </video>
+          <p class="reward-caption">10曲達成のスペシャルムービーです。再生ボタンを押して見てね。</p>
+          <a class="reward-save" href="macross_10songs_special_movie_20260831.mp4" download="nico_macross_10songs_special_movie_20260831.mp4">ムービーを保存する</a>
+        </article>
+
+        <section class="nico-letter" aria-labelledby="nico-letter-title">
+          <p class="letter-kicker">Nicoからのお手紙</p>
+          <h2 class="letter-title" id="nico-letter-title">本当にありがとう♡</h2>
+          <div class="letter-body">
+            <p>上旬に歌推しを取ってくれて、本当にどうもありがとう。</p>
+            <p>7月、8月と2ヶ月間、「暑い夏より熱く」という気持ちで、<br>みんなと一緒に楽しみたい一心で、全力で過ごしてきました。</p>
+            <p>自分の思い通りになかなかいかないこともあったり、<br>自分がどこに向かったらいいのか悩むこともあったけれど、<br>それでもいつも楽しく前を向けたのは、<br>今こうしてこのページを読んでくれている<br>あなたのおかげです。</p>
+            <p>この先何があっても、どんな形になったとしても、Nicoはみんなと、<br>そしてあなたと楽しみたいという気持ちは絶対に変わりません。</p>
+            <p>だから安心してついてきてね。本当にどうもありがとう。</p>
+          </div>
+          <p class="letter-sign">Nico♡</p>
+        </section>
       </div>
     </section>
   </main>
@@ -223,7 +422,7 @@
       const coverCard = document.getElementById("coverCard");
       const keywordPanel = document.getElementById("keywordPanel");
       const rewardPanel = document.getElementById("rewardPanel");
-      const validKeywords = ["\u6691\u3044\u590f\u3088\u308a\u71b1\u304f"];
+      const validKeywords = ["\u6691\u3044\u590f\u3088\u308a\u6691\u304f", "\u6691\u3044\u590f\u3088\u308a\u71b1\u304f"];
 
       function normalize(value) {
         return value
