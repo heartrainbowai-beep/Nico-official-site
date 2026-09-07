@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>スマホ表示確認 - 笑空虹心</title>
+  <style>
+    :root {
+      --ink: #351b29;
+      --rose: #ed4d88;
+      --pink: #fff0f8;
+      --rainbow: linear-gradient(90deg, #ff8eb8, #ffd5a2, #c6f0d2, #a9d6ff, #d3b6ff, #ff8eb8);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { min-height: 100%; }
+
+    body {
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 2rem 1rem;
+      color: var(--ink);
+      font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, system-ui, sans-serif;
+      background:
+        radial-gradient(ellipse at 12% 10%, rgba(255, 255, 255, 0.92), transparent 17rem),
+        radial-gradient(ellipse at 88% 88%, rgba(220, 239, 255, 0.3), transparent 20rem),
+        linear-gradient(145deg, #fffafd, #fff1f8 52%, #f9f6ff);
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      position: fixed;
+      color: rgba(237, 77, 136, 0.26);
+      font-family: Georgia, serif;
+      pointer-events: none;
+    }
+
+    body::before { content: "♡"; top: 9vh; left: 5vw; font-size: 4rem; transform: rotate(-15deg); }
+    body::after { content: "✦"; right: 6vw; bottom: 11vh; font-size: 2.5rem; }
+
+    .preview-shell {
+      display: grid;
+      justify-items: center;
+      gap: 1rem;
+    }
+
+    .preview-label {
+      margin: 0;
+      color: var(--rose);
+      font-size: 0.88rem;
+      font-weight: 900;
+      text-align: center;
+      text-shadow: 0 0 9px rgba(255, 86, 153, 0.42);
+    }
+
+    .phone-frame {
+      position: relative;
+      width: min(390px, calc(100vw - 2rem));
+      height: 844px;
+      min-height: 520px;
+      padding: 13px;
+      border: 4px solid #f3a1bd;
+      border-radius: 2.2rem;
+      background: #fff7fb;
+      box-shadow:
+        0 0 0 6px rgba(255, 255, 255, 0.8),
+        0 0 18px rgba(255, 155, 198, 0.56),
+        0 24px 70px rgba(231, 109, 157, 0.16);
+    }
+
+    .phone-frame::before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      width: 5.5rem;
+      height: 0.3rem;
+      border-radius: 999px;
+      background: rgba(184, 20, 76, 0.22);
+      transform: translateX(-50%);
+    }
+
+    .phone-frame::after {
+      content: "";
+      position: absolute;
+      right: 0.8rem;
+      bottom: 0.7rem;
+      left: 0.8rem;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--rainbow);
+      box-shadow: 0 0 10px rgba(255, 111, 173, 0.6);
+      pointer-events: none;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+      border-radius: 1.55rem;
+      background: #fffafd;
+    }
+
+    @media (max-height: 700px) {
+      body { place-items: start center; }
+      .phone-frame { height: calc(100svh - 5rem); }
+    }
+  </style>
+</head>
+<body>
+  <main class="preview-shell">
+    <p class="preview-label">スマホ表示確認用 / 390×844想定</p>
+    <div class="phone-frame" aria-label="スマホサイズのサイトプレビュー">
+      <iframe src="index.html?v=20260907-purpose-lines" title="笑空虹心 スマホ表示プレビュー"></iframe>
+    </div>
+  </main>
+</body>
+</html>

@@ -2202,6 +2202,10 @@ body {
   display: block;
 }
 
+.emotion-copy-line {
+  display: block;
+}
+
 @media (max-width: 560px) {
   .emotion-list {
     display: flex;
@@ -2219,6 +2223,17 @@ body {
     min-height: 2.2rem;
     padding-inline: 0.08rem;
     font-size: 0.58rem;
+  }
+
+  .emotion-copy {
+    font-size: clamp(0.7rem, 2.72vw, 0.8rem);
+    line-height: 1.9;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .emotion-copy-line {
+    white-space: nowrap;
   }
 }
 
@@ -3390,5 +3405,292 @@ body {
   .delivery-explanation {
     font-size: 0.78rem;
     line-height: 1.65;
+  }
+}
+
+.rookie-page {
+  gap: clamp(1.25rem, 4vw, 2.4rem);
+}
+
+.rookie-hero,
+.rookie-special-thanks {
+  max-width: 58rem;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 184, 226, 0.72);
+  border-radius: 1.35rem;
+  background: linear-gradient(135deg, rgba(77, 48, 137, 0.94), rgba(48, 40, 113, 0.94));
+  box-shadow: 0 0 18px rgba(255, 109, 199, 0.28), 0 0 30px rgba(105, 223, 255, 0.14);
+}
+
+.rookie-hero {
+  padding: clamp(1.25rem, 5vw, 2.8rem);
+  text-align: center;
+}
+
+.rookie-hero h1,
+.rookie-special-thanks h2 {
+  margin: 0.3rem 0 0;
+  color: #fff8fd;
+  font-family: "あんずもじ", "あんず文字", "Yomogi", "Hachi Maru Pop", "Kiwi Maru", "Zen Kurenaido", "Zen Maru Gothic", sans-serif;
+  line-height: 1.2;
+  text-shadow: 0 0 2px #fff, 0 0 10px rgba(255, 130, 207, 0.9), 0 0 18px rgba(113, 225, 255, 0.58);
+}
+
+.rookie-hero h1 {
+  font-size: clamp(1.75rem, 6vw, 3rem);
+}
+
+.rookie-hero-lead {
+  margin: 0.85rem 0 0;
+  color: #b9f7ff;
+  font-size: clamp(1.05rem, 3vw, 1.45rem);
+  font-weight: 950;
+  text-shadow: 0 0 8px rgba(105, 223, 255, 0.68);
+}
+
+.rookie-hero-copy {
+  margin: 1rem 0 0;
+  color: #fff0fb;
+  font-weight: 800;
+  line-height: 1.8;
+}
+
+.rookie-cta {
+  display: inline-flex;
+  margin-top: 1.25rem;
+}
+
+.rookie-benefits {
+  max-width: 58rem;
+  margin: 0 auto;
+}
+
+.rookie-benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.rookie-benefit-card {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 0.65rem;
+  min-height: 10.5rem;
+  padding: 1.1rem;
+  border: 1px solid rgba(255, 184, 226, 0.72);
+  border-radius: 1rem;
+  background: linear-gradient(145deg, rgba(255, 235, 250, 0.92), rgba(214, 246, 255, 0.9));
+  box-shadow: 0 0 18px rgba(255, 131, 209, 0.18);
+}
+
+.rookie-benefit-card::before {
+  content: "♡";
+  position: absolute;
+  top: 0.65rem;
+  right: 0.8rem;
+  color: rgba(207, 71, 150, 0.34);
+  font-family: Georgia, serif;
+  font-size: 1.35rem;
+}
+
+.rookie-minutes {
+  color: #c24691;
+  font-size: 0.9rem;
+  font-weight: 950;
+}
+
+.rookie-benefit-card h3 {
+  margin: 0;
+  color: #4f367f;
+  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+  line-height: 1.35;
+}
+
+.rookie-benefit-card p {
+  margin: 0;
+  color: #654d82;
+  font-size: 0.88rem;
+  font-weight: 750;
+  line-height: 1.6;
+}
+
+.rookie-special-thanks {
+  padding: 1.3rem clamp(1rem, 4vw, 2rem);
+  color: #fff0fb;
+  text-align: center;
+}
+
+.rookie-special-thanks h2 {
+  font-size: clamp(1.25rem, 4vw, 1.8rem);
+}
+
+.rookie-special-thanks p {
+  margin: 0.7rem 0 0;
+  font-weight: 750;
+  line-height: 1.75;
+}
+
+.rookie-special-thanks strong {
+  color: #bff8ff;
+  text-shadow: 0 0 8px rgba(105, 223, 255, 0.7);
+}
+
+.rookie-link-card {
+  border-color: rgba(105, 223, 255, 0.62);
+  background: linear-gradient(145deg, rgba(255, 235, 250, 0.92), rgba(214, 246, 255, 0.9));
+}
+
+.event-info-strip {
+  width: min(100%, 31rem);
+  margin: 1rem auto 1.15rem;
+  padding: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.44);
+  border-radius: 0.5rem;
+  background:
+    linear-gradient(135deg, rgba(255, 128, 192, 0.22), rgba(116, 227, 255, 0.16)),
+    rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 0 18px rgba(255, 110, 180, 0.22),
+    0 0 26px rgba(92, 218, 255, 0.16);
+}
+
+.event-info-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  color: #fff7ff;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(255, 108, 181, 0.72), 0 0 18px rgba(112, 220, 255, 0.5);
+}
+
+.event-info-head span {
+  padding: 0.18rem 0.58rem;
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 950;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ff75b8, #ffe88c, #83edff);
+  box-shadow: 0 0 13px rgba(255, 113, 181, 0.44);
+}
+
+.event-info-head strong {
+  color: #fff7ff;
+  font-size: 1.08rem;
+  line-height: 1.25;
+  font-weight: 950;
+}
+
+.event-info-date {
+  width: fit-content;
+  margin: 0.58rem auto 0;
+  padding: 0.2rem 0.82rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  color: #fffaff;
+  font-size: 0.9rem;
+  font-weight: 950;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(255, 118, 184, 0.68), rgba(116, 228, 255, 0.46));
+  box-shadow: 0 0 14px rgba(255, 118, 184, 0.38), 0 0 18px rgba(116, 228, 255, 0.26);
+  text-shadow: 0 0 8px rgba(80, 26, 90, 0.45);
+}
+
+.event-info-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-top: 0.68rem;
+}
+
+.event-info-links-single {
+  grid-template-columns: 1fr;
+}
+
+.event-info-card {
+  display: grid;
+  align-content: center;
+  gap: 0.28rem;
+  min-height: 5.2rem;
+  padding: 0.7rem 0.62rem;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 0.5rem;
+  color: #fff7ff;
+  text-align: center;
+  text-decoration: none;
+  background:
+    radial-gradient(circle at 16% 12%, rgba(255, 255, 255, 0.34), transparent 2.5rem),
+    linear-gradient(135deg, rgba(255, 108, 177, 0.5), rgba(67, 202, 255, 0.38));
+  box-shadow: 0 0 14px rgba(255, 106, 180, 0.2);
+  line-break: strict;
+  word-break: keep-all;
+}
+
+.event-info-card-wide {
+  min-height: 7.1rem;
+}
+
+.event-info-place {
+  color: #fff5ff;
+  font-size: 0.86rem;
+  font-weight: 950;
+  text-shadow: 0 0 8px rgba(255, 112, 184, 0.7);
+}
+
+.event-info-card strong {
+  color: #ffffff;
+  font-size: 1.22rem;
+  line-height: 1.28;
+  font-weight: 950;
+  text-shadow: 0 0 8px rgba(255, 112, 184, 0.76), 0 0 15px rgba(130, 232, 255, 0.52);
+}
+
+.event-info-card small {
+  color: rgba(255, 250, 255, 0.94);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  font-weight: 850;
+  text-shadow: 0 0 8px rgba(51, 18, 64, 0.42);
+}
+
+.event-info-card-feature {
+  background:
+    radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.42), transparent 2.8rem),
+    linear-gradient(135deg, rgba(255, 121, 190, 0.62), rgba(255, 232, 128, 0.36), rgba(110, 229, 255, 0.44));
+}
+
+.event-detail-label {
+  width: fit-content;
+  margin: 0.1rem auto 0;
+  padding: 0.24rem 0.78rem;
+  border-radius: 999px;
+  color: #51306f;
+  font-size: 0.78rem;
+  font-weight: 950;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.52);
+}
+
+@media (max-width: 760px) {
+  .rookie-benefit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rookie-benefit-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .event-info-strip {
+    margin-top: 0.85rem;
+  }
+
+  .event-info-links {
+    grid-template-columns: 1fr;
   }
 }
