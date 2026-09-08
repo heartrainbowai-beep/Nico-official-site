@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>笑空虹心 Backstage ルーキーチャレンジ</title>
   <meta name="description" content="Backstageで虹心と1対1でおはなしできるルーキーチャレンジ専用ページです">
-  <link rel="stylesheet" href="styles.css?v=20260908-mobile">
+  <link rel="stylesheet" href="styles.css?v=20260908-secret-door">
 </head>
 <body oncontextmenu="return false">
   <header class="topbar">
@@ -108,8 +108,20 @@
       <div class="thanks-copy">
         <p class="tag">Special thanks</p>
         <h2 id="thanks-title">イベントミッション達成特典</h2>
-        <p class="thanks-line thanks-mission"><span>イベントミッション達成で</span><span>期間中に有料通話をしてくれた</span><span>全ての方へ</span><span>特別アイコンフレームを</span><span class="thanks-name-highlight">お名前入りでプレゼント</span></p>
-        <img class="thanks-sample" src="assets/special-frame-sample.jpg" alt="イベントミッション達成特典のお名前入り特別アイコンフレームのサンプル" draggable="false">
+        <p class="thanks-line thanks-mission"><span>イベントミッション達成で</span><span>期間中に有料通話をしてくれた</span><span>全ての方へ</span><span class="thanks-name-highlight">特別アイコンフレームをプレゼント</span></p>
+        <div class="secret-door">
+          <h3>秘密の扉</h3>
+          <p>10分以上通話してくれた方へ<br>キーワードをお送りします</p>
+          <form class="secret-form" data-secret-door>
+            <label for="mission-keyword">キーワード</label>
+            <div class="secret-input-row">
+              <input id="mission-keyword" name="keyword" type="text" autocomplete="off" placeholder="ここに入力してね">
+              <button type="submit">扉をひらく</button>
+            </div>
+            <p class="door-result" id="door-result" role="status" aria-live="polite" hidden>Coming Soon💞</p>
+          </form>
+        </div>
+        <img class="thanks-sample mission-frame" src="assets/mission-frame-transparent.png?v=20260908-secret-door" alt="イベントミッション達成特典の特別アイコンフレーム" draggable="false">
       </div>
     </section>
 
@@ -126,5 +138,17 @@
   <footer class="foot">
     <p>画像 イラスト 立ち絵の無断転載 保存 加工 再配布 学習利用は禁止です</p>
   </footer>
+  <script>
+    const secretDoor = document.querySelector("[data-secret-door]");
+    const doorResult = document.querySelector("#door-result");
+
+    if (secretDoor && doorResult) {
+      secretDoor.addEventListener("submit", (event) => {
+        event.preventDefault();
+        doorResult.hidden = false;
+        doorResult.textContent = "Coming Soon💞";
+      });
+    }
+  </script>
 </body>
 </html>

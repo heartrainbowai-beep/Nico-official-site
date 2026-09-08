@@ -577,6 +577,108 @@ h2 {
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.75), 0 0 14px rgba(255, 115, 189, 0.72);
 }
 
+.secret-door {
+  width: min(100%, 23rem);
+  margin: 1.05rem auto 1.15rem;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 227, 110, 0.25), transparent 7rem),
+    radial-gradient(circle at 88% 85%, rgba(94, 225, 255, 0.24), transparent 8rem),
+    linear-gradient(135deg, rgba(255, 115, 189, 0.18), rgba(94, 225, 255, 0.14));
+  box-shadow: 0 0 22px rgba(255, 115, 189, 0.24), inset 0 0 20px rgba(255, 255, 255, 0.08);
+}
+
+.secret-door h3 {
+  margin: 0 0 0.4rem;
+  color: #fff8ff;
+  font-size: 1.2rem;
+  line-height: 1.35;
+  text-shadow: 0 0 12px rgba(255, 115, 189, 0.72), 0 0 20px rgba(94, 225, 255, 0.38);
+}
+
+.secret-door p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 900;
+  line-height: 1.65;
+}
+
+.secret-form {
+  margin-top: 0.78rem;
+}
+
+.secret-form label {
+  display: block;
+  margin-bottom: 0.36rem;
+  color: #fff8ff;
+  font-size: 0.84rem;
+  font-weight: 900;
+  text-shadow: 0 0 10px rgba(255, 143, 214, 0.62);
+}
+
+.secret-input-row {
+  display: flex;
+  gap: 0.44rem;
+}
+
+.secret-input-row input,
+.secret-input-row button {
+  min-height: 44px;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 900;
+}
+
+.secret-input-row input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0.62rem 0.9rem;
+  color: #fff8ff;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.12);
+  outline: 0;
+}
+
+.secret-input-row input::placeholder {
+  color: rgba(255, 232, 246, 0.74);
+}
+
+.secret-input-row input:focus {
+  border-color: rgba(94, 225, 255, 0.78);
+  box-shadow: 0 0 0 3px rgba(94, 225, 255, 0.14), 0 0 18px rgba(255, 115, 189, 0.22);
+}
+
+.secret-input-row button {
+  flex: 0 0 auto;
+  padding: 0.58rem 0.92rem;
+  color: #fff8ff;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  background: linear-gradient(135deg, rgba(255, 115, 189, 0.92), rgba(255, 227, 110, 0.76), rgba(94, 225, 255, 0.8));
+  box-shadow: 0 0 16px rgba(255, 115, 189, 0.46), 0 0 20px rgba(94, 225, 255, 0.28);
+  cursor: pointer;
+}
+
+.door-result {
+  width: fit-content;
+  margin: 0.78rem auto 0;
+  padding: 0.38rem 1.18rem;
+  color: #fff8ff;
+  font-size: 1.08rem;
+  font-weight: 900;
+  line-height: 1.35;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 115, 189, 0.88), rgba(94, 225, 255, 0.68));
+  box-shadow: 0 0 18px rgba(255, 115, 189, 0.6), 0 0 24px rgba(94, 225, 255, 0.36);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.78);
+}
+
+.door-result[hidden] {
+  display: none;
+}
+
 .thanks-topline {
   display: flex;
   flex-wrap: wrap;
@@ -617,9 +719,14 @@ h2 {
   margin: 1rem auto 0.95rem;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
+  background: rgba(23, 19, 66, 0.42);
   box-shadow: 0 0 20px rgba(94, 225, 255, 0.35), 0 0 30px rgba(255, 118, 189, 0.24);
   user-select: none;
   -webkit-user-drag: none;
+}
+
+.mission-frame {
+  width: min(100%, 22rem);
 }
 
 .lottery-box {
@@ -929,6 +1036,33 @@ h2 {
   .thanks {
     width: calc(100% - 1rem);
     padding: 1.4rem 0.7rem;
+  }
+
+  .thanks-copy {
+    max-width: calc(100vw - 2rem);
+  }
+
+  .thanks-line {
+    gap: 0.34rem;
+    max-width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .thanks-line > span {
+    width: auto;
+    max-width: 100%;
+  }
+
+  .thanks-line > .thanks-name-highlight {
+    padding-right: 0.82rem;
+    padding-left: 0.82rem;
+    font-size: clamp(0.98rem, 4.9vw, 1.16rem);
+    white-space: normal;
+  }
+
+  .secret-door,
+  .thanks-sample {
+    max-width: 100%;
   }
 
   .section-copy {
