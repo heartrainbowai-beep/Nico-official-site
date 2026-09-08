@@ -563,6 +563,20 @@ h2 {
   width: 100%;
 }
 
+.thanks-line > .thanks-name-highlight {
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.34rem 1.18rem;
+  color: #fff8ff;
+  font-size: clamp(1.16rem, 4.6vw, 1.45rem);
+  line-height: 1.35;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 227, 110, 0.95), rgba(255, 115, 189, 0.9) 54%, rgba(94, 225, 255, 0.72));
+  box-shadow: 0 0 16px rgba(255, 115, 189, 0.62), 0 0 28px rgba(94, 225, 255, 0.28);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.75), 0 0 14px rgba(255, 115, 189, 0.72);
+}
+
 .thanks-topline {
   display: flex;
   flex-wrap: wrap;
