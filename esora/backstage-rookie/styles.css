@@ -354,13 +354,15 @@ h2 {
 .rookie-purpose h3 {
   margin-bottom: 0.65rem;
   color: #fff8ff;
-  font-size: 1.12rem;
+  font-size: clamp(1.24rem, 3.1vw, 1.42rem);
   line-height: 1.45;
   text-shadow: 0 0 10px rgba(255, 115, 189, 0.62);
 }
 
 .rookie-purpose p {
   padding: 0;
+  font-size: clamp(0.9rem, 1.8vw, 0.96rem);
+  line-height: 1.82;
   border: 0;
   background: transparent;
   text-align: center;
@@ -560,7 +562,8 @@ h2 {
 
 .thanks-line > span {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
 }
 
 .thanks-line > .thanks-name-highlight {
@@ -901,6 +904,12 @@ h2 {
     font-size: 0.96rem;
   }
 
+  .thanks-line > .thanks-name-highlight {
+    padding-right: 0.82rem;
+    padding-left: 0.82rem;
+    font-size: clamp(0.98rem, 4.3vw, 1.14rem);
+  }
+
   .thanks-topline {
     font-size: 1.12rem;
   }
@@ -934,6 +943,14 @@ h2 {
   .gift-rule {
     line-break: strict;
     word-break: normal;
+  }
+
+  .rookie-purpose h3 {
+    font-size: clamp(1.18rem, 5vw, 1.32rem);
+  }
+
+  .rookie-purpose p {
+    font-size: clamp(0.84rem, 3.75vw, 0.9rem);
   }
 
   .rookie-purpose .keep {
