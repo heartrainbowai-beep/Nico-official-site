@@ -384,12 +384,17 @@ h2 {
 }
 
 .rookie-event-copy {
-  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: 0.16rem;
+  width: min(100%, 28rem);
+  margin-inline: auto;
   text-align: center;
 }
 
 .rookie-event-line {
-  display: inline-block;
+  display: block;
+  max-width: 100%;
   white-space: nowrap;
 }
 
