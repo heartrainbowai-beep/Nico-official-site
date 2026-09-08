@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>笑空虹心 Backstage ルーキーチャレンジ</title>
   <meta name="description" content="Backstageで虹心と1対1でおはなしできるルーキーチャレンジ専用ページです">
-  <link rel="stylesheet" href="styles.css?v=20260908-secret-door">
+  <link rel="stylesheet" href="styles.css?v=20260908-secret-keyword">
 </head>
 <body oncontextmenu="return false">
   <header class="topbar">
@@ -141,12 +141,24 @@
   <script>
     const secretDoor = document.querySelector("[data-secret-door]");
     const doorResult = document.querySelector("#door-result");
+    const missionKeywordHash = "161f1a2b96dd4a8c5ccc73b8ac6044d6581934c06c186d5becee0342bad71eff";
+    const textEncoder = new TextEncoder();
+
+    const toHex = (buffer) => [...new Uint8Array(buffer)]
+      .map((byte) => byte.toString(16).padStart(2, "0"))
+      .join("");
 
     if (secretDoor && doorResult) {
-      secretDoor.addEventListener("submit", (event) => {
+      secretDoor.addEventListener("submit", async (event) => {
         event.preventDefault();
+        const formData = new FormData(secretDoor);
+        const keyword = String(formData.get("keyword") || "").normalize("NFKC").trim();
+        const digest = await crypto.subtle.digest("SHA-256", textEncoder.encode(keyword));
+
         doorResult.hidden = false;
-        doorResult.textContent = "Coming Soon💞";
+        doorResult.textContent = toHex(digest) === missionKeywordHash
+          ? "Coming Soon💞"
+          : "キーワードを確認してね💞";
       });
     }
   </script>
