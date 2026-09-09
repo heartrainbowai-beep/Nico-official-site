@@ -2402,6 +2402,8 @@ body {
   display: block;
   width: 100%;
   height: 100%;
+  -webkit-touch-callout: default;
+  touch-action: auto;
 }
 
 .downloadable-media {
@@ -2410,8 +2412,11 @@ body {
 }
 
 .downloadable-media img,
+.downloadable-image img,
 .saveable-image {
   pointer-events: auto;
+  -webkit-touch-callout: default;
+  -webkit-user-select: auto;
   user-select: auto;
   -webkit-user-drag: element;
 }
