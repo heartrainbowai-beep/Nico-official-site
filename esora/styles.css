@@ -3759,3 +3759,154 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* Crisp neon pass: keep the glow around the UI, but let letters stay sharp. */
+.brand-ja,
+.brand-en,
+.button,
+.link-card span,
+.link-card strong,
+.link-card small,
+.section-heading .eyebrow,
+.section-heading h2,
+.event-info-head,
+.event-info-head span,
+.event-info-head strong,
+.event-info-date,
+.event-info-card span,
+.event-info-card strong,
+.event-info-card small,
+.event-detail-label,
+.gateway-card h3,
+.gateway-card p,
+.text-link {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.brand-ja {
+  color: #fff8fd;
+  text-shadow:
+    0 1px 1px rgba(48, 28, 87, 0.82),
+    0 0 4px rgba(255, 184, 230, 0.84),
+    0 0 9px rgba(116, 232, 255, 0.42);
+}
+
+.brand-en {
+  color: #ff85ba;
+  font-weight: 850;
+  text-shadow: 0 1px 1px rgba(38, 22, 75, 0.55);
+}
+
+.button {
+  color: #fffaff;
+  font-weight: 950;
+  letter-spacing: 0;
+  text-shadow:
+    0 1px 1px rgba(39, 25, 82, 0.78),
+    0 0 4px rgba(255, 211, 240, 0.62);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 228, 247, 0.28),
+    0 0 12px rgba(255, 121, 198, 0.34),
+    0 0 18px rgba(113, 225, 255, 0.18);
+}
+
+.hero-actions .button {
+  font-size: clamp(1rem, 3.6vw, 1.1rem);
+}
+
+.link-card strong,
+.section-heading h2,
+.gateway-card h3 {
+  color: #fffafd;
+  font-weight: 950;
+  text-shadow:
+    0 1px 1px rgba(31, 20, 72, 0.9),
+    0 0 2px rgba(255, 246, 253, 0.7),
+    0 0 5px rgba(255, 176, 226, 0.36);
+}
+
+.section-heading .eyebrow,
+.link-card span,
+.event-info-place {
+  color: #ffd3ef;
+  font-weight: 950;
+  text-shadow: 0 1px 1px rgba(39, 25, 82, 0.7);
+}
+
+.link-card small,
+.event-info-card small,
+.gateway-card p {
+  color: #fff7fd;
+  font-weight: 850;
+  text-shadow:
+    0 1px 1px rgba(24, 18, 58, 0.9),
+    0 0 2px rgba(255, 236, 248, 0.38);
+}
+
+.link-card-icon {
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(47, 28, 83, 0.72);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.45),
+    0 0 11px rgba(255, 116, 197, 0.56),
+    0 0 15px rgba(94, 225, 255, 0.3);
+}
+
+.event-info-head,
+.event-info-head strong,
+.event-info-card strong {
+  color: #fffaff;
+  text-shadow:
+    0 1px 1px rgba(36, 24, 78, 0.88),
+    0 0 2px rgba(255, 246, 253, 0.68),
+    0 0 5px rgba(255, 190, 232, 0.42);
+}
+
+.event-info-head span,
+.event-info-date,
+.event-detail-label {
+  text-shadow: 0 1px 1px rgba(68, 38, 94, 0.42);
+}
+
+.text-link {
+  color: #ffc8e9;
+  text-shadow:
+    0 1px 1px rgba(44, 25, 78, 0.7),
+    0 0 4px rgba(255, 178, 226, 0.55);
+}
+
+.link-card,
+.gateway-card,
+.button,
+.event-info-card {
+  border-color: rgba(255, 190, 235, 0.58);
+}
+
+@media (max-width: 560px) {
+  .quick-links .section-heading,
+  .benefit-gateway .section-heading {
+    display: grid;
+    justify-items: center;
+    gap: 0.35rem;
+    text-align: center;
+  }
+
+  .quick-links .section-heading h2,
+  .benefit-gateway .section-heading h2 {
+    width: fit-content;
+    max-width: 100%;
+    white-space: nowrap;
+    font-size: clamp(1.78rem, 8vw, 2.35rem);
+  }
+
+  .link-card strong {
+    font-size: clamp(1.45rem, 7.1vw, 2rem);
+    line-height: 1.24;
+  }
+
+  .link-card small {
+    font-size: clamp(0.98rem, 4.3vw, 1.15rem);
+    line-height: 1.55;
+  }
+}
