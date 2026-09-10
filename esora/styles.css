@@ -2437,6 +2437,49 @@ body {
   box-shadow: 0 0 12px rgba(255, 121, 198, 0.42), 0 0 18px rgba(112, 224, 255, 0.2);
 }
 
+.download-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+}
+
+.download-actions .download-link {
+  margin-top: 0;
+}
+
+.download-link-open {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28), rgba(141, 223, 245, 0.62));
+  color: #fff8fd;
+}
+
+.save-help-note {
+  max-width: 32rem;
+  margin: 0 auto 1.1rem;
+  color: #fff8fd;
+  font-family: "あんずもじ", "あんず文字", "Yomogi", "Hachi Maru Pop", "Kiwi Maru", "Zen Maru Gothic", sans-serif;
+  font-size: clamp(0.98rem, 3.4vw, 1.12rem);
+  font-weight: 900;
+  line-height: 1.65;
+  text-align: center;
+  text-shadow: 0 0 3px #fff, 0 0 10px rgba(255, 128, 207, 0.78);
+}
+
+@media (max-width: 560px) {
+  .download-actions {
+    gap: 0.45rem;
+  }
+
+  .download-actions .download-link {
+    flex: 1 1 8.2rem;
+    max-width: 12rem;
+    padding-inline: 0.75rem;
+    text-align: center;
+  }
+}
+
 .receive-choice-copy {
   display: grid;
   gap: 0.15rem;

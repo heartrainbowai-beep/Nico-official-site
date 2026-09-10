@@ -23,6 +23,55 @@
     img.addEventListener("touchstart", function () {}, { passive: true });
   });
 
+  var imageLinkPattern = /\.(png|jpe?g|webp)(?:[?#].*)?$/i;
+  var isRestrictedInAppBrowser = /Twitter|X-Twitter|Line|Instagram|FBAN|FBAV|FB_IAB/i.test(
+    window.navigator.userAgent || ""
+  );
+
+  document.querySelectorAll(".downloadable-image[href]").forEach(function (link) {
+    var href = link.getAttribute("href") || "";
+    if (!imageLinkPattern.test(href)) {
+      return;
+    }
+
+    if (link.hasAttribute("download")) {
+      link.dataset.downloadName = link.getAttribute("download") || "";
+      link.removeAttribute("download");
+    }
+    link.setAttribute("target", "_blank");
+    link.setAttribute("rel", "noopener");
+  });
+
+  document.querySelectorAll(".download-link[href]").forEach(function (link) {
+    var href = link.getAttribute("href") || "";
+    if (!imageLinkPattern.test(href) || link.closest(".download-actions")) {
+      return;
+    }
+
+    var actions = document.createElement("div");
+    actions.className = "download-actions";
+    link.parentNode.insertBefore(actions, link);
+    actions.appendChild(link);
+
+    if (isRestrictedInAppBrowser) {
+      link.removeAttribute("download");
+      link.setAttribute("target", "_blank");
+      link.setAttribute("rel", "noopener");
+      link.textContent = "画像を開く";
+      link.classList.add("download-link-open");
+      return;
+    }
+
+    var openLink = document.createElement("a");
+    openLink.className = "download-link download-link-open";
+    openLink.href = href;
+    openLink.target = "_blank";
+    openLink.rel = "noopener";
+    openLink.textContent = "画像を開く";
+    openLink.setAttribute("aria-label", (link.getAttribute("aria-label") || link.textContent || "画像").replace("保存", "開く"));
+    actions.appendChild(openLink);
+  });
+
   document.querySelectorAll(".menu-toggle").forEach(function (button) {
     var menu = document.getElementById(button.getAttribute("aria-controls"));
     button.addEventListener("click", function () {
