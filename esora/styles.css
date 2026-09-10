@@ -4038,3 +4038,42 @@ body :is(
 body :is(.emotion-pill, .tier-sheet-row > span, .membership-sheet .tier, .membership-header-number, .event-info-date, .event-detail-label, .icon-guide-link) {
   text-shadow: 0 1px 1px rgba(31, 20, 70, 0.5), 0 0 1px rgba(255, 255, 255, 0.65) !important;
 }
+
+/* Compact link cards: make the shortcut area feel softer and less shouty on phones. */
+.quick-links .link-card {
+  gap: 0.72rem;
+  min-height: 8.9rem;
+  padding: 1rem 1.05rem;
+}
+
+.quick-links .link-card-label {
+  font-size: clamp(0.75rem, 2.8vw, 0.86rem);
+}
+
+.quick-links .link-card strong {
+  max-width: 100%;
+  font-size: clamp(1.12rem, 4.6vw, 1.45rem);
+  line-height: 1.34;
+  letter-spacing: 0;
+}
+
+.quick-links .link-card small {
+  font-size: clamp(0.9rem, 3.55vw, 1.02rem);
+  line-height: 1.58;
+}
+
+@media (max-width: 560px) {
+  .quick-links .link-card {
+    min-height: auto;
+    padding: 0.96rem 1rem 1.05rem;
+  }
+
+  .quick-links .link-card strong {
+    font-size: clamp(1.18rem, 5.45vw, 1.45rem);
+    line-height: 1.36;
+  }
+
+  .quick-links .link-card small {
+    font-size: clamp(0.88rem, 3.85vw, 1rem);
+  }
+}
