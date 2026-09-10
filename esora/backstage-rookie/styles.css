@@ -1176,3 +1176,69 @@ h2 {
     font-size: clamp(1.08rem, 5.7vw, 1.26rem);
   }
 }
+
+/* Readable neon pass: keep the night glow while sharpening letters on mobile. */
+:root {
+  --rookie-readable-strong: 0 1px 1px rgba(18, 13, 50, 0.84), 0 0 2px rgba(255, 252, 255, 0.86), 0 0 4px rgba(255, 143, 212, 0.34);
+  --rookie-readable-soft: 0 1px 1px rgba(18, 13, 50, 0.74), 0 0 2px rgba(255, 246, 254, 0.45);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+body :is(
+  .brand span,
+  .topnav a,
+  .hero h1,
+  .section-copy h2,
+  .gift-card h3,
+  .thanks-copy h2,
+  .thanks-line,
+  .thanks-line > .thanks-name-highlight,
+  .secret-door h3,
+  .cta
+) {
+  text-shadow: var(--rookie-readable-strong) !important;
+}
+
+body :is(
+  .brand small,
+  .hero-copy p,
+  .section-copy p,
+  .section-copy .tag,
+  .gift-rule,
+  .gift-time,
+  .gift-card p,
+  .thanks-copy p,
+  .thanks-topline,
+  .thanks-count,
+  .thanks-plus,
+  .secret-door p,
+  .secret-form label,
+  .secret-input-row input,
+  .secret-input-row button
+) {
+  text-shadow: var(--rookie-readable-soft) !important;
+}
+
+/* Final blur guard for Backstage page labels. */
+body :is(.topbar, .hero, .talk, .rookie, .gifts, .thanks, .join, .foot) :is(h1, h2, h3, p, a, button, strong, span, small, em, label, input) {
+  text-shadow: 0 1px 1px rgba(18, 13, 50, 0.36), 0 0 2px rgba(255, 255, 255, 0.34) !important;
+}
+
+body :is(
+  .brand span,
+  .hero h1,
+  .section-copy h2,
+  .rookie-purpose h3,
+  .gift-card h3,
+  .thanks-copy h2,
+  .thanks-line > .thanks-name-highlight,
+  .secret-door h3,
+  .door-coming-soon h3,
+  .cta
+) {
+  text-shadow: 0 1px 1px rgba(18, 13, 50, 0.82), 0 0 1px rgba(255, 255, 255, 0.92), 0 0 3px rgba(255, 143, 212, 0.38) !important;
+}

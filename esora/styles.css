@@ -3910,3 +3910,131 @@ body {
     line-height: 1.55;
   }
 }
+
+/* Sitewide readable neon pass: soften the glow radius so text stays crisp on phone screenshots. */
+:root {
+  --readable-neon-strong: 0 1px 1px rgba(21, 14, 54, 0.84), 0 0 2px rgba(255, 252, 255, 0.86), 0 0 4px rgba(255, 143, 212, 0.34);
+  --readable-neon-soft: 0 1px 1px rgba(22, 15, 55, 0.76), 0 0 2px rgba(255, 246, 254, 0.48);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+body :is(
+  .brand-ja,
+  .button,
+  .back-link,
+  .link-card strong,
+  .section-heading h2,
+  .event-info-head,
+  .event-info-head strong,
+  .event-info-card strong,
+  .gateway-card h3,
+  .page-title h1,
+  .sheet-heading h2,
+  .membership-sheet h2,
+  .membership-item h3,
+  .tier-sheet-row h3,
+  .receive-page-title h1,
+  .receive-choice-copy strong,
+  .receive-detail-copy h1,
+  .receive-gallery-caption strong,
+  .membership-header-gallery-heading h2,
+  .membership-header-item h3,
+  .membership-header-thanks strong,
+  .download-link
+) {
+  text-shadow: var(--readable-neon-strong) !important;
+}
+
+body :is(
+  .brand-en,
+  .link-card span,
+  .link-card small,
+  .section-heading .eyebrow,
+  .event-info-head span,
+  .event-info-date,
+  .event-detail-label,
+  .event-info-card small,
+  .gateway-card p,
+  .page-title p,
+  .sheet-heading p,
+  .sheet-rainbow,
+  .sheet-sign,
+  .membership-intro,
+  .membership-rainbow,
+  .membership-item p,
+  .tier-sheet-row p,
+  .receive-choice-cover-label,
+  .receive-choice-copy small,
+  .receive-choice-copy em,
+  .delivery-slot span,
+  .delivery-slot .detail-lead,
+  .delivery-slot strong,
+  .delivery-slot small,
+  .delivery-explanation,
+  .save-help-note,
+  .receive-gallery-caption,
+  .membership-header-number,
+  .membership-header-gallery-heading p,
+  .membership-header-thanks span,
+  .membership-sample figcaption,
+  .letter-copy,
+  .letter-sign,
+  .eyebrow
+) {
+  text-shadow: var(--readable-neon-soft) !important;
+}
+
+body :is(.tier-sheet-row > span, .membership-sheet .tier, .membership-header-number) {
+  text-shadow: 0 1px 1px rgba(32, 20, 70, 0.54) !important;
+}
+
+body :is(.benefit-sheet .tier-sheet-row:nth-child(3) > span, .benefit-sheet .tier-sheet-row:nth-child(4) > span) {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.76) !important;
+}
+
+.download-link,
+.download-actions .download-link,
+.download-link-open,
+.text-link {
+  text-shadow: 0 1px 1px rgba(36, 22, 72, 0.7), 0 0 3px rgba(255, 198, 235, 0.5) !important;
+}
+
+/* Final blur guard for every readable label in the public pages. */
+body :is(.hero, .quick-links, .benefit-gateway, .subpage, .site-footer) :is(h1, h2, h3, p, a, button, strong, span, small, em, figcaption, label, input) {
+  text-shadow: 0 1px 1px rgba(28, 17, 60, 0.38), 0 0 2px rgba(255, 255, 255, 0.34) !important;
+}
+
+body :is(
+  .hero-copy h1,
+  .hero-copy h1 span,
+  .section-heading h2,
+  .event-info-head strong,
+  .event-info-card strong,
+  .link-card strong,
+  .gateway-card h3,
+  .page-title h1,
+  .sheet-heading h2,
+  .membership-sheet h2,
+  .membership-item h3,
+  .tier-sheet-row h3,
+  .receive-page-title h1,
+  .receive-5k-archive-intro h1,
+  .receive-choice-copy strong,
+  .receive-detail-copy h1,
+  .receive-gallery-caption strong,
+  .membership-header-gallery-heading h2,
+  .membership-header-item h3,
+  .membership-header-thanks strong,
+  .letter-paper h2,
+  .download-link
+) {
+  text-shadow: 0 1px 1px rgba(21, 14, 54, 0.82), 0 0 1px rgba(255, 255, 255, 0.95), 0 0 3px rgba(255, 143, 212, 0.42) !important;
+}
+
+body :is(.emotion-pill, .tier-sheet-row > span, .membership-sheet .tier, .membership-header-number, .event-info-date, .event-detail-label, .icon-guide-link) {
+  text-shadow: 0 1px 1px rgba(31, 20, 70, 0.5), 0 0 1px rgba(255, 255, 255, 0.65) !important;
+}
