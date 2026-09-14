@@ -797,6 +797,17 @@
             <span class="request-vote-count">0人がききたい</span>
           </div>
         </article>
+        <article class="request-card is-submitted" data-request-id="spica-amemiya-20260915" data-request-count="0">
+          <p class="request-card-label">投稿済み</p>
+          <h3>スピカ <span>／ ロクデナシさん</span></h3>
+          <p class="request-card-status">カラーシング内：○</p>
+          <p>聴いていると優しい気持ちになれる曲で　Nicoちゃんの歌声でも聴いてみたいと思ってリクエストした☺️</p>
+          <p class="request-card-name">おすすめ：雨宮</p>
+          <div class="request-vote">
+            <button type="button" class="request-vote-button" aria-pressed="false">♡ 僕も私もききたい</button>
+            <span class="request-vote-count">0人がききたい</span>
+          </div>
+        </article>
       </div>
     </section>
   </main>
@@ -883,7 +894,9 @@
     const hiddenTestRequests = new Set([
       "ガンダムソング/ガンダム",
       "表示確認テスト曲/テストアーティスト",
-      "スクロール確認曲/確認アーティスト"
+      "スクロール確認曲/確認アーティスト",
+      "表示例の下に出る曲/確認アーティスト",
+      "スピカ/ロクデナシさん"
     ]);
     const isHiddenTestRequest = (request) => {
       const signature = `${normalizeRequestText(request.song)}/${normalizeRequestText(request.artist)}`;
