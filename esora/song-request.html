@@ -1,0 +1,878 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>この曲おすすめ！ - ESORA NICO</title>
+  <meta name="description" content="笑空虹心に歌ってほしい曲を届けるための試作リクエストページです">
+  <link rel="stylesheet" href="styles.css?v=20260910-compact-links">
+  <style>
+    .request-page {
+      max-width: 52rem;
+      padding: clamp(1.25rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem) 3rem;
+    }
+
+    .request-hero {
+      position: relative;
+      overflow: hidden;
+      margin-top: 1.2rem;
+      padding: clamp(1.25rem, 4vw, 2.5rem);
+      border: 1px solid rgba(231, 52, 104, 0.22);
+      border-radius: 1.2rem;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 242, 250, 0.86));
+      box-shadow: 0 18px 48px rgba(112, 29, 59, 0.14), 0 0 20px rgba(255, 150, 213, 0.2);
+    }
+
+    .request-hero::before {
+      content: "♡  ✦  ♡";
+      position: absolute;
+      top: 0.7rem;
+      right: 1rem;
+      color: rgba(231, 52, 104, 0.35);
+      font-family: Georgia, serif;
+      font-size: 1.4rem;
+      letter-spacing: 0;
+    }
+
+    .request-hero h1 {
+      max-width: 18rem;
+      margin: 0;
+      color: #7b2d66;
+      font-size: clamp(2.2rem, 7vw, 4.5rem);
+      line-height: 1;
+      text-shadow: 0 0 2px #fff, 0 0 13px rgba(255, 129, 207, 0.5);
+    }
+
+    .request-hero p {
+      max-width: 34rem;
+      margin: 1rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.2vw, 1.18rem);
+      font-weight: 800;
+    }
+
+    .request-pen-line {
+      width: min(100%, 20rem);
+      height: 0.45rem;
+      margin-top: 1.2rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f36fae, #ffd96f 34%, #69d6bd 68%, #75a9ff);
+      box-shadow: 0 0 10px rgba(255, 122, 199, 0.55);
+      transform: rotate(-2deg);
+    }
+
+    .request-panel {
+      margin-top: 1.2rem;
+      padding: clamp(1rem, 4vw, 1.75rem);
+      border: 1px solid rgba(87, 198, 175, 0.36);
+      border-radius: 1rem;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(246, 255, 253, 0.82));
+      box-shadow: 0 12px 34px rgba(112, 29, 59, 0.1);
+    }
+
+    .request-panel h2 {
+      margin: 0;
+      color: #7b2d66;
+      font-size: clamp(1.3rem, 3vw, 1.7rem);
+      line-height: 1.25;
+    }
+
+    .request-panel > p {
+      margin: 0.45rem 0 1.2rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .request-form {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .request-field {
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .request-field label {
+      color: #6d315f;
+      font-size: 0.95rem;
+      font-weight: 900;
+    }
+
+    .request-field label span {
+      margin-left: 0.35rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .request-field-label {
+      color: #6d315f;
+      font-size: 0.95rem;
+      font-weight: 900;
+    }
+
+    .request-choice-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .request-choice {
+      flex: 1 1 8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3rem;
+      padding: 0.55rem 0.8rem;
+      border: 1px solid rgba(184, 20, 76, 0.24);
+      border-radius: 0.6rem;
+      color: #6d315f;
+      background: #fff;
+      font-weight: 900;
+      cursor: pointer;
+      transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+    }
+
+    .request-choice:has(input:checked) {
+      transform: translateY(-1px);
+      border-color: var(--mint);
+      color: #1f806f;
+      background: rgba(87, 198, 175, 0.13);
+      box-shadow: 0 0 10px rgba(87, 198, 175, 0.18);
+    }
+
+    .request-choice input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
+
+    .request-choice input:focus-visible + span {
+      outline: 3px solid rgba(98, 164, 255, 0.3);
+      outline-offset: 0.25rem;
+      border-radius: 0.25rem;
+    }
+
+    .request-field input,
+    .request-field textarea {
+      width: 100%;
+      min-height: 3rem;
+      padding: 0.7rem 0.85rem;
+      border: 1px solid rgba(184, 20, 76, 0.24);
+      border-radius: 0.55rem;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.9);
+      font: inherit;
+      line-height: 1.5;
+      resize: vertical;
+      box-shadow: inset 0 1px 5px rgba(112, 29, 59, 0.05);
+      transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .request-field input:focus,
+    .request-field textarea:focus {
+      outline: 3px solid rgba(98, 164, 255, 0.24);
+      border-color: var(--sky);
+      background: #fff;
+      box-shadow: 0 0 13px rgba(98, 164, 255, 0.16);
+    }
+
+    .request-field.is-invalid input,
+    .request-field.is-invalid textarea,
+    .request-field.is-invalid .request-choice {
+      border-color: rgba(231, 52, 104, 0.65);
+      box-shadow: 0 0 12px rgba(231, 52, 104, 0.16);
+    }
+
+    .request-field-error {
+      display: none;
+      margin: 0;
+      color: #ffb8e3;
+      font-size: 0.86rem;
+      font-weight: 900;
+      text-shadow: 0 0 7px rgba(255, 121, 199, 0.5);
+    }
+
+    .request-field-error::before {
+      content: "♡ ";
+    }
+
+    .request-field.is-invalid .request-field-error {
+      display: block;
+    }
+
+    .request-form button {
+      min-height: 3.2rem;
+      margin-top: 0.3rem;
+      padding: 0.65rem 1rem;
+      border: 0;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--rose), var(--coral));
+      box-shadow: 0 0 16px rgba(231, 52, 104, 0.28);
+      font: inherit;
+      font-weight: 950;
+      cursor: pointer;
+    }
+
+    .request-form button:hover,
+    .request-form button:focus-visible {
+      box-shadow: 0 0 22px rgba(231, 52, 104, 0.42);
+      transform: translateY(-1px);
+    }
+
+    .request-status {
+      min-height: 1.7rem;
+      margin: 0.7rem 0 0;
+      color: #7b2d66;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .request-status.is-warning {
+      padding: 0.55rem 0.7rem;
+      border: 1px dashed rgba(231, 52, 104, 0.4);
+      border-radius: 0.65rem;
+      color: #9a3f71;
+      background: rgba(255, 236, 247, 0.72);
+    }
+
+    .request-thanks-card {
+      display: none;
+      gap: 0.65rem;
+      margin-top: 1rem;
+      padding: 1rem;
+      border: 1px solid rgba(255, 188, 230, 0.48);
+      border-radius: 1rem;
+      text-align: center;
+      background: linear-gradient(145deg, rgba(255, 121, 199, 0.18), rgba(23, 19, 66, 0.68) 58%, rgba(112, 232, 255, 0.12));
+      box-shadow: 0 0 20px rgba(255, 121, 199, 0.18), 0 0 18px rgba(112, 232, 255, 0.1);
+    }
+
+    .request-thanks-card.is-visible {
+      display: grid;
+    }
+
+    .request-thanks-image-wrap {
+      position: relative;
+      width: min(100%, 22rem);
+      aspect-ratio: 720 / 971;
+      margin: 0 auto;
+      padding: 0.35rem;
+      overflow: hidden;
+      border: 1px solid rgba(255, 188, 230, 0.58);
+      border-radius: 1rem;
+      background: linear-gradient(135deg, rgba(255, 121, 199, 0.45), rgba(112, 232, 255, 0.32));
+      box-shadow: 0 0 18px rgba(255, 121, 199, 0.32), 0 0 18px rgba(112, 232, 255, 0.18);
+    }
+
+    .request-thanks-image-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      box-shadow: inset 0 0 24px rgba(255, 255, 255, 0.22);
+      pointer-events: none;
+    }
+
+    .request-thanks-image {
+      width: 100%;
+      height: 100%;
+      border-radius: 0.7rem;
+      object-fit: contain;
+      object-position: center;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+      -webkit-touch-callout: none;
+    }
+
+    .request-thanks-card h3,
+    .request-thanks-card p {
+      margin: 0;
+    }
+
+    .request-thanks-card h3 {
+      color: #fff8ff;
+      font-size: 1.2rem;
+      text-shadow: 0 0 8px rgba(255, 121, 199, 0.66);
+    }
+
+    .request-thanks-card p {
+      color: #ffe7f7;
+      font-weight: 800;
+      text-shadow: 0 0 7px rgba(112, 232, 255, 0.38);
+    }
+
+    .request-note {
+      margin: 1rem 0 0;
+      padding: 0.8rem 0.95rem;
+      border: 1px dashed rgba(231, 52, 104, 0.42);
+      border-radius: 0.7rem;
+      color: var(--muted);
+      background: rgba(255, 244, 250, 0.74);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .request-list {
+      margin-top: 1.2rem;
+    }
+
+    .request-list-heading {
+      margin-bottom: 0.8rem;
+    }
+
+    .request-list-heading h2 {
+      margin: 0;
+      color: #7b2d66;
+      font-size: clamp(1.35rem, 3vw, 1.8rem);
+      line-height: 1.25;
+    }
+
+    .request-list-heading p {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .request-cards {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .request-card {
+      position: relative;
+      display: grid;
+      gap: 0.65rem;
+      padding: 1rem;
+      border: 1px solid rgba(98, 164, 255, 0.28);
+      border-radius: 0.9rem;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 9px 25px rgba(112, 29, 59, 0.09);
+    }
+
+    .request-card::before {
+      content: "♡";
+      position: absolute;
+      top: 0.55rem;
+      right: 0.75rem;
+      color: rgba(231, 52, 104, 0.32);
+      font-family: Georgia, serif;
+      font-size: 1.25rem;
+    }
+
+    .request-card h3 {
+      margin: 0;
+      padding-right: 2rem;
+      color: #6d315f;
+      font-size: 1.15rem;
+      line-height: 1.25;
+    }
+
+    .request-card-label {
+      margin: 0;
+      color: #bff7ff !important;
+      font-size: 0.78rem;
+      font-weight: 900 !important;
+      letter-spacing: 0.06em;
+      text-shadow: 0 0 7px rgba(112, 232, 255, 0.46);
+    }
+
+    .request-card h3 span {
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .request-card p {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .request-card-status {
+      color: #218f82 !important;
+      font-size: 0.88rem;
+      font-weight: 900 !important;
+    }
+
+    .request-vote {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.55rem;
+      margin-top: 0.15rem;
+    }
+
+    .request-vote button {
+      min-height: 2.65rem;
+      padding: 0.45rem 0.85rem;
+      border: 1px solid rgba(231, 52, 104, 0.38);
+      border-radius: 999px;
+      color: #7b2d66;
+      background: #fff7fc;
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .request-vote button:hover,
+    .request-vote button:focus-visible,
+    .request-vote button[aria-pressed="true"] {
+      color: #fff;
+      background: linear-gradient(135deg, var(--rose), var(--coral));
+      box-shadow: 0 0 14px rgba(231, 52, 104, 0.28);
+    }
+
+    .request-vote-count {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    body.request-view {
+      --request-pink: #ff79c7;
+      --request-cyan: #70e8ff;
+      --request-violet: #987eff;
+      color: #fff8ff;
+      background:
+        radial-gradient(circle at 10% 5%, rgba(255, 121, 199, 0.3), transparent 16rem),
+        radial-gradient(circle at 92% 24%, rgba(112, 232, 255, 0.24), transparent 19rem),
+        linear-gradient(145deg, #171342 0%, #27206c 48%, #3d246d 100%);
+    }
+
+    body.request-view::before {
+      content: "";
+      background:
+        radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.5px) 18px 22px / 92px 92px,
+        radial-gradient(circle, rgba(255, 189, 232, 0.72) 0 1px, transparent 1.5px) 8px 10px / 72px 72px;
+      opacity: 0.7;
+    }
+
+    body.request-view::after {
+      content: "♡  ✦  ♡";
+      top: auto;
+      right: 1rem;
+      bottom: 8%;
+      color: rgba(255, 121, 199, 0.3);
+      font-size: 2rem;
+      letter-spacing: 0;
+      transform: rotate(8deg);
+    }
+
+    .request-view .site-header {
+      background: rgba(23, 19, 66, 0.78);
+      border-bottom-color: rgba(255, 188, 230, 0.28);
+    }
+
+    .request-view .site-header::after {
+      background: linear-gradient(90deg, var(--request-pink), #ffe36e, #8ee8d0, var(--request-cyan), var(--request-violet), var(--request-pink));
+      box-shadow: 0 0 16px rgba(255, 121, 199, 0.4);
+    }
+
+    .request-view .brand-ja,
+    .request-view .nav a {
+      color: #fff8ff;
+    }
+
+    .request-view .brand-en,
+    .request-view .nav a:hover,
+    .request-view .nav a[aria-current="page"] {
+      color: #ffb8e3;
+    }
+
+    .request-view .request-hero {
+      border-color: rgba(255, 188, 230, 0.35);
+      background:
+        radial-gradient(circle at 85% 15%, rgba(112, 232, 255, 0.22), transparent 13rem),
+        linear-gradient(145deg, rgba(255, 121, 199, 0.2), rgba(39, 32, 108, 0.78) 52%, rgba(112, 232, 255, 0.14));
+      box-shadow: 0 24px 70px rgba(7, 4, 31, 0.32), 0 0 24px rgba(255, 121, 199, 0.2);
+    }
+
+    .request-view .request-hero::before {
+      color: rgba(255, 226, 246, 0.76);
+      text-shadow: 0 0 10px rgba(255, 121, 199, 0.8);
+    }
+
+    .request-view .request-hero .eyebrow {
+      color: #bff7ff;
+      text-shadow: 0 0 8px rgba(112, 232, 255, 0.58);
+    }
+
+    .request-view .request-hero h1 {
+      color: #fff8ff;
+      font-family: "Yomogi", "Hachi Maru Pop", "Yu Gothic", sans-serif;
+      font-size: 3.6rem;
+      max-width: none;
+      white-space: nowrap;
+      text-shadow: 0 0 3px #fff, 0 0 14px rgba(255, 121, 199, 0.86), 0 0 27px rgba(112, 232, 255, 0.52);
+    }
+
+    .request-view .request-hero p,
+    .request-view .request-panel > p,
+    .request-view .request-list-heading p {
+      color: #ffe5f5;
+      text-shadow: 0 0 7px rgba(255, 121, 199, 0.3);
+    }
+
+    .request-view .request-pen-line {
+      height: 0.3rem;
+      background: linear-gradient(90deg, var(--request-pink), #ffe36e 34%, #8ee8d0 68%, var(--request-cyan));
+      box-shadow: 0 0 14px rgba(255, 121, 199, 0.62), 0 0 22px rgba(112, 232, 255, 0.34);
+      transform: none;
+    }
+
+    .request-view .request-panel {
+      border-color: rgba(112, 232, 255, 0.38);
+      background: linear-gradient(145deg, rgba(255, 121, 199, 0.14), rgba(23, 19, 66, 0.74) 56%, rgba(112, 232, 255, 0.12));
+      box-shadow: 0 24px 70px rgba(7, 4, 31, 0.28), 0 0 22px rgba(112, 232, 255, 0.14);
+    }
+
+    .request-view .request-panel h2,
+    .request-view .request-list-heading h2 {
+      color: #fff8ff;
+      font-family: "Yomogi", "Hachi Maru Pop", "Yu Gothic", sans-serif;
+      text-shadow: 0 0 2px #fff, 0 0 10px rgba(255, 121, 199, 0.62);
+    }
+
+    .request-view .request-field label,
+    .request-view .request-field-label {
+      color: #fff3fb;
+      text-shadow: 0 0 7px rgba(255, 121, 199, 0.35);
+    }
+
+    .request-view .request-field label span {
+      color: #bff7ff;
+    }
+
+    .request-view .request-field input,
+    .request-view .request-field textarea {
+      border-color: rgba(255, 188, 230, 0.35);
+      color: #fff8ff;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 1px 8px rgba(7, 4, 31, 0.16), 0 0 10px rgba(255, 121, 199, 0.08);
+    }
+
+    .request-view .request-field input::placeholder,
+    .request-view .request-field textarea::placeholder {
+      color: rgba(255, 229, 245, 0.62);
+    }
+
+    .request-view .request-field input:focus,
+    .request-view .request-field textarea:focus {
+      border-color: var(--request-cyan);
+      background: rgba(255, 255, 255, 0.16);
+      box-shadow: 0 0 15px rgba(112, 232, 255, 0.22);
+    }
+
+    .request-view .request-choice {
+      border-color: rgba(255, 188, 230, 0.38);
+      color: #fff3fb;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 10px rgba(255, 121, 199, 0.1);
+    }
+
+    .request-view .request-choice:has(input:checked) {
+      border-color: var(--request-cyan);
+      color: #fff;
+      background: linear-gradient(135deg, rgba(255, 121, 199, 0.78), rgba(112, 232, 255, 0.45));
+      box-shadow: 0 0 16px rgba(255, 121, 199, 0.35), 0 0 18px rgba(112, 232, 255, 0.18);
+    }
+
+    .request-view .request-form button {
+      background: linear-gradient(135deg, var(--request-pink), #ee4b9f 45%, #5ee1ff);
+      box-shadow: 0 0 18px rgba(255, 121, 199, 0.5), 0 0 20px rgba(112, 232, 255, 0.2);
+      text-shadow: 0 1px 3px rgba(93, 20, 77, 0.45);
+    }
+
+    .request-view .request-status {
+      color: #ffe7f7;
+      text-shadow: 0 0 8px rgba(255, 121, 199, 0.5);
+    }
+
+    .request-view .request-status.is-warning,
+    .request-view .request-note {
+      border-color: rgba(255, 188, 230, 0.48);
+      color: #ffe7f7;
+      background: rgba(255, 121, 199, 0.11);
+    }
+
+    .request-view .request-card {
+      border-color: rgba(112, 232, 255, 0.32);
+      background: linear-gradient(145deg, rgba(255, 121, 199, 0.16), rgba(23, 19, 66, 0.7) 58%, rgba(112, 232, 255, 0.1));
+      box-shadow: 0 18px 42px rgba(7, 4, 31, 0.24), 0 0 15px rgba(255, 121, 199, 0.12);
+    }
+
+    .request-view .request-card h3 {
+      color: #fff8ff;
+      text-shadow: 0 0 6px rgba(255, 121, 199, 0.42);
+    }
+
+    .request-view .request-card h3 span,
+    .request-view .request-card p {
+      color: #ffe5f5;
+    }
+
+    .request-view .request-card-status {
+      color: #bff7ff !important;
+      text-shadow: 0 0 7px rgba(112, 232, 255, 0.46);
+    }
+
+    .request-view .request-vote button {
+      border-color: rgba(255, 188, 230, 0.48);
+      color: #fff5fc;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .request-view .request-vote button:hover,
+    .request-view .request-vote button:focus-visible,
+    .request-view .request-vote button[aria-pressed="true"] {
+      background: linear-gradient(135deg, var(--request-pink), #ee4b9f 48%, var(--request-cyan));
+      box-shadow: 0 0 16px rgba(255, 121, 199, 0.45), 0 0 14px rgba(112, 232, 255, 0.2);
+    }
+
+    .request-view .request-vote-count {
+      color: #bff7ff;
+      text-shadow: 0 0 7px rgba(112, 232, 255, 0.42);
+    }
+
+    @media (max-width: 560px) {
+      .request-page {
+        padding-inline: 0.8rem;
+      }
+
+      .request-hero,
+      .request-panel {
+        border-radius: 0.85rem;
+      }
+
+      .request-view .request-hero h1 {
+        max-width: none;
+        font-size: 2rem;
+      }
+
+      .request-view .request-panel h2,
+      .request-view .request-list-heading h2 {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
+</head>
+<body class="request-view" oncontextmenu="return false">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="笑空虹心 トップへ">
+      <span class="brand-ja">笑空虹心</span>
+      <span class="brand-en">ESORA NICO</span>
+    </a>
+    <nav class="nav" aria-label="メインメニュー">
+      <a href="index.html#links">Links</a>
+      <a href="benefits.html">Benefits</a>
+      <a href="receive.html">Receive</a>
+    </nav>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="shortcut-menu" aria-label="ショートカットメニューを開く"><span></span><span></span><span></span></button>
+    <nav class="shortcut-menu" id="shortcut-menu" aria-label="ショートカット一覧">
+      <a href="index.html">トップ</a>
+      <a href="https://web.colorsing.com/share/user?user_id=411fa6d1-ba51-4f7c-a4f2-d635ab43ba5b" target="_blank" rel="noopener noreferrer">ColorSing</a>
+      <a href="benefits.html">特典確認</a>
+      <a href="song-request.html" aria-current="page">曲リクエスト</a>
+      <a href="receive.html">特典受け取り</a>
+      <a href="letter.html">虹心の想い</a>
+    </nav>
+  </header>
+
+  <main class="subpage request-page">
+    <nav class="page-nav" aria-label="ページ移動">
+      <a class="back-link" href="index.html">← ホームに戻る</a>
+    </nav>
+
+    <section class="request-hero" aria-labelledby="request-title">
+      <p class="eyebrow">Song request</p>
+      <h1 id="request-title">この曲おすすめ！</h1>
+      <p>歌ってほしい曲や思い出の曲を教えてね</p>
+      <div class="request-pen-line" aria-hidden="true"></div>
+    </section>
+
+    <section class="request-panel" aria-labelledby="request-form-title">
+      <h2 id="request-form-title">虹心に歌ってほしい曲リクエスト</h2>
+      <p>思いついた曲を、一つひとつ大切に届けてね。</p>
+      <form class="request-form" id="song-request-form" novalidate>
+        <div class="request-field">
+          <label for="colorsing-name">カラーシング名</label>
+          <input id="colorsing-name" name="colorsing-name" type="text" autocomplete="nickname" required>
+          <p class="request-field-error" id="colorsing-name-error"></p>
+        </div>
+        <div class="request-field">
+          <label for="memorize-song">覚えてほしい曲</label>
+          <input id="memorize-song" name="memorize-song" type="text" autocomplete="off" required>
+          <p class="request-field-error" id="memorize-song-error"></p>
+        </div>
+        <div class="request-field">
+          <label for="artist-name">アーティスト名</label>
+          <input id="artist-name" name="artist-name" type="text" autocomplete="off" required>
+          <p class="request-field-error" id="artist-name-error"></p>
+        </div>
+        <div class="request-field">
+          <span class="request-field-label">カラーシング内に入っているか</span>
+          <div class="request-choice-group" role="radiogroup" aria-label="カラーシング内に入っているか">
+            <label class="request-choice"><input type="radio" name="in-colorsing" value="yes" required><span>○ 入ってる</span></label>
+            <label class="request-choice"><input type="radio" name="in-colorsing" value="no"><span>× まだないかも</span></label>
+          </div>
+          <p class="request-field-error" id="in-colorsing-error"></p>
+        </div>
+        <div class="request-field">
+          <label for="request-note">その曲をおすすめする理由や思い出<span>任意</span></label>
+          <textarea id="request-note" name="request-note" rows="4"></textarea>
+        </div>
+        <button type="submit">リクエストを送る</button>
+        <p class="request-status" id="request-status" role="status" aria-live="polite"></p>
+      </form>
+      <aside class="request-thanks-card" id="request-thanks-card" aria-live="polite">
+        <div class="request-thanks-image-wrap" id="request-thanks-image-wrap">
+          <img class="request-thanks-image" id="request-thanks-image" src="assets/song-request-thanks/thanks-01.png" alt="リクエストありがとう" draggable="false">
+        </div>
+        <h3>リクエストありがとう</h3>
+        <p>大切に見させてもらいます</p>
+      </aside>
+      <p class="request-note">すべての曲を歌えるとは限りませんが、大切に聞かせてもらいます</p>
+    </section>
+
+    <section class="request-list" aria-labelledby="request-list-title">
+      <div class="request-list-heading">
+        <h2 id="request-list-title">届いたリクエスト曲</h2>
+        <p>届いたリクエスト曲を少しずつ並べていきます</p>
+      </div>
+      <div class="request-cards">
+        <article class="request-card" data-request-id="sample-01" data-request-count="12">
+          <p class="request-card-label">表示例</p>
+          <h3>Happy Birthday! Happy DAY! <span>／ 笑空虹心</span></h3>
+          <p class="request-card-status">カラーシング内：×</p>
+          <p>みんなのお誕生日をお祝いするために作った曲</p>
+          <p class="request-card-name">おすすめ：笑空虹心</p>
+          <div class="request-vote">
+            <button type="button" class="request-vote-button" aria-pressed="false">♡ 僕も私もききたい</button>
+            <span class="request-vote-count">12人がききたい</span>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="notice">
+    <p>掲載している画像・イラスト・音声・文章の無断転載 保存 加工 再配布は禁止です</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const requestForm = document.getElementById("song-request-form");
+    const requestStatus = document.getElementById("request-status");
+    const thanksCard = document.getElementById("request-thanks-card");
+    const thanksImage = document.getElementById("request-thanks-image");
+    const thanksImageWrap = document.getElementById("request-thanks-image-wrap");
+    const thanksImages = [
+      "assets/song-request-thanks/thanks-01.png",
+      "assets/song-request-thanks/thanks-02.png",
+      "assets/song-request-thanks/thanks-03.png",
+      "assets/song-request-thanks/thanks-04.png"
+    ];
+    const requiredFields = [
+      {
+        control: requestForm.querySelector('[name="colorsing-name"]'),
+        field: requestForm.querySelector('[name="colorsing-name"]').closest(".request-field"),
+        error: "カラーシング名を入れてね"
+      },
+      {
+        control: requestForm.querySelector('[name="memorize-song"]'),
+        field: requestForm.querySelector('[name="memorize-song"]').closest(".request-field"),
+        error: "覚えてほしい曲を入れてね"
+      },
+      {
+        control: requestForm.querySelector('[name="artist-name"]'),
+        field: requestForm.querySelector('[name="artist-name"]').closest(".request-field"),
+        error: "アーティスト名を入れてね"
+      },
+      {
+        control: requestForm.querySelector('[name="in-colorsing"]'),
+        field: requestForm.querySelector('[name="in-colorsing"]').closest(".request-field"),
+        error: "カラーシング内に入っているか選んでね"
+      }
+    ];
+
+    const clearInvalidState = (field) => {
+      field.classList.remove("is-invalid");
+      field.querySelectorAll("input, textarea").forEach((input) => input.removeAttribute("aria-invalid"));
+      const error = field.querySelector(".request-field-error");
+      if (error) error.textContent = "";
+    };
+
+    requestForm.querySelectorAll(".request-field").forEach((field) => {
+      field.querySelectorAll("input, textarea").forEach((input) => {
+        input.addEventListener("input", () => clearInvalidState(field));
+        input.addEventListener("change", () => clearInvalidState(field));
+      });
+    });
+
+    requestForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      requestForm.querySelectorAll(".request-field").forEach(clearInvalidState);
+      requestStatus.classList.remove("is-warning");
+      thanksCard.classList.remove("is-visible");
+
+      const invalidFields = requiredFields.filter(({ control }) => !control.checkValidity());
+
+      if (invalidFields.length) {
+        invalidFields.forEach(({ field, error }) => {
+          field.classList.add("is-invalid");
+          field.querySelectorAll("input, textarea").forEach((input) => input.setAttribute("aria-invalid", "true"));
+          field.querySelector(".request-field-error").textContent = error;
+        });
+        requestStatus.textContent = "ピンクの案内を見て、空欄を入れてね🌈";
+        requestStatus.classList.add("is-warning");
+        invalidFields[0].control.focus();
+        return;
+      }
+
+      requestStatus.textContent = "ありがとう🌈 リクエスト送信の準備中です";
+      thanksImage.src = thanksImages[Math.floor(Math.random() * thanksImages.length)];
+      thanksCard.classList.add("is-visible");
+    });
+
+    thanksImageWrap.addEventListener("contextmenu", (event) => event.preventDefault());
+
+    const voteStorageKey = "esora-song-request-votes-v1";
+    const storedVotes = JSON.parse(localStorage.getItem(voteStorageKey) || "{}");
+    const votedRequests = new Set(JSON.parse(localStorage.getItem(`${voteStorageKey}-mine`) || "[]"));
+
+    document.querySelectorAll(".request-card").forEach((card) => {
+      const id = card.dataset.requestId;
+      const countLabel = card.querySelector(".request-vote-count");
+      const button = card.querySelector(".request-vote-button");
+      let count = Number(storedVotes[id] ?? card.dataset.requestCount ?? 0);
+
+      const renderVote = () => {
+        countLabel.textContent = `${count}人がききたい`;
+        const voted = votedRequests.has(id);
+        button.setAttribute("aria-pressed", String(voted));
+        if (voted) button.textContent = "♡ ききたいに追加済み";
+      };
+
+      renderVote();
+      button.addEventListener("click", () => {
+        if (votedRequests.has(id)) return;
+        count += 1;
+        storedVotes[id] = count;
+        votedRequests.add(id);
+        localStorage.setItem(voteStorageKey, JSON.stringify(storedVotes));
+        localStorage.setItem(`${voteStorageKey}-mine`, JSON.stringify([...votedRequests]));
+        renderVote();
+      });
+    });
+  </script>
+</body>
+</html>
