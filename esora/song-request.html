@@ -357,6 +357,26 @@
       box-shadow: 0 9px 25px rgba(112, 29, 59, 0.09);
     }
 
+    .request-card.is-new {
+      border-color: rgba(255, 188, 230, 0.78);
+      animation: request-card-pop 1300ms ease both;
+    }
+
+    @keyframes request-card-pop {
+      0% {
+        transform: translateY(0);
+        box-shadow: 0 0 0 rgba(255, 121, 199, 0);
+      }
+      32% {
+        transform: translateY(-3px);
+        box-shadow: 0 0 24px rgba(255, 121, 199, 0.45), 0 0 22px rgba(112, 232, 255, 0.22);
+      }
+      100% {
+        transform: translateY(0);
+        box-shadow: 0 18px 42px rgba(7, 4, 31, 0.24), 0 0 15px rgba(255, 121, 199, 0.12);
+      }
+    }
+
     .request-card::before {
       content: "♡";
       position: absolute;
@@ -859,6 +879,7 @@
 
     const createRequestCard = (request) => {
       const card = createElement("article", "request-card");
+      card.tabIndex = -1;
       card.dataset.requestId = request.id;
       card.dataset.requestCount = String(request.count ?? 0);
 
@@ -952,6 +973,7 @@
       saveRequests();
 
       const card = createRequestCard(newRequest);
+      card.classList.add("is-new");
       requestCards.prepend(card);
       setupVoteButton(card);
 
@@ -959,6 +981,10 @@
       thanksImage.src = thanksImages[Math.floor(Math.random() * thanksImages.length)];
       thanksCard.classList.add("is-visible");
       requestForm.reset();
+
+      card.scrollIntoView({ behavior: "smooth", block: "center" });
+      card.focus({ preventScroll: true });
+      window.setTimeout(() => card.classList.remove("is-new"), 1600);
     });
   </script>
 </body>
