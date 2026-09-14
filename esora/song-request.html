@@ -749,7 +749,7 @@
         <p>届いたリクエスト曲を少しずつ並べていきます</p>
       </div>
       <div class="request-cards">
-        <article class="request-card" data-request-id="sample-01" data-request-count="12">
+        <article class="request-card" data-request-id="sample-01" data-request-count="0">
           <p class="request-card-label">表示例</p>
           <h3>Happy Birthday! Happy DAY! <span>／ 笑空虹心</span></h3>
           <p class="request-card-status">カラーシング内：×</p>
@@ -757,7 +757,7 @@
           <p class="request-card-name">おすすめ：笑空虹心</p>
           <div class="request-vote">
             <button type="button" class="request-vote-button" aria-pressed="false">♡ 僕も私もききたい</button>
-            <span class="request-vote-count">12人がききたい</span>
+            <span class="request-vote-count">0人がききたい</span>
           </div>
         </article>
       </div>
@@ -822,7 +822,7 @@
 
     const requestCards = document.querySelector(".request-cards");
     const requestStorageKey = "esora-song-requests-v1";
-    const voteStorageKey = "esora-song-request-votes-v1";
+    const voteStorageKey = "esora-song-request-votes-v2";
 
     const readStorage = (key, fallback) => {
       try {
