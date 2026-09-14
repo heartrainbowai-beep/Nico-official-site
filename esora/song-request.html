@@ -818,6 +818,105 @@
       });
     });
 
+    thanksImageWrap.addEventListener("contextmenu", (event) => event.preventDefault());
+
+    const requestCards = document.querySelector(".request-cards");
+    const requestStorageKey = "esora-song-requests-v1";
+    const voteStorageKey = "esora-song-request-votes-v1";
+
+    const readStorage = (key, fallback) => {
+      try {
+        const stored = localStorage.getItem(key);
+        return stored ? JSON.parse(stored) : fallback;
+      } catch (error) {
+        return fallback;
+      }
+    };
+
+    const writeStorage = (key, value) => {
+      try {
+        localStorage.setItem(key, JSON.stringify(value));
+      } catch (error) {
+        return false;
+      }
+      return true;
+    };
+
+    const storedRequests = readStorage(requestStorageKey, []);
+    const storedVotes = readStorage(voteStorageKey, {});
+    const votedRequests = new Set(readStorage(`${voteStorageKey}-mine`, []));
+
+    const saveRequests = () => {
+      writeStorage(requestStorageKey, storedRequests);
+    };
+
+    const createElement = (tag, className, text) => {
+      const element = document.createElement(tag);
+      if (className) element.className = className;
+      if (text) element.textContent = text;
+      return element;
+    };
+
+    const createRequestCard = (request) => {
+      const card = createElement("article", "request-card");
+      card.dataset.requestId = request.id;
+      card.dataset.requestCount = String(request.count ?? 0);
+
+      card.append(createElement("p", "request-card-label", request.label || "送信済み"));
+
+      const title = createElement("h3");
+      title.append(document.createTextNode(request.song));
+      const artist = createElement("span", "", ` ／ ${request.artist}`);
+      title.append(artist);
+      card.append(title);
+
+      const mark = request.inColorsing === "yes" ? "○" : "×";
+      card.append(createElement("p", "request-card-status", `カラーシング内：${mark}`));
+      card.append(createElement("p", "", request.note || "理由や思い出は未記入です"));
+      card.append(createElement("p", "request-card-name", `おすすめ：${request.colorsingName}`));
+
+      const vote = createElement("div", "request-vote");
+      const button = createElement("button", "request-vote-button", "♡ 僕も私もききたい");
+      button.type = "button";
+      button.setAttribute("aria-pressed", "false");
+      vote.append(button, createElement("span", "request-vote-count"));
+      card.append(vote);
+
+      return card;
+    };
+
+    const setupVoteButton = (card) => {
+      const id = card.dataset.requestId;
+      const countLabel = card.querySelector(".request-vote-count");
+      const button = card.querySelector(".request-vote-button");
+      let count = Number(storedVotes[id] ?? card.dataset.requestCount ?? 0);
+
+      const renderVote = () => {
+        countLabel.textContent = `${count}人がききたい`;
+        const voted = votedRequests.has(id);
+        button.setAttribute("aria-pressed", String(voted));
+        button.textContent = voted ? "♡ ききたいに追加済み" : "♡ 僕も私もききたい";
+      };
+
+      renderVote();
+      button.addEventListener("click", () => {
+        if (votedRequests.has(id)) return;
+        count += 1;
+        storedVotes[id] = count;
+        votedRequests.add(id);
+        writeStorage(voteStorageKey, storedVotes);
+        writeStorage(`${voteStorageKey}-mine`, [...votedRequests]);
+        renderVote();
+      });
+    };
+
+    storedRequests.forEach((request) => {
+      const card = createRequestCard(request);
+      requestCards.prepend(card);
+    });
+
+    document.querySelectorAll(".request-card").forEach(setupVoteButton);
+
     requestForm.addEventListener("submit", (event) => {
       event.preventDefault();
       requestForm.querySelectorAll(".request-field").forEach(clearInvalidState);
@@ -838,40 +937,28 @@
         return;
       }
 
-      requestStatus.textContent = "ありがとう🌈 リクエスト送信の準備中です";
-      thanksImage.src = thanksImages[Math.floor(Math.random() * thanksImages.length)];
-      thanksCard.classList.add("is-visible");
-    });
-
-    thanksImageWrap.addEventListener("contextmenu", (event) => event.preventDefault());
-
-    const voteStorageKey = "esora-song-request-votes-v1";
-    const storedVotes = JSON.parse(localStorage.getItem(voteStorageKey) || "{}");
-    const votedRequests = new Set(JSON.parse(localStorage.getItem(`${voteStorageKey}-mine`) || "[]"));
-
-    document.querySelectorAll(".request-card").forEach((card) => {
-      const id = card.dataset.requestId;
-      const countLabel = card.querySelector(".request-vote-count");
-      const button = card.querySelector(".request-vote-button");
-      let count = Number(storedVotes[id] ?? card.dataset.requestCount ?? 0);
-
-      const renderVote = () => {
-        countLabel.textContent = `${count}人がききたい`;
-        const voted = votedRequests.has(id);
-        button.setAttribute("aria-pressed", String(voted));
-        if (voted) button.textContent = "♡ ききたいに追加済み";
+      const formData = new FormData(requestForm);
+      const newRequest = {
+        id: `request-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+        colorsingName: formData.get("colorsing-name").trim(),
+        song: formData.get("memorize-song").trim(),
+        artist: formData.get("artist-name").trim(),
+        inColorsing: formData.get("in-colorsing"),
+        note: formData.get("request-note").trim(),
+        createdAt: new Date().toISOString()
       };
 
-      renderVote();
-      button.addEventListener("click", () => {
-        if (votedRequests.has(id)) return;
-        count += 1;
-        storedVotes[id] = count;
-        votedRequests.add(id);
-        localStorage.setItem(voteStorageKey, JSON.stringify(storedVotes));
-        localStorage.setItem(`${voteStorageKey}-mine`, JSON.stringify([...votedRequests]));
-        renderVote();
-      });
+      storedRequests.push(newRequest);
+      saveRequests();
+
+      const card = createRequestCard(newRequest);
+      requestCards.prepend(card);
+      setupVoteButton(card);
+
+      requestStatus.textContent = "ありがとう🌈 下のリクエスト曲に追加しました";
+      thanksImage.src = thanksImages[Math.floor(Math.random() * thanksImages.length)];
+      thanksCard.classList.add("is-visible");
+      requestForm.reset();
     });
   </script>
 </body>
