@@ -792,23 +792,16 @@
           <p class="request-card-status">カラーシング内：×</p>
           <p>みんなのお誕生日をお祝いするために作った曲</p>
           <p class="request-card-name">おすすめ：笑空虹心</p>
-          <div class="request-vote">
-            <button type="button" class="request-vote-button" aria-pressed="false">♡ 僕も私もききたい</button>
-            <span class="request-vote-count">0人がききたい</span>
-          </div>
         </article>
         <article class="request-card is-submitted" data-request-id="spica-amemiya-20260915" data-request-count="0">
-          <p class="request-card-label">投稿済み</p>
+          <p class="request-card-label">虹心確認済み</p>
           <h3>スピカ <span>／ ロクデナシさん</span></h3>
           <p class="request-card-status">カラーシング内：○</p>
           <p>聴いていると優しい気持ちになれる曲で　Nicoちゃんの歌声でも聴いてみたいと思ってリクエストした☺️</p>
           <p class="request-card-name">おすすめ：雨宮</p>
-          <div class="request-vote">
-            <button type="button" class="request-vote-button" aria-pressed="false">♡ 僕も私もききたい</button>
-            <span class="request-vote-count">0人がききたい</span>
-          </div>
         </article>
       </div>
+      <p class="request-status" id="request-list-status" role="status" aria-live="polite">確認済みのリクエストを読み込んでいます</p>
     </section>
   </main>
 
@@ -869,54 +862,8 @@
     thanksImageWrap.addEventListener("contextmenu", (event) => event.preventDefault());
 
     const requestCards = document.querySelector(".request-cards");
-    const requestStorageKey = "esora-song-requests-v1";
-    const voteStorageKey = "esora-song-request-votes-v2";
-
-    const readStorage = (key, fallback) => {
-      try {
-        const stored = localStorage.getItem(key);
-        return stored ? JSON.parse(stored) : fallback;
-      } catch (error) {
-        return fallback;
-      }
-    };
-
-    const writeStorage = (key, value) => {
-      try {
-        localStorage.setItem(key, JSON.stringify(value));
-      } catch (error) {
-        return false;
-      }
-      return true;
-    };
-
-    const normalizeRequestText = (value) => String(value || "").replace(/\s+/g, "").toLowerCase();
-    const hiddenTestRequests = new Set([
-      "ガンダムソング/ガンダム",
-      "表示確認テスト曲/テストアーティスト",
-      "スクロール確認曲/確認アーティスト",
-      "表示例の下に出る曲/確認アーティスト",
-      "スピカ/ロクデナシさん"
-    ]);
-    const isHiddenTestRequest = (request) => {
-      const signature = `${normalizeRequestText(request.song)}/${normalizeRequestText(request.artist)}`;
-      return hiddenTestRequests.has(signature);
-    };
-
-    const loadedRequests = readStorage(requestStorageKey, []);
-    const storedRequests = Array.isArray(loadedRequests)
-      ? loadedRequests.filter((request) => !isHiddenTestRequest(request))
-      : [];
-    const storedVotes = readStorage(voteStorageKey, {});
-    const votedRequests = new Set(readStorage(`${voteStorageKey}-mine`, []));
-
-    const saveRequests = () => {
-      writeStorage(requestStorageKey, storedRequests);
-    };
-
-    if (!Array.isArray(loadedRequests) || storedRequests.length !== loadedRequests.length) {
-      saveRequests();
-    }
+    const requestListStatus = document.getElementById("request-list-status");
+    const requestApi = "/esora/api/song-requests";
 
     const createElement = (tag, className, text) => {
       const element = document.createElement(tag);
@@ -929,9 +876,7 @@
       const card = createElement("article", "request-card is-submitted");
       card.tabIndex = -1;
       card.dataset.requestId = request.id;
-      card.dataset.requestCount = String(request.count ?? 0);
-
-      card.append(createElement("p", "request-card-label", request.label || "投稿済み"));
+      card.append(createElement("p", "request-card-label", "虹心確認済み"));
 
       const title = createElement("h3");
       title.append(document.createTextNode(request.song));
@@ -942,41 +887,9 @@
       const mark = request.inColorsing === "yes" ? "○" : "×";
       card.append(createElement("p", "request-card-status", `カラーシング内：${mark}`));
       card.append(createElement("p", "", request.note || "理由や思い出は未記入です"));
-      card.append(createElement("p", "request-card-name", `おすすめ：${request.colorsingName}`));
-
-      const vote = createElement("div", "request-vote");
-      const button = createElement("button", "request-vote-button", "♡ 僕も私もききたい");
-      button.type = "button";
-      button.setAttribute("aria-pressed", "false");
-      vote.append(button, createElement("span", "request-vote-count"));
-      card.append(vote);
+      card.append(createElement("p", "request-card-name", `おすすめ：${request.name || request.colorsingName}`));
 
       return card;
-    };
-
-    const setupVoteButton = (card) => {
-      const id = card.dataset.requestId;
-      const countLabel = card.querySelector(".request-vote-count");
-      const button = card.querySelector(".request-vote-button");
-      let count = Number(storedVotes[id] ?? card.dataset.requestCount ?? 0);
-
-      const renderVote = () => {
-        countLabel.textContent = `${count}人がききたい`;
-        const voted = votedRequests.has(id);
-        button.setAttribute("aria-pressed", String(voted));
-        button.textContent = voted ? "♡ ききたいに追加済み" : "♡ 僕も私もききたい";
-      };
-
-      renderVote();
-      button.addEventListener("click", () => {
-        if (votedRequests.has(id)) return;
-        count += 1;
-        storedVotes[id] = count;
-        votedRequests.add(id);
-        writeStorage(voteStorageKey, storedVotes);
-        writeStorage(`${voteStorageKey}-mine`, [...votedRequests]);
-        renderVote();
-      });
     };
 
     const insertSubmittedCard = (card) => {
@@ -985,13 +898,27 @@
       else requestCards.prepend(card);
     };
 
-    storedRequests.forEach((request) => {
-      insertSubmittedCard(createRequestCard(request));
-    });
+    const loadApprovedRequests = async () => {
+      requestListStatus.textContent = "確認済みのリクエストを読み込んでいます";
+      try {
+        const response = await fetch(requestApi, { headers: { accept: "application/json" } });
+        if (!response.ok) throw new Error("読み込みに失敗しました");
+        const data = await response.json();
+        const approved = Array.isArray(data.requests) ? data.requests : [];
+        approved
+          .filter((request) => !(request.song === "スピカ" && request.artist === "ロクデナシさん"))
+          .forEach((request) => requestCards.append(createRequestCard(request)));
+        requestListStatus.textContent = approved.length
+          ? `${approved.length}件のリクエストを掲載中です`
+          : "虹心が確認したリクエストを ここに少しずつ掲載します";
+      } catch (error) {
+        requestListStatus.textContent = "リクエスト一覧を読み込めませんでした 少し時間をおいて見てね";
+      }
+    };
 
-    document.querySelectorAll(".request-card").forEach(setupVoteButton);
+    loadApprovedRequests();
 
-    requestForm.addEventListener("submit", (event) => {
+    requestForm.addEventListener("submit", async (event) => {
       event.preventDefault();
       requestForm.querySelectorAll(".request-field").forEach(clearInvalidState);
       requestStatus.classList.remove("is-warning");
@@ -1013,31 +940,35 @@
 
       const formData = new FormData(requestForm);
       const newRequest = {
-        id: `request-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-        colorsingName: formData.get("colorsing-name").trim(),
+        name: formData.get("colorsing-name").trim(),
         song: formData.get("memorize-song").trim(),
         artist: formData.get("artist-name").trim(),
         inColorsing: formData.get("in-colorsing"),
-        note: formData.get("request-note").trim(),
-        createdAt: new Date().toISOString()
+        note: formData.get("request-note").trim()
       };
 
-      storedRequests.push(newRequest);
-      saveRequests();
-
-      const card = createRequestCard(newRequest);
-      card.classList.add("is-new");
-      insertSubmittedCard(card);
-      setupVoteButton(card);
-
-      requestStatus.textContent = "ありがとう🌈 下のリクエスト曲に追加しました";
-      thanksImage.src = thanksImages[Math.floor(Math.random() * thanksImages.length)];
-      thanksCard.classList.add("is-visible");
-      requestForm.reset();
-
-      card.scrollIntoView({ behavior: "smooth", block: "center" });
-      card.focus({ preventScroll: true });
-      window.setTimeout(() => card.classList.remove("is-new"), 1600);
+      const submitButton = requestForm.querySelector('[type="submit"]');
+      submitButton.disabled = true;
+      requestStatus.textContent = "リクエストを送っています";
+      try {
+        const response = await fetch(requestApi, {
+          method: "POST",
+          headers: { "content-type": "application/json", accept: "application/json" },
+          body: JSON.stringify(newRequest)
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.error || "送信できませんでした");
+        requestStatus.textContent = "リクエストありがとう🌈 虹心が確認したあとに みんなの一覧へ表示されます";
+        thanksImage.src = thanksImages[Math.floor(Math.random() * thanksImages.length)];
+        thanksCard.classList.add("is-visible");
+        requestForm.reset();
+        thanksCard.scrollIntoView({ behavior: "smooth", block: "center" });
+      } catch (error) {
+        requestStatus.textContent = error.message || "送信できませんでした 少し時間をおいて試してね";
+        requestStatus.classList.add("is-warning");
+      } finally {
+        submitButton.disabled = false;
+      }
     });
   </script>
 </body>
