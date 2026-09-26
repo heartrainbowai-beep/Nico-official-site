@@ -599,6 +599,7 @@ h2 {
 }
 
 .secret-door.is-open {
+  width: min(100%, 36rem);
   border-color: rgba(255, 255, 255, 0.5);
   background:
     radial-gradient(circle at 18% 16%, rgba(255, 227, 110, 0.32), transparent 7rem),
@@ -608,7 +609,7 @@ h2 {
 }
 
 .secret-door-main[hidden],
-.door-coming-soon[hidden] {
+.door-reward[hidden] {
   display: none;
 }
 
@@ -701,12 +702,11 @@ h2 {
   display: none;
 }
 
-.door-coming-soon {
+.door-reward {
   display: grid;
-  min-height: 12rem;
   place-items: center;
   align-content: center;
-  gap: 0.5rem;
+  gap: 0.72rem;
   padding: 1rem 0.72rem;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.28);
@@ -718,15 +718,15 @@ h2 {
   box-shadow: inset 0 0 24px rgba(255, 255, 255, 0.08), 0 0 18px rgba(255, 115, 189, 0.2);
 }
 
-.door-coming-soon h3 {
+.door-reward h3 {
   margin: 0;
   color: #fff8ff;
-  font-size: clamp(1.9rem, 8vw, 2.6rem);
-  line-height: 1.08;
+  font-size: clamp(1.35rem, 6.4vw, 2rem);
+  line-height: 1.2;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.85), 0 0 22px rgba(255, 115, 189, 0.82), 0 0 34px rgba(94, 225, 255, 0.52);
 }
 
-.door-coming-soon p {
+.door-reward p {
   margin: 0;
   color: #fff8ff;
   font-weight: 900;
@@ -734,7 +734,7 @@ h2 {
   text-shadow: 0 0 10px rgba(255, 143, 214, 0.5);
 }
 
-.door-coming-soon .door-kicker {
+.door-reward .door-kicker {
   width: fit-content;
   padding: 0.22rem 0.88rem;
   color: #fff8ff;
@@ -744,6 +744,40 @@ h2 {
   border-radius: 999px;
   background: linear-gradient(135deg, rgba(255, 115, 189, 0.72), rgba(94, 225, 255, 0.58));
   box-shadow: 0 0 16px rgba(255, 115, 189, 0.42);
+}
+
+.reward-save-image {
+  display: block;
+  width: min(100%, 31rem);
+  height: auto;
+  margin: 0.15rem auto 0;
+  border-radius: 8px;
+  object-fit: contain;
+  -webkit-touch-callout: default;
+  user-select: auto;
+  touch-action: manipulation;
+}
+
+.door-reward .reward-save-note {
+  color: #fff8ff;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.reward-download {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0.62rem 1.35rem;
+  color: #fff8ff;
+  font-weight: 900;
+  line-height: 1.25;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 115, 189, 0.92), rgba(255, 227, 110, 0.76), rgba(94, 225, 255, 0.82));
+  box-shadow: 0 0 18px rgba(255, 115, 189, 0.46), 0 0 22px rgba(94, 225, 255, 0.26);
 }
 
 .thanks-topline {
@@ -1237,7 +1271,7 @@ body :is(
   .thanks-copy h2,
   .thanks-line > .thanks-name-highlight,
   .secret-door h3,
-  .door-coming-soon h3,
+  .door-reward h3,
   .cta
 ) {
   text-shadow: 0 1px 1px rgba(18, 13, 50, 0.82), 0 0 1px rgba(255, 255, 255, 0.92), 0 0 3px rgba(255, 143, 212, 0.38) !important;

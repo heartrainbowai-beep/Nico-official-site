@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>笑空虹心 Backstage ルーキーチャレンジ</title>
   <meta name="description" content="Backstageで虹心と1対1でおはなしできるルーキーチャレンジ専用ページです">
-  <link rel="stylesheet" href="styles.css?v=20260910-readable-neon-2">
+  <link rel="stylesheet" href="styles.css?v=20260926-reward-release">
 </head>
-<body oncontextmenu="return false">
+<body>
   <header class="topbar">
     <a class="brand" href="#top" aria-label="ページ先頭へ">
       <span>笑空虹心</span>
@@ -122,10 +122,13 @@
               <p class="door-result" id="door-result" role="status" aria-live="polite" hidden>キーワードを確認してね💞</p>
             </form>
           </div>
-          <div class="door-coming-soon" data-door-coming-soon hidden>
+          <div class="door-reward" data-door-reward hidden>
             <p class="door-kicker">秘密の扉がひらきました</p>
-            <h3>Coming Soon💞</h3>
-            <p>ミッション達成後に<br>ここから受け取れるようになります</p>
+            <h3>特別アイテムプレゼント</h3>
+            <p>ルーキーチャレンジ達成ありがとう💞</p>
+            <img class="reward-save-image" src="assets/mission-reward-frame.png" alt="ルーキーチャレンジ達成特典の透過アイコンフレーム" draggable="false">
+            <p class="reward-save-note">画像を長押しして保存できます</p>
+            <a class="reward-download" href="assets/mission-reward-frame.png" download="rookie-challenge-special-frame.png">画像を保存</a>
           </div>
         </div>
         <img class="thanks-sample mission-frame" src="assets/special-frame-sample.jpg" alt="イベントミッション達成特典の特別アイコンフレームのサンプル" draggable="false">
@@ -143,13 +146,13 @@
   </div>
 
   <footer class="foot">
-    <p>画像 イラスト 立ち絵の無断転載 保存 加工 再配布 学習利用は禁止です</p>
+    <p>特典受け取り画面の配布画像を除き 画像 イラスト 立ち絵の無断転載 保存 加工 再配布 学習利用は禁止です</p>
   </footer>
   <script>
     const secretDoor = document.querySelector("[data-secret-door]");
     const secretPanel = document.querySelector("[data-secret-panel]");
     const doorMain = document.querySelector("[data-door-main]");
-    const doorComingSoon = document.querySelector("[data-door-coming-soon]");
+    const doorReward = document.querySelector("[data-door-reward]");
     const doorResult = document.querySelector("#door-result");
     const missionKeywordHash = "161f1a2b96dd4a8c5ccc73b8ac6044d6581934c06c186d5becee0342bad71eff";
     const textEncoder = new TextEncoder();
@@ -158,7 +161,7 @@
       .map((byte) => byte.toString(16).padStart(2, "0"))
       .join("");
 
-    if (secretDoor && secretPanel && doorMain && doorComingSoon && doorResult) {
+    if (secretDoor && secretPanel && doorMain && doorReward && doorResult) {
       secretDoor.addEventListener("submit", async (event) => {
         event.preventDefault();
         const formData = new FormData(secretDoor);
@@ -169,17 +172,23 @@
           doorResult.hidden = true;
           secretPanel.classList.add("is-open");
           doorMain.hidden = true;
-          doorComingSoon.hidden = false;
+          doorReward.hidden = false;
           return;
         }
 
-        doorComingSoon.hidden = true;
+        doorReward.hidden = true;
         doorMain.hidden = false;
         secretPanel.classList.remove("is-open");
         doorResult.hidden = false;
         doorResult.textContent = "キーワードを確認してね💞";
       });
     }
+
+    document.addEventListener("contextmenu", (event) => {
+      if (!event.target.closest(".reward-save-image")) {
+        event.preventDefault();
+      }
+    });
   </script>
 </body>
 </html>
