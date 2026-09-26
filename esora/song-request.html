@@ -198,6 +198,14 @@
       text-shadow: 0 0 7px rgba(255, 121, 199, 0.5);
     }
 
+    .request-field-hint {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
     .request-field-error::before {
       content: "♡ ";
     }
@@ -572,6 +580,11 @@
       color: #bff7ff;
     }
 
+    .request-view .request-field-hint {
+      color: #bff7ff;
+      text-shadow: 0 0 7px rgba(112, 232, 255, 0.28);
+    }
+
     .request-view .request-field input,
     .request-view .request-field textarea {
       border-color: rgba(255, 188, 230, 0.35);
@@ -741,8 +754,9 @@
       <p>思いついた曲を、一つひとつ大切に届けてね。</p>
       <form class="request-form" id="song-request-form" novalidate>
         <div class="request-field">
-          <label for="colorsing-name">カラーシング名</label>
-          <input id="colorsing-name" name="colorsing-name" type="text" autocomplete="nickname" required>
+          <label for="colorsing-name">カラーシングで使っているお名前</label>
+          <input id="colorsing-name" name="colorsing-name" type="text" autocomplete="nickname" placeholder="例：ユッキー" aria-describedby="colorsing-name-hint colorsing-name-error" required>
+          <p class="request-field-hint" id="colorsing-name-hint">ジャンル名ではなく あなたのユーザー名を入れてね</p>
           <p class="request-field-error" id="colorsing-name-error"></p>
         </div>
         <div class="request-field">
@@ -826,7 +840,7 @@
       {
         control: requestForm.querySelector('[name="colorsing-name"]'),
         field: requestForm.querySelector('[name="colorsing-name"]').closest(".request-field"),
-        error: "カラーシング名を入れてね"
+        error: "カラーシングで使っているお名前を入れてね"
       },
       {
         control: requestForm.querySelector('[name="memorize-song"]'),
