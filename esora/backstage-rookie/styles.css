@@ -270,6 +270,84 @@ h1 {
   background: rgba(255, 255, 255, 0.1);
 }
 
+.secret-shortcut {
+  position: relative;
+  display: flex;
+  width: min(100%, 22rem);
+  min-height: 48px;
+  margin: 0.88rem auto 0;
+  padding: 0.72rem 1.15rem;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1.35;
+  text-align: center;
+  border: 2px solid rgba(255, 255, 255, 0.82);
+  border-radius: 999px;
+  background: linear-gradient(110deg, #ff73bd, #ffe36e, #78f0ba, #5ee1ff, #a277ff, #ff73bd);
+  background-size: 280% 100%;
+  box-shadow: 0 0 16px rgba(255, 115, 189, 0.72), 0 0 24px rgba(94, 225, 255, 0.56), inset 0 0 12px rgba(255, 255, 255, 0.28);
+  text-shadow: 0 1px 2px rgba(30, 18, 70, 0.88), 0 0 7px rgba(255, 255, 255, 0.7);
+  animation: secret-rainbow-flow 5s linear infinite, secret-rainbow-glow 2.4s ease-in-out infinite;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.secret-shortcut::after {
+  position: absolute;
+  top: -55%;
+  left: -38%;
+  width: 24%;
+  height: 210%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.78), transparent);
+  transform: rotate(18deg);
+  animation: secret-rainbow-shine 3s ease-in-out infinite;
+  content: "";
+  pointer-events: none;
+}
+
+.secret-shortcut:hover,
+.secret-shortcut:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px rgba(255, 115, 189, 0.82), 0 0 34px rgba(94, 225, 255, 0.68), inset 0 0 14px rgba(255, 255, 255, 0.34);
+}
+
+.secret-shortcut:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.92);
+  outline-offset: 3px;
+}
+
+@keyframes secret-rainbow-flow {
+  to {
+    background-position: 280% 0;
+  }
+}
+
+@keyframes secret-rainbow-glow {
+  50% {
+    box-shadow: 0 0 23px rgba(255, 115, 189, 0.86), 0 0 36px rgba(94, 225, 255, 0.72), inset 0 0 16px rgba(255, 255, 255, 0.38);
+  }
+}
+
+@keyframes secret-rainbow-shine {
+  0%, 52% {
+    left: -38%;
+  }
+
+  82%, 100% {
+    left: 118%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .secret-shortcut,
+  .secret-shortcut::after {
+    animation: none;
+  }
+}
+
 .talk,
 .rookie,
 .gifts,
