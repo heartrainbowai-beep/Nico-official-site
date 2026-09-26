@@ -775,7 +775,7 @@
           <img class="request-thanks-image" id="request-thanks-image" src="assets/song-request-thanks/thanks-01.png" alt="リクエストありがとう" draggable="false">
         </div>
         <h3>リクエストありがとう</h3>
-        <p>大切に見させてもらいます</p>
+        <p>みんなの一覧に反映されました</p>
       </aside>
       <p class="request-note">すべての曲を歌えるとは限りませんが、大切に聞かせてもらいます</p>
     </section>
@@ -801,7 +801,7 @@
           <p class="request-card-name">おすすめ：雨宮</p>
         </article>
       </div>
-      <p class="request-status" id="request-list-status" role="status" aria-live="polite">確認済みのリクエストを読み込んでいます</p>
+      <p class="request-status" id="request-list-status" role="status" aria-live="polite">届いたリクエストを読み込んでいます</p>
     </section>
   </main>
 
@@ -876,7 +876,7 @@
       const card = createElement("article", "request-card is-submitted");
       card.tabIndex = -1;
       card.dataset.requestId = request.id;
-      card.append(createElement("p", "request-card-label", "虹心確認済み"));
+      card.append(createElement("p", "request-card-label", "届いたリクエスト"));
 
       const title = createElement("h3");
       title.append(document.createTextNode(request.song));
@@ -899,18 +899,21 @@
     };
 
     const loadApprovedRequests = async () => {
-      requestListStatus.textContent = "確認済みのリクエストを読み込んでいます";
+      requestListStatus.textContent = "届いたリクエストを読み込んでいます";
       try {
         const response = await fetch(requestApi, { headers: { accept: "application/json" } });
         if (!response.ok) throw new Error("読み込みに失敗しました");
         const data = await response.json();
         const approved = Array.isArray(data.requests) ? data.requests : [];
+        requestCards
+          .querySelectorAll('.request-card.is-submitted:not([data-request-id="spica-amemiya-20260915"])')
+          .forEach((card) => card.remove());
         approved
           .filter((request) => !(request.song === "スピカ" && request.artist === "ロクデナシさん"))
           .forEach((request) => requestCards.append(createRequestCard(request)));
         requestListStatus.textContent = approved.length
           ? `${approved.length}件のリクエストを掲載中です`
-          : "虹心が確認したリクエストを ここに少しずつ掲載します";
+          : "届いたリクエストはここに表示されます";
       } catch (error) {
         requestListStatus.textContent = "リクエスト一覧を読み込めませんでした 少し時間をおいて見てね";
       }
@@ -958,7 +961,8 @@
         });
         const data = await response.json().catch(() => ({}));
         if (!response.ok) throw new Error(data.error || "送信できませんでした");
-        requestStatus.textContent = "リクエストありがとう🌈 虹心が確認したあとに みんなの一覧へ表示されます";
+        await loadApprovedRequests();
+        requestStatus.textContent = "リクエストありがとう🌈 一覧に反映されました";
         thanksImage.src = thanksImages[Math.floor(Math.random() * thanksImages.length)];
         thanksCard.classList.add("is-visible");
         requestForm.reset();
