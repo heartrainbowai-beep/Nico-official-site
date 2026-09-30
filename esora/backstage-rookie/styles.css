@@ -188,6 +188,19 @@ img {
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.78), 0 0 14px rgba(255, 115, 189, 0.62);
 }
 
+.event-status {
+  width: fit-content;
+  margin: 0 auto 0.55rem;
+  padding: 0.22rem 0.72rem;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 900;
+  background: rgba(18, 14, 55, 0.72);
+  box-shadow: 0 0 14px rgba(94, 225, 255, 0.24);
+}
+
 .tag {
   width: fit-content;
   margin: 0 auto 0.9rem;

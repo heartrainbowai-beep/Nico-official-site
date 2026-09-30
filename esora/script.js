@@ -81,6 +81,35 @@
     });
   });
 
+  var eventMenuLinks = [
+    { href: "events.html", label: "イベント情報" },
+    { href: "past-events.html", label: "過去のイベント" }
+  ];
+
+  document.querySelectorAll(".shortcut-menu").forEach(function (menu) {
+    var insertionPoint = menu.querySelector('a[href="index.html"]');
+
+    eventMenuLinks.forEach(function (item) {
+      if (menu.querySelector('a[href="' + item.href + '"]')) {
+        return;
+      }
+
+      var link = document.createElement("a");
+      link.href = item.href;
+      link.textContent = item.label;
+      if (window.location.pathname.endsWith("/" + item.href)) {
+        link.setAttribute("aria-current", "page");
+      }
+
+      if (insertionPoint) {
+        insertionPoint.insertAdjacentElement("afterend", link);
+      } else {
+        menu.prepend(link);
+      }
+      insertionPoint = link;
+    });
+  });
+
   document.querySelectorAll(".shortcut-menu a").forEach(function (link) {
     link.addEventListener("click", function () {
       var button = document.querySelector(".menu-toggle");
