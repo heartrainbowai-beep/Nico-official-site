@@ -5514,6 +5514,30 @@ body.events-body .event-page :is(p, li, time, small, h4) {
   margin-top: 0.34rem;
 }
 
+.events-body .oshiai-boost-message {
+  margin: 0.72rem 0 0 !important;
+  padding: 0.68rem 0.78rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #fff !important;
+  font-size: 0.9rem;
+  font-weight: 850;
+  line-height: 1.62;
+  background:
+    linear-gradient(rgba(31, 23, 81, 0.94), rgba(31, 23, 81, 0.94)) padding-box,
+    linear-gradient(105deg, rgba(255, 112, 184, 0.72), rgba(105, 226, 255, 0.68)) border-box;
+  box-shadow: 0 0 9px rgba(255, 112, 184, 0.12), 0 0 11px rgba(105, 226, 255, 0.09);
+}
+
+.events-body .oshiai-boost-line {
+  display: block;
+}
+
+.events-body .oshiai-boost-line > span {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 .events-body .oshiai-card-pack {
   position: relative;
   width: min(100%, 30rem);
