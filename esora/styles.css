@@ -2363,12 +2363,6 @@ body {
   box-shadow: 0 0 20px rgba(255, 112, 200, 0.48), 0 0 34px rgba(105, 223, 255, 0.24);
 }
 
-.receive-choice-card-anniversary {
-  background:
-    linear-gradient(145deg, rgba(42, 80, 135, 0.94), rgba(102, 48, 121, 0.92)),
-    linear-gradient(135deg, #8cd9ff, #ff9ed8);
-}
-
 .receive-choice-cover-label {
   padding: 0.1rem 0.15rem;
   color: #ffd9ee;
