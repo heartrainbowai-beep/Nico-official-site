@@ -3026,6 +3026,23 @@ body {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .anniversary-icon-grid .receive-gallery-caption {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .anniversary-icon-grid .receive-gallery-caption strong {
+    width: 100%;
+    text-align: center;
+  }
+
+  .anniversary-icon-grid .receive-gallery-caption .download-link {
+    margin-inline: auto;
+    text-align: center;
+  }
+
   .receive-choice-grid {
     grid-template-columns: 1fr;
     margin-top: 1.1rem;
