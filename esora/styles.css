@@ -2363,6 +2363,12 @@ body {
   box-shadow: 0 0 20px rgba(255, 112, 200, 0.48), 0 0 34px rgba(105, 223, 255, 0.24);
 }
 
+.receive-choice-card-anniversary {
+  background:
+    linear-gradient(145deg, rgba(42, 80, 135, 0.94), rgba(102, 48, 121, 0.92)),
+    linear-gradient(135deg, #8cd9ff, #ff9ed8);
+}
+
 .receive-choice-cover-label {
   padding: 0.1rem 0.15rem;
   color: #ffd9ee;
@@ -2570,6 +2576,68 @@ body {
   border: 1px solid rgba(255, 235, 249, 0.78);
   border-radius: 1rem;
   background: #f8e7ff;
+}
+
+.receive-detail-anniversary {
+  background:
+    linear-gradient(145deg, rgba(44, 75, 137, 0.88), rgba(89, 47, 126, 0.86)),
+    linear-gradient(135deg, rgba(137, 219, 255, 0.22), rgba(255, 161, 216, 0.22));
+}
+
+.receive-detail-anniversary .receive-detail-cover {
+  box-shadow: 0 0 20px rgba(140, 219, 255, 0.34), 0 0 32px rgba(255, 151, 211, 0.25);
+}
+
+.receive-detail-anniversary .receive-detail-copy {
+  text-align: center;
+}
+
+.receive-detail-anniversary .detail-lead {
+  line-height: 1.7;
+}
+
+.anniversary-delivery-slot {
+  text-align: left;
+}
+
+.anniversary-delivery-slot strong {
+  line-height: 1.55;
+}
+
+.anniversary-icon-section {
+  max-width: 62rem;
+  margin: clamp(2rem, 5vw, 4rem) auto 0;
+  padding: clamp(1rem, 3vw, 1.7rem);
+  border: 1px solid rgba(255, 235, 249, 0.72);
+  border-radius: 1.35rem;
+  background:
+    linear-gradient(145deg, rgba(44, 75, 137, 0.86), rgba(89, 47, 126, 0.84)),
+    linear-gradient(135deg, rgba(137, 219, 255, 0.2), rgba(255, 161, 216, 0.2));
+  box-shadow: 0 0 18px rgba(255, 109, 199, 0.24), 0 0 34px rgba(105, 223, 255, 0.14);
+}
+
+.anniversary-icon-heading {
+  margin-bottom: 1.35rem;
+  color: #ffeaf7;
+  text-align: center;
+}
+
+.anniversary-icon-heading h2 {
+  margin: 0.25rem 0 0.55rem;
+  color: #fff8fd;
+  font-family: "あんずもじ", "あんず文字", "Yomogi", "Hachi Maru Pop", "Kiwi Maru", "Zen Maru Gothic", sans-serif;
+  font-size: clamp(1.55rem, 4vw, 2.35rem);
+  text-shadow: 0 0 2px #fff, 0 0 10px rgba(255, 128, 207, 0.88);
+}
+
+.anniversary-icon-heading > p:last-child {
+  margin: 0;
+  font-weight: 800;
+  line-height: 1.65;
+}
+
+.anniversary-icon-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .receive-detail-gallery {
@@ -2960,6 +3028,10 @@ body {
 }
 
 @media (max-width: 720px) {
+  .anniversary-icon-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .receive-choice-grid {
     grid-template-columns: 1fr;
     margin-top: 1.1rem;
