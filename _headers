@@ -9,3 +9,9 @@
 
 /esora/receive-5k-2026-09.html
   Cache-Control: public, max-age=0, must-revalidate
+
+/esora/receive-anniversary-1-5
+  Cache-Control: public, max-age=0, must-revalidate
+
+/esora/receive-anniversary-1-5.html
+  Cache-Control: public, max-age=0, must-revalidate
