@@ -1,0 +1,11 @@
+/esora/events
+  Cache-Control: public, max-age=0, must-revalidate
+
+/esora/events.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/esora/receive-5k-2026-09
+  Cache-Control: public, max-age=0, must-revalidate
+
+/esora/receive-5k-2026-09.html
+  Cache-Control: public, max-age=0, must-revalidate
